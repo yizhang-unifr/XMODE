@@ -1,0 +1,91 @@
+[
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 5,
+        "question": "given the last study of patient 10284038 in 2105, is the cardiac silhouette's width larger than half of the total thorax width?",
+        "template": "given the last study of patient 10284038 in 2105, is the width of the cardiac silhouette wider than 1/2 of the thorax width?",
+        "query": "select func_vqa(\"is the cardiac silhouette's width larger than half of the total thorax width?\", t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 10284038 and strftime('%y',tb_cxr.studydatetime) = '2105' order by tb_cxr.studydatetime desc limit 1 ) ) as t1",
+        "value": {
+            "patient_id": 10284038
+        },
+        "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], is the width of the cardiac silhouette wider than 1/2 of the thorax width?",
+        "t_tag": [
+            "abs-year-in",
+            "",
+            "",
+            "exact-last",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [],
+            "category": [],
+            "attribute": []
+        },
+        "tag": "given the [time_filter_exact1:exact-last] study of patient {patient_id} [time_filter_global1:abs-year-in], is the width of the cardiac silhouette wider than 1/2 of the thorax width?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            0
+        ],
+        "scope": "IMAGE-SINGLE-1",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1,
+        "m3lx": {
+            "Summary": "The cardiac silhouette width is not larger than half of the total thorax width.",
+            "details": "Based on the image analysis of the last study conducted on patient 10284038 in 2105, it has been determined that the cardiac silhouette’s width is not larger than half of the total thorax width.",
+            "source": "Image analysis of study_id 54252229, image_id 3684deb8-616530e3-55256cd6-044fe3a2-4ac97ba7",
+            "final answer": "No",
+            "extra explanation": "This conclusion is derived from the image analysis of the patient’s last recorded study in 2105."
+        }
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 21,
+        "question": "given the last study of patient 19243401 this year, can you confirm the presence of either anatomical findings or diseases?",
+        "template": "given the last study of patient 19243401 this year, are there any anatomicalfinding or disease?",
+        "query": "select (func_vqa(\"can you confirm the presence of anatomical findings?\", t1.study_id)) or (func_vqa(\"can you confirm the presence of diseases?\", t1.study_id)) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 19243401 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') order by tb_cxr.studydatetime desc limit 1 ) ) as t1",
+        "value": {
+            "patient_id": 19243401
+        },
+        "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], are there any ${category_1} or ${category_2}?",
+        "t_tag": [
+            "rel-year-this",
+            "",
+            "",
+            "exact-last",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [],
+            "category": [
+                "anatomicalfinding",
+                "disease"
+            ],
+            "attribute": []
+        },
+        "tag": "given the [time_filter_exact1:exact-last] study of patient {patient_id} [time_filter_global1:rel-year-this], are there any anatomicalfinding or disease?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            1
+        ],
+        "scope": "IMAGE-SINGLE-1",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1,
+        "m3lx": {
+            "Summary": "Presence of potential pathological process in the right lung of patient 19243401 confirmed.",
+            "details": "The chest X-ray shows areas of increased opacity in the right lung, which could indicate a pathological process such as pneumonia or a mass. There is no evidence of cardiomegaly, pleural effusion, or bony abnormalities.",
+            "source": "Image analysis of the last study of patient 19243401 this year.",
+            "final answer": "Yes",
+            "extra explanation": "The increased opacity in the right lung could suggest conditions like pneumonia or a mass, but no other anatomical findings or diseases were noted."
+        }
+    }
+]

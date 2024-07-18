@@ -2,6 +2,10 @@
 from langchain.sql_database import SQLDatabase
 from sqlalchemy import create_engine
 import re
+import errno
+import os
+import signal
+import functools
 
 def _get_db_schema(db_path, tables=None, sample_rows_in_table_info=5):
     # Initialize the database connection
@@ -52,3 +56,27 @@ def correct_malformed_json(malformed_json_string):
         corrected_json_string += '}'
     
     return corrected_json_string
+
+
+
+class TimeoutError(Exception):
+    pass
+
+def timeout(seconds=10, error_message=os.strerror(errno.ETIME)):
+    def decorator(func):
+        def _handle_timeout(signum, frame):
+            raise TimeoutError(error_message)
+
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            signal.signal(signal.SIGALRM, _handle_timeout)
+            signal.alarm(seconds)
+            try:
+                result = func(*args, **kwargs)
+            finally:
+                signal.alarm(0)
+            return result
+
+        return wrapper
+
+    return decorator

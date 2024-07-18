@@ -39,7 +39,7 @@ from src.joiner import *
 from src.joiner import parse_joiner_output
 from src.utils import _get_db_schema
 from typing import Dict
-from src.utils import correct_malformed_json
+from src.utils import correct_malformed_json,timeout
 
 from langgraph.graph import END, MessageGraph, START
 import json
@@ -58,8 +58,9 @@ _set_if_undefined("LANGCHAIN_API_KEY")
 # _set_if_undefined("TAVILY_API_KEY")
 # Optional, add tracing in LangSmith
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_PROJECT"] = "M3LX-DEV-1"
+os.environ["LANGCHAIN_PROJECT"] = "M3LX-ehrxqa-30"
 
+@timeout(180)
 def run_m3lx(question, tables, model):
     result={}
     db_path="/home/ubuntu/workspace/M3LX-LLMCompiler/mimic_iv_cxr.db"
@@ -220,11 +221,15 @@ def run_m3lx(question, tables, model):
     for step in steps:
         print(step)
         print("---")
-  
-    answer = step['join'][-1].content
-    answer = ast.literal_eval(answer.strip())
-    return answer
-        
+    try:
+        answer = step['join'][-1].content
+        id = step['join'][-1].id
+        print(answer, id)
+        answer = ast.literal_eval(answer.strip())
+        return answer, id
+    except:
+        return [], 'NA'
+            
         
         
 def main():
@@ -240,9 +245,12 @@ def main():
         tables=data['tables']
         print(example_question, tables)
     
-    
-        res=run_m3lx(example_question,tables,model)
+        try:
+            res, id =run_m3lx(example_question,tables,model)
+        except:
+            res, id= [], 'NA'
         data['m3lx']=res
+        data['smith-langchain-id']=id
         m3_lx.append(data)
 
     with open('m3lx.json', 'w', encoding='utf-8') as f:

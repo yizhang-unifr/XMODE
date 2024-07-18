@@ -1,0 +1,3261 @@
+{
+    "IMAGE-SINGLE-2": [
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 3100,
+            "question": "is there evidence in the last study for patient 13859433 this year of any anatomical findings in the left hilar structures still absent compared to the previous study?",
+            "template": "given the last study of patient 13859433 this year, are there any anatomicalfinding that are still no in the left hilar structures compared to the previous study?",
+            "query": "select ( select (func_vqa(\"is there evidence of any anatomical findings in the left hilar structures?\", t1.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 13859433 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') order by tb_cxr.studydatetime desc limit 1 ) ) as t1 ) and ( select (func_vqa(\"is there evidence of any anatomical findings in the left hilar structures?\", t2.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 13859433 and tb_cxr.studydatetime < ( select distinct tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 13859433 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') order by tb_cxr.studydatetime desc limit 1 ) ) ) order by tb_cxr.studydatetime desc limit 1 ) as t2 )",
+            "value": {
+                "patient_id": 13859433
+            },
+            "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], are there any ${category} that are ${comparison} in the ${object} compared to the previous study?",
+            "t_tag": [
+                "rel-year-this",
+                "",
+                "",
+                "exact-last",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "left hilar structures"
+                ],
+                "category": [
+                    "anatomicalfinding"
+                ],
+                "attribute": [],
+                "comparison": [
+                    "still absent"
+                ]
+            },
+            "tag": "given the [time_filter_exact1:exact-last] study of patient {patient_id} [time_filter_global1:rel-year-this], are there any anatomicalfinding that are still no in the left hilar structures compared to the previous study?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "airspace opacity",
+                "atelectasis",
+                "bronchiectasis",
+                "calcified nodule",
+                "consolidation",
+                "cyst/bullae",
+                "enlarged hilum",
+                "infiltration",
+                "linear/patchy atelectasis",
+                "lung lesion",
+                "lung opacity",
+                "mass/nodule (not otherwise specified)",
+                "multiple masses/nodules",
+                "pleural/parenchymal scarring",
+                "pneumomediastinum",
+                "pulmonary edema/hazy opacity",
+                "vascular calcification",
+                "vascular congestion",
+                "vascular redistribution"
+            ],
+            "scope": "IMAGE-SINGLE-2"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 205,
+            "question": "could you list all anatomical locations related to any diseases newly detected in the 55411906 study versus the findings of the 59867439 study?",
+            "template": "given the 55411906 study, list all anatomical locations related to any disease that are newly detected compared to the 59867439 study.",
+            "query": "select func_vqa(\"list all anatomical locations related to any diseases.\", t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 55411906 ) as t1 except select func_vqa(\"list all anatomical locations related to any diseases.\", t2.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 59867439 ) as t2",
+            "value": {
+                "study_id1": 55411906,
+                "study_id2": 59867439
+            },
+            "q_tag": "given the {study_id1} study, list all anatomical locations related to any ${category} that are ${comparison} compared to the {study_id2} study?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [
+                    "disease"
+                ],
+                "attribute": [],
+                "comparison": [
+                    "newly detected"
+                ]
+            },
+            "tag": "given the {study_id1} study, list all anatomical locations related to any disease that are newly detected compared to the {study_id2} study.",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "cardiac silhouette",
+                "mediastinum"
+            ],
+            "scope": "IMAGE-SINGLE-2"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2306,
+            "question": "in the 58360065 study, can you identify any abnormalities still absent relative to the findings in the 53510305 study?",
+            "template": "given the 58360065 study, are there any abnormality that are still no compared to the 53510305 study?",
+            "query": "select ( select (func_vqa(\"can you identify any abnormality?\", t1.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 58360065 ) as t1 ) and ( select (func_vqa(\"can you identify any abnormality?\", t2.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 53510305 ) as t2 )",
+            "value": {
+                "study_id1": 58360065,
+                "study_id2": 53510305
+            },
+            "q_tag": "given the {study_id1} study, are there any abnormality that are ${comparison} compared to the {study_id2} study?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": [],
+                "comparison": [
+                    "still absent"
+                ]
+            },
+            "tag": "given the {study_id1} study, are there any abnormality that are still no compared to the {study_id2} study?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                0
+            ],
+            "scope": "IMAGE-SINGLE-2"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2623,
+            "question": "in the 54360181 study, can you identify any abnormalities in the cavoatrial junction resolved relative to the findings in the 59204544 study?",
+            "template": "given the 54360181 study, are there any abnormality that are resolved in the cavoatrial junction compared to the 59204544 study?",
+            "query": "select ( select (func_vqa(\"can you identify any abnormality in the cavoatrial junction?\", t1.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 54360181 ) as t1 ) and ( select (func_vqa(\"can you identify any abnormality in the cavoatrial junction?\", t2.study_id) = true) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 59204544 ) as t2 )",
+            "value": {
+                "study_id1": 54360181,
+                "study_id2": 59204544
+            },
+            "q_tag": "given the {study_id1} study, are there any abnormality that are ${comparison} in the ${object} compared to the {study_id2} study?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "cavoatrial junction"
+                ],
+                "category": [],
+                "attribute": [],
+                "comparison": [
+                    "resolved"
+                ]
+            },
+            "tag": "given the {study_id1} study, are there any abnormality that are resolved in the cavoatrial junction compared to the {study_id2} study?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                0
+            ],
+            "scope": "IMAGE-SINGLE-2"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 3140,
+            "question": "does the 50993229 study reveal any tubes/lines in the right shoulder still absent compared to the previous study?",
+            "template": "given the 50993229 study, are there any tubesandlines that are still no in the right shoulder compared to the previous study?",
+            "query": "select ( select (func_vqa(\"does the right shoulder reveal any tubes/lines?\", t1.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 50993229 ) as t1 ) and ( select (func_vqa(\"does the right shoulder reveal any tubes/lines?\", t2.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = ( select distinct tb_cxr.subject_id from tb_cxr where tb_cxr.study_id = 50993229 ) and tb_cxr.studydatetime < ( select tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id = 50993229 ) order by tb_cxr.studydatetime desc limit 1 ) as t2 )",
+            "value": {
+                "study_id1": 50993229,
+                "patient_id": 16097925
+            },
+            "q_tag": "given the {study_id1} study, are there any ${category} that are ${comparison} in the ${object} compared to the previous study?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "right shoulder"
+                ],
+                "category": [
+                    "tubesandlines"
+                ],
+                "attribute": [],
+                "comparison": [
+                    "still absent"
+                ]
+            },
+            "tag": "given the {study_id1} study, are there any tubesandlines that are still no in the right shoulder compared to the previous study?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "IMAGE-SINGLE-2"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 112,
+            "question": "please enumerate all the anatomical locations related to tortuous aorta still present during the last study of patient 11323860 in 2105 compared to the previous study.",
+            "template": "given the last study of patient 11323860 in 2105, list all anatomical locations related to tortuous aorta that are still present compared to the previous study.",
+            "query": "select func_vqa(\"enumerate all the anatomical locations related to tortuous aorta.\", t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 11323860 and strftime('%y',tb_cxr.studydatetime) = '2105' order by tb_cxr.studydatetime desc limit 1 ) ) as t1 intersect select func_vqa(\"enumerate all the anatomical locations related to tortuous aorta.\", t2.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 11323860 and tb_cxr.studydatetime < ( select distinct tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 11323860 and strftime('%y',tb_cxr.studydatetime) = '2105' order by tb_cxr.studydatetime desc limit 1 ) ) order by tb_cxr.studydatetime desc limit 1 ) as t2",
+            "value": {
+                "patient_id": 11323860
+            },
+            "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], list all anatomical locations related to ${attribute} that are ${comparison} compared to the previous study?",
+            "t_tag": [
+                "abs-year-in",
+                "",
+                "",
+                "exact-last",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": [
+                    "tortuous aorta"
+                ],
+                "comparison": [
+                    "still present"
+                ]
+            },
+            "tag": "given the [time_filter_exact1:exact-last] study of patient {patient_id} [time_filter_global1:abs-year-in], list all anatomical locations related to tortuous aorta that are still present compared to the previous study.",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "aortic arch",
+                "mediastinum",
+                "upper mediastinum"
+            ],
+            "scope": "IMAGE-SINGLE-2"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 1084,
+            "question": "in the 56469261 study, can you identify any abnormalities still present relative to the findings in the 56655821 study?",
+            "template": "given the 56469261 study, are there any abnormality that are still present compared to the 56655821 study?",
+            "query": "select ( select (func_vqa(\"can you identify any abnormality?\", t1.study_id) = true) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 56469261 ) as t1 ) and ( select (func_vqa(\"can you identify any abnormality?\", t2.study_id) = true) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 56655821 ) as t2 )",
+            "value": {
+                "study_id1": 56469261,
+                "study_id2": 56655821
+            },
+            "q_tag": "given the {study_id1} study, are there any abnormality that are ${comparison} compared to the {study_id2} study?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": [],
+                "comparison": [
+                    "still present"
+                ]
+            },
+            "tag": "given the {study_id1} study, are there any abnormality that are still present compared to the {study_id2} study?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "IMAGE-SINGLE-2"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2540,
+            "question": "does the second study of patient 15526304 on the first hospital visit reveal any still absent anatomical findings in the abdomen compared to the first study on the first hospital visit?",
+            "template": "given the second study of patient 15526304 on the first hospital visit, are there any anatomicalfinding that are still no in the abdomen compared to the first study of patient 15526304 on the first hospital visit?",
+            "query": "select ( select (func_vqa(\"does the abdomen reveal any anatomical findings?\", t1.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 15526304 and admissions.dischtime is not null order by admissions.admittime asc limit 1 ) order by tb_cxr.studydatetime asc limit 1 offset 1 ) ) as t1 ) and ( select (func_vqa(\"does the abdomen reveal any anatomical findings?\", t2.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 15526304 and admissions.dischtime is not null order by admissions.admittime asc limit 1 ) order by tb_cxr.studydatetime asc limit 1 ) ) as t2 )",
+            "value": {
+                "patient_id": 15526304
+            },
+            "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], are there any ${category} that are ${comparison} in the ${object} compared to the [time_filter_exact2] study of patient {patient_id} [time_filter_global2]?",
+            "t_tag": [
+                "rel-hosp-first",
+                "rel-hosp-first",
+                "",
+                "exact-second",
+                "exact-first"
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "abdomen"
+                ],
+                "category": [
+                    "anatomicalfinding"
+                ],
+                "attribute": [],
+                "comparison": [
+                    "still absent"
+                ]
+            },
+            "tag": "given the [time_filter_exact1:exact-second] study of patient {patient_id} [time_filter_global1:rel-hosp-first], are there any anatomicalfinding that are still no in the abdomen compared to the [time_filter_exact2:exact-first] study of patient {patient_id} [time_filter_global2:rel-hosp-first]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "IMAGE-SINGLE-2"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 4217,
+            "question": "can you identify any abnormalities newly detected in the left clavicle in the 56201490 study compared to the previous one?",
+            "template": "given the 56201490 study, are there any abnormality that are newly detected in the left clavicle compared to the previous study?",
+            "query": "select ( select (func_vqa(\"can you identify any abnormality in the left clavicle?\", t1.study_id) = true) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 56201490 ) as t1 ) and ( select (func_vqa(\"can you identify any abnormality in the left clavicle?\", t2.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = ( select distinct tb_cxr.subject_id from tb_cxr where tb_cxr.study_id = 56201490 ) and tb_cxr.studydatetime < ( select tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id = 56201490 ) order by tb_cxr.studydatetime desc limit 1 ) as t2 )",
+            "value": {
+                "study_id1": 56201490,
+                "patient_id": 10020740
+            },
+            "q_tag": "given the {study_id1} study, are there any abnormality that are ${comparison} in the ${object} compared to the previous study?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "left clavicle"
+                ],
+                "category": [],
+                "attribute": [],
+                "comparison": [
+                    "newly detected"
+                ]
+            },
+            "tag": "given the {study_id1} study, are there any abnormality that are newly detected in the left clavicle compared to the previous study?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                0
+            ],
+            "scope": "IMAGE-SINGLE-2"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2680,
+            "question": "in the last study of patient 17460568 on the last hospital visit, were there any newly detected abnormalities when compared to the first study on the last hospital visit?",
+            "template": "given the last study of patient 17460568 on the last hospital visit, are there any abnormality that are newly detected compared to the first study of patient 17460568 on the last hospital visit?",
+            "query": "select ( select (func_vqa(\"were there any abnormality?\", t1.study_id) = true) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 17460568 and admissions.dischtime is not null order by admissions.admittime desc limit 1 ) order by tb_cxr.studydatetime desc limit 1 ) ) as t1 ) and ( select (func_vqa(\"were there any abnormality?\", t2.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 17460568 and admissions.dischtime is not null order by admissions.admittime desc limit 1 ) order by tb_cxr.studydatetime asc limit 1 ) ) as t2 )",
+            "value": {
+                "patient_id": 17460568
+            },
+            "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], are there any abnormality that are ${comparison} compared to the [time_filter_exact2] study of patient {patient_id} [time_filter_global2]?",
+            "t_tag": [
+                "rel-hosp-last",
+                "rel-hosp-last",
+                "",
+                "exact-last",
+                "exact-first"
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": [],
+                "comparison": [
+                    "newly detected"
+                ]
+            },
+            "tag": "given the [time_filter_exact1:exact-last] study of patient {patient_id} [time_filter_global1:rel-hosp-last], are there any abnormality that are newly detected compared to the [time_filter_exact2:exact-first] study of patient {patient_id} [time_filter_global2:rel-hosp-last]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                0
+            ],
+            "scope": "IMAGE-SINGLE-2"
+        }
+    ],
+    "MULTIMODAL-SINGLE": [
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2379,
+            "question": "did patient 12354194 undergo the procedure on two vessels procedure within the same month after a chest x-ray study revealed any anatomical findings until 2 year ago?",
+            "template": "has patient 12354194 received a procedure on two vessels procedure within the same month after having had a chest x-ray study indicating any anatomicalfinding until 2 year ago?",
+            "query": "select count(*)>0 from ( select tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select distinct t2.study_id from ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 12354194 and datetime(tb_cxr.studydatetime) <= datetime(current_time,'-2 year') ) ) as t2 where func_vqa(\"does a chest x-ray reveal any anatomical findings?\", t2.study_id) = true ) ) as t1 join ( select procedures_icd.charttime from procedures_icd where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'procedure on two vessels' ) and procedures_icd.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 12354194 ) and datetime(procedures_icd.charttime) <= datetime(current_time,'-2 year') ) as t3 where t1.studydatetime < t3.charttime and datetime(t1.studydatetime,'start of month') = datetime(t3.charttime,'start of month')",
+            "value": {
+                "patient_id": 12354194,
+                "procedure_name": "procedure on two vessels"
+            },
+            "q_tag": "has_verb patient {patient_id} received a {procedure_name} procedure [time_filter_within] after having had a chest x-ray study indicating any ${category} [time_filter_global1] ?",
+            "t_tag": [
+                "rel-year-until",
+                "",
+                "within-month",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [
+                    "anatomicalfinding"
+                ],
+                "attribute": []
+            },
+            "tag": "has_verb patient {patient_id} received a {procedure_name} procedure [time_filter_within:within-month] after having had a chest x-ray study indicating any anatomicalfinding [time_filter_global1:rel-year-until] ?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "MULTIMODAL-SINGLE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 1400,
+            "question": "following a chest x-ray showing any abnormalities in the abdomen on the last hospital visit, has patient 11111102 been prescribed sterile water within 2 day?",
+            "template": "has patient 11111102 been prescribed with sterile water within 2 day after having had a chest x-ray study indicating any abnormality in the abdomen on the last hospital visit?",
+            "query": "select count(*)>0 from ( select tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select distinct t2.study_id from ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 11111102 and admissions.dischtime is not null order by admissions.admittime desc limit 1 ) ) ) as t2 where func_vqa(\"is there a chest x-ray showing any abnormality in the abdomen?\", t2.study_id) = true ) ) as t1 join ( select prescriptions.starttime from prescriptions where prescriptions.drug = 'sterile water' and prescriptions.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 11111102 and admissions.dischtime is not null order by admissions.admittime desc limit 1 ) ) as t3 where t1.studydatetime < t3.starttime and ( datetime(t3.starttime) between datetime(t1.studydatetime) and datetime(t1.studydatetime,'+2 day') ) or ( datetime(t1.studydatetime) between datetime(t3.starttime) and datetime(t3.starttime,'+2 day') )",
+            "value": {
+                "patient_id": 11111102,
+                "drug_name": "sterile water"
+            },
+            "q_tag": "has_verb patient {patient_id} been prescribed with {drug_name} [time_filter_within] after having had a chest x-ray study indicating any abnormality in the ${object} [time_filter_global1] ?",
+            "t_tag": [
+                "rel-hosp-last",
+                "",
+                "within-n_day",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "abdomen"
+                ],
+                "category": [],
+                "attribute": []
+            },
+            "tag": "has_verb patient {patient_id} been prescribed with {drug_name} [time_filter_within:within-n_day] after having had a chest x-ray study indicating any abnormality in the abdomen [time_filter_global1:rel-hosp-last] ?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                0
+            ],
+            "scope": "MULTIMODAL-SINGLE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 291,
+            "question": "in 06/2102, did patient 15353817 undergo the other percutaneous procedures on biliary tract procedure and have a chest x-ray indicating any abnormalities?",
+            "template": "has patient 15353817 received a other percutaneous procedures on biliary tract procedure in 06/2102 and also had a chest x-ray study indicating any abnormality within the same period?",
+            "query": "select ( select count(*)>0 from procedures_icd where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'other percutaneous procedures on biliary tract' ) and procedures_icd.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 15353817 ) and strftime('%y-%m',procedures_icd.charttime) = '2102-06' ) and ( select count(distinct t1.study_id) > 0 from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 15353817 and strftime('%y-%m',tb_cxr.studydatetime) = '2102-06' ) ) as t1 where func_vqa(\"has a chest x-ray indicated any abnormality?\", t1.study_id) = true )",
+            "value": {
+                "patient_id": 15353817,
+                "procedure_name": "other percutaneous procedures on biliary tract"
+            },
+            "q_tag": "has_verb patient {patient_id} received a {procedure_name} procedure [time_filter_global1] and also had a chest x-ray study indicating any abnormality within the same period?",
+            "t_tag": [
+                "abs-month-in",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": []
+            },
+            "tag": "has_verb patient {patient_id} received a {procedure_name} procedure [time_filter_global1:abs-month-in] and also had a chest x-ray study indicating any abnormality within the same period?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "MULTIMODAL-SINGLE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 4293,
+            "question": "until 2 year ago, was patient 18011403 diagnosed with fatty (change of) liver, not elsewhere classified, and did their chest radiograph also display any diseases in the left lower lung zone?",
+            "template": "has patient 18011403 been diagnosed with fatty (change of) liver, not elsewhere classified until 2 year ago and also had a chest x-ray study indicating any disease in the left lower lung zone within the same period?",
+            "query": "select ( select count(*)>0 from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'fatty (change of) liver, not elsewhere classified' ) and diagnoses_icd.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 18011403 ) and datetime(diagnoses_icd.charttime) <= datetime(current_time,'-2 year') ) and ( select count(distinct t1.study_id) > 0 from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 18011403 and datetime(tb_cxr.studydatetime) <= datetime(current_time,'-2 year') ) ) as t1 where func_vqa(\"does a chest x-ray display any diseases in the left lower lung zone?\", t1.study_id) = true )",
+            "value": {
+                "patient_id": 18011403,
+                "diagnosis_name": "fatty (change of) liver, not elsewhere classified"
+            },
+            "q_tag": "has_verb patient {patient_id} been diagnosed with {diagnosis_name} [time_filter_global1] and also had a chest x-ray study indicating any ${category} in the ${object} within the same period?",
+            "t_tag": [
+                "rel-year-until",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "left lower lung zone"
+                ],
+                "category": [
+                    "disease"
+                ],
+                "attribute": []
+            },
+            "tag": "has_verb patient {patient_id} been diagnosed with {diagnosis_name} [time_filter_global1:rel-year-until] and also had a chest x-ray study indicating any disease in the left lower lung zone within the same period?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "MULTIMODAL-SINGLE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 4057,
+            "question": "was patient 18971123 diagnosed with personal history of tobacco use within 2 day after a chest x-ray showing subclavian line in the cardiac silhouette on 07/last year?",
+            "template": "has patient 18971123 been diagnosed with personal history of tobacco use within 2 day after having had a chest x-ray study indicating subclavian line in the cardiac silhouette on 07/last year?",
+            "query": "select count(*)>0 from ( select tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select distinct t2.study_id from ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 18971123 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-1 year') and strftime('%m',tb_cxr.studydatetime) = '07' ) ) as t2 where func_vqa(\"does a chest x-ray show subclavian line in the cardiac silhouette?\", t2.study_id) = true ) ) as t1 join ( select diagnoses_icd.charttime from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'personal history of tobacco use' ) and diagnoses_icd.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 18971123 ) and datetime(diagnoses_icd.charttime,'start of year') = datetime(current_time,'start of year','-1 year') and strftime('%m',diagnoses_icd.charttime) = '07' ) as t3 where t1.studydatetime < t3.charttime and ( datetime(t3.charttime) between datetime(t1.studydatetime) and datetime(t1.studydatetime,'+2 day') ) or ( datetime(t1.studydatetime) between datetime(t3.charttime) and datetime(t3.charttime,'+2 day') )",
+            "value": {
+                "patient_id": 18971123,
+                "diagnosis_name": "personal history of tobacco use"
+            },
+            "q_tag": "has_verb patient {patient_id} been diagnosed with {diagnosis_name} [time_filter_within] after having had a chest x-ray study indicating ${attribute} in the ${object} [time_filter_global1] ?",
+            "t_tag": [
+                "mix-month-last_year",
+                "",
+                "within-n_day",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "cardiac silhouette"
+                ],
+                "category": [],
+                "attribute": [
+                    "subclavian line"
+                ]
+            },
+            "tag": "has_verb patient {patient_id} been diagnosed with {diagnosis_name} [time_filter_within:within-n_day] after having had a chest x-ray study indicating subclavian line in the cardiac silhouette [time_filter_global1:mix-month-last_year] ?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                0
+            ],
+            "scope": "MULTIMODAL-SINGLE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2752,
+            "question": "this month, was patient 12215941 prescribed ketorolac and had a chest x-ray indicating spinal fracture?",
+            "template": "has patient 12215941 been prescribed with ketorolac this month and also had a chest x-ray study indicating spinal fracture within the same period?",
+            "query": "select ( select count(*)>0 from prescriptions where prescriptions.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 12215941 ) and prescriptions.drug = 'ketorolac' and datetime(prescriptions.starttime,'start of month') = datetime(current_time,'start of month','-0 month') ) and ( select count(distinct t1.study_id) > 0 from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 12215941 and datetime(tb_cxr.studydatetime,'start of month') = datetime(current_time,'start of month','-0 month') ) ) as t1 where func_vqa(\"does a chest x-ray indicate spinal fracture?\", t1.study_id) = true )",
+            "value": {
+                "patient_id": 12215941,
+                "drug_name": "ketorolac"
+            },
+            "q_tag": "has_verb patient {patient_id} been prescribed with {drug_name} [time_filter_global1] and also had a chest x-ray study indicating ${attribute} within the same period?",
+            "t_tag": [
+                "rel-month-this",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": [
+                    "spinal fracture"
+                ]
+            },
+            "tag": "has_verb patient {patient_id} been prescribed with {drug_name} [time_filter_global1:rel-month-this] and also had a chest x-ray study indicating spinal fracture within the same period?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                0
+            ],
+            "scope": "MULTIMODAL-SINGLE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 630,
+            "question": "did patient 18002691 undergo the measurement of cardiac sampling and pressure, left heart, percutaneous approach and did a chest x-ray demonstrate any devices during the same timeframe until 15 month ago?",
+            "template": "has patient 18002691 received a measurement of cardiac sampling and pressure, left heart, percutaneous approach procedure until 15 month ago and also had a chest x-ray study indicating any device within the same period?",
+            "query": "select ( select count(*)>0 from procedures_icd where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'measurement of cardiac sampling and pressure, left heart, percutaneous approach' ) and procedures_icd.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 18002691 ) and datetime(procedures_icd.charttime) <= datetime(current_time,'-15 month') ) and ( select count(distinct t1.study_id) > 0 from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 18002691 and datetime(tb_cxr.studydatetime) <= datetime(current_time,'-15 month') ) ) as t1 where func_vqa(\"does a chest x-ray demonstrate any devices?\", t1.study_id) = true )",
+            "value": {
+                "patient_id": 18002691,
+                "procedure_name": "measurement of cardiac sampling and pressure, left heart, percutaneous approach"
+            },
+            "q_tag": "has_verb patient {patient_id} received a {procedure_name} procedure [time_filter_global1] and also had a chest x-ray study indicating any ${category} within the same period?",
+            "t_tag": [
+                "rel-month-until",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [
+                    "device"
+                ],
+                "attribute": []
+            },
+            "tag": "has_verb patient {patient_id} received a {procedure_name} procedure [time_filter_global1:rel-month-until] and also had a chest x-ray study indicating any device within the same period?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                0
+            ],
+            "scope": "MULTIMODAL-SINGLE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2119,
+            "question": "was patient 11111102 prescribed medication on 10/last year, and did a chest x-ray detect any devices in the svc within that period?",
+            "template": "has patient 11111102 been prescribed any medication on 10/last year and also had a chest x-ray study indicating any device in the svc within the same period?",
+            "query": "select ( select count(*)>0 from prescriptions where prescriptions.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 11111102 ) and datetime(prescriptions.starttime,'start of year') = datetime(current_time,'start of year','-1 year') and strftime('%m',prescriptions.starttime) = '10' ) and ( select count(distinct t1.study_id) > 0 from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 11111102 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-1 year') and strftime('%m',tb_cxr.studydatetime) = '10' ) ) as t1 where func_vqa(\"does a chest x-ray detect any devices in the svc?\", t1.study_id) = true )",
+            "value": {
+                "patient_id": 11111102
+            },
+            "q_tag": "has_verb patient {patient_id} been prescribed any medication [time_filter_global1] and also had a chest x-ray study indicating any ${category} in the ${object} within the same period?",
+            "t_tag": [
+                "mix-month-last_year",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "svc"
+                ],
+                "category": [
+                    "device"
+                ],
+                "attribute": []
+            },
+            "tag": "has_verb patient {patient_id} been prescribed any medication [time_filter_global1:mix-month-last_year] and also had a chest x-ray study indicating any device in the svc within the same period?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                0
+            ],
+            "scope": "MULTIMODAL-SINGLE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 3043,
+            "question": "did patient 10104308 receive a diagnosis of alcohol abuse, unspecified this year and demonstrate any abnormalities in the left lung on a chest x-ray during the same period?",
+            "template": "has patient 10104308 been diagnosed with alcohol abuse, unspecified this year and also had a chest x-ray study indicating any abnormality in the left lung within the same period?",
+            "query": "select ( select count(*)>0 from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'alcohol abuse, unspecified' ) and diagnoses_icd.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 10104308 ) and datetime(diagnoses_icd.charttime,'start of year') = datetime(current_time,'start of year','-0 year') ) and ( select count(distinct t1.study_id) > 0 from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 10104308 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') ) ) as t1 where func_vqa(\"does a chest x-ray demonstrate any abnormality in the left lung?\", t1.study_id) = true )",
+            "value": {
+                "patient_id": 10104308,
+                "diagnosis_name": "alcohol abuse, unspecified"
+            },
+            "q_tag": "has_verb patient {patient_id} been diagnosed with {diagnosis_name} [time_filter_global1] and also had a chest x-ray study indicating any abnormality in the ${object} within the same period?",
+            "t_tag": [
+                "rel-year-this",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "left lung"
+                ],
+                "category": [],
+                "attribute": []
+            },
+            "tag": "has_verb patient {patient_id} been diagnosed with {diagnosis_name} [time_filter_global1:rel-year-this] and also had a chest x-ray study indicating any abnormality in the left lung within the same period?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "MULTIMODAL-SINGLE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 357,
+            "question": "after a chest x-ray indicated any abnormalities, did patient 19052988 receive the spinal tap procedure within the same month?",
+            "template": "has patient 19052988 received a spinal tap procedure within the same month after having had a chest x-ray study indicating any abnormality?",
+            "query": "select count(*)>0 from ( select tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select distinct t2.study_id from ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 19052988 ) ) as t2 where func_vqa(\"does a chest x-ray indicate any abnormality?\", t2.study_id) = true ) ) as t1 join ( select procedures_icd.charttime from procedures_icd where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'spinal tap' ) and procedures_icd.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 19052988 ) ) as t3 where t1.studydatetime < t3.charttime and datetime(t1.studydatetime,'start of month') = datetime(t3.charttime,'start of month')",
+            "value": {
+                "procedure_name": "spinal tap",
+                "patient_id": 19052988
+            },
+            "q_tag": "has_verb patient {patient_id} received a {procedure_name} procedure [time_filter_within] after having had a chest x-ray study indicating any abnormality [time_filter_global1] ?",
+            "t_tag": [
+                "",
+                "",
+                "within-month",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": []
+            },
+            "tag": "has_verb patient {patient_id} received a {procedure_name} procedure [time_filter_within:within-month] after having had a chest x-ray study indicating any abnormality [time_filter_global1:null] ?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "MULTIMODAL-SINGLE"
+        }
+    ],
+    "TABLE-GROUP": [
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 3488,
+            "question": "what are the top five most common procedures that were followed within the same hospital visit for patients who had received radical prostatectomy since 2 year ago?",
+            "template": "what are the top five frequent procedures that patients received within the same hospital visit after having received a radical prostatectomy procedure since 2 year ago?",
+            "query": "select d_icd_procedures.long_title from d_icd_procedures where d_icd_procedures.icd_code in ( select t3.icd_code from ( select t2.icd_code, dense_rank() over ( order by count(*) desc ) as c1 from ( select admissions.subject_id, procedures_icd.charttime, admissions.hadm_id from procedures_icd join admissions on procedures_icd.hadm_id = admissions.hadm_id where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'radical prostatectomy' ) and datetime(procedures_icd.charttime) >= datetime(current_time,'-2 year') ) as t1 join ( select admissions.subject_id, procedures_icd.icd_code, procedures_icd.charttime, admissions.hadm_id from procedures_icd join admissions on procedures_icd.hadm_id = admissions.hadm_id where datetime(procedures_icd.charttime) >= datetime(current_time,'-2 year') ) as t2 on t1.subject_id = t2.subject_id where t1.charttime < t2.charttime and t1.hadm_id = t2.hadm_id group by t2.icd_code ) as t3 where t3.c1 <= 5 )",
+            "value": {
+                "procedure_name": "radical prostatectomy"
+            },
+            "q_tag": "what are_verb the top [n_rank] frequent procedures that patients received [time_filter_within] after having received a {procedure_name} procedure [time_filter_global1]?",
+            "t_tag": [
+                "rel-year-since",
+                "",
+                "within-hosp",
+                "",
+                ""
+            ],
+            "o_tag": {
+                "n_rank": {
+                    "nlq": "five",
+                    "sql": "5",
+                    "type": "five",
+                    "sql_pattern": "[n_rank]"
+                }
+            },
+            "v_tag": {},
+            "tag": "What are_verb the top [n_rank:five] frequent procedures that patients received [time_filter_within:within-hosp] after having received a {procedure_name} procedure [time_filter_global1:rel-year-since]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "drainage of peritoneal cavity, percutaneous approach, diagnostic",
+                "combined right and left heart cardiac catheterization",
+                "local excision of lesion or tissue of bone, tibia and fibula"
+            ],
+            "scope": "TABLE-GROUP"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 1182,
+            "question": "what was the average monthly number of patients who were admitted for epilepsy, unspecified, without mention of intractable epilepsy since 4 year ago?",
+            "template": "what is the average monthly number of patient records diagnosed with epilepsy, unspecified, without mention of intractable epilepsy since 4 year ago?",
+            "query": "select avg(t1.c1) from ( select count( distinct diagnoses_icd.hadm_id ) as c1 from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'epilepsy, unspecified, without mention of intractable epilepsy' ) and datetime(diagnoses_icd.charttime) >= datetime(current_time,'-4 year') group by strftime('%y-%m',diagnoses_icd.charttime) ) as t1",
+            "value": {
+                "diagnosis_name": "epilepsy, unspecified, without mention of intractable epilepsy"
+            },
+            "q_tag": "what is the [agg_function] [unit_average] number of patient records diagnosed with {diagnosis_name} [time_filter_global1]?",
+            "t_tag": [
+                "rel-year-since",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {
+                "agg_function": {
+                    "nlq": "average",
+                    "sql": "AVG",
+                    "type": "average",
+                    "sql_pattern": "[agg_function]"
+                },
+                "unit_average": {
+                    "nlq": "monthly",
+                    "sql": "GROUP BY strftime('%Y-%m',diagnoses_icd.charttime)",
+                    "type": "monthly",
+                    "sql_pattern": "unit_average(diagnoses_icd.charttime)"
+                }
+            },
+            "v_tag": {},
+            "tag": "What is the [agg_function:average] [unit_average:monthly] number of patient records diagnosed with {diagnosis_name} [time_filter_global1:rel-year-since]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1.3125
+            ],
+            "scope": "TABLE-GROUP"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2934,
+            "question": "what are the microbiology tests that are the five most frequently given until 4 year ago?",
+            "template": "what were the top five frequent microbiology tests until 4 year ago?",
+            "query": "select t1.test_name from ( select microbiologyevents.test_name, dense_rank() over ( order by count(*) desc ) as c1 from microbiologyevents where datetime(microbiologyevents.charttime) <= datetime(current_time,'-4 year') group by microbiologyevents.test_name ) as t1 where t1.c1 <= 5",
+            "value": {},
+            "q_tag": "what are_verb the top [n_rank] frequent microbiology tests [time_filter_global1]?",
+            "t_tag": [
+                "rel-year-until",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {
+                "n_rank": {
+                    "nlq": "five",
+                    "sql": "5",
+                    "type": "five",
+                    "sql_pattern": "[n_rank]"
+                }
+            },
+            "v_tag": {},
+            "tag": "What are_verb the top [n_rank:five] frequent microbiology tests [time_filter_global1:rel-year-until]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "urine culture",
+                "blood culture, routine",
+                "wound culture",
+                "respiratory culture",
+                "gram stain"
+            ],
+            "scope": "TABLE-GROUP"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 3123,
+            "question": "last year, what are the five most frequently ordered microbiology tests for patients within the same hospital visit after they are diagnosed with personal history of traumatic brain injury?",
+            "template": "what were the top five frequent microbiology tests that patients had within the same hospital visit after having been diagnosed with personal history of traumatic brain injury last year?",
+            "query": "select t3.test_name from ( select t2.test_name, dense_rank() over ( order by count(*) desc ) as c1 from ( select admissions.subject_id, diagnoses_icd.charttime, admissions.hadm_id from diagnoses_icd join admissions on diagnoses_icd.hadm_id = admissions.hadm_id where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'personal history of traumatic brain injury' ) and datetime(diagnoses_icd.charttime,'start of year') = datetime(current_time,'start of year','-1 year') ) as t1 join ( select admissions.subject_id, microbiologyevents.test_name, microbiologyevents.charttime, admissions.hadm_id from microbiologyevents join admissions on microbiologyevents.hadm_id = admissions.hadm_id where datetime(microbiologyevents.charttime,'start of year') = datetime(current_time,'start of year','-1 year') ) as t2 on t1.subject_id = t2.subject_id where t1.charttime < t2.charttime and t1.hadm_id = t2.hadm_id group by t2.test_name ) as t3 where t3.c1 <= 5",
+            "value": {
+                "diagnosis_name": "personal history of traumatic brain injury"
+            },
+            "q_tag": "what are_verb the top [n_rank] frequent microbiology tests that patients had [time_filter_within] after having been diagnosed with {diagnosis_name} [time_filter_global1]?",
+            "t_tag": [
+                "rel-year-last",
+                "",
+                "within-hosp",
+                "",
+                ""
+            ],
+            "o_tag": {
+                "n_rank": {
+                    "nlq": "five",
+                    "sql": "5",
+                    "type": "five",
+                    "sql_pattern": "[n_rank]"
+                }
+            },
+            "v_tag": {},
+            "tag": "What are_verb the top [n_rank:five] frequent microbiology tests that patients had [time_filter_within:within-hosp] after having been diagnosed with {diagnosis_name} [time_filter_global1:rel-year-last]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "blood culture, routine",
+                "urine culture",
+                "anaerobic bottle",
+                "c. difficile pcr",
+                "fecal culture"
+            ],
+            "scope": "TABLE-GROUP"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 3489,
+            "question": "what's the number of patients who had a albumin 5% intake until 2102?",
+            "template": "count the number of patients who had a albumin 5% intake until 2102.",
+            "query": "select count( distinct admissions.subject_id ) from admissions where admissions.hadm_id in ( select icustays.hadm_id from icustays where icustays.stay_id in ( select inputevents.stay_id from inputevents where inputevents.itemid in ( select d_items.itemid from d_items where d_items.label = 'albumin 5%' and d_items.linksto = 'inputevents' ) and strftime('%y',inputevents.starttime) <= '2102' ) )",
+            "value": {
+                "intake_name": "albumin 5%"
+            },
+            "q_tag": "count the number of patients who had a {intake_name} intake [time_filter_global1].",
+            "t_tag": [
+                "abs-year-until",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "Count the number of patients who had a {intake_name} intake [time_filter_global1:abs-year-until].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                13
+            ],
+            "scope": "TABLE-GROUP"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2422,
+            "question": "tell me what are the top three most common procedures in 2105?",
+            "template": "what are the top three frequent procedures in 2105?",
+            "query": "select d_icd_procedures.long_title from d_icd_procedures where d_icd_procedures.icd_code in ( select t1.icd_code from ( select procedures_icd.icd_code, dense_rank() over ( order by count(*) desc ) as c1 from procedures_icd where strftime('%y',procedures_icd.charttime) = '2105' group by procedures_icd.icd_code ) as t1 where t1.c1 <= 3 )",
+            "value": {},
+            "q_tag": "what are_verb the top [n_rank] frequent procedures [time_filter_global1]?",
+            "t_tag": [
+                "abs-year-in",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {
+                "n_rank": {
+                    "nlq": "three",
+                    "sql": "3",
+                    "type": "three",
+                    "sql_pattern": "[n_rank]"
+                }
+            },
+            "v_tag": {},
+            "tag": "What are_verb the top [n_rank:three] frequent procedures [time_filter_global1:abs-year-in]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "percutaneous transluminal coronary angioplasty [ptca]",
+                "venous catheterization, not elsewhere classified",
+                "central venous catheter placement with guidance",
+                "hemodialysis",
+                "other endoscopy of small intestine",
+                "percutaneous abdominal drainage",
+                "other nonoperative respiratory measurements",
+                "electrocardiogram",
+                "other electroshock therapy",
+                "insertion of endotracheal tube",
+                "continuous invasive mechanical ventilation for less than 96 consecutive hours"
+            ],
+            "scope": "TABLE-GROUP"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2238,
+            "question": "what is the average total hospital cost that includes the ntprobnp?",
+            "template": "what is the average total hospital cost that involves a ntprobnp lab test?",
+            "query": "select avg(t1.c1) from ( select sum(cost.cost) as c1 from cost where cost.hadm_id in ( select labevents.hadm_id from labevents where labevents.itemid in ( select d_labitems.itemid from d_labitems where d_labitems.label = 'ntprobnp' ) ) group by cost.hadm_id ) as t1",
+            "value": {
+                "lab_name": "ntprobnp"
+            },
+            "q_tag": "what is_verb the [agg_function] total hospital cost that involves a {lab_name} lab test [time_filter_global1]?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {
+                "agg_function": {
+                    "nlq": "average",
+                    "sql": "AVG",
+                    "type": "average",
+                    "sql_pattern": "[agg_function]"
+                }
+            },
+            "v_tag": {},
+            "tag": "What is_verb the [agg_function:average] total hospital cost that involves a {lab_name} lab test [time_filter_global1:null]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                3481.730455
+            ],
+            "scope": "TABLE-GROUP"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 3790,
+            "question": "what is the four most frequently ordered lab test in 2101 for patients in the age of 50s?",
+            "template": "what were the top four frequent lab tests of patients aged 50s in 2101?",
+            "query": " select d_labitems.label from d_labitems where d_labitems.itemid in ( select t1.itemid from ( select labevents.itemid, dense_rank() over ( order by count(*) desc ) as c1 from labevents where labevents.hadm_id in ( select admissions.hadm_id from admissions where admissions.age between 50 and 59 ) and strftime('%y',labevents.charttime) = '2101' group by labevents.itemid ) as t1 where t1.c1 <= 4 )",
+            "value": {},
+            "q_tag": "what are_verb the top [n_rank] frequent lab tests of patients aged [age_group] [time_filter_global1]?",
+            "t_tag": [
+                "abs-year-in",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {
+                "n_rank": {
+                    "nlq": "four",
+                    "sql": "4",
+                    "type": "four",
+                    "sql_pattern": "[n_rank]"
+                },
+                "age_group": {
+                    "nlq": "50s",
+                    "sql": "AND admissions.age BETWEEN 50 AND 59",
+                    "type": "50s",
+                    "sql_pattern": "age_group(admissions.age)"
+                }
+            },
+            "v_tag": {},
+            "tag": "What are_verb the top [n_rank:four] frequent lab tests of patients aged [age_group:50s] [time_filter_global1:abs-year-in]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "anion gap",
+                "chloride",
+                "creatinine",
+                "hematocrit"
+            ],
+            "scope": "TABLE-GROUP"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 1432,
+            "question": "what are the five most frequent procedure that patients have received within the same month after they have received a revision or relocation of cardiac device pocket procedure in 2102?",
+            "template": "what were the top five frequent procedures that patients received within the same month after having received a revision or relocation of cardiac device pocket procedure in 2102?",
+            "query": "select d_icd_procedures.long_title from d_icd_procedures where d_icd_procedures.icd_code in ( select t3.icd_code from ( select t2.icd_code, dense_rank() over ( order by count(*) desc ) as c1 from ( select admissions.subject_id, procedures_icd.charttime from procedures_icd join admissions on procedures_icd.hadm_id = admissions.hadm_id where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'revision or relocation of cardiac device pocket' ) and strftime('%y',procedures_icd.charttime) = '2102' ) as t1 join ( select admissions.subject_id, procedures_icd.icd_code, procedures_icd.charttime from procedures_icd join admissions on procedures_icd.hadm_id = admissions.hadm_id where strftime('%y',procedures_icd.charttime) = '2102' ) as t2 on t1.subject_id = t2.subject_id where t1.charttime < t2.charttime and datetime(t1.charttime,'start of month') = datetime(t2.charttime,'start of month') group by t2.icd_code ) as t3 where t3.c1 <= 5 )",
+            "value": {
+                "procedure_name": "revision or relocation of cardiac device pocket"
+            },
+            "q_tag": "what are_verb the top [n_rank] frequent procedures that patients received [time_filter_within] after having received a {procedure_name} procedure [time_filter_global1]?",
+            "t_tag": [
+                "abs-year-in",
+                "",
+                "within-month",
+                "",
+                ""
+            ],
+            "o_tag": {
+                "n_rank": {
+                    "nlq": "five",
+                    "sql": "5",
+                    "type": "five",
+                    "sql_pattern": "[n_rank]"
+                }
+            },
+            "v_tag": {},
+            "tag": "What are_verb the top [n_rank:five] frequent procedures that patients received [time_filter_within:within-month] after having received a {procedure_name} procedure [time_filter_global1:abs-year-in]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "inspection of lower intestinal tract, via natural or artificial opening endoscopic",
+                "drainage of perineum subcutaneous tissue and fascia, percutaneous approach",
+                "extraction of products of conception, low, open approach",
+                "delivery of products of conception, external approach",
+                "closed [endoscopic] biopsy of bronchus",
+                "angioplasty of other non-coronary vessel(s)",
+                "performance of cardiac output, continuous",
+                "respiratory ventilation, greater than 96 consecutive hours",
+                "closed reduction of fracture without internal fixation, tibia and fibula",
+                "open biopsy of soft tissue",
+                "routine chest x-ray, so described",
+                "phlebography of other specified sites using contrast material",
+                "other nonoperative respiratory measurements",
+                "other radiotherapeutic procedure",
+                "fluoroscopy of right lower extremity arteries using other contrast"
+            ],
+            "scope": "TABLE-GROUP"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2536,
+            "question": "what are the top five drugs prescribed for patients with an age of 40s last year?",
+            "template": "what were the top five frequently prescribed drugs of patients aged 40s last year?",
+            "query": "select t1.drug from ( select prescriptions.drug, dense_rank() over ( order by count(*) desc ) as c1 from prescriptions where prescriptions.hadm_id in ( select admissions.hadm_id from admissions where admissions.age between 40 and 49 ) and datetime(prescriptions.starttime,'start of year') = datetime(current_time,'start of year','-1 year') group by prescriptions.drug ) as t1 where t1.c1 <= 5",
+            "value": {},
+            "q_tag": "what are_verb the top [n_rank] frequently prescribed drugs of patients aged [age_group] [time_filter_global1]?",
+            "t_tag": [
+                "rel-year-last",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {
+                "age_group": {
+                    "nlq": "40s",
+                    "sql": "AND admissions.age BETWEEN 40 AND 49",
+                    "type": "40s",
+                    "sql_pattern": "age_group(admissions.age)"
+                },
+                "n_rank": {
+                    "nlq": "five",
+                    "sql": "5",
+                    "type": "five",
+                    "sql_pattern": "[n_rank]"
+                }
+            },
+            "v_tag": {},
+            "tag": "What are_verb the top [n_rank:five] frequently prescribed drugs of patients aged [age_group:40s] [time_filter_global1:rel-year-last]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "insulin",
+                "0.9% sodium chloride",
+                "sodium chloride 0.9%  flush",
+                "potassium chloride",
+                "furosemide"
+            ],
+            "scope": "TABLE-GROUP"
+        }
+    ],
+    "IMAGE-GROUP-N": [
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 3330,
+            "question": "what's the count of patients whose chest x-ray studies since 15 month ago demonstrated any anatomical findings in the cardiac silhouette?",
+            "template": "count the number of patients who had any chest x-ray study indicating any anatomicalfinding in the cardiac silhouette since 15 month ago.",
+            "query": "select count(distinct t1.subject_id) from ( select * from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where datetime(tb_cxr.studydatetime) >= datetime(current_time,'-15 month') ) ) as t1 where func_vqa(\"is any anatomical findings demonstrated in the cardiac silhouette?\", t1.study_id) = true",
+            "value": {},
+            "q_tag": "count the number of patients who had any chest x-ray study indicating any ${category} in the ${object} [time_filter_global1].",
+            "t_tag": [
+                "rel-month-since",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "cardiac silhouette"
+                ],
+                "category": [
+                    "anatomicalfinding"
+                ],
+                "attribute": []
+            },
+            "tag": "count the number of patients who had any chest x-ray study indicating any anatomicalfinding in the cardiac silhouette [time_filter_global1:rel-month-since].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                74
+            ],
+            "scope": "IMAGE-GROUP-N"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 1868,
+            "question": "please calculate the count of patients whose chest x-ray studies since 81 month ago indicated aspiration.",
+            "template": "count the number of patients who had any chest x-ray study indicating aspiration since 81 month ago.",
+            "query": "select count(distinct t1.subject_id) from ( select * from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where datetime(tb_cxr.studydatetime) >= datetime(current_time,'-81 month') ) ) as t1 where func_vqa(\"has a chest x-ray indicated aspiration?\", t1.study_id) = true",
+            "value": {},
+            "q_tag": "count the number of patients who had any chest x-ray study indicating ${attribute} [time_filter_global1].",
+            "t_tag": [
+                "rel-month-since",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": [
+                    "aspiration"
+                ]
+            },
+            "tag": "count the number of patients who had any chest x-ray study indicating aspiration [time_filter_global1:rel-month-since].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                64
+            ],
+            "scope": "IMAGE-GROUP-N"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 693,
+            "question": "please determine the number of patients showing atelectasis from chest x-ray studies conducted on 02/last year.",
+            "template": "count the number of patients who had any chest x-ray study indicating atelectasis on 02/last year.",
+            "query": "select count(distinct t1.subject_id) from ( select * from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-1 year') and strftime('%m',tb_cxr.studydatetime) = '02' ) ) as t1 where func_vqa(\"does a chest x-ray show atelectasis?\", t1.study_id) = true",
+            "value": {},
+            "q_tag": "count the number of patients who had any chest x-ray study indicating ${attribute} [time_filter_global1].",
+            "t_tag": [
+                "mix-month-last_year",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": [
+                    "atelectasis"
+                ]
+            },
+            "tag": "count the number of patients who had any chest x-ray study indicating atelectasis [time_filter_global1:mix-month-last_year].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                7
+            ],
+            "scope": "IMAGE-GROUP-N"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2268,
+            "question": "please mention the ids of patients whose chest x-ray studies since 124 month ago indicated picc in the right clavicle.",
+            "template": "list the ids of patients who had any chest x-ray study indicating picc in the right clavicle since 124 month ago.",
+            "query": "select distinct t1.subject_id from ( select * from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where datetime(tb_cxr.studydatetime) >= datetime(current_time,'-124 month') ) ) as t1 where func_vqa(\"does a chest x-ray indicate picc in the right clavicle?\", t1.study_id) = true",
+            "value": {},
+            "q_tag": "list the ids of patients who had any chest x-ray study indicating ${attribute} in the ${object} [time_filter_global1].",
+            "t_tag": [
+                "rel-month-since",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "right clavicle"
+                ],
+                "category": [],
+                "attribute": [
+                    "picc"
+                ]
+            },
+            "tag": "list the ids of patients who had any chest x-ray study indicating picc in the right clavicle [time_filter_global1:rel-month-since].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                12056668,
+                12215941,
+                13336663,
+                15611926,
+                15649400,
+                17112656,
+                17281190,
+                17435828,
+                18969313,
+                18971123
+            ],
+            "scope": "IMAGE-GROUP-N"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 3802,
+            "question": "how many patients had chest x-ray studies showing any abnormalities in the svc on 04/last year?",
+            "template": "count the number of patients who had any chest x-ray study indicating any abnormality in the svc on 04/last year.",
+            "query": "select count(distinct t1.subject_id) from ( select * from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-1 year') and strftime('%m',tb_cxr.studydatetime) = '04' ) ) as t1 where func_vqa(\"does a chest x-ray show any abnormality in the svc?\", t1.study_id) = true",
+            "value": {},
+            "q_tag": "count the number of patients who had any chest x-ray study indicating any abnormality in the ${object} [time_filter_global1].",
+            "t_tag": [
+                "mix-month-last_year",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "svc"
+                ],
+                "category": [],
+                "attribute": []
+            },
+            "tag": "count the number of patients who had any chest x-ray study indicating any abnormality in the svc [time_filter_global1:mix-month-last_year].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                2
+            ],
+            "scope": "IMAGE-GROUP-N"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 4345,
+            "question": "identify the patient ids for chest x-ray studies showing any technical assessments in the left mid lung zone since 90 month ago.",
+            "template": "list the ids of patients who had any chest x-ray study indicating any technicalassessment in the left mid lung zone since 90 month ago.",
+            "query": "select distinct t1.subject_id from ( select * from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where datetime(tb_cxr.studydatetime) >= datetime(current_time,'-90 month') ) ) as t1 where func_vqa(\"does a chest x-ray show any technical assessments in the left mid lung zone?\", t1.study_id) = true",
+            "value": {},
+            "q_tag": "list the ids of patients who had any chest x-ray study indicating any ${category} in the ${object} [time_filter_global1].",
+            "t_tag": [
+                "rel-month-since",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "left mid lung zone"
+                ],
+                "category": [
+                    "technicalassessment"
+                ],
+                "attribute": []
+            },
+            "tag": "list the ids of patients who had any chest x-ray study indicating any technicalassessment in the left mid lung zone [time_filter_global1:rel-month-since].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                12930426,
+                13122104,
+                13833101,
+                17112656,
+                17938416
+            ],
+            "scope": "IMAGE-GROUP-N"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 1253,
+            "question": "what is the total count of patients whose chest x-ray studies until 2104 revealed any anatomical findings in the right upper lung zone?",
+            "template": "count the number of patients who had any chest x-ray study indicating any anatomicalfinding in the right upper lung zone until 2104.",
+            "query": "select count(distinct t1.subject_id) from ( select * from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where strftime('%y',tb_cxr.studydatetime) <= '2104' ) ) as t1 where func_vqa(\"does a chest x-ray reveal any anatomical findings in the right upper lung zone?\", t1.study_id) = true",
+            "value": {},
+            "q_tag": "count the number of patients who had any chest x-ray study indicating any ${category} in the ${object} [time_filter_global1].",
+            "t_tag": [
+                "abs-year-until",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "right upper lung zone"
+                ],
+                "category": [
+                    "anatomicalfinding"
+                ],
+                "attribute": []
+            },
+            "tag": "count the number of patients who had any chest x-ray study indicating any anatomicalfinding in the right upper lung zone [time_filter_global1:abs-year-until].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                50
+            ],
+            "scope": "IMAGE-GROUP-N"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2163,
+            "question": "please give the ids of patients who had enteric tube in the abdomen in any chest x-ray studies conducted until 21 month ago.",
+            "template": "list the ids of patients who had any chest x-ray study indicating enteric tube in the abdomen until 21 month ago.",
+            "query": "select distinct t1.subject_id from ( select * from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where datetime(tb_cxr.studydatetime) <= datetime(current_time,'-21 month') ) ) as t1 where func_vqa(\"does a chest x-ray show enteric tube in the abdomen?\", t1.study_id) = true",
+            "value": {},
+            "q_tag": "list the ids of patients who had any chest x-ray study indicating ${attribute} in the ${object} [time_filter_global1].",
+            "t_tag": [
+                "rel-month-until",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "abdomen"
+                ],
+                "category": [],
+                "attribute": [
+                    "enteric tube"
+                ]
+            },
+            "tag": "list the ids of patients who had any chest x-ray study indicating enteric tube in the abdomen [time_filter_global1:rel-month-until].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                10020740,
+                10130585,
+                10304606,
+                11006497,
+                11111102,
+                11636169,
+                11801290,
+                11843648,
+                11950244,
+                12056668,
+                12250782,
+                12262788,
+                12579739,
+                12716528,
+                12724975,
+                12843379,
+                12930426,
+                13655979,
+                13724767,
+                13792998,
+                13976104,
+                14537002,
+                14661031,
+                14771014,
+                15353817,
+                15528228,
+                15570850,
+                15611926,
+                15729731,
+                16097925,
+                16881085,
+                17011771,
+                17112656,
+                17201678,
+                17281190,
+                17766862,
+                18011403,
+                18916144,
+                19052988,
+                19627403,
+                19631398
+            ],
+            "scope": "IMAGE-GROUP-N"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 3173,
+            "question": "count the number of patients whose chest x-ray studies until 4 year ago showed atelectasis.",
+            "template": "count the number of patients who had any chest x-ray study indicating atelectasis until 4 year ago.",
+            "query": "select count(distinct t1.subject_id) from ( select * from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where datetime(tb_cxr.studydatetime) <= datetime(current_time,'-4 year') ) ) as t1 where func_vqa(\"has a chest x-ray shown atelectasis?\", t1.study_id) = true",
+            "value": {},
+            "q_tag": "count the number of patients who had any chest x-ray study indicating ${attribute} [time_filter_global1].",
+            "t_tag": [
+                "rel-year-until",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": [
+                    "atelectasis"
+                ]
+            },
+            "tag": "count the number of patients who had any chest x-ray study indicating atelectasis [time_filter_global1:rel-year-until].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                19
+            ],
+            "scope": "IMAGE-GROUP-N"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 1921,
+            "question": "count the number of patients whose chest x-ray studies on 04/this year showed any abnormalities.",
+            "template": "count the number of patients who had any chest x-ray study indicating any abnormality on 04/this year.",
+            "query": "select count(distinct t1.subject_id) from ( select * from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') and strftime('%m',tb_cxr.studydatetime) = '04' ) ) as t1 where func_vqa(\"has a chest x-ray shown any abnormality?\", t1.study_id) = true",
+            "value": {},
+            "q_tag": "count the number of patients who had any chest x-ray study indicating any abnormality [time_filter_global1].",
+            "t_tag": [
+                "mix-month-this_year",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": []
+            },
+            "tag": "count the number of patients who had any chest x-ray study indicating any abnormality [time_filter_global1:mix-month-this_year].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                7
+            ],
+            "scope": "IMAGE-GROUP-N"
+        }
+    ],
+    "IMAGE-SINGLE-1": [
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 252,
+            "question": "specify all the devices observed in the upper mediastinum, given the first study of patient 17641228 this year.",
+            "template": "given the first study of patient 17641228 this year, list all device in the upper mediastinum.",
+            "query": "select func_vqa(\"specify all the devices observed in the upper mediastinum.\", t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 17641228 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') order by tb_cxr.studydatetime asc limit 1 ) ) as t1",
+            "value": {
+                "patient_id": 17641228
+            },
+            "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], list all ${category} in the ${object}.",
+            "t_tag": [
+                "rel-year-this",
+                "",
+                "",
+                "exact-first",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "upper mediastinum"
+                ],
+                "category": [
+                    "device"
+                ],
+                "attribute": []
+            },
+            "tag": "given the [time_filter_exact1:exact-first] study of patient {patient_id} [time_filter_global1:rel-year-this], list all device in the upper mediastinum.",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [],
+            "scope": "IMAGE-SINGLE-1"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 3437,
+            "question": "specify all anatomical locations associated with either anatomical findings or devices, given the study 51849973.",
+            "template": "given the study 51849973, list all anatomical locations related to any anatomicalfinding or device.",
+            "query": "select func_vqa(\"specify all anatomical locations associated with anatomical findings.\", t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 51849973 ) as t1 union select func_vqa(\"specify all anatomical locations associated with devices.\", t2.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 51849973 ) as t2",
+            "value": {
+                "study_id": 51849973
+            },
+            "q_tag": "given the study {study_id}, list all anatomical locations related to any ${category_1} or ${category_2}.",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [
+                    "anatomicalfinding",
+                    "device"
+                ],
+                "attribute": []
+            },
+            "tag": "given the study {study_id}, list all anatomical locations related to any anatomicalfinding or device.",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "cardiac silhouette",
+                "mediastinum"
+            ],
+            "scope": "IMAGE-SINGLE-1"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 26,
+            "question": "given the study 54787712, mention all diseases that appear in either the left costophrenic angle or the left upper lung zone.",
+            "template": "given the study 54787712, list all disease in either the left costophrenic angle or the left upper lung zone.",
+            "query": "select func_vqa(\"mention all diseases that appear in the left costophrenic angle.\", t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 54787712 ) as t1 union select func_vqa(\"mention all diseases that appear in the left upper lung zone.\", t2.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 54787712 ) as t2",
+            "value": {
+                "study_id": 54787712
+            },
+            "q_tag": "given the study {study_id}, list all ${category} in either the ${object_1} or the ${object_2}.",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "left costophrenic angle",
+                    "left upper lung zone"
+                ],
+                "category": [
+                    "disease"
+                ],
+                "attribute": []
+            },
+            "tag": "given the study {study_id}, list all disease in either the left costophrenic angle or the left upper lung zone.",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [],
+            "scope": "IMAGE-SINGLE-1"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 1330,
+            "question": "is there a detection of either calcified nodule or granulomatous diseases within the right mid lung zone, given the study 55691624?",
+            "template": "given the study 55691624, is there either calcified nodule or granulomatous disease in the right mid lung zone?",
+            "query": "select (func_vqa(\"is there a detection of calcified nodule within the right mid lung zone?\", t1.study_id)) or (func_vqa(\"is there a detection of granulomatous diseases within the right mid lung zone?\", t1.study_id)) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 55691624 ) as t1",
+            "value": {
+                "study_id": 55691624
+            },
+            "q_tag": "given the study {study_id}, is there either ${attribute_1} or ${attribute_2} in the ${object}?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "right mid lung zone"
+                ],
+                "category": [],
+                "attribute": [
+                    "calcified nodule",
+                    "granulomatous disease"
+                ]
+            },
+            "tag": "given the study {study_id}, is there either calcified nodule or granulomatous disease in the right mid lung zone?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                0
+            ],
+            "scope": "IMAGE-SINGLE-1"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 771,
+            "question": "given the study 53041609, what are all the anatomical findings and diseases found in the image?",
+            "template": "given the study 53041609, list all anatomicalfinding and disease.",
+            "query": "select func_vqa(\"what are all the anatomical findings found in the image?\", t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 53041609 ) as t1 union select func_vqa(\"what are all the diseases found in the image?\", t2.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 53041609 ) as t2",
+            "value": {
+                "study_id": 53041609
+            },
+            "q_tag": "given the study {study_id}, list all ${category_1} and ${category_2}.",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [
+                    "anatomicalfinding",
+                    "disease"
+                ],
+                "attribute": []
+            },
+            "tag": "given the study {study_id}, list all anatomicalfinding and disease.",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "copd/emphysema",
+                "vascular congestion"
+            ],
+            "scope": "IMAGE-SINGLE-1"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 1091,
+            "question": "given the study 55486789, do you notice any subcutaneous air?",
+            "template": "given the study 55486789, is there subcutaneous air?",
+            "query": "select func_vqa(\"do you notice any subcutaneous air?\", t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 55486789 ) as t1",
+            "value": {
+                "study_id": 55486789
+            },
+            "q_tag": "given the study {study_id}, is there ${attribute}?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": [
+                    "subcutaneous air"
+                ]
+            },
+            "tag": "given the study {study_id}, is there subcutaneous air?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                0
+            ],
+            "scope": "IMAGE-SINGLE-1"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 1731,
+            "question": "given the study 57730086, can you identify any abnormalities in the aortic arch or right chest wall?",
+            "template": "given the study 57730086, are there any abnormality in either the aortic arch or the right chest wall?",
+            "query": "select (func_vqa(\"can you identify any abnormalities in the aortic arch?\", t1.study_id)) or (func_vqa(\"can you identify any abnormalities in the right chest wall?\", t1.study_id)) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 57730086 ) as t1",
+            "value": {
+                "study_id": 57730086
+            },
+            "q_tag": "given the study {study_id}, are there any abnormality in either the ${object_1} or the ${object_2}?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "aortic arch",
+                    "right chest wall"
+                ],
+                "category": [],
+                "attribute": []
+            },
+            "tag": "given the study {study_id}, are there any abnormality in either the aortic arch or the right chest wall?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "IMAGE-SINGLE-1"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 3133,
+            "question": "given the last study of patient 16039201 this month, do any abnormalities appear in the image?",
+            "template": "given the last study of patient 16039201 this month, are there any abnormality?",
+            "query": "select func_vqa(\"do any abnormalities appear in the image?\", t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 16039201 and datetime(tb_cxr.studydatetime,'start of month') = datetime(current_time,'start of month','-0 month') order by tb_cxr.studydatetime desc limit 1 ) ) as t1",
+            "value": {
+                "patient_id": 16039201
+            },
+            "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], are there any abnormality?",
+            "t_tag": [
+                "rel-month-this",
+                "",
+                "",
+                "exact-last",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": []
+            },
+            "tag": "given the [time_filter_exact1:exact-last] study of patient {patient_id} [time_filter_global1:rel-month-this], are there any abnormality?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "IMAGE-SINGLE-1"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2134,
+            "question": "please mention all detectable abnormalities in the aortic arch, given the study 54124690.",
+            "template": "given the study 54124690, list all abnormality in the aortic arch.",
+            "query": "select func_vqa(\"please mention all detectable abnormalities in the aortic arch.\", t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 54124690 ) as t1",
+            "value": {
+                "study_id": 54124690
+            },
+            "q_tag": "given the study {study_id}, list all abnormality in the ${object}.",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "aortic arch"
+                ],
+                "category": [],
+                "attribute": []
+            },
+            "tag": "given the study {study_id}, list all abnormality in the aortic arch.",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "vascular calcification"
+            ],
+            "scope": "IMAGE-SINGLE-1"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 4572,
+            "question": "is there any sign of anatomical findings, given the first study of patient 11801290 on the first hospital visit?",
+            "template": "given the first study of patient 11801290 on the first hospital visit, are there any anatomicalfinding?",
+            "query": "select func_vqa(\"is there any sign of anatomical findings?\", t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 11801290 and admissions.dischtime is not null order by admissions.admittime asc limit 1 ) order by tb_cxr.studydatetime asc limit 1 ) ) as t1",
+            "value": {
+                "patient_id": 11801290
+            },
+            "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], are there any ${category}?",
+            "t_tag": [
+                "rel-hosp-first",
+                "",
+                "",
+                "exact-first",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [
+                    "anatomicalfinding"
+                ],
+                "attribute": []
+            },
+            "tag": "given the [time_filter_exact1:exact-first] study of patient {patient_id} [time_filter_global1:rel-hosp-first], are there any anatomicalfinding?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "IMAGE-SINGLE-1"
+        }
+    ],
+    "TABLE-SINGLE": [
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2165,
+            "question": "what is the total dose pantoprazole that patient 13655979 has been prescribed since 05/2102?",
+            "template": "what was the total amount of dose of pantoprazole that patient 13655979 were prescribed since 05/2102?",
+            "query": "select sum(prescriptions.dose_val_rx) from prescriptions where prescriptions.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 13655979 ) and prescriptions.drug = 'pantoprazole' and strftime('%y-%m',prescriptions.starttime) >= '2102-05'",
+            "value": {
+                "patient_id": 13655979,
+                "drug_name": "pantoprazole"
+            },
+            "q_tag": "what was the total amount of dose of {drug_name} that patient {patient_id} were prescribed [time_filter_global1]?",
+            "t_tag": [
+                "abs-month-since",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "What was the total amount of dose of {drug_name} that patient {patient_id} were prescribed [time_filter_global1:abs-month-since]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                120.0
+            ],
+            "scope": "TABLE-SINGLE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2809,
+            "question": "in 2104 had patient 10176458 undergone a procedure?",
+            "template": "has patient 10176458 received any procedure in 2104?",
+            "query": "select count(*)>0 from procedures_icd where procedures_icd.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 10176458 ) and strftime('%y',procedures_icd.charttime) = '2104'",
+            "value": {
+                "patient_id": 10176458
+            },
+            "q_tag": "has_verb patient {patient_id} received any procedure [time_filter_global1]?",
+            "t_tag": [
+                "abs-year-in",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "Has_verb patient {patient_id} received any procedure [time_filter_global1:abs-year-in]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "TABLE-SINGLE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 4013,
+            "question": "what diagnosis did patient 11212873 receive last?",
+            "template": "what was the name of the diagnosis that patient 11212873 last received?",
+            "query": "select d_icd_diagnoses.long_title from d_icd_diagnoses where d_icd_diagnoses.icd_code in ( select diagnoses_icd.icd_code from diagnoses_icd where diagnoses_icd.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 11212873 ) order by diagnoses_icd.charttime desc limit 1 )",
+            "value": {
+                "patient_id": 11212873
+            },
+            "q_tag": "what was the name of the diagnosis that patient {patient_id} [time_filter_exact1] received [time_filter_global1]?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "exact-last",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "What was the name of the diagnosis that patient {patient_id} [time_filter_exact1:exact-last] received [time_filter_global1:null]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "surgical operation with implant of artificial internal device causing abnormal patient reaction, or later complication,without mention of misadventure at time of operation"
+            ],
+            "scope": "TABLE-SINGLE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 3891,
+            "question": "is the respiratory rate of patient 14537002 second measured on the last icu visit greater than first measured on the last icu visit?",
+            "template": "is the respiratory rate of patient 14537002 second measured on the last icu visit greater than the first value measured on the last icu visit?",
+            "query": "select ( select chartevents.valuenum from chartevents where chartevents.stay_id in ( select icustays.stay_id from icustays where icustays.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 14537002 ) and icustays.outtime is not null order by icustays.intime desc limit 1 ) and chartevents.itemid in ( select d_items.itemid from d_items where d_items.label = 'respiratory rate' and d_items.linksto = 'chartevents' ) order by chartevents.charttime asc limit 1 offset 1 ) > ( select chartevents.valuenum from chartevents where chartevents.stay_id in ( select icustays.stay_id from icustays where icustays.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 14537002 ) and icustays.outtime is not null order by icustays.intime desc limit 1 ) and chartevents.itemid in ( select d_items.itemid from d_items where d_items.label = 'respiratory rate' and d_items.linksto = 'chartevents' ) order by chartevents.charttime asc limit 1 )",
+            "value": {
+                "vital_name": "respiratory rate",
+                "patient_id": 14537002
+            },
+            "q_tag": "is the {vital_name} of patient {patient_id} [time_filter_exact2] measured [time_filter_global2] [comparison] than the [time_filter_exact1] value measured [time_filter_global1]?",
+            "t_tag": [
+                "rel-icu-last",
+                "rel-icu-last",
+                "",
+                "exact-first",
+                "exact-second"
+            ],
+            "o_tag": {
+                "comparison": {
+                    "nlq": "greater",
+                    "sql": ">",
+                    "type": "greater",
+                    "sql_pattern": "[comparison]"
+                }
+            },
+            "v_tag": {},
+            "tag": "Is the {vital_name} of patient {patient_id} [time_filter_exact2:exact-second] measured [time_filter_global2:rel-icu-last] [comparison:greater] than the [time_filter_exact1:exact-first] value measured [time_filter_global1:rel-icu-last]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                0
+            ],
+            "scope": "TABLE-SINGLE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 4243,
+            "question": "has patient 10110584 received on 12/last year a laboratory mchc test?",
+            "template": "has patient 10110584 received a mchc lab test on 12/last year?",
+            "query": "select count(*)>0 from labevents where labevents.itemid in ( select d_labitems.itemid from d_labitems where d_labitems.label = 'mchc' ) and labevents.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 10110584 ) and datetime(labevents.charttime,'start of year') = datetime(current_time,'start of year','-1 year') and strftime('%m',labevents.charttime) = '12'",
+            "value": {
+                "patient_id": 10110584,
+                "lab_name": "mchc"
+            },
+            "q_tag": "has_verb patient {patient_id} received a {lab_name} lab test [time_filter_global1]?",
+            "t_tag": [
+                "mix-month-last_year",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "Has_verb patient {patient_id} received a {lab_name} lab test [time_filter_global1:mix-month-last_year]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "TABLE-SINGLE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 580,
+            "question": "what was the last foley-output time of patient 16476036 until 104 day ago?",
+            "template": "when was the last time that patient 16476036 had a foley output until 104 day ago?",
+            "query": "select outputevents.charttime from outputevents where outputevents.stay_id in ( select icustays.stay_id from icustays where icustays.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 16476036 ) ) and outputevents.itemid in ( select d_items.itemid from d_items where d_items.label = 'foley' and d_items.linksto = 'outputevents' ) and datetime(outputevents.charttime) <= datetime(current_time,'-104 day') order by outputevents.charttime desc limit 1",
+            "value": {
+                "patient_id": 16476036,
+                "output_name": "foley"
+            },
+            "q_tag": "when was the [time_filter_exact1] time that patient {patient_id} had a {output_name} output [time_filter_global1]?",
+            "t_tag": [
+                "rel-day-until",
+                "",
+                "",
+                "exact-last",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "When was the [time_filter_exact1:exact-last] time that patient {patient_id} had a {output_name} output [time_filter_global1:rel-day-until]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "2104-01-06 12:00:00"
+            ],
+            "scope": "TABLE-SINGLE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2918,
+            "question": "what was the insurance that patient 11246165 had on the first hospital visit?",
+            "template": "what was the name of insurance of patient 11246165 on the first hospital visit?",
+            "query": "select admissions.insurance from admissions where admissions.subject_id = 11246165 and admissions.dischtime is not null order by admissions.admittime asc limit 1",
+            "value": {
+                "patient_id": 11246165
+            },
+            "q_tag": "what is_verb the name of insurance of patient {patient_id} [time_filter_global1]?",
+            "t_tag": [
+                "rel-hosp-first",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "What is_verb the name of insurance of patient {patient_id} [time_filter_global1:rel-hosp-first]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "other"
+            ],
+            "scope": "TABLE-SINGLE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 4569,
+            "question": "has patient 10176458 received any laboratory testing last year?",
+            "template": "has patient 10176458 received any lab test last year?",
+            "query": "select count(*)>0 from labevents where labevents.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 10176458 ) and datetime(labevents.charttime,'start of year') = datetime(current_time,'start of year','-1 year')",
+            "value": {
+                "patient_id": 10176458
+            },
+            "q_tag": "has_verb patient {patient_id} received any lab test [time_filter_global1]?",
+            "t_tag": [
+                "rel-year-last",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "Has_verb patient {patient_id} received any lab test [time_filter_global1:rel-year-last]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "TABLE-SINGLE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 1393,
+            "question": "has there been any test done until 3 year ago to the r/o group b strep - penicillin allergy of patient 12839549?",
+            "template": "has patient 12839549 had any r/o group b strep - penicillin allergy test result until 3 year ago?",
+            "query": "select count(*)>0 from microbiologyevents where microbiologyevents.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 12839549 ) and microbiologyevents.test_name = 'r/o group b strep - penicillin allergy' and datetime(microbiologyevents.charttime) <= datetime(current_time,'-3 year')",
+            "value": {
+                "test_name": "r/o group b strep - penicillin allergy",
+                "patient_id": 12839549
+            },
+            "q_tag": "has_verb patient {patient_id} had any {test_name} test result [time_filter_global1]?",
+            "t_tag": [
+                "rel-year-until",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "Has_verb patient {patient_id} had any {test_name} test result [time_filter_global1:rel-year-until]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "TABLE-SINGLE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2023,
+            "question": "what is the number of times patient 12354194 has received a gamma glutamyltransferase lab test until 21 month ago?",
+            "template": "count the number of times that patient 12354194 received a gamma glutamyltransferase lab test until 21 month ago.",
+            "query": "select count(*) from labevents where labevents.itemid in ( select d_labitems.itemid from d_labitems where d_labitems.label = 'gamma glutamyltransferase' ) and labevents.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 12354194 ) and datetime(labevents.charttime) <= datetime(current_time,'-21 month')",
+            "value": {
+                "lab_name": "gamma glutamyltransferase",
+                "patient_id": 12354194
+            },
+            "q_tag": "count the number of times that patient {patient_id} received a {lab_name} lab test [time_filter_global1].",
+            "t_tag": [
+                "rel-month-until",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "Count the number of times that patient {patient_id} received a {lab_name} lab test [time_filter_global1:rel-month-until].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "TABLE-SINGLE"
+        }
+    ],
+    "IMAGE-SINGLE-N": [
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 1903,
+            "question": "what's the number of 15189222's chest x-ray studies conducted that showed any anatomical findings?",
+            "template": "count the number of times that patient 15189222 had chest x-ray studies indicating any anatomicalfinding.",
+            "query": "select count(distinct t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 15189222 ) ) as t1 where func_vqa(\"does a chest x-ray show any anatomical findings?\", t1.study_id) = true",
+            "value": {
+                "patient_id": 15189222
+            },
+            "q_tag": "count the number of times that patient {patient_id} had chest x-ray studies indicating any ${category} [time_filter_global1].",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "exact-last",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [
+                    "anatomicalfinding"
+                ],
+                "attribute": []
+            },
+            "tag": "count the number of times that patient {patient_id} had chest x-ray studies indicating any anatomicalfinding [time_filter_global1:null].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                72
+            ],
+            "scope": "IMAGE-SINGLE-N"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 1119,
+            "question": "point out when the last chest x-ray of patient 19280440, which showed any anatomical findings in the left hilar structures, was conducted on 09/last year.",
+            "template": "when was the last time that patient 19280440 had a chest x-ray study indicating any anatomicalfinding in the left hilar structures on 09/last year?",
+            "query": "select distinct t1.studydatetime from ( select tb_cxr.study_id, tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 19280440 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-1 year') and strftime('%m',tb_cxr.studydatetime) = '09' ) ) as t1 where func_vqa(\"does a chest x-ray show any anatomical findings in the left hilar structures?\", t1.study_id) = true order by t1.studydatetime desc limit 1",
+            "value": {
+                "patient_id": 19280440
+            },
+            "q_tag": "when was the [time_filter_exact1] time that patient {patient_id} had a chest x-ray study indicating any ${category} in the ${object} [time_filter_global1]?",
+            "t_tag": [
+                "mix-month-last_year",
+                "",
+                "",
+                "exact-last",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "left hilar structures"
+                ],
+                "category": [
+                    "anatomicalfinding"
+                ],
+                "attribute": []
+            },
+            "tag": "when was the [time_filter_exact1:exact-last] time that patient {patient_id} had a chest x-ray study indicating any anatomicalfinding in the left hilar structures [time_filter_global1:mix-month-last_year]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "2104-09-29 01:44:50"
+            ],
+            "scope": "IMAGE-SINGLE-N"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 78,
+            "question": "how many days have elapsed from the first time patient 19631398's chest x-ray demonstrated any anatomical findings in the mediastinum in 2103?",
+            "template": "how many days have passed since the first time patient 19631398 had a chest x-ray study indicating any anatomicalfinding in the mediastinum in 2103?",
+            "query": "select 1 * ( strftime('%j',current_time) - strftime('%j',t1.studydatetime) ) from ( select tb_cxr.study_id, tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 19631398 and strftime('%y',tb_cxr.studydatetime) = '2103' ) ) as t1 where func_vqa(\"does a chest x-ray demonstrate any anatomical findings in the mediastinum?\", t1.study_id) = true",
+            "value": {
+                "patient_id": 19631398
+            },
+            "q_tag": "how many [unit_count] have passed since the [time_filter_exact1] time patient {patient_id} had a chest x-ray study indicating any ${category} in the ${object} [time_filter_global1]?",
+            "t_tag": [
+                "abs-year-in",
+                "",
+                "",
+                "exact-first",
+                ""
+            ],
+            "o_tag": {
+                "unit_count": {
+                    "nlq": "days",
+                    "sql": "1 * ",
+                    "type": "days",
+                    "sql_pattern": "[unit_count]"
+                }
+            },
+            "v_tag": {
+                "object": [
+                    "mediastinum"
+                ],
+                "category": [
+                    "anatomicalfinding"
+                ],
+                "attribute": []
+            },
+            "tag": "how many [unit_count:days] have passed since the [time_filter_exact1:exact-first] time patient {patient_id} had a chest x-ray study indicating any anatomicalfinding in the mediastinum [time_filter_global1:abs-year-in]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1056.435764
+            ],
+            "scope": "IMAGE-SINGLE-N"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 64,
+            "question": "what's the count of days since the first chest x-ray for patient 15808118, showing any abnormalities?",
+            "template": "how many days have passed since the first time patient 15808118 had a chest x-ray study indicating any abnormality?",
+            "query": "select 1 * ( strftime('%j',current_time) - strftime('%j',t1.studydatetime) ) from ( select tb_cxr.study_id, tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 15808118 ) ) as t1 where func_vqa(\"is the chest x-ray showing any abnormality?\", t1.study_id) = true",
+            "value": {
+                "patient_id": 15808118
+            },
+            "q_tag": "how many [unit_count] have passed since the [time_filter_exact1] time patient {patient_id} had a chest x-ray study indicating any abnormality [time_filter_global1]?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "exact-first",
+                ""
+            ],
+            "o_tag": {
+                "unit_count": {
+                    "nlq": "days",
+                    "sql": "1 * ",
+                    "type": "days",
+                    "sql_pattern": "[unit_count]"
+                }
+            },
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": []
+            },
+            "tag": "how many [unit_count:days] have passed since the [time_filter_exact1:exact-first] time patient {patient_id} had a chest x-ray study indicating any abnormality [time_filter_global1:null]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                187.227384
+            ],
+            "scope": "IMAGE-SINGLE-N"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2252,
+            "question": "what was the exact time of the last chest x-ray study for patient 13122104, which showed any devices, conducted last year?",
+            "template": "when was the last time that patient 13122104 had a chest x-ray study indicating any device last year?",
+            "query": "select distinct t1.studydatetime from ( select tb_cxr.study_id, tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 13122104 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-1 year') ) ) as t1 where func_vqa(\"does a chest x-ray show any devices?\", t1.study_id) = true order by t1.studydatetime desc limit 1",
+            "value": {
+                "patient_id": 13122104
+            },
+            "q_tag": "when was the [time_filter_exact1] time that patient {patient_id} had a chest x-ray study indicating any ${category} [time_filter_global1]?",
+            "t_tag": [
+                "rel-year-last",
+                "",
+                "",
+                "exact-last",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [
+                    "device"
+                ],
+                "attribute": []
+            },
+            "tag": "when was the [time_filter_exact1:exact-last] time that patient {patient_id} had a chest x-ray study indicating any device [time_filter_global1:rel-year-last]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "2104-10-22 07:29:22"
+            ],
+            "scope": "IMAGE-SINGLE-N"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 1267,
+            "question": "how many days have transpired since the last chest x-ray of patient 13833101 that depicted any technical assessments in the mediastinum was taken last month?",
+            "template": "how many days have passed since the last time patient 13833101 had a chest x-ray study indicating any technicalassessment in the mediastinum last month?",
+            "query": "select 1 * ( strftime('%j',current_time) - strftime('%j',t1.studydatetime) ) from ( select tb_cxr.study_id, tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 13833101 and datetime(tb_cxr.studydatetime,'start of month') = datetime(current_time,'start of month','-1 month') ) ) as t1 where func_vqa(\"does a chest x-ray depict any technical assessments in the mediastinum?\", t1.study_id) = true",
+            "value": {
+                "patient_id": 13833101
+            },
+            "q_tag": "how many [unit_count] have passed since the [time_filter_exact1] time patient {patient_id} had a chest x-ray study indicating any ${category} in the ${object} [time_filter_global1]?",
+            "t_tag": [
+                "rel-month-last",
+                "",
+                "",
+                "exact-last",
+                ""
+            ],
+            "o_tag": {
+                "unit_count": {
+                    "nlq": "days",
+                    "sql": "1 * ",
+                    "type": "days",
+                    "sql_pattern": "[unit_count]"
+                }
+            },
+            "v_tag": {
+                "object": [
+                    "mediastinum"
+                ],
+                "category": [
+                    "technicalassessment"
+                ],
+                "attribute": []
+            },
+            "tag": "how many [unit_count:days] have passed since the [time_filter_exact1:exact-last] time patient {patient_id} had a chest x-ray study indicating any technicalassessment in the mediastinum [time_filter_global1:rel-month-last]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                56.749757
+            ],
+            "scope": "IMAGE-SINGLE-N"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 4198,
+            "question": "what is the number of occurrences when 15526304's chest x-ray studies conducted this year demonstrated pleural/parenchymal scarring?",
+            "template": "count the number of times that patient 15526304 had chest x-ray studies indicating pleural/parenchymal scarring this year.",
+            "query": "select count(distinct t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 15526304 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') ) ) as t1 where func_vqa(\"does a chest x-ray demonstrate pleural/parenchymal scarring?\", t1.study_id) = true",
+            "value": {
+                "patient_id": 15526304
+            },
+            "q_tag": "count the number of times that patient {patient_id} had chest x-ray studies indicating ${attribute} [time_filter_global1].",
+            "t_tag": [
+                "rel-year-this",
+                "",
+                "",
+                "exact-first",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": [
+                    "pleural/parenchymal scarring"
+                ]
+            },
+            "tag": "count the number of times that patient {patient_id} had chest x-ray studies indicating pleural/parenchymal scarring [time_filter_global1:rel-year-this].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                3
+            ],
+            "scope": "IMAGE-SINGLE-N"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2907,
+            "question": "please provide the exact time of the first chest x-ray for patient 12429112, which revealed any diseases in the left costophrenic angle, conducted on 06/this year.",
+            "template": "when was the first time that patient 12429112 had a chest x-ray study indicating any disease in the left costophrenic angle on 06/this year?",
+            "query": "select distinct t1.studydatetime from ( select tb_cxr.study_id, tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 12429112 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') and strftime('%m',tb_cxr.studydatetime) = '06' ) ) as t1 where func_vqa(\"has a chest x-ray revealed any diseases in the left costophrenic angle?\", t1.study_id) = true order by t1.studydatetime asc limit 1",
+            "value": {
+                "patient_id": 12429112
+            },
+            "q_tag": "when was the [time_filter_exact1] time that patient {patient_id} had a chest x-ray study indicating any ${category} in the ${object} [time_filter_global1]?",
+            "t_tag": [
+                "mix-month-this_year",
+                "",
+                "",
+                "exact-first",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [
+                    "left costophrenic angle"
+                ],
+                "category": [
+                    "disease"
+                ],
+                "attribute": []
+            },
+            "tag": "when was the [time_filter_exact1:exact-first] time that patient {patient_id} had a chest x-ray study indicating any disease in the left costophrenic angle [time_filter_global1:mix-month-this_year]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "2105-06-23 12:26:18"
+            ],
+            "scope": "IMAGE-SINGLE-N"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 3252,
+            "question": "have any chest x-ray studies of patient 13336663 conducted this year found chest port?",
+            "template": "has 13336663 had any chest x-ray study indicating chest port this year?",
+            "query": "select count(distinct t1.study_id) > 0 from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 13336663 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') ) ) as t1 where func_vqa(\"has chest port been found in a chest x-ray?\", t1.study_id) = true",
+            "value": {
+                "patient_id": 13336663
+            },
+            "q_tag": "has {patient_id} had any chest x-ray study indicating ${attribute} [time_filter_global1]?",
+            "t_tag": [
+                "rel-year-this",
+                "",
+                "",
+                "exact-last",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": [
+                    "chest port"
+                ]
+            },
+            "tag": "has {patient_id} had any chest x-ray study indicating chest port [time_filter_global1:rel-year-this]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "IMAGE-SINGLE-N"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 278,
+            "question": "how much time, in terms of days, has gone by since the last chest x-ray report highlighting enlarged cardiac silhouette for patient 14972735 last month?",
+            "template": "how many days have passed since the last time patient 14972735 had a chest x-ray study indicating enlarged cardiac silhouette last month?",
+            "query": "select 1 * ( strftime('%j',current_time) - strftime('%j',t1.studydatetime) ) from ( select tb_cxr.study_id, tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 14972735 and datetime(tb_cxr.studydatetime,'start of month') = datetime(current_time,'start of month','-1 month') ) ) as t1 where func_vqa(\"does a chest x-ray report highlight enlarged cardiac silhouette?\", t1.study_id) = true",
+            "value": {
+                "patient_id": 14972735
+            },
+            "q_tag": "how many [unit_count] have passed since the [time_filter_exact1] time patient {patient_id} had a chest x-ray study indicating ${attribute} [time_filter_global1]?",
+            "t_tag": [
+                "rel-month-last",
+                "",
+                "",
+                "exact-last",
+                ""
+            ],
+            "o_tag": {
+                "unit_count": {
+                    "nlq": "days",
+                    "sql": "1 * ",
+                    "type": "days",
+                    "sql_pattern": "[unit_count]"
+                }
+            },
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": [
+                    "enlarged cardiac silhouette"
+                ]
+            },
+            "tag": "how many [unit_count:days] have passed since the [time_filter_exact1:exact-last] time patient {patient_id} had a chest x-ray study indicating enlarged cardiac silhouette [time_filter_global1:rel-month-last]?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                58.795764
+            ],
+            "scope": "IMAGE-SINGLE-N"
+        }
+    ],
+    "MULTIMODAL-GROUP": [
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2825,
+            "question": "how many patients in the 20s exhibited any diseases in the left hilar structures on their chest x-ray study?",
+            "template": "count the number of patients aged 20s who had a chest x-ray study during hospital visit indicating any disease in the left hilar structures.",
+            "query": "select count(distinct t1.subject_id) from ( select * from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.age between 20 and 29 ) ) as t1 where func_vqa(\"does a chest x-ray exhibit any diseases in the left hilar structures?\", t1.study_id) = true",
+            "value": {},
+            "q_tag": "count the number of patients aged [age_group] who had a chest x-ray study during hospital visit indicating any ${category} in the ${object} [time_filter_global1].",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {
+                "age_group": {
+                    "nlq": "20s",
+                    "sql": "AND admissions.age BETWEEN 20 AND 29",
+                    "type": "20s",
+                    "sql_pattern": "age_group(admissions.age)"
+                }
+            },
+            "v_tag": {
+                "object": [
+                    "left hilar structures"
+                ],
+                "category": [
+                    "disease"
+                ],
+                "attribute": []
+            },
+            "tag": "count the number of patients aged [age_group:20s] who had a chest x-ray study during hospital visit indicating any disease in the left hilar structures [time_filter_global1:null].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "MULTIMODAL-GROUP"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 629,
+            "question": "provide the ids of patients in the 20s whose chest x-ray showed any anatomical findings in the right hilar structures on 12/this year.",
+            "template": "list the ids of patients aged 20s who had a chest x-ray study during hospital visit indicating any anatomicalfinding in the right hilar structures on 12/this year.",
+            "query": "select distinct t1.subject_id from ( select * from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.age between 20 and 29 ) and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') and strftime('%m',tb_cxr.studydatetime) = '12' ) as t1 where func_vqa(\"does a chest x-ray show any anatomical findings in the right hilar structures?\", t1.study_id) = true",
+            "value": {},
+            "q_tag": "list the ids of patients aged [age_group] who had a chest x-ray study during hospital visit indicating any ${category} in the ${object} [time_filter_global1].",
+            "t_tag": [
+                "mix-month-this_year",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {
+                "age_group": {
+                    "nlq": "20s",
+                    "sql": "AND admissions.age BETWEEN 20 AND 29",
+                    "type": "20s",
+                    "sql_pattern": "age_group(admissions.age)"
+                }
+            },
+            "v_tag": {
+                "object": [
+                    "right hilar structures"
+                ],
+                "category": [
+                    "anatomicalfinding"
+                ],
+                "attribute": []
+            },
+            "tag": "list the ids of patients aged [age_group:20s] who had a chest x-ray study during hospital visit indicating any anatomicalfinding in the right hilar structures [time_filter_global1:mix-month-this_year].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                12706984
+            ],
+            "scope": "MULTIMODAL-GROUP"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 865,
+            "question": "could you identify the f patients aged 20s who had a chest x-ray indicating any tubes/lines in the svc in 2105?",
+            "template": "list the ids of f patients aged 20s who had a chest x-ray study during hospital visit indicating any tubesandlines in the svc in 2105.",
+            "query": "select distinct t1.subject_id from ( select * from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id in ( select patients.subject_id from patients where patients.gender = 'f' ) and admissions.age between 20 and 29 ) and strftime('%y',tb_cxr.studydatetime) = '2105' ) as t1 where func_vqa(\"does a chest x-ray indicate any tubes/lines in the svc?\", t1.study_id) = true",
+            "value": {
+                "gender": "f"
+            },
+            "q_tag": "list the ids of {gender} patients aged [age_group] who had a chest x-ray study during hospital visit indicating any ${category} in the ${object} [time_filter_global1].",
+            "t_tag": [
+                "abs-year-in",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {
+                "age_group": {
+                    "nlq": "20s",
+                    "sql": "AND admissions.age BETWEEN 20 AND 29",
+                    "type": "20s",
+                    "sql_pattern": "age_group(admissions.age)"
+                }
+            },
+            "v_tag": {
+                "object": [
+                    "svc"
+                ],
+                "category": [
+                    "tubesandlines"
+                ],
+                "attribute": []
+            },
+            "tag": "list the ids of {gender} patients aged [age_group:20s] who had a chest x-ray study during hospital visit indicating any tubesandlines in the svc [time_filter_global1:abs-year-in].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                14410216
+            ],
+            "scope": "MULTIMODAL-GROUP"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2204,
+            "question": "how many m patients in the 20s showed enlarged cardiac silhouette on their chest x-ray study until 2104?",
+            "template": "count the number of m patients aged 20s who had a chest x-ray study during hospital visit indicating enlarged cardiac silhouette until 2104.",
+            "query": "select count(distinct t1.subject_id) from ( select * from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id in ( select patients.subject_id from patients where patients.gender = 'm' ) and admissions.age between 20 and 29 ) and strftime('%y',tb_cxr.studydatetime) <= '2104' ) as t1 where func_vqa(\"is a chest x-ray showing enlarged cardiac silhouette?\", t1.study_id) = true",
+            "value": {
+                "gender": "m"
+            },
+            "q_tag": "count the number of {gender} patients aged [age_group] who had a chest x-ray study during hospital visit indicating ${attribute} [time_filter_global1].",
+            "t_tag": [
+                "abs-year-until",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {
+                "age_group": {
+                    "nlq": "20s",
+                    "sql": "AND admissions.age BETWEEN 20 AND 29",
+                    "type": "20s",
+                    "sql_pattern": "age_group(admissions.age)"
+                }
+            },
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": [
+                    "enlarged cardiac silhouette"
+                ]
+            },
+            "tag": "count the number of {gender} patients aged [age_group:20s] who had a chest x-ray study during hospital visit indicating enlarged cardiac silhouette [time_filter_global1:abs-year-until].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "MULTIMODAL-GROUP"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 3190,
+            "question": "how many f patients in the 20s exhibited ij line in the upper mediastinum on their chest x-ray on 10/this year?",
+            "template": "count the number of f patients aged 20s who had a chest x-ray study during hospital visit indicating ij line in the upper mediastinum on 10/this year.",
+            "query": "select count(distinct t1.subject_id) from ( select * from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id in ( select patients.subject_id from patients where patients.gender = 'f' ) and admissions.age between 20 and 29 ) and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') and strftime('%m',tb_cxr.studydatetime) = '10' ) as t1 where func_vqa(\"is a chest x-ray that exhibiting ij line in the upper mediastinum?\", t1.study_id) = true",
+            "value": {
+                "gender": "f"
+            },
+            "q_tag": "count the number of {gender} patients aged [age_group] who had a chest x-ray study during hospital visit indicating ${attribute} in the ${object} [time_filter_global1].",
+            "t_tag": [
+                "mix-month-this_year",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {
+                "age_group": {
+                    "nlq": "20s",
+                    "sql": "AND admissions.age BETWEEN 20 AND 29",
+                    "type": "20s",
+                    "sql_pattern": "age_group(admissions.age)"
+                }
+            },
+            "v_tag": {
+                "object": [
+                    "upper mediastinum"
+                ],
+                "category": [],
+                "attribute": [
+                    "ij line"
+                ]
+            },
+            "tag": "count the number of {gender} patients aged [age_group:20s] who had a chest x-ray study during hospital visit indicating ij line in the upper mediastinum [time_filter_global1:mix-month-this_year].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                1
+            ],
+            "scope": "MULTIMODAL-GROUP"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2057,
+            "question": "please provide the ids of patients in the 20s who had chest x-ray findings of lung opacity in the left costophrenic angle since 12/2101.",
+            "template": "list the ids of patients aged 20s who had a chest x-ray study during hospital visit indicating lung opacity in the left costophrenic angle since 12/2101.",
+            "query": "select distinct t1.subject_id from ( select * from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.age between 20 and 29 ) and strftime('%y-%m',tb_cxr.studydatetime) >= '2101-12' ) as t1 where func_vqa(\"are there chest x-ray findings of lung opacity in the left costophrenic angle?\", t1.study_id) = true",
+            "value": {},
+            "q_tag": "list the ids of patients aged [age_group] who had a chest x-ray study during hospital visit indicating ${attribute} in the ${object} [time_filter_global1].",
+            "t_tag": [
+                "abs-month-since",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {
+                "age_group": {
+                    "nlq": "20s",
+                    "sql": "AND admissions.age BETWEEN 20 AND 29",
+                    "type": "20s",
+                    "sql_pattern": "age_group(admissions.age)"
+                }
+            },
+            "v_tag": {
+                "object": [
+                    "left costophrenic angle"
+                ],
+                "category": [],
+                "attribute": [
+                    "lung opacity"
+                ]
+            },
+            "tag": "list the ids of patients aged [age_group:20s] who had a chest x-ray study during hospital visit indicating lung opacity in the left costophrenic angle [time_filter_global1:abs-month-since].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                13748634,
+                14410216,
+                19457288
+            ],
+            "scope": "MULTIMODAL-GROUP"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 3331,
+            "question": "what are the ids of f patients aged 20s with a chest x-ray showing airspace opacity until 1 year ago?",
+            "template": "list the ids of f patients aged 20s who had a chest x-ray study during hospital visit indicating airspace opacity until 1 year ago.",
+            "query": "select distinct t1.subject_id from ( select * from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id in ( select patients.subject_id from patients where patients.gender = 'f' ) and admissions.age between 20 and 29 ) and datetime(tb_cxr.studydatetime) <= datetime(current_time,'-1 year') ) as t1 where func_vqa(\"does a chest x-ray show airspace opacity?\", t1.study_id) = true",
+            "value": {
+                "gender": "f"
+            },
+            "q_tag": "list the ids of {gender} patients aged [age_group] who had a chest x-ray study during hospital visit indicating ${attribute} [time_filter_global1].",
+            "t_tag": [
+                "rel-year-until",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {
+                "age_group": {
+                    "nlq": "20s",
+                    "sql": "AND admissions.age BETWEEN 20 AND 29",
+                    "type": "20s",
+                    "sql_pattern": "age_group(admissions.age)"
+                }
+            },
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": [
+                    "airspace opacity"
+                ]
+            },
+            "tag": "list the ids of {gender} patients aged [age_group:20s] who had a chest x-ray study during hospital visit indicating airspace opacity [time_filter_global1:rel-year-until].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                13748634
+            ],
+            "scope": "MULTIMODAL-GROUP"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 734,
+            "question": "could you list the ids of patients aged 20s whose chest x-ray indicated lung opacity since 6 year ago?",
+            "template": "list the ids of patients aged 20s who had a chest x-ray study during hospital visit indicating lung opacity since 6 year ago.",
+            "query": "select distinct t1.subject_id from ( select * from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.age between 20 and 29 ) and datetime(tb_cxr.studydatetime) >= datetime(current_time,'-6 year') ) as t1 where func_vqa(\"does a chest x-ray indicate lung opacity?\", t1.study_id) = true",
+            "value": {},
+            "q_tag": "list the ids of patients aged [age_group] who had a chest x-ray study during hospital visit indicating ${attribute} [time_filter_global1].",
+            "t_tag": [
+                "rel-year-since",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {
+                "age_group": {
+                    "nlq": "20s",
+                    "sql": "AND admissions.age BETWEEN 20 AND 29",
+                    "type": "20s",
+                    "sql_pattern": "age_group(admissions.age)"
+                }
+            },
+            "v_tag": {
+                "object": [],
+                "category": [],
+                "attribute": [
+                    "lung opacity"
+                ]
+            },
+            "tag": "list the ids of patients aged [age_group:20s] who had a chest x-ray study during hospital visit indicating lung opacity [time_filter_global1:rel-year-since].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                11801290,
+                12706984,
+                13748634,
+                14410216,
+                16568389,
+                18681732,
+                19457288
+            ],
+            "scope": "MULTIMODAL-GROUP"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 4524,
+            "question": "what are the patients ids for those aged 20s whose chest x-ray indicated any anatomical findings in the left hilar structures since 2105?",
+            "template": "list the ids of patients aged 20s who had a chest x-ray study during hospital visit indicating any anatomicalfinding in the left hilar structures since 2105.",
+            "query": "select distinct t1.subject_id from ( select * from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.age between 20 and 29 ) and strftime('%y',tb_cxr.studydatetime) >= '2105' ) as t1 where func_vqa(\"does a chest x-ray indicate any anatomical findings in the left hilar structures?\", t1.study_id) = true",
+            "value": {},
+            "q_tag": "list the ids of patients aged [age_group] who had a chest x-ray study during hospital visit indicating any ${category} in the ${object} [time_filter_global1].",
+            "t_tag": [
+                "abs-year-since",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {
+                "age_group": {
+                    "nlq": "20s",
+                    "sql": "AND admissions.age BETWEEN 20 AND 29",
+                    "type": "20s",
+                    "sql_pattern": "age_group(admissions.age)"
+                }
+            },
+            "v_tag": {
+                "object": [
+                    "left hilar structures"
+                ],
+                "category": [
+                    "anatomicalfinding"
+                ],
+                "attribute": []
+            },
+            "tag": "list the ids of patients aged [age_group:20s] who had a chest x-ray study during hospital visit indicating any anatomicalfinding in the left hilar structures [time_filter_global1:abs-year-since].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                12706984,
+                14337110,
+                14410216
+            ],
+            "scope": "MULTIMODAL-GROUP"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 4500,
+            "question": "please provide the ids of f patients aged 20s whose chest x-ray study indicated pleural effusion in the right lower lung zone since 6 year ago.",
+            "template": "list the ids of f patients aged 20s who had a chest x-ray study during hospital visit indicating pleural effusion in the right lower lung zone since 6 year ago.",
+            "query": "select distinct t1.subject_id from ( select * from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id in ( select patients.subject_id from patients where patients.gender = 'f' ) and admissions.age between 20 and 29 ) and datetime(tb_cxr.studydatetime) >= datetime(current_time,'-6 year') ) as t1 where func_vqa(\"is pleural effusion indicated in the right lower lung zone on a chest x-ray?\", t1.study_id) = true",
+            "value": {
+                "gender": "f"
+            },
+            "q_tag": "list the ids of {gender} patients aged [age_group] who had a chest x-ray study during hospital visit indicating ${attribute} in the ${object} [time_filter_global1].",
+            "t_tag": [
+                "rel-year-since",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {
+                "age_group": {
+                    "nlq": "20s",
+                    "sql": "AND admissions.age BETWEEN 20 AND 29",
+                    "type": "20s",
+                    "sql_pattern": "age_group(admissions.age)"
+                }
+            },
+            "v_tag": {
+                "object": [
+                    "right lower lung zone"
+                ],
+                "category": [],
+                "attribute": [
+                    "pleural effusion"
+                ]
+            },
+            "tag": "list the ids of {gender} patients aged [age_group:20s] who had a chest x-ray study during hospital visit indicating pleural effusion in the right lower lung zone [time_filter_global1:rel-year-since].",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                14410216
+            ],
+            "scope": "MULTIMODAL-GROUP"
+        }
+    ],
+    "TABLE-NONE": [
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 866,
+            "question": "tell me the cost of a hepatitis c viral load lab test.",
+            "template": "what is the cost of a hepatitis c viral load lab test?",
+            "query": "select distinct cost.cost from cost where cost.event_type = 'labevents' and cost.event_id in ( select labevents.row_id from labevents where labevents.itemid in ( select d_labitems.itemid from d_labitems where d_labitems.label = 'hepatitis c viral load' ) )",
+            "value": {
+                "lab_name": "hepatitis c viral load"
+            },
+            "q_tag": "what is the cost of a {lab_name} lab test?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "What is the cost of a {lab_name} lab test?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                8.13
+            ],
+            "scope": "TABLE-NONE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2582,
+            "question": "how much is the cost of fibrinogen, functional lab tests?",
+            "template": "what is the cost of a fibrinogen, functional lab test?",
+            "query": "select distinct cost.cost from cost where cost.event_type = 'labevents' and cost.event_id in ( select labevents.row_id from labevents where labevents.itemid in ( select d_labitems.itemid from d_labitems where d_labitems.label = 'fibrinogen, functional' ) )",
+            "value": {
+                "lab_name": "fibrinogen, functional"
+            },
+            "q_tag": "what is the cost of a {lab_name} lab test?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "What is the cost of a {lab_name} lab test?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                6.16
+            ],
+            "scope": "TABLE-NONE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 1167,
+            "question": "tell me the cost of a prescription drug called metoclopramide?",
+            "template": "what is the cost of a drug named metoclopramide?",
+            "query": "select distinct cost.cost from cost where cost.event_type = 'prescriptions' and cost.event_id in ( select prescriptions.row_id from prescriptions where prescriptions.drug = 'metoclopramide' )",
+            "value": {
+                "drug_name": "metoclopramide"
+            },
+            "q_tag": "what is the cost of a drug named {drug_name}?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "What is the cost of a drug named {drug_name}?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                12.82
+            ],
+            "scope": "TABLE-NONE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 1358,
+            "question": "what exactly does co (impella) mean?",
+            "template": "what does co (impella) stand for?",
+            "query": "select d_items.label from d_items where d_items.abbreviation = 'co (impella)'",
+            "value": {
+                "abbreviation": "co (impella)"
+            },
+            "q_tag": "what does {abbreviation} stand for?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "What does {abbreviation} stand for?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "cardiac output (co) (impella)"
+            ],
+            "scope": "TABLE-NONE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2084,
+            "question": "what exactly does the po2_apacheiv stand for?",
+            "template": "what does po2_apacheiv stand for?",
+            "query": "select d_items.label from d_items where d_items.abbreviation = 'po2_apacheiv'",
+            "value": {
+                "abbreviation": "po2_apacheiv"
+            },
+            "q_tag": "what does {abbreviation} stand for?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "What does {abbreviation} stand for?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                "po2_apacheiv"
+            ],
+            "scope": "TABLE-NONE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2573,
+            "question": "how much does it cost famciclovir.",
+            "template": "what is the cost of a drug named famciclovir?",
+            "query": "select distinct cost.cost from cost where cost.event_type = 'prescriptions' and cost.event_id in ( select prescriptions.row_id from prescriptions where prescriptions.drug = 'famciclovir' )",
+            "value": {
+                "drug_name": "famciclovir"
+            },
+            "q_tag": "what is the cost of a drug named {drug_name}?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "What is the cost of a drug named {drug_name}?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                12.75
+            ],
+            "scope": "TABLE-NONE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 2549,
+            "question": "how much does it cost for a procedure called thoracentesis?",
+            "template": "what is the cost of a procedure named thoracentesis?",
+            "query": "select distinct cost.cost from cost where cost.event_type = 'procedures_icd' and cost.event_id in ( select procedures_icd.row_id from procedures_icd where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'thoracentesis' ) )",
+            "value": {
+                "procedure_name": "thoracentesis"
+            },
+            "q_tag": "what is the cost of a procedure named {procedure_name}?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "What is the cost of a procedure named {procedure_name}?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                9.09
+            ],
+            "scope": "TABLE-NONE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 4736,
+            "question": "how much does the cost of diagnosing displaced supracondylar fracture without intracondylar extension of lower end of right femur, initial encounter for closed fracture cost?",
+            "template": "what is the cost of diagnosing displaced supracondylar fracture without intracondylar extension of lower end of right femur, initial encounter for closed fracture?",
+            "query": "select distinct cost.cost from cost where cost.event_type = 'diagnoses_icd' and cost.event_id in ( select diagnoses_icd.row_id from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'displaced supracondylar fracture without intracondylar extension of lower end of right femur, initial encounter for closed fracture' ) )",
+            "value": {
+                "diagnosis_name": "displaced supracondylar fracture without intracondylar extension of lower end of right femur, initial encounter for closed fracture"
+            },
+            "q_tag": "what is the cost of diagnosing {diagnosis_name}?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "What is the cost of diagnosing {diagnosis_name}?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                10.03
+            ],
+            "scope": "TABLE-NONE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 1671,
+            "question": "how much does the cost of a striking against or struck by other objects, initial encounter diagnosis cost?",
+            "template": "what is the cost of diagnosing striking against or struck by other objects, initial encounter?",
+            "query": "select distinct cost.cost from cost where cost.event_type = 'diagnoses_icd' and cost.event_id in ( select diagnoses_icd.row_id from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'striking against or struck by other objects, initial encounter' ) )",
+            "value": {
+                "diagnosis_name": "striking against or struck by other objects, initial encounter"
+            },
+            "q_tag": "what is the cost of diagnosing {diagnosis_name}?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "What is the cost of diagnosing {diagnosis_name}?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                9.68
+            ],
+            "scope": "TABLE-NONE"
+        },
+        {
+            "db_id": "mimic_iv_cxr",
+            "split": "test",
+            "id": 1729,
+            "question": "how much is the drainage of right upper lung lobe, via natural or artificial opening endoscopic, diagnostic?",
+            "template": "what is the cost of a procedure named drainage of right upper lung lobe, via natural or artificial opening endoscopic, diagnostic?",
+            "query": "select distinct cost.cost from cost where cost.event_type = 'procedures_icd' and cost.event_id in ( select procedures_icd.row_id from procedures_icd where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'drainage of right upper lung lobe, via natural or artificial opening endoscopic, diagnostic' ) )",
+            "value": {
+                "procedure_name": "drainage of right upper lung lobe, via natural or artificial opening endoscopic, diagnostic"
+            },
+            "q_tag": "what is the cost of a procedure named {procedure_name}?",
+            "t_tag": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "o_tag": {},
+            "v_tag": {},
+            "tag": "What is the cost of a procedure named {procedure_name}?",
+            "para_type": "machine",
+            "is_impossible": false,
+            "answer": [
+                9.28
+            ],
+            "scope": "TABLE-NONE"
+        }
+    ]
+}

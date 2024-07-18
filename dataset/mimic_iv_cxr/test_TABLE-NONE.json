@@ -1,0 +1,1402 @@
+[
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 41,
+        "question": "tell me the price of taking n-acetylcysteine?",
+        "template": "what is the cost of a drug named n-acetylcysteine?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'prescriptions' and cost.event_id in ( select prescriptions.row_id from prescriptions where prescriptions.drug = 'n-acetylcysteine' )",
+        "value": {
+            "drug_name": "n-acetylcysteine"
+        },
+        "q_tag": "what is the cost of a drug named {drug_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a drug named {drug_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            14.39
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 162,
+        "question": "what is an unabbreviated version of pa %o2 saturation (pa line)?",
+        "template": "what does pa %o2 saturation (pa line) stand for?",
+        "query": "select d_items.label from d_items where d_items.abbreviation = 'pa %o2 saturation (pa line)'",
+        "value": {
+            "abbreviation": "pa %o2 saturation (pa line)"
+        },
+        "q_tag": "what does {abbreviation} stand for?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What does {abbreviation} stand for?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            "pa %o2 saturation (pa line)"
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 257,
+        "question": "how much for a procedure called excision of sigmoid colon, open approach?",
+        "template": "what is the cost of a procedure named excision of sigmoid colon, open approach?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'procedures_icd' and cost.event_id in ( select procedures_icd.row_id from procedures_icd where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'excision of sigmoid colon, open approach' ) )",
+        "value": {
+            "procedure_name": "excision of sigmoid colon, open approach"
+        },
+        "q_tag": "what is the cost of a procedure named {procedure_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a procedure named {procedure_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            8.21
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 560,
+        "question": "what is the cost to do a heparin lab test?",
+        "template": "what is the cost of a heparin lab test?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'labevents' and cost.event_id in ( select labevents.row_id from labevents where labevents.itemid in ( select d_labitems.itemid from d_labitems where d_labitems.label = 'heparin' ) )",
+        "value": {
+            "lab_name": "heparin"
+        },
+        "q_tag": "what is the cost of a {lab_name} lab test?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a {lab_name} lab test?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            9.21
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 612,
+        "question": "how much is a procedure called endoscopic insertion or replacement of bronchial valve(s), multiple lobes.",
+        "template": "what is the cost of a procedure named endoscopic insertion or replacement of bronchial valve(s), multiple lobes?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'procedures_icd' and cost.event_id in ( select procedures_icd.row_id from procedures_icd where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'endoscopic insertion or replacement of bronchial valve(s), multiple lobes' ) )",
+        "value": {
+            "procedure_name": "endoscopic insertion or replacement of bronchial valve(s), multiple lobes"
+        },
+        "q_tag": "what is the cost of a procedure named {procedure_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a procedure named {procedure_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            8.23
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 636,
+        "question": "hand cleansing prior to procedure (mbal) what does it stand for?",
+        "template": "what does hand cleansing prior to procedure (mbal) stand for?",
+        "query": "select d_items.label from d_items where d_items.abbreviation = 'hand cleansing prior to procedure (mbal)'",
+        "value": {
+            "abbreviation": "hand cleansing prior to procedure (mbal)"
+        },
+        "q_tag": "what does {abbreviation} stand for?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What does {abbreviation} stand for?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            "hand cleansing prior to procedure (mbal)"
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 866,
+        "question": "tell me the cost of a hepatitis c viral load lab test.",
+        "template": "what is the cost of a hepatitis c viral load lab test?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'labevents' and cost.event_id in ( select labevents.row_id from labevents where labevents.itemid in ( select d_labitems.itemid from d_labitems where d_labitems.label = 'hepatitis c viral load' ) )",
+        "value": {
+            "lab_name": "hepatitis c viral load"
+        },
+        "q_tag": "what is the cost of a {lab_name} lab test?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a {lab_name} lab test?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            8.13
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 1031,
+        "question": "what's tandem heart return cannula size supposed to represent?",
+        "template": "what does tandem heart return cannula size stand for?",
+        "query": "select d_items.label from d_items where d_items.abbreviation = 'tandem heart return cannula size'",
+        "value": {
+            "abbreviation": "tandem heart return cannula size"
+        },
+        "q_tag": "what does {abbreviation} stand for?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What does {abbreviation} stand for?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            "tandem heart return cannula size"
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 1122,
+        "question": "what is 'diagnosis cost' of other late effects of cerebrovascular disease, facial weakness?",
+        "template": "what is the cost of diagnosing other late effects of cerebrovascular disease, facial weakness?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'diagnoses_icd' and cost.event_id in ( select diagnoses_icd.row_id from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'other late effects of cerebrovascular disease, facial weakness' ) )",
+        "value": {
+            "diagnosis_name": "other late effects of cerebrovascular disease, facial weakness"
+        },
+        "q_tag": "what is the cost of diagnosing {diagnosis_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of diagnosing {diagnosis_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            8.07
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 1159,
+        "question": "tell me the cost of the diagnosis for body mass index 31.0-31.9, adult?",
+        "template": "what is the cost of diagnosing body mass index 31.0-31.9, adult?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'diagnoses_icd' and cost.event_id in ( select diagnoses_icd.row_id from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'body mass index 31.0-31.9, adult' ) )",
+        "value": {
+            "diagnosis_name": "body mass index 31.0-31.9, adult"
+        },
+        "q_tag": "what is the cost of diagnosing {diagnosis_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of diagnosing {diagnosis_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            8.11
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 1167,
+        "question": "tell me the cost of a prescription drug called metoclopramide?",
+        "template": "what is the cost of a drug named metoclopramide?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'prescriptions' and cost.event_id in ( select prescriptions.row_id from prescriptions where prescriptions.drug = 'metoclopramide' )",
+        "value": {
+            "drug_name": "metoclopramide"
+        },
+        "q_tag": "what is the cost of a drug named {drug_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a drug named {drug_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            12.82
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 1227,
+        "question": "tell me the price of taking clotrimazole?",
+        "template": "what is the cost of a drug named clotrimazole?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'prescriptions' and cost.event_id in ( select prescriptions.row_id from prescriptions where prescriptions.drug = 'clotrimazole' )",
+        "value": {
+            "drug_name": "clotrimazole"
+        },
+        "q_tag": "what is the cost of a drug named {drug_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a drug named {drug_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            12.56
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 1358,
+        "question": "what exactly does co (impella) mean?",
+        "template": "what does co (impella) stand for?",
+        "query": "select d_items.label from d_items where d_items.abbreviation = 'co (impella)'",
+        "value": {
+            "abbreviation": "co (impella)"
+        },
+        "q_tag": "what does {abbreviation} stand for?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What does {abbreviation} stand for?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            "cardiac output (co) (impella)"
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 1530,
+        "question": "what is the bupropion xl (once daily) price?",
+        "template": "what is the cost of a drug named bupropion xl (once daily)?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'prescriptions' and cost.event_id in ( select prescriptions.row_id from prescriptions where prescriptions.drug = 'bupropion xl (once daily)' )",
+        "value": {
+            "drug_name": "bupropion xl (once daily)"
+        },
+        "q_tag": "what is the cost of a drug named {drug_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a drug named {drug_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            13.4
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 1653,
+        "question": "what's the price of a destruction of left lower lobe bronchus, via natural or artificial opening endoscopic?",
+        "template": "what is the cost of a procedure named destruction of left lower lobe bronchus, via natural or artificial opening endoscopic?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'procedures_icd' and cost.event_id in ( select procedures_icd.row_id from procedures_icd where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'destruction of left lower lobe bronchus, via natural or artificial opening endoscopic' ) )",
+        "value": {
+            "procedure_name": "destruction of left lower lobe bronchus, via natural or artificial opening endoscopic"
+        },
+        "q_tag": "what is the cost of a procedure named {procedure_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a procedure named {procedure_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            8.72
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 1671,
+        "question": "how much does the cost of a striking against or struck by other objects, initial encounter diagnosis cost?",
+        "template": "what is the cost of diagnosing striking against or struck by other objects, initial encounter?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'diagnoses_icd' and cost.event_id in ( select diagnoses_icd.row_id from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'striking against or struck by other objects, initial encounter' ) )",
+        "value": {
+            "diagnosis_name": "striking against or struck by other objects, initial encounter"
+        },
+        "q_tag": "what is the cost of diagnosing {diagnosis_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of diagnosing {diagnosis_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            9.68
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 1678,
+        "question": "what is the cost of drug name glucagon?",
+        "template": "what is the cost of a drug named glucagon?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'prescriptions' and cost.event_id in ( select prescriptions.row_id from prescriptions where prescriptions.drug = 'glucagon' )",
+        "value": {
+            "drug_name": "glucagon"
+        },
+        "q_tag": "what is the cost of a drug named {drug_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a drug named {drug_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            13.42
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 1729,
+        "question": "how much is the drainage of right upper lung lobe, via natural or artificial opening endoscopic, diagnostic?",
+        "template": "what is the cost of a procedure named drainage of right upper lung lobe, via natural or artificial opening endoscopic, diagnostic?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'procedures_icd' and cost.event_id in ( select procedures_icd.row_id from procedures_icd where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'drainage of right upper lung lobe, via natural or artificial opening endoscopic, diagnostic' ) )",
+        "value": {
+            "procedure_name": "drainage of right upper lung lobe, via natural or artificial opening endoscopic, diagnostic"
+        },
+        "q_tag": "what is the cost of a procedure named {procedure_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a procedure named {procedure_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            9.28
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 1810,
+        "question": "what are the prices for colistin?",
+        "template": "what is the cost of a drug named colistin?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'prescriptions' and cost.event_id in ( select prescriptions.row_id from prescriptions where prescriptions.drug = 'colistin' )",
+        "value": {
+            "drug_name": "colistin"
+        },
+        "q_tag": "what is the cost of a drug named {drug_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a drug named {drug_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            12.43
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 1885,
+        "question": "what is the revision of stoma of small intestine cost for?",
+        "template": "what is the cost of a procedure named revision of stoma of small intestine?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'procedures_icd' and cost.event_id in ( select procedures_icd.row_id from procedures_icd where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'revision of stoma of small intestine' ) )",
+        "value": {
+            "procedure_name": "revision of stoma of small intestine"
+        },
+        "q_tag": "what is the cost of a procedure named {procedure_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a procedure named {procedure_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            7.84
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 1964,
+        "question": "what does it cost to get other colostomy and enterostomy complication diagnosed?",
+        "template": "what is the cost of diagnosing other colostomy and enterostomy complication?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'diagnoses_icd' and cost.event_id in ( select diagnoses_icd.row_id from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'other colostomy and enterostomy complication' ) )",
+        "value": {
+            "diagnosis_name": "other colostomy and enterostomy complication"
+        },
+        "q_tag": "what is the cost of diagnosing {diagnosis_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of diagnosing {diagnosis_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            7.76
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 1992,
+        "question": "what is the cost of a procedure referred to as a angiocardiography, not otherwise specified?",
+        "template": "what is the cost of a procedure named angiocardiography, not otherwise specified?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'procedures_icd' and cost.event_id in ( select procedures_icd.row_id from procedures_icd where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'angiocardiography, not otherwise specified' ) )",
+        "value": {
+            "procedure_name": "angiocardiography, not otherwise specified"
+        },
+        "q_tag": "what is the cost of a procedure named {procedure_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a procedure named {procedure_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            9.13
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 2084,
+        "question": "what exactly does the po2_apacheiv stand for?",
+        "template": "what does po2_apacheiv stand for?",
+        "query": "select d_items.label from d_items where d_items.abbreviation = 'po2_apacheiv'",
+        "value": {
+            "abbreviation": "po2_apacheiv"
+        },
+        "q_tag": "what does {abbreviation} stand for?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What does {abbreviation} stand for?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            "po2_apacheiv"
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 2192,
+        "question": "tell me the price of a protein/creatinine ratio?",
+        "template": "what is the cost of a protein/creatinine ratio lab test?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'labevents' and cost.event_id in ( select labevents.row_id from labevents where labevents.itemid in ( select d_labitems.itemid from d_labitems where d_labitems.label = 'protein/creatinine ratio' ) )",
+        "value": {
+            "lab_name": "protein/creatinine ratio"
+        },
+        "q_tag": "what is the cost of a {lab_name} lab test?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a {lab_name} lab test?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            6.16
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 2307,
+        "question": "how much do the plasma actually cost?",
+        "template": "what is the cost of a plasma lab test?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'labevents' and cost.event_id in ( select labevents.row_id from labevents where labevents.itemid in ( select d_labitems.itemid from d_labitems where d_labitems.label = 'plasma' ) )",
+        "value": {
+            "lab_name": "plasma"
+        },
+        "q_tag": "what is the cost of a {lab_name} lab test?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a {lab_name} lab test?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            8.26
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 2447,
+        "question": "what is the unabbreviated version of the peak insp. pressure?",
+        "template": "what does peak insp. pressure stand for?",
+        "query": "select d_items.label from d_items where d_items.abbreviation = 'peak insp. pressure'",
+        "value": {
+            "abbreviation": "peak insp. pressure"
+        },
+        "q_tag": "what does {abbreviation} stand for?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What does {abbreviation} stand for?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            "peak insp. pressure"
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 2549,
+        "question": "how much does it cost for a procedure called thoracentesis?",
+        "template": "what is the cost of a procedure named thoracentesis?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'procedures_icd' and cost.event_id in ( select procedures_icd.row_id from procedures_icd where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'thoracentesis' ) )",
+        "value": {
+            "procedure_name": "thoracentesis"
+        },
+        "q_tag": "what is the cost of a procedure named {procedure_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a procedure named {procedure_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            9.09
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 2573,
+        "question": "how much does it cost famciclovir.",
+        "template": "what is the cost of a drug named famciclovir?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'prescriptions' and cost.event_id in ( select prescriptions.row_id from prescriptions where prescriptions.drug = 'famciclovir' )",
+        "value": {
+            "drug_name": "famciclovir"
+        },
+        "q_tag": "what is the cost of a drug named {drug_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a drug named {drug_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            12.75
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 2582,
+        "question": "how much is the cost of fibrinogen, functional lab tests?",
+        "template": "what is the cost of a fibrinogen, functional lab test?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'labevents' and cost.event_id in ( select labevents.row_id from labevents where labevents.itemid in ( select d_labitems.itemid from d_labitems where d_labitems.label = 'fibrinogen, functional' ) )",
+        "value": {
+            "lab_name": "fibrinogen, functional"
+        },
+        "q_tag": "what is the cost of a {lab_name} lab test?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a {lab_name} lab test?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            6.16
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 2619,
+        "question": "how much is the cost of thyroid peroxidase antibodies?",
+        "template": "what is the cost of a thyroid peroxidase antibodies lab test?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'labevents' and cost.event_id in ( select labevents.row_id from labevents where labevents.itemid in ( select d_labitems.itemid from d_labitems where d_labitems.label = 'thyroid peroxidase antibodies' ) )",
+        "value": {
+            "lab_name": "thyroid peroxidase antibodies"
+        },
+        "q_tag": "what is the cost of a {lab_name} lab test?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a {lab_name} lab test?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            6.96
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 2926,
+        "question": "what does it cost for an open wound of forehead, without mention of complication diagnosis?",
+        "template": "what is the cost of diagnosing open wound of forehead, without mention of complication?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'diagnoses_icd' and cost.event_id in ( select diagnoses_icd.row_id from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'open wound of forehead, without mention of complication' ) )",
+        "value": {
+            "diagnosis_name": "open wound of forehead, without mention of complication"
+        },
+        "q_tag": "what is the cost of diagnosing {diagnosis_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of diagnosing {diagnosis_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            9.52
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 3176,
+        "question": "how much for a procedure known as a transplantation of pancreas, allogeneic, open approach?",
+        "template": "what is the cost of a procedure named transplantation of pancreas, allogeneic, open approach?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'procedures_icd' and cost.event_id in ( select procedures_icd.row_id from procedures_icd where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'transplantation of pancreas, allogeneic, open approach' ) )",
+        "value": {
+            "procedure_name": "transplantation of pancreas, allogeneic, open approach"
+        },
+        "q_tag": "what is the cost of a procedure named {procedure_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a procedure named {procedure_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            8.38
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 3694,
+        "question": "how much does it cost to get a lab triglycerides, pleural test?",
+        "template": "what is the cost of a triglycerides, pleural lab test?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'labevents' and cost.event_id in ( select labevents.row_id from labevents where labevents.itemid in ( select d_labitems.itemid from d_labitems where d_labitems.label = 'triglycerides, pleural' ) )",
+        "value": {
+            "lab_name": "triglycerides, pleural"
+        },
+        "q_tag": "what is the cost of a {lab_name} lab test?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a {lab_name} lab test?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            6.22
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 3736,
+        "question": "tell me the cost of the replacement of right hip joint, femoral surface with synthetic substitute, open approach?",
+        "template": "what is the cost of a procedure named replacement of right hip joint, femoral surface with synthetic substitute, open approach?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'procedures_icd' and cost.event_id in ( select procedures_icd.row_id from procedures_icd where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'replacement of right hip joint, femoral surface with synthetic substitute, open approach' ) )",
+        "value": {
+            "procedure_name": "replacement of right hip joint, femoral surface with synthetic substitute, open approach"
+        },
+        "q_tag": "what is the cost of a procedure named {procedure_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a procedure named {procedure_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            9.7
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 3818,
+        "question": "what is the cost of epilepsy, unspecified, without mention of intractable epilepsy diagnostic?",
+        "template": "what is the cost of diagnosing epilepsy, unspecified, without mention of intractable epilepsy?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'diagnoses_icd' and cost.event_id in ( select diagnoses_icd.row_id from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'epilepsy, unspecified, without mention of intractable epilepsy' ) )",
+        "value": {
+            "diagnosis_name": "epilepsy, unspecified, without mention of intractable epilepsy"
+        },
+        "q_tag": "what is the cost of diagnosing {diagnosis_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of diagnosing {diagnosis_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            8.15
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 3862,
+        "question": "tell me the cost of a lactate dehydrogenase (ld) lab test.",
+        "template": "what is the cost of a lactate dehydrogenase (ld) lab test?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'labevents' and cost.event_id in ( select labevents.row_id from labevents where labevents.itemid in ( select d_labitems.itemid from d_labitems where d_labitems.label = 'lactate dehydrogenase (ld)' ) )",
+        "value": {
+            "lab_name": "lactate dehydrogenase (ld)"
+        },
+        "q_tag": "what is the cost of a {lab_name} lab test?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a {lab_name} lab test?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            6.27
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 3940,
+        "question": "tell me the diagnosis cost of nodular prostate without urinary obstruction in a patient?",
+        "template": "what is the cost of diagnosing nodular prostate without urinary obstruction?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'diagnoses_icd' and cost.event_id in ( select diagnoses_icd.row_id from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'nodular prostate without urinary obstruction' ) )",
+        "value": {
+            "diagnosis_name": "nodular prostate without urinary obstruction"
+        },
+        "q_tag": "what is the cost of diagnosing {diagnosis_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of diagnosing {diagnosis_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            8.79
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 4044,
+        "question": "how much does it cost for a other secondary thrombocytopenia diagnosis?",
+        "template": "what is the cost of diagnosing other secondary thrombocytopenia?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'diagnoses_icd' and cost.event_id in ( select diagnoses_icd.row_id from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'other secondary thrombocytopenia' ) )",
+        "value": {
+            "diagnosis_name": "other secondary thrombocytopenia"
+        },
+        "q_tag": "what is the cost of diagnosing {diagnosis_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of diagnosing {diagnosis_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            9.34
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 4072,
+        "question": "what is the cost of a laboratory test of ca-125?",
+        "template": "what is the cost of a ca-125 lab test?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'labevents' and cost.event_id in ( select labevents.row_id from labevents where labevents.itemid in ( select d_labitems.itemid from d_labitems where d_labitems.label = 'ca-125' ) )",
+        "value": {
+            "lab_name": "ca-125"
+        },
+        "q_tag": "what is the cost of a {lab_name} lab test?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a {lab_name} lab test?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            6.75
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 4100,
+        "question": "tell me the price of taking valganciclovir suspension?",
+        "template": "what is the cost of a drug named valganciclovir suspension?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'prescriptions' and cost.event_id in ( select prescriptions.row_id from prescriptions where prescriptions.drug = 'valganciclovir suspension' )",
+        "value": {
+            "drug_name": "valganciclovir suspension"
+        },
+        "q_tag": "what is the cost of a drug named {drug_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a drug named {drug_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            13.51
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 4173,
+        "question": "pressure ulcer #2- depth what does it stand for?",
+        "template": "what does pressure ulcer #2- depth stand for?",
+        "query": "select d_items.label from d_items where d_items.abbreviation = 'pressure ulcer #2- depth'",
+        "value": {
+            "abbreviation": "pressure ulcer #2- depth"
+        },
+        "q_tag": "what does {abbreviation} stand for?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What does {abbreviation} stand for?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            "pressure ulcer #2- depth"
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 4194,
+        "question": "what is the unabbreviated version of the incision drainage amount #9?",
+        "template": "what does incision drainage amount #9 stand for?",
+        "query": "select d_items.label from d_items where d_items.abbreviation = 'incision drainage amount #9'",
+        "value": {
+            "abbreviation": "incision drainage amount #9"
+        },
+        "q_tag": "what does {abbreviation} stand for?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What does {abbreviation} stand for?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            "incision drainage amount #9"
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 4200,
+        "question": "what's fm dx reviewed supposed to represent?",
+        "template": "what does fm dx reviewed stand for?",
+        "query": "select d_items.label from d_items where d_items.abbreviation = 'fm dx reviewed'",
+        "value": {
+            "abbreviation": "fm dx reviewed"
+        },
+        "q_tag": "what does {abbreviation} stand for?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What does {abbreviation} stand for?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            "fm dx reviewed"
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 4223,
+        "question": "what is the cost for the procedure excision of left saphenous vein, open approach?",
+        "template": "what is the cost of a procedure named excision of left saphenous vein, open approach?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'procedures_icd' and cost.event_id in ( select procedures_icd.row_id from procedures_icd where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'excision of left saphenous vein, open approach' ) )",
+        "value": {
+            "procedure_name": "excision of left saphenous vein, open approach"
+        },
+        "q_tag": "what is the cost of a procedure named {procedure_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a procedure named {procedure_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            9.61
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 4255,
+        "question": "tell me the price for lymphs?",
+        "template": "what is the cost of a lymphs lab test?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'labevents' and cost.event_id in ( select labevents.row_id from labevents where labevents.itemid in ( select d_labitems.itemid from d_labitems where d_labitems.label = 'lymphs' ) )",
+        "value": {
+            "lab_name": "lymphs"
+        },
+        "q_tag": "what is the cost of a {lab_name} lab test?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a {lab_name} lab test?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            6.21
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 4355,
+        "question": "how much is a diagnosis of impulse control disorder, unspecified going to cost?",
+        "template": "what is the cost of diagnosing impulse control disorder, unspecified?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'diagnoses_icd' and cost.event_id in ( select diagnoses_icd.row_id from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'impulse control disorder, unspecified' ) )",
+        "value": {
+            "diagnosis_name": "impulse control disorder, unspecified"
+        },
+        "q_tag": "what is the cost of diagnosing {diagnosis_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of diagnosing {diagnosis_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            8.53
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 4640,
+        "question": "how much collagenase ointment is it?",
+        "template": "what is the cost of a drug named collagenase ointment?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'prescriptions' and cost.event_id in ( select prescriptions.row_id from prescriptions where prescriptions.drug = 'collagenase ointment' )",
+        "value": {
+            "drug_name": "collagenase ointment"
+        },
+        "q_tag": "what is the cost of a drug named {drug_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a drug named {drug_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            13.99
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 4690,
+        "question": "what exactly does the nutren 2.0 (1/4) stand for?",
+        "template": "what does nutren 2.0 (1/4) stand for?",
+        "query": "select d_items.label from d_items where d_items.abbreviation = 'nutren 2.0 (1/4)'",
+        "value": {
+            "abbreviation": "nutren 2.0 (1/4)"
+        },
+        "q_tag": "what does {abbreviation} stand for?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What does {abbreviation} stand for?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            "nutren 2.0 (1/4)"
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 4736,
+        "question": "how much does the cost of diagnosing displaced supracondylar fracture without intracondylar extension of lower end of right femur, initial encounter for closed fracture cost?",
+        "template": "what is the cost of diagnosing displaced supracondylar fracture without intracondylar extension of lower end of right femur, initial encounter for closed fracture?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'diagnoses_icd' and cost.event_id in ( select diagnoses_icd.row_id from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'displaced supracondylar fracture without intracondylar extension of lower end of right femur, initial encounter for closed fracture' ) )",
+        "value": {
+            "diagnosis_name": "displaced supracondylar fracture without intracondylar extension of lower end of right femur, initial encounter for closed fracture"
+        },
+        "q_tag": "what is the cost of diagnosing {diagnosis_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of diagnosing {diagnosis_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            10.03
+        ],
+        "scope": "TABLE-NONE"
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 4785,
+        "question": "tell me the price of methylprednisolone na succ.",
+        "template": "what is the cost of a drug named methylprednisolone na succ?",
+        "query": "select distinct cost.cost from cost where cost.event_type = 'prescriptions' and cost.event_id in ( select prescriptions.row_id from prescriptions where prescriptions.drug = 'methylprednisolone na succ' )",
+        "value": {
+            "drug_name": "methylprednisolone na succ"
+        },
+        "q_tag": "what is the cost of a drug named {drug_name}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {},
+        "tag": "What is the cost of a drug named {drug_name}?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer": [
+            13.31
+        ],
+        "scope": "TABLE-NONE"
+    }
+]

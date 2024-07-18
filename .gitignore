@@ -205,3 +205,4 @@ Temporary Items
 # database and image files
 mimic_iv_cxr.db
 /files/*
+/reports/*

@@ -649,8 +649,8 @@
         "db_id": "mimic_iv_cxr",
         "split": "test",
         "id": 578,
-        "question": "in the last study for patient 10020740 in 2104, can you find any anatomical findings in the right chest wall still absent compared to the previous study?",
-        "template": "given the last study of patient 10020740 in 2104, are there any anatomicalfinding that are still no in the right chest wall compared to the previous study?",
+        "question": "in the last study for patient 10020740 in 2104, list any anatomical findings in the right chest wall still absent compared to the previous study?",
+        "template": "given the last study of patient 10020740 in 2104, list any anatomical finding that are still absent in the right chest wall compared to the previous study?",
         "query": "select ( select (func_vqa(\"can you find any anatomical findings in the right chest wall?\", t1.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 10020740 and strftime('%y',tb_cxr.studydatetime) = '2104' order by tb_cxr.studydatetime desc limit 1 ) ) as t1 ) and ( select (func_vqa(\"can you find any anatomical findings in the right chest wall?\", t2.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 10020740 and tb_cxr.studydatetime < ( select distinct tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 10020740 and strftime('%y',tb_cxr.studydatetime) = '2104' order by tb_cxr.studydatetime desc limit 1 ) ) ) order by tb_cxr.studydatetime desc limit 1 ) as t2 )",
         "value": {
             "patient_id": 10020740
@@ -694,8 +694,8 @@
         "db_id": "mimic_iv_cxr",
         "split": "test",
         "id": 893,
-        "question": "compared to the previous study, does the first study for patient 13551252 on the first hospital visit reveal any diseases in the left costophrenic angle still absent?",
-        "template": "given the first study of patient 13551252 on the first hospital visit, are there any disease that are still no in the left costophrenic angle compared to the previous study?",
+        "question": "compared to the previous study, does the first study for patient 13551252 on the first hospital visit reveal any diseases in the left costophrenic angle still absent? if yes, list them!",
+        "template": "given the first study of patient 13551252 on the first hospital visit, list any disease that are still absent in the left costophrenic angle compared to the previous study?",
         "query": "select ( select (func_vqa(\"does the left costophrenic angle reveal any diseases?\", t1.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 13551252 and admissions.dischtime is not null order by admissions.admittime asc limit 1 ) order by tb_cxr.studydatetime asc limit 1 ) ) as t1 ) and ( select (func_vqa(\"does the left costophrenic angle reveal any diseases?\", t2.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 13551252 and tb_cxr.studydatetime < ( select distinct tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 13551252 and admissions.dischtime is not null order by admissions.admittime asc limit 1 ) order by tb_cxr.studydatetime asc limit 1 ) ) ) order by tb_cxr.studydatetime desc limit 1 ) as t2 )",
         "value": {
             "patient_id": 13551252
@@ -739,8 +739,8 @@
         "db_id": "mimic_iv_cxr",
         "split": "test",
         "id": 1338,
-        "question": "in the last study for patient 18916144 in 2103, can you find any tubes/lines in the right upper lung zone still absent compared to the previous study?",
-        "template": "given the last study of patient 18916144 in 2103, are there any tubesandlines that are still no in the right upper lung zone compared to the previous study?",
+        "question": "in the last study for patient 18916144 in 2103, list if you find any tubes/lines in the right upper lung zone still absent compared to the previous study.",
+        "template": "given the last study of patient 18916144 in 2103, are there any tubesandlines that are still no in the right upper lung zone compared to the previous study? if Yes list them",
         "query": "select ( select (func_vqa(\"can you find any tubes/lines in the right upper lung zone?\", t1.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 18916144 and strftime('%y',tb_cxr.studydatetime) = '2103' order by tb_cxr.studydatetime desc limit 1 ) ) as t1 ) and ( select (func_vqa(\"can you find any tubes/lines in the right upper lung zone?\", t2.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 18916144 and tb_cxr.studydatetime < ( select distinct tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 18916144 and strftime('%y',tb_cxr.studydatetime) = '2103' order by tb_cxr.studydatetime desc limit 1 ) ) ) order by tb_cxr.studydatetime desc limit 1 ) as t2 )",
         "value": {
             "patient_id": 18916144
@@ -785,8 +785,8 @@
         "db_id": "mimic_iv_cxr",
         "split": "test",
         "id": 2496,
-        "question": "in the last study for patient 19103929 this year, can you find any diseases in the right lower lung zone still absent compared to the previous study?",
-        "template": "given the last study of patient 19103929 this year, are there any disease that are still no in the right lower lung zone compared to the previous study?",
+        "question": "in the last study for patient 19103929 this year, list if you find any diseases in the right lower lung zone still absent compared to the previous study.",
+        "template": "given the last study of patient 19103929 this year, are there any disease that are still no in the right lower lung zone compared to the previous study? if Yes list them",
         "query": "select ( select (func_vqa(\"can you find any diseases in the right lower lung zone?\", t1.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 19103929 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') order by tb_cxr.studydatetime desc limit 1 ) ) as t1 ) and ( select (func_vqa(\"can you find any diseases in the right lower lung zone?\", t2.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 19103929 and tb_cxr.studydatetime < ( select distinct tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 19103929 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') order by tb_cxr.studydatetime desc limit 1 ) ) ) order by tb_cxr.studydatetime desc limit 1 ) as t2 )",
         "value": {
             "patient_id": 19103929

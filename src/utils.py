@@ -6,6 +6,12 @@ import errno
 import os
 import signal
 import functools
+import json
+import datetime
+
+
+import logging
+import json
 
 def _get_db_schema(db_path, tables=None, sample_rows_in_table_info=5):
     # Initialize the database connection
@@ -80,3 +86,55 @@ def timeout(seconds=10, error_message=os.strerror(errno.ETIME)):
         return wrapper
 
     return decorator
+
+
+class CustomJSONEncoder(json.JSONEncoder):
+    def default(self, obj):
+        # Handle generators
+        if hasattr(obj, '__iter__') and not isinstance(obj, (str, bytes, dict)):
+            return list(obj)
+        
+        # Handle datetime objects
+        if isinstance(obj, datetime.datetime):
+            return obj.isoformat()
+        
+        # Handle other non-serializable objects by converting to string
+        try:
+            return str(obj)
+        except Exception:
+            pass
+        
+        # Let the base class default method raise the TypeError
+        return json.JSONEncoder.default(self, obj)
+    
+    
+
+
+
+def configure_logging(state, log_name=None, log_filename=None):
+    configurable = state['configurable']
+    # check logger is already configured
+    if configurable.get('logger') is None:
+        # set up logger
+        if log_name is None:
+            log_name = 'default_logger'
+        if log_filename is None:
+            log_filename = 'default_log.log'
+        configurable['logger'] = {
+            'log_filename': log_filename,
+            'log_name': log_name 
+        }
+    log_name = configurable['logger']['log_name']
+    log_filename = configurable['logger']['log_filename']
+    logger = logging.getLogger(log_name)
+    logger.setLevel(logging.INFO)
+    # Create file handler which logs even debug messages
+    fh = logging.FileHandler(log_filename)
+    fh.setLevel(logging.INFO)
+    # Create formatter and add it to the handlers
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    fh.setFormatter(formatter)
+    # Add the handlers to logger
+    if not logger.hasHandlers():
+        logger.addHandler(fh)
+    return logger

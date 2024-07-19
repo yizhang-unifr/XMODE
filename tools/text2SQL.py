@@ -125,10 +125,10 @@ def _execute_sql_query(query: str, db_path: str, as_dict=True) -> Dict[str, Any]
             conn = sqlite3.connect(db_path)
             conn.row_factory = sqlite3.Row
             cur = conn.cursor()
-            print("SQL:",change_current_time(query))
+            # print("SQL:",change_current_time(query))
             cur.execute(change_current_time(query))
             results = [dict(row) for row in cur.fetchall()]
-            print("results of SQL",results)
+            # print("results of SQL",results)
         else:
             engine = create_engine(f'sqlite:///{db_path}')
             database = SQLDatabase(engine, sample_rows_in_table_info=0)

@@ -1,0 +1,43 @@
+"id": 1338,
+"question": "in the last study for patient 18916144 in 2103, can you find any tubes/lines in the right upper lung zone still absent compared to the previous study?",
+"answer": [
+    "chest port",
+    "chest tube",
+    "pigtail catheter",
+    "subclavian line"
+],
++++++++++++++++++++++++++++++++ ok
+
+ "id": 2496,
+"question": "in the last study for patient 19103929 this year, can you find any diseases in the right lower lung zone still absent compared to the previous study?",
+ "answer": [
+            "alveolar hemorrhage",
+            "copd/emphysema",
+            "fluid overload/heart failure",
+            "granulomatous disease",
+            "interstitial lung disease",
+            "lung cancer"
+    ],
+
+
+
++++++++++++++++++++++++++++++++ok
+"id": 893,
+"question": "compared to the previous study, does the first study for patient 13551252 on the first hospital visit reveal any diseases in the left costophrenic angle still absent?",
+"answer": [
+    "fluid overload/heart failure",
+    "lung cancer"
+],
+
+++++++++++++++++++++++++++++++++++ok
+
+"id": 578,
+"question": "in the last study for patient 10020740 in 2104, can you find any anatomical findings in the right chest wall still absent compared to the previous study?",
+"answer": [
+    "bone lesion",
+    "rib fracture",
+    "subcutaneous air"
+],
+
+
+++++++++++++++++++++++++++++++++++

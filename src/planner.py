@@ -13,7 +13,7 @@ from langchain_core.runnables import (
 )
 
 def create_planner(
-    llm: BaseChatModel, tools: Sequence[BaseTool], base_prompt: ChatPromptTemplate, database_schema:str
+    llm: BaseChatModel, tools: Sequence[BaseTool], base_prompt: ChatPromptTemplate, database_schema:str=None
 ):
     tool_descriptions = "\n".join(
         f"{i+1}. {tool.description}\n"
@@ -26,7 +26,7 @@ def create_planner(
         num_tools=len(tools)
         + 1,  # Add one because we're adding the join() tool at the end.
         tool_descriptions = tool_descriptions,
-        database_schema = database_schema,
+        #database_schema=database_schema,
     )
     replanner_prompt = base_prompt.partial(
         replan=' - You are given "Previous Plan" which is the plan that the previous agent created along with the execution results '
@@ -38,7 +38,7 @@ def create_planner(
         " - You must continue the task index from the end of the previous one. Do not repeat task indices.",
         num_tools=len(tools) + 1,
         tool_descriptions=tool_descriptions,
-        database_schema=database_schema,
+        #database_schema=database_schema,
     )
 
     def should_replan(state: list):
@@ -46,6 +46,7 @@ def create_planner(
         return isinstance(state[-1], SystemMessage)
 
     def wrap_messages(state: list):
+        # print("wrap_messages state:", state)
         return {"messages": state}
 
     def wrap_and_get_last_index(state: list):

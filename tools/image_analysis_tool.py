@@ -56,9 +56,9 @@ You must extract the relevant image_id and directly put them in code.
 def _get_study_id(data,db_path):
     try:
         where=[f"{k}='{v}'" for k,v in data.items() if v is not None]
-        print("where",where)
+        # print("where",where)
         query=f"SELECT study_id from TB_CXR where {' '.join(where)}"
-        print ("query where u dont have the study_id in origin",query)
+        # print ("query where u dont have the study_id in origin",query)
         import sqlite3
         conn = sqlite3.connect(db_path)
         conn.row_factory = sqlite3.Row
@@ -71,7 +71,7 @@ def _get_study_id(data,db_path):
 
 def _get_image_url(_d, db_path, current_path ='.'):
      
-    print("_d",_d)
+    # print("_d",_d)
     if 'image_id' not in _d and 'study_id' not in _d:
             _d =_get_study_id(_d, db_path)
             if _get_study_id(_d, db_path) is None:
@@ -157,7 +157,7 @@ def get_image_analysis_tools(llm: ChatOpenAI,db_path:str):
     ):
         chain_input = {"question": question}
         
-        print("context-first:", context,type(context))
+        # print("context-first:", context,type(context))
         if context :
             # if context_str.strip():
             #     context_str = _ADDITIONAL_CONTEXT_PROMPT.format(
@@ -175,29 +175,33 @@ def get_image_analysis_tools(llm: ChatOpenAI,db_path:str):
                 #     print("context-2", context)
                 context = ast.literal_eval(context[0])
             
-            print("context-2", context)
+            # print("context-2", context)
             
             if 'data' in context:
                 #["{'status': 'success', 'data': [{'studydatetime': '2105-09-06 18:18:18'}]}"]
                 context = context['data']
 
-            print("context-after:", context)
+            # print("context-after:", context)
             
             image_urls = [_get_image_url(ctx, db_path) for ctx in context]
+            # print("image_urls_1",image_urls)
+
             
             if isinstance(image_urls, ValueError):
                 chain_input["context"] = [SystemMessage(content=str(image_urls))]
             else:
-                print("image_urls",image_urls)
-                try:    
-                    images_encoded = [_load_image(url['image_url']) for url in image_urls[0]]
+                try:
+                    image_urls = [item[0] for item in image_urls]
+                    # print("image_urls_2",image_urls)
+                    images_encoded = [_load_image(url['image_url']) for url in image_urls]
                     _humMessage=[{"type": "image_url", "image_url":{"url":x,"detail": "low"}} for x in images_encoded]
-                    print("_humMessage",_humMessage)
+                    #print("_humMessage",_humMessage)
                     chain_input["image_info"] = [
                             HumanMessage(
                                 content=_humMessage
                             )
                         ]
+                        
                 except ValueError as e:
                      chain_input["context"] = [SystemMessage(content=str(e))]
                     

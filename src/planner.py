@@ -6,7 +6,7 @@ from langchain_core.messages import (
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnableBranch
 from langchain_core.tools import BaseTool
-from output_parser import LLMCompilerPlanParser
+from src.output_parser import LLMCompilerPlanParser
 from typing import  Sequence, List
 from langchain_core.runnables import (
     chain as as_runnable,

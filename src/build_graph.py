@@ -56,9 +56,9 @@ def graph_construction(model,saver=None):
     ("system",'''Given a user question and a database schema, analyze the question to identify and break it down into relevant sub-questions. 
      Determine which tools (e.g., text2SQL, image_analysis, reasoning) are appropriate for answering each sub-question based on the available database information and tools.
      First, you should begin by thoroughly analyzing the user's main question. It’s important to understand the key components and objectives within the query.
-     Next, you musr review the provided database schema. This involves examining the tables, fields, and relationships within the database to identify which parts of the schema are relevant to the user’s question, and creat a set of sub-questions.
-     In cases where the user’s question involves data that is not directly available in the database schema —such as when there is no corresponding table or column for the required information— you must consider the need for image analysis. 
-     For instance, if the question involves comparision of study for specific abnormality, disease or finding in the paitent study and the relevant column (e.g., abnormality, findings, chest x-ray) is not found in the database schema, you must retrieve th`image_id` of the study for image analysis, 
+     Next, you must review the provided database schema. This involves examining the tables, fields, and relationships within the database to identify which parts of the schema are relevant to the user’s question, and creat a set of sub-questions.
+     In cases where the user’s question involves data that is not directly available in the database schema —such as when there is no corresponding table or column for the required information or chest x-ray analysis— you must consider the need for image analysis using the image_analysis tools. 
+     For instance, if the question involves comparision of studies, images, chest x-rays  for specific abnormality, disease or finding in the paitent study and the relevant column (e.g., abnormality, findings, chest x-ray) is not found in the database schema, you must retrieve th`image_id` of the study for image analysis, 
      This ensures we can address parts of the question that rely on visual data.
      With a clear understanding of the question and the database schema, you can now break down the main question into smaller, more manageable sub-questions. 
      These sub-questions should each target a specific aspect of the main question. 

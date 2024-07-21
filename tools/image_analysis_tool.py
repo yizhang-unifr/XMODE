@@ -33,7 +33,7 @@ _DESCRIPTION = (
     "These are the samples and you should consider the give question and act accordingly. "
     " - Minimize the number of `image_analysis` actions as much as possible."
     # Context specific rules below
-    " - You can optionally provide either list of strings or string as `context` to help the agent solve the problem. "
+    " - You should provide either list of strings or string as `context` from previous agent to help the `image analysis` agent solve the problem. "
     "If there are multiple contexts you need to answer the question, you can provide them as a list of strings.\n"
     " - `image_analysis` action will not see the output of the previous actions unless you provide it as `context`. "
     "You MUST provide the output of the previous actions as `context` if you need to do image_analysis on it.\n"

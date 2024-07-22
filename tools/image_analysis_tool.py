@@ -219,4 +219,3 @@ def get_image_analysis_tools(llm: ChatOpenAI,db_path:str):
         func=image_analysis,
         description=_DESCRIPTION,
     )
-

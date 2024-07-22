@@ -1,0 +1,1400 @@
+[
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 5,
+        "question_zh_cn": "根据2105年对患者10284038的最新研究，心脏轮廓的宽度是否大于胸廓总宽度的一半？",
+		"question": "given the last study of patient 10284038 in 2105, is the cardiac silhouette's width larger than half of the total thorax width?",
+        "template": "given the last study of patient 10284038 in 2105, is the width of the cardiac silhouette wider than 1/2 of the thorax width?",
+        "query": "select func_vqa(\"is the cardiac silhouette's width larger than half of the total thorax width?\", t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 10284038 and strftime('%y',tb_cxr.studydatetime) = '2105' order by tb_cxr.studydatetime desc limit 1 ) ) as t1",
+        "value": {
+            "patient_id": 10284038
+        },
+        "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], is the width of the cardiac silhouette wider than 1/2 of the thorax width?",
+        "t_tag": [
+            "abs-year-in",
+            "",
+            "",
+            "exact-last",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [],
+            "category": [],
+            "attribute": []
+        },
+        "tag": "given the [time_filter_exact1:exact-last] study of patient {patient_id} [time_filter_global1:abs-year-in], is the width of the cardiac silhouette wider than 1/2 of the thorax width?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            0
+        ],
+        "answer":[
+            0
+        ],
+        "scope": "IMAGE-SINGLE-1",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 21,
+        "question_zh_cn":"根据今年对患者19243401的最新研究，您能确认是否存在解剖学发现或者疾病吗？",
+		"question": "given the last study of patient 19243401 this year, can you confirm the presence of either anatomical findings or diseases?",
+        "template": "given the last study of patient 19243401 this year, are there any anatomicalfinding or disease?",
+        "query": "select (func_vqa(\"can you confirm the presence of anatomical findings?\", t1.study_id)) or (func_vqa(\"can you confirm the presence of diseases?\", t1.study_id)) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 19243401 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') order by tb_cxr.studydatetime desc limit 1 ) ) as t1",
+        "value": {
+            "patient_id": 19243401
+        },
+        "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], are there any ${category_1} or ${category_2}?",
+        "t_tag": [
+            "rel-year-this",
+            "",
+            "",
+            "exact-last",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [],
+            "category": [
+                "anatomicalfinding",
+                "disease"
+            ],
+            "attribute": []
+        },
+        "tag": "given the [time_filter_exact1:exact-last] study of patient {patient_id} [time_filter_global1:rel-year-this], are there any anatomicalfinding or disease?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            1
+        ],
+        "answer":[
+            1
+        ],
+        "scope": "IMAGE-SINGLE-1",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 49,
+        "question_zh_cn":"根据病人15491652在2105年06月的最新研究，您能否确定在腹部或右侧胸壁有任何异常？",
+		"question": "given the last study of patient 15491652 in 06/2105, can you identify any abnormalities in the abdomen or right chest wall?",
+        "template": "given the last study of patient 15491652 in 06/2105, are there any abnormality in either the abdomen or the right chest wall?",
+        "query": "select (func_vqa(\"can you identify any abnormalities in the abdomen?\", t1.study_id)) or (func_vqa(\"can you identify any abnormalities in the right chest wall?\", t1.study_id)) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 15491652 and strftime('%y-%m',tb_cxr.studydatetime) = '2105-06' order by tb_cxr.studydatetime desc limit 1 ) ) as t1",
+        "value": {
+            "patient_id": 15491652
+        },
+        "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], are there any abnormality in either the ${object_1} or the ${object_2}?",
+        "t_tag": [
+            "abs-month-in",
+            "",
+            "",
+            "exact-last",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [
+                "abdomen",
+                "right chest wall"
+            ],
+            "category": [],
+            "attribute": []
+        },
+        "tag": "given the [time_filter_exact1:exact-last] study of patient {patient_id} [time_filter_global1:abs-month-in], are there any abnormality in either the abdomen or the right chest wall?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            1
+        ],
+        "answer":[
+            1
+        ],
+        "scope": "IMAGE-SINGLE-1",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 66,
+        "question_zh_cn":"在今年12月对19243401号患者进行的首次研究中，是否有关于腹部和右侧肺部的任何管/线被观察到了？",
+		"question": "have any tubes/lines related to both the abdomen and the right lung been noticed, given the first study of patient 19243401 on 12/this year?",
+        "template": "given the first study of patient 19243401 on 12/this year, are there any tubesandlines related to the abdomen and the right lung?",
+        "query": "select (func_vqa(\"have any tubes/lines related to the abdomen been noticed?\", t1.study_id)) and (func_vqa(\"have any tubes/lines related to the right lung been noticed?\", t1.study_id)) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 19243401 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') and strftime('%m',tb_cxr.studydatetime) = '12' order by tb_cxr.studydatetime asc limit 1 ) ) as t1",
+        "value": {
+            "patient_id": 19243401
+        },
+        "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], are there any ${category} related to the ${object_1} and the ${object_2}?",
+        "t_tag": [
+            "mix-month-this_year",
+            "",
+            "",
+            "exact-first",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [
+                "abdomen",
+                "right lung"
+            ],
+            "category": [
+                "tubesandlines"
+            ],
+            "attribute": []
+        },
+        "tag": "given the [time_filter_exact1:exact-first] study of patient {patient_id} [time_filter_global1:mix-month-this_year], are there any tubesandlines related to the abdomen and the right lung?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            0
+        ],
+        "answer":[
+            0
+        ],
+        "scope": "IMAGE-SINGLE-1",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 71,
+        "question_zh_cn":"根据研究号55277734，您能否找到气腔透明度或者空气吸入吗？",
+		"question": "given the study 55277734, can you find either airspace opacity or aspiration?",
+        "template": "given the study 55277734, is there either airspace opacity or aspiration?",
+        "query": "select (func_vqa(\"can you find airspace opacity?\", t1.study_id)) or (func_vqa(\"can you find aspiration?\", t1.study_id)) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 55277734 ) as t1",
+        "value": {
+            "study_id": 55277734
+        },
+        "q_tag": "given the study {study_id}, is there either ${attribute_1} or ${attribute_2}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [],
+            "category": [],
+            "attribute": [
+                "airspace opacity",
+                "aspiration"
+            ]
+        },
+        "tag": "given the study {study_id}, is there either airspace opacity or aspiration?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            0
+        ],
+        "answer":[
+            0
+        ],
+        "scope": "IMAGE-SINGLE-1",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 111,
+        "question_zh_cn":"根据患者号16015533的最新研究，请确定与任何解剖学发现相关的所有解剖部位。",
+		"question": "given the last study of patient 16015533, please identify all anatomical sites associated with any anatomical findings.",
+        "template": "given the last study of patient 16015533 , list all anatomical locations related to any anatomicalfinding.",
+        "query": "select func_vqa(\"please identify all anatomical sites associated with any anatomical findings.\", t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 16015533 order by tb_cxr.studydatetime desc limit 1 ) ) as t1",
+        "value": {
+            "patient_id": 16015533
+        },
+        "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], list all anatomical locations related to any ${category}.",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "exact-last",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [],
+            "category": [
+                "anatomicalfinding"
+            ],
+            "attribute": []
+        },
+        "tag": "given the [time_filter_exact1:exact-last] study of patient {patient_id} [time_filter_global1:null], list all anatomical locations related to any anatomicalfinding.",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            "左膈",
+            "右膈",
+            "右肺门结构",
+            "右下肺区"
+        ],
+        "answer":[
+            "left hemidiaphragm",
+            "right hemidiaphragm",
+            "right hilar structures",
+            "right lower lung zone"
+        ],
+        "scope": "IMAGE-SINGLE-1",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 163,
+        "question_zh_cn":"根据研究号57883509，请列举出所有检测到的异常。",
+		"question": "enumerate all detected abnormalities, given the study 57883509.",
+        "template": "given the study 57883509, list all abnormality.",
+        "query": "select func_vqa(\"enumerate all detected abnormalities.\", t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 57883509 ) as t1",
+        "value": {
+            "study_id": 57883509
+        },
+        "q_tag": "given the study {study_id}, list all abnormality.",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [],
+            "category": [],
+            "attribute": []
+        },
+        "tag": "given the study {study_id}, list all abnormality.",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            "心脏轮廓增大",
+            "线性/斑点性肺不张"
+        ],
+        "answer":[
+            "enlarged cardiac silhouette",
+            "linear/patchy atelectasis"
+        ],
+        "scope": "IMAGE-SINGLE-1",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 439,
+        "question_zh_cn":"给定研究59940756，请指定与任何解剖学发现相关的所有解剖位置。",
+		"question": "given the study 59940756, specify all anatomical locations associated with any anatomical findings.",
+        "template": "given the study 59940756, list all anatomical locations related to any anatomicalfinding.",
+        "query": "select func_vqa(\"specify all anatomical locations associated with any anatomical findings.\", t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 59940756 ) as t1",
+        "value": {
+            "study_id": 59940756
+        },
+        "q_tag": "given the study {study_id}, list all anatomical locations related to any ${category}.",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [],
+            "category": [
+                "anatomicalfinding"
+            ],
+            "attribute": []
+        },
+        "tag": "given the study {study_id}, list all anatomical locations related to any anatomicalfinding.",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            "主动脉弓",
+            "心脏轮廓",
+            "左侧肺门结构",
+            "左肺",
+            "纵隔",
+            "右侧肺门结构",
+            "右肺",
+            "上纵隔"
+        ],
+        "answer":[
+            "aortic arch",
+            "cardiac silhouette",
+            "left hilar structures",
+            "left lung",
+            "mediastinum",
+            "right hilar structures",
+            "right lung",
+            "upper mediastinum"
+        ],
+        "scope": "IMAGE-SINGLE-1",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 460,
+        "question_zh_cn":"根据患者18386349的最新研究，血管钙化与哪个解剖区域相关，纵隔还是上纵隔？",
+		"question": "given the last study of patient 18386349, which anatomical area is associated with vascular calcification, the mediastinum or the upper mediastinum?",
+        "template": "given the last study of patient 18386349 , which anatomical location is related to vascular calcification, the mediastinum or the upper mediastinum?",
+        "query": "select func_vqa(\"which anatomical area is associated with vascular calcification, the mediastinum or the upper mediastinum?\", t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 18386349 order by tb_cxr.studydatetime desc limit 1 ) ) as t1",
+        "value": {
+            "patient_id": 18386349
+        },
+        "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], which anatomical location is related to ${attribute}, the ${object_1} or the ${object_2}?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "exact-last",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [
+                "mediastinum",
+                "upper mediastinum"
+            ],
+            "category": [],
+            "attribute": [
+                "vascular calcification"
+            ]
+        },
+        "tag": "given the [time_filter_exact1:exact-last] study of patient {patient_id} [time_filter_global1:null], which anatomical location is related to vascular calcification, the mediastinum or the upper mediastinum?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            "纵隔",
+            "上纵隔"
+        ],
+        "answer":[
+            "mediastinum",
+            "upper mediastinum"
+        ],
+        "scope": "IMAGE-SINGLE-1",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 518,
+        "question_zh_cn":"根据研究号50078800，请概述所有观察到的异常。",
+		"question": "given the study 50078800, outline all the observed abnormalities.",
+        "template": "given the study 50078800, list all abnormality.",
+        "query": "select func_vqa(\"outline all the observed abnormalities.\", t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 50078800 ) as t1",
+        "value": {
+            "study_id": 50078800
+        },
+        "q_tag": "given the study {study_id}, list all abnormality.",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [],
+            "category": [],
+            "attribute": []
+        },
+        "tag": "given the study {study_id}, list all abnormality.",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            "胃管",
+            "气管内导管"
+        ],
+        "answer":[
+            "enteric tube",
+            "endotracheal tube"
+        ],
+        "scope": "IMAGE-SINGLE-1",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 10,
+        "question_zh_cn":"与研究号54711520相比，研究号57179088中是否仍然存在心脏起搏器和导线？",
+		"question": "compared to the 54711520 study, are there cardiac pacer and wires still present in the 57179088 study?",
+        "template": "given the 57179088 study, is cardiac pacer and wires still present compared to the 54711520 study?",
+        "query": "select ( select (func_vqa(\"are there cardiac pacer and wires?\", t1.study_id) = true) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 57179088 ) as t1 ) and ( select (func_vqa(\"are there cardiac pacer and wires?\", t2.study_id) = true) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 54711520 ) as t2 )",
+        "value": {
+            "study_id1": 57179088,
+            "study_id2": 54711520
+        },
+        "q_tag": "given the {study_id1} study, is ${attribute} ${comparison} compared to the {study_id2} study?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [],
+            "category": [],
+            "attribute": [
+                "cardiac pacer and wires"
+            ],
+            "comparison": [
+                "still present"
+            ]
+        },
+        "tag": "given the {study_id1} study, is cardiac pacer and wires still present compared to the {study_id2} study?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            1
+        ],
+        "answer":[
+            1
+        ],
+        "scope": "IMAGE-SINGLE-2",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 13,
+        "question_zh_cn":"与上次研究相比，在55949143号研究中是否仍然没有任何异常的证据？",
+		"question": "is there any evidence of abnormalities still absent in the 55949143 study compared to the last study?",
+        "template": "given the 55949143 study, are there any abnormality that are still no compared to the previous study?",
+        "query": "select ( select (func_vqa(\"is there any evidence of abnormality?\", t1.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id = 55949143 ) as t1 ) and ( select (func_vqa(\"is there any evidence of abnormality?\", t2.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = ( select distinct tb_cxr.subject_id from tb_cxr where tb_cxr.study_id = 55949143 ) and tb_cxr.studydatetime < ( select tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id = 55949143 ) order by tb_cxr.studydatetime desc limit 1 ) as t2 )",
+        "value": {
+            "study_id1": 55949143,
+            "patient_id": 11636169
+        },
+        "q_tag": "given the {study_id1} study, are there any abnormality that are ${comparison} compared to the previous study?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [],
+            "category": [],
+            "attribute": [],
+            "comparison": [
+                "still absent"
+            ]
+        },
+        "tag": "given the {study_id1} study, are there any abnormality that are still no compared to the previous study?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            0
+        ],
+        "answer":[
+            0
+        ],
+        "scope": "IMAGE-SINGLE-2",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 39,
+        "question_zh_cn":"与早期研究相比，患者号12716528在2103年的最新研究结果是否表明，仍然存在任何技术评估不足？",
+		"question": "do the last study findings of patient 12716528 in 2103 indicate any technical assessments still absent, compared to the earlier study?",
+        "template": "given the last study of patient 12716528 in 2103, are there any technicalassessment that are still no compared to the previous study?",
+        "query": "select ( select (func_vqa(\"do the findings indicate any technical assessments?\", t1.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 12716528 and strftime('%y',tb_cxr.studydatetime) = '2103' order by tb_cxr.studydatetime desc limit 1 ) ) as t1 ) and ( select (func_vqa(\"do the findings indicate any technical assessments?\", t2.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 12716528 and tb_cxr.studydatetime < ( select distinct tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 12716528 and strftime('%y',tb_cxr.studydatetime) = '2103' order by tb_cxr.studydatetime desc limit 1 ) ) ) order by tb_cxr.studydatetime desc limit 1 ) as t2 )",
+        "value": {
+            "patient_id": 12716528
+        },
+        "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], are there any ${category} that are ${comparison} compared to the previous study?",
+        "t_tag": [
+            "abs-year-in",
+            "",
+            "",
+            "exact-last",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [],
+            "category": [
+                "technicalassessment"
+            ],
+            "attribute": [],
+            "comparison": [
+                "still absent"
+            ]
+        },
+        "tag": "given the [time_filter_exact1:exact-last] study of patient {patient_id} [time_filter_global1:abs-year-in], are there any technicalassessment that are still no compared to the previous study?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            1
+        ],
+        "answer":[
+            1
+        ],
+        "scope": "IMAGE-SINGLE-2",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 76,
+        "question_zh_cn":"与上一次的研究相比，今年针对17281190号患者的最新研究是否显示其左中肺区仍然保持无异常？",
+		"question": "compared to the previous study, does the last study for patient 17281190 this year reveal any abnormalities in the left mid lung zone still absent?",
+        "template": "given the last study of patient 17281190 this year, are there any abnormality that are still no in the left mid lung zone compared to the previous study?",
+        "query": "select ( select (func_vqa(\"does the left mid lung zone reveal any abnormality?\", t1.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 17281190 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') order by tb_cxr.studydatetime desc limit 1 ) ) as t1 ) and ( select (func_vqa(\"does the left mid lung zone reveal any abnormality?\", t2.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 17281190 and tb_cxr.studydatetime < ( select distinct tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 17281190 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') order by tb_cxr.studydatetime desc limit 1 ) ) ) order by tb_cxr.studydatetime desc limit 1 ) as t2 )",
+        "value": {
+            "patient_id": 17281190
+        },
+        "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], are there any abnormality that are ${comparison} in the ${object} compared to the previous study?",
+        "t_tag": [
+            "rel-year-this",
+            "",
+            "",
+            "exact-last",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [
+                "left mid lung zone"
+            ],
+            "category": [],
+            "attribute": [],
+            "comparison": [
+                "still absent"
+            ]
+        },
+        "tag": "given the [time_filter_exact1:exact-last] study of patient {patient_id} [time_filter_global1:rel-year-this], are there any abnormality that are still no in the left mid lung zone compared to the previous study?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            1
+        ],
+        "answer":[
+            1
+        ],
+        "scope": "IMAGE-SINGLE-2",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 106,
+        "question_zh_cn":"今年第二次对16345504号患者的研究显示，与今年首次研究相比，右肺仍存在积液过多/心力衰竭吗？",
+		"question": "does the second to last study of patient 16345504 this year reveal still present fluid overload/heart failure in the right lung compared to the first study this year?",
+        "template": "given the second to last study of patient 16345504 this year, is fluid overload/heart failure still present in the right lung compared to the first study of patient 16345504 this year?",
+        "query": "select ( select (func_vqa(\"does the right lung reveal fluid overload/heart failure?\", t1.study_id) = true) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 16345504 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') order by tb_cxr.studydatetime desc limit 1 offset 1 ) ) as t1 ) and ( select (func_vqa(\"does the right lung reveal fluid overload/heart failure?\", t2.study_id) = true) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 16345504 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') order by tb_cxr.studydatetime asc limit 1 ) ) as t2 )",
+        "value": {
+            "patient_id": 16345504
+        },
+        "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], is ${attribute} ${comparison} in the ${object} compared to the [time_filter_exact2] study of patient {patient_id} [time_filter_global2]?",
+        "t_tag": [
+            "rel-year-this",
+            "rel-year-this",
+            "",
+            "exact-second_to_last",
+            "exact-first"
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [
+                "right lung"
+            ],
+            "category": [],
+            "attribute": [
+                "fluid overload/heart failure"
+            ],
+            "comparison": [
+                "still present"
+            ]
+        },
+        "tag": "given the [time_filter_exact1:exact-second_to_last] study of patient {patient_id} [time_filter_global1:rel-year-this], is fluid overload/heart failure still present in the right lung compared to the [time_filter_exact2:exact-first] study of patient {patient_id} [time_filter_global2:rel-year-this]?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            0
+        ],
+        "answer":[
+            0
+        ],
+        "scope": "IMAGE-SINGLE-2",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 256,
+        "question_zh_cn":"根据对16476036号患者最后一次医院就诊时进行的第一次研究，与前一次研究相比，列举依旧存在的与任何技术评估相关的所有解剖位置。",
+		"question": "enumerate all anatomical locations related to any technical assessments that are still present based on the first study of patient 16476036 on the last hospital visit compared to the previous study.",
+        "template": "given the first study of patient 16476036 on the last hospital visit, list all anatomical locations related to any technicalassessment that are still present compared to the previous study.",
+        "query": "select func_vqa(\"enumerate all anatomical locations related to any technical assessments.\", t1.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 16476036 and admissions.dischtime is not null order by admissions.admittime desc limit 1 ) order by tb_cxr.studydatetime asc limit 1 ) ) as t1 intersect select func_vqa(\"enumerate all anatomical locations related to any technical assessments.\", t2.study_id) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 16476036 and tb_cxr.studydatetime < ( select distinct tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 16476036 and admissions.dischtime is not null order by admissions.admittime desc limit 1 ) order by tb_cxr.studydatetime asc limit 1 ) ) order by tb_cxr.studydatetime desc limit 1 ) as t2",
+        "value": {
+            "patient_id": 16476036
+        },
+        "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], list all anatomical locations related to any ${category} that are ${comparison} compared to the previous study?",
+        "t_tag": [
+            "rel-hosp-last",
+            "",
+            "",
+            "exact-first",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [],
+            "category": [
+                "technicalassessment"
+            ],
+            "attribute": [],
+            "comparison": [
+                "still present"
+            ]
+        },
+        "tag": "given the [time_filter_exact1:exact-first] study of patient {patient_id} [time_filter_global1:rel-hosp-last], list all anatomical locations related to any technicalassessment that are still present compared to the previous study.",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            "左肺",
+            "右肺"
+        ],
+        "answer":[
+            "left lung",
+            "right lung"
+        ],
+        "scope": "IMAGE-SINGLE-2",
+        "tables": [
+            "tb_cxr",
+            "admissions"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 578,
+        "question_zh_cn":"在上一次对患者号10020740进行的2104年研究中，列出右侧胸壁与之前研究相比仍然缺失的任何解剖学发现？",
+		"question": "in the last study for patient 10020740 in 2104, list any anatomical findings in the right chest wall still absent compared to the previous study?",
+        "template": "given the last study of patient 10020740 in 2104, list any anatomical finding that are still absent in the right chest wall compared to the previous study?",
+        "query": "select ( select (func_vqa(\"can you find any anatomical findings in the right chest wall?\", t1.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 10020740 and strftime('%y',tb_cxr.studydatetime) = '2104' order by tb_cxr.studydatetime desc limit 1 ) ) as t1 ) and ( select (func_vqa(\"can you find any anatomical findings in the right chest wall?\", t2.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 10020740 and tb_cxr.studydatetime < ( select distinct tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 10020740 and strftime('%y',tb_cxr.studydatetime) = '2104' order by tb_cxr.studydatetime desc limit 1 ) ) ) order by tb_cxr.studydatetime desc limit 1 ) as t2 )",
+        "value": {
+            "patient_id": 10020740
+        },
+        "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], are there any ${category} that are ${comparison} in the ${object} compared to the previous study?",
+        "t_tag": [
+            "abs-year-in",
+            "",
+            "",
+            "exact-last",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [
+                "right chest wall"
+            ],
+            "category": [
+                "anatomicalfinding"
+            ],
+            "attribute": [],
+            "comparison": [
+                "still absent"
+            ]
+        },
+        "tag": "given the [time_filter_exact1:exact-last] study of patient {patient_id} [time_filter_global1:abs-year-in], are there any anatomicalfinding that are still no in the right chest wall compared to the previous study?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            "骨病变",
+            "肋骨骨折",
+            "皮下空气"
+        ],
+        "answer":[
+            "bone lesion",
+            "rib fracture",
+            "subcutaneous air"
+        ],
+        "scope": "IMAGE-SINGLE-2",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 893,
+        "question_zh_cn":"与先前的研究相比，患者编号13551252在第一次就诊时的首次研究是否显示左侧肋膈角仍然无任何疾病？如果有，请列出！",
+		"question": "compared to the previous study, does the first study for patient 13551252 on the first hospital visit reveal any diseases in the left costophrenic angle still absent? if yes, list them!",
+        "template": "given the first study of patient 13551252 on the first hospital visit, list any disease that are still absent in the left costophrenic angle compared to the previous study?",
+        "query": "select ( select (func_vqa(\"does the left costophrenic angle reveal any diseases?\", t1.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 13551252 and admissions.dischtime is not null order by admissions.admittime asc limit 1 ) order by tb_cxr.studydatetime asc limit 1 ) ) as t1 ) and ( select (func_vqa(\"does the left costophrenic angle reveal any diseases?\", t2.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 13551252 and tb_cxr.studydatetime < ( select distinct tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 13551252 and admissions.dischtime is not null order by admissions.admittime asc limit 1 ) order by tb_cxr.studydatetime asc limit 1 ) ) ) order by tb_cxr.studydatetime desc limit 1 ) as t2 )",
+        "value": {
+            "patient_id": 13551252
+        },
+        "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], are there any ${category} that are ${comparison} in the ${object} compared to the previous study?",
+        "t_tag": [
+            "rel-hosp-first",
+            "",
+            "",
+            "exact-first",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [
+                "left costophrenic angle"
+            ],
+            "category": [
+                "disease"
+            ],
+            "attribute": [],
+            "comparison": [
+                "still absent"
+            ]
+        },
+        "tag": "given the [time_filter_exact1:exact-first] study of patient {patient_id} [time_filter_global1:rel-hosp-first], are there any disease that are still no in the left costophrenic angle compared to the previous study?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            "积液过多/心力衰竭",
+            "肺癌"
+        ],
+        "answer":[
+            "fluid overload/heart failure",
+            "lung cancer"
+        ],
+        "scope": "IMAGE-SINGLE-2",
+        "tables": [
+            "tb_cxr",
+            "admissions"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 1338,
+        "question_zh_cn":"在2103年对患者18916144进行的最后一次检查中，与上次检查相比，请列出您是否发现右上肺区的任何仍然缺失的管/线。",
+		"question": "in the last study for patient 18916144 in 2103, list if you find any tubes/lines in the right upper lung zone still absent compared to the previous study.",
+        "template": "given the last study of patient 18916144 in 2103, are there any tubesandlines that are still no in the right upper lung zone compared to the previous study? if Yes list them",
+        "query": "select ( select (func_vqa(\"can you find any tubes/lines in the right upper lung zone?\", t1.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 18916144 and strftime('%y',tb_cxr.studydatetime) = '2103' order by tb_cxr.studydatetime desc limit 1 ) ) as t1 ) and ( select (func_vqa(\"can you find any tubes/lines in the right upper lung zone?\", t2.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 18916144 and tb_cxr.studydatetime < ( select distinct tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 18916144 and strftime('%y',tb_cxr.studydatetime) = '2103' order by tb_cxr.studydatetime desc limit 1 ) ) ) order by tb_cxr.studydatetime desc limit 1 ) as t2 )",
+        "value": {
+            "patient_id": 18916144
+        },
+        "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], are there any ${category} that are ${comparison} in the ${object} compared to the previous study?",
+        "t_tag": [
+            "abs-year-in",
+            "",
+            "",
+            "exact-last",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [
+                "right upper lung zone"
+            ],
+            "category": [
+                "tubesandlines"
+            ],
+            "attribute": [],
+            "comparison": [
+                "still absent"
+            ]
+        },
+        "tag": "given the [time_filter_exact1:exact-last] study of patient {patient_id} [time_filter_global1:abs-year-in], are there any tubesandlines that are still no in the right upper lung zone compared to the previous study?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            "胸部内置式输液塞",
+            "胸腔管",
+            "猪尾巴导管",
+            "锁骨下线"
+            
+        ],
+        "answer":[
+            "chest port",
+            "chest tube",
+            "pigtail catheter",
+            "subclavian line"
+        ],
+        "scope": "IMAGE-SINGLE-2",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 2496,
+        "question_zh_cn":"在今年对患者19103929的最新研究中，请列出右下肺区是否与上次研究相比仍未发现的任何疾病。",
+		"question": "in the last study for patient 19103929 this year, list if you find any diseases in the right lower lung zone still absent compared to the previous study.",
+        "template": "given the last study of patient 19103929 this year, are there any disease that are still no in the right lower lung zone compared to the previous study? if Yes list them",
+        "query": "select ( select (func_vqa(\"can you find any diseases in the right lower lung zone?\", t1.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 19103929 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') order by tb_cxr.studydatetime desc limit 1 ) ) as t1 ) and ( select (func_vqa(\"can you find any diseases in the right lower lung zone?\", t2.study_id) = false) from ( select tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 19103929 and tb_cxr.studydatetime < ( select distinct tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 19103929 and datetime(tb_cxr.studydatetime,'start of year') = datetime(current_time,'start of year','-0 year') order by tb_cxr.studydatetime desc limit 1 ) ) ) order by tb_cxr.studydatetime desc limit 1 ) as t2 )",
+        "value": {
+            "patient_id": 19103929
+        },
+        "q_tag": "given the [time_filter_exact1] study of patient {patient_id} [time_filter_global1], are there any ${category} that are ${comparison} in the ${object} compared to the previous study?",
+        "t_tag": [
+            "rel-year-this",
+            "",
+            "",
+            "exact-last",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [
+                "right lower lung zone"
+            ],
+            "category": [
+                "disease"
+            ],
+            "attribute": [],
+            "comparison": [
+                "still absent"
+            ]
+        },
+        "tag": "given the [time_filter_exact1:exact-last] study of patient {patient_id} [time_filter_global1:rel-year-this], are there any disease that are still no in the right lower lung zone compared to the previous study?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            "肺泡出血",
+            "慢性阻塞性肺疾病/肺气肿",
+            "积液过多/心力衰竭",
+            "肉芽肿性疾病",
+            "间质性肺疾病"
+        ],
+        "answer":[
+            "alveolar hemorrhage",
+            "copd/emphysema",
+            "fluid overload/heart failure",
+            "granulomatous disease",
+            "interstitial lung disease",
+            "lung cancer"
+        ],
+        "scope": "IMAGE-SINGLE-2",
+        "tables": [
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 1,
+        "question_zh_cn":"患者12724975在一年前被诊断为低氧血症，在同期胸部X光检查中，是否显示腹部有任何管/线？",
+		"question": "was patient 12724975 diagnosed with hypoxemia until 1 year ago and did a chest x-ray reveal any tubes/lines in the abdomen during the same period?",
+        "template": "has patient 12724975 been diagnosed with hypoxemia until 1 year ago and also had a chest x-ray study indicating any tubesandlines in the abdomen within the same period?",
+        "query": "select ( select count(*)>0 from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'hypoxemia' ) and diagnoses_icd.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 12724975 ) and datetime(diagnoses_icd.charttime) <= datetime(current_time,'-1 year') ) and ( select count(distinct t1.study_id) > 0 from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 12724975 and datetime(tb_cxr.studydatetime) <= datetime(current_time,'-1 year') ) ) as t1 where func_vqa(\"does a chest x-ray reveal any tubes/lines in the abdomen?\", t1.study_id) = true )",
+        "value": {
+            "patient_id": 12724975,
+            "diagnosis_name": "hypoxemia"
+        },
+        "q_tag": "has_verb patient {patient_id} been diagnosed with {diagnosis_name} [time_filter_global1] and also had a chest x-ray study indicating any ${category} in the ${object} within the same period?",
+        "t_tag": [
+            "rel-year-until",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [
+                "abdomen"
+            ],
+            "category": [
+                "tubesandlines"
+            ],
+            "attribute": []
+        },
+        "tag": "has_verb patient {patient_id} been diagnosed with {diagnosis_name} [time_filter_global1:rel-year-until] and also had a chest x-ray study indicating any tubesandlines in the abdomen within the same period?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            1
+        ],
+        "answer":[
+            1
+        ],
+        "scope": "MULTIMODAL-SINGLE",
+        "tables": [
+            "diagnoses_icd",
+            "d_icd_diagnoses",
+            "admissions",
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 6,
+        "question_zh_cn":"10762986号患者自2103年被诊断出患有直肠、直肠乙状结肠交界处和肛门恶性肿瘤的个人病史后，是否在同一个月内进行过的胸部X光检查中显示左肋膈角异常？",
+		"question": "did patient 10762986 have a chest x-ray showing any abnormalities in the left costophrenic angle within the same month after being diagnosed with personal history of malignant neoplasm of rectum, rectosigmoid junction, and anus since 2103?",
+        "template": "has patient 10762986 had a chest x-ray study indicating any abnormality in the left costophrenic angle within the same month after having been diagnosed with personal history of malignant neoplasm of rectum, rectosigmoid junction, and anus since 2103?",
+        "query": "select count(*)>0 from ( select diagnoses_icd.charttime from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'personal history of malignant neoplasm of rectum, rectosigmoid junction, and anus' ) and diagnoses_icd.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 10762986 ) and strftime('%y',diagnoses_icd.charttime) >= '2103' ) as t1 join ( select tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select distinct t2.study_id from ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 10762986 and strftime('%y',tb_cxr.studydatetime) >= '2103' ) ) as t2 where func_vqa(\"is any abnormality shown in the left costophrenic angle on a chest x-ray?\", t2.study_id) = true ) ) as t3 where t1.charttime < t3.studydatetime and datetime(t1.charttime,'start of month') = datetime(t3.studydatetime,'start of month')",
+        "value": {
+            "patient_id": 10762986,
+            "diagnosis_name": "personal history of malignant neoplasm of rectum, rectosigmoid junction, and anus"
+        },
+        "q_tag": "has_verb patient {patient_id} had a chest x-ray study indicating any abnormality in the ${object} [time_filter_within] after having been diagnosed with {diagnosis_name} [time_filter_global1]?",
+        "t_tag": [
+            "abs-year-since",
+            "",
+            "within-month",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [
+                "left costophrenic angle"
+            ],
+            "category": [],
+            "attribute": []
+        },
+        "tag": "has_verb patient {patient_id} had a chest x-ray study indicating any abnormality in the left costophrenic angle [time_filter_within:within-month] after having been diagnosed with {diagnosis_name} [time_filter_global1:abs-year-since]?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            1
+        ],
+        "answer":[
+            1
+        ],
+        "scope": "MULTIMODAL-SINGLE",
+        "tables": [
+            "diagnoses_icd",
+            "d_icd_diagnoses",
+            "admissions",
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 11,
+        "question_zh_cn":"病人10405915在2年前被诊断为不明原因的胸腔积液后的同一个月内进行了胸部X光检查。该检查是否显示左侧半膈有任何异常吗？",
+		"question": "did patient 10405915 have a chest x-ray showing any abnormalities in the left hemidiaphragm within the same month after being diagnosed with unspecified pleural effusion since 2 year ago?",
+        "template": "has patient 10405915 had a chest x-ray study indicating any abnormality in the left hemidiaphragm within the same month after having been diagnosed with unspecified pleural effusion since 2 year ago?",
+        "query": "select count(*)>0 from ( select diagnoses_icd.charttime from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'unspecified pleural effusion' ) and diagnoses_icd.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 10405915 ) and datetime(diagnoses_icd.charttime) >= datetime(current_time,'-2 year') ) as t1 join ( select tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select distinct t2.study_id from ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 10405915 and datetime(tb_cxr.studydatetime) >= datetime(current_time,'-2 year') ) ) as t2 where func_vqa(\"is any abnormality shown in the left hemidiaphragm on a chest x-ray?\", t2.study_id) = true ) ) as t3 where t1.charttime < t3.studydatetime and datetime(t1.charttime,'start of month') = datetime(t3.studydatetime,'start of month')",
+        "value": {
+            "patient_id": 10405915,
+            "diagnosis_name": "unspecified pleural effusion"
+        },
+        "q_tag": "has_verb patient {patient_id} had a chest x-ray study indicating any abnormality in the ${object} [time_filter_within] after having been diagnosed with {diagnosis_name} [time_filter_global1]?",
+        "t_tag": [
+            "rel-year-since",
+            "",
+            "within-month",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [
+                "left hemidiaphragm"
+            ],
+            "category": [],
+            "attribute": []
+        },
+        "tag": "has_verb patient {patient_id} had a chest x-ray study indicating any abnormality in the left hemidiaphragm [time_filter_within:within-month] after having been diagnosed with {diagnosis_name} [time_filter_global1:rel-year-since]?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            0
+        ],
+        "answer":[
+            0
+        ],
+        "scope": "MULTIMODAL-SINGLE",
+        "tables": [
+            "diagnoses_icd",
+            "d_icd_diagnoses",
+            "admissions",
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 12,
+        "question_zh_cn":"自2105年以来，11320106号患者是否接受过任何手术，并且在胸部X光片上右中肺区是否可见囊肿/气囊？",
+		"question": "since 2105, did patient 11320106 undergo any procedure, and was cyst/bullae visible in the right mid lung zone on a chest x-ray?",
+        "template": "has patient 11320106 received any procedure since 2105 and also had a chest x-ray study indicating cyst/bullae in the right mid lung zone within the same period?",
+        "query": "select ( select count(*)>0 from procedures_icd where procedures_icd.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 11320106 ) and strftime('%y',procedures_icd.charttime) >= '2105' ) and ( select count(distinct t1.study_id) > 0 from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 11320106 and strftime('%y',tb_cxr.studydatetime) >= '2105' ) ) as t1 where func_vqa(\"is cyst/bullae visible in the right mid lung zone on a chest x-ray?\", t1.study_id) = true )",
+        "value": {
+            "patient_id": 11320106
+        },
+        "q_tag": "has_verb patient {patient_id} received any procedure [time_filter_global1] and also had a chest x-ray study indicating ${attribute} in the ${object} within the same period?",
+        "t_tag": [
+            "abs-year-since",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [
+                "right mid lung zone"
+            ],
+            "category": [],
+            "attribute": [
+                "cyst/bullae"
+            ]
+        },
+        "tag": "has_verb patient {patient_id} received any procedure [time_filter_global1:abs-year-since] and also had a chest x-ray study indicating cyst/bullae in the right mid lung zone within the same period?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            0
+        ],
+        "answer":[
+            0
+        ],
+        "scope": "MULTIMODAL-SINGLE",
+        "tables": [
+            "procedures_icd",
+            "admissions",
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 16,
+        "question_zh_cn":"患者18855412在9个月前因吸入食物和呕吐被诊断为肺炎。在其2天内在胸部X光检查中是否显示任何装置？",
+		"question": "was patient 18855412 diagnosed with pneumonitis due to inhalation of food and vomit within 2 day following a chest x-ray showing any devices since 9 month ago?",
+        "template": "has patient 18855412 been diagnosed with pneumonitis due to inhalation of food and vomit within 2 day after having had a chest x-ray study indicating any device since 9 month ago?",
+        "query": "select count(*)>0 from ( select tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select distinct t2.study_id from ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 18855412 and datetime(tb_cxr.studydatetime) >= datetime(current_time,'-9 month') ) ) as t2 where func_vqa(\"does a chest x-ray show any devices?\", t2.study_id) = true ) ) as t1 join ( select diagnoses_icd.charttime from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'pneumonitis due to inhalation of food and vomit' ) and diagnoses_icd.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 18855412 ) and datetime(diagnoses_icd.charttime) >= datetime(current_time,'-9 month') ) as t3 where t1.studydatetime < t3.charttime and ( datetime(t3.charttime) between datetime(t1.studydatetime) and datetime(t1.studydatetime,'+2 day') ) or ( datetime(t1.studydatetime) between datetime(t3.charttime) and datetime(t3.charttime,'+2 day') )",
+        "value": {
+            "diagnosis_name": "pneumonitis due to inhalation of food and vomit",
+            "patient_id": 18855412
+        },
+        "q_tag": "has_verb patient {patient_id} been diagnosed with {diagnosis_name} [time_filter_within] after having had a chest x-ray study indicating any ${category} [time_filter_global1] ?",
+        "t_tag": [
+            "rel-month-since",
+            "",
+            "within-n_day",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [],
+            "category": [
+                "device"
+            ],
+            "attribute": []
+        },
+        "tag": "has_verb patient {patient_id} been diagnosed with {diagnosis_name} [time_filter_within:within-n_day] after having had a chest x-ray study indicating any device [time_filter_global1:rel-month-since] ?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            1
+        ],
+        "answer":[
+            1
+        ],
+        "scope": "MULTIMODAL-SINGLE",
+        "tables": [
+            "tb_cxr",
+            "diagnoses_icd",
+            "d_icd_diagnoses",
+            "admissions"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 25,
+        "question_zh_cn":"11218589号患者在2012年5月诊断出其他慢性肺心疾病后的2天内进行了胸部X光检查。该检查是否显示有任何技术评估吗？",
+		"question": "did patient 11218589 have a chest x-ray within 2 day after the diagnosis of other chronic pulmonary heart diseasess in 05/2102 that showed any technical assessments?",
+        "template": "has patient 11218589 had a chest x-ray study indicating any technicalassessment within 2 day after having been diagnosed with other chronic pulmonary heart diseases in 05/2102?",
+        "query": "select count(*)>0 from ( select diagnoses_icd.charttime from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'other chronic pulmonary heart diseases' ) and diagnoses_icd.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 11218589 ) and strftime('%y-%m',diagnoses_icd.charttime) = '2102-05' ) as t1 join ( select tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select distinct t2.study_id from ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 11218589 and strftime('%y-%m',tb_cxr.studydatetime) = '2102-05' ) ) as t2 where func_vqa(\"does a chest x-ray show any technical assessments?\", t2.study_id) = true ) ) as t3 where t1.charttime < t3.studydatetime and ( datetime(t3.studydatetime) between datetime(t1.charttime) and datetime(t1.charttime,'+2 day') ) or ( datetime(t1.charttime) between datetime(t3.studydatetime) and datetime(t3.studydatetime,'+2 day') )",
+        "value": {
+            "diagnosis_name": "other chronic pulmonary heart diseases",
+            "patient_id": 11218589
+        },
+        "q_tag": "has_verb patient {patient_id} had a chest x-ray study indicating any ${category} [time_filter_within] after having been diagnosed with {diagnosis_name} [time_filter_global1]?",
+        "t_tag": [
+            "abs-month-in",
+            "",
+            "within-n_day",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [],
+            "category": [
+                "technicalassessment"
+            ],
+            "attribute": []
+        },
+        "tag": "has_verb patient {patient_id} had a chest x-ray study indicating any technicalassessment [time_filter_within:within-n_day] after having been diagnosed with {diagnosis_name} [time_filter_global1:abs-month-in]?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            0
+        ],
+        "answer":[
+            0
+        ],
+        "scope": "MULTIMODAL-SINGLE",
+        "tables": [
+            "diagnoses_icd",
+            "d_icd_diagnoses",
+            "admissions",
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 32,
+        "question_zh_cn":"2100年以前，17466107号患者在胸部X光检查显示任何疾病后的同一个月内是否被诊断为镁代谢紊乱？",
+		"question": "did patient 17466107 receive a diagnosis of disorders of magnesium metabolism within the same month after a chest x-ray study revealed any diseases until 2100?",
+        "template": "has patient 17466107 been diagnosed with disorders of magnesium metabolism within the same month after having had a chest x-ray study indicating any disease until 2100?",
+        "query": "select count(*)>0 from ( select tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select distinct t2.study_id from ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 17466107 and strftime('%y',tb_cxr.studydatetime) <= '2100' ) ) as t2 where func_vqa(\"does a chest x-ray reveal any diseases?\", t2.study_id) = true ) ) as t1 join ( select diagnoses_icd.charttime from diagnoses_icd where diagnoses_icd.icd_code = ( select d_icd_diagnoses.icd_code from d_icd_diagnoses where d_icd_diagnoses.long_title = 'disorders of magnesium metabolism' ) and diagnoses_icd.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 17466107 ) and strftime('%y',diagnoses_icd.charttime) <= '2100' ) as t3 where t1.studydatetime < t3.charttime and datetime(t1.studydatetime,'start of month') = datetime(t3.charttime,'start of month')",
+        "value": {
+            "diagnosis_name": "disorders of magnesium metabolism",
+            "patient_id": 17466107
+        },
+        "q_tag": "has_verb patient {patient_id} been diagnosed with {diagnosis_name} [time_filter_within] after having had a chest x-ray study indicating any ${category} [time_filter_global1] ?",
+        "t_tag": [
+            "abs-year-until",
+            "",
+            "within-month",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [],
+            "category": [
+                "disease"
+            ],
+            "attribute": []
+        },
+        "tag": "has_verb patient {patient_id} been diagnosed with {diagnosis_name} [time_filter_within:within-month] after having had a chest x-ray study indicating any disease [time_filter_global1:abs-year-until] ?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            0
+        ],
+        "answer":[
+            0
+        ],
+        "scope": "MULTIMODAL-SINGLE",
+        "tables": [
+            "tb_cxr",
+            "diagnoses_icd",
+            "d_icd_diagnoses",
+            "admissions"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 47,
+        "question_zh_cn":"自2年前，病人15212228在胸部X光检查显示右下肺区异常后的2个月内，是否进行了其他颈椎前柱前路融合术吗？",
+		"question": "did patient 15212228 undergo the other cervical fusion of the anterior column, anterior technique procedure within 2 month after a chest x-ray study revealed any abnormalities in the right lower lung zone since 2 year ago?",
+        "template": "has patient 15212228 received a other cervical fusion of the anterior column, anterior technique procedure within 2 month after having had a chest x-ray study indicating any abnormality in the right lower lung zone since 2 year ago?",
+        "query": "select count(*)>0 from ( select tb_cxr.studydatetime from tb_cxr where tb_cxr.study_id in ( select distinct t2.study_id from ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 15212228 and datetime(tb_cxr.studydatetime) >= datetime(current_time,'-2 year') ) ) as t2 where func_vqa(\"does a chest x-ray reveal any abnormality in the right lower lung zone?\", t2.study_id) = true ) ) as t1 join ( select procedures_icd.charttime from procedures_icd where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'other cervical fusion of the anterior column, anterior technique' ) and procedures_icd.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 15212228 ) and datetime(procedures_icd.charttime) >= datetime(current_time,'-2 year') ) as t3 where t1.studydatetime < t3.charttime and ( datetime(t3.charttime) between datetime(t1.studydatetime) and datetime(t1.studydatetime,'+2 month') ) or ( datetime(t1.studydatetime) between datetime(t3.charttime) and datetime(t3.charttime,'+2 month') )",
+        "value": {
+            "procedure_name": "other cervical fusion of the anterior column, anterior technique",
+            "patient_id": 15212228
+        },
+        "q_tag": "has_verb patient {patient_id} received a {procedure_name} procedure [time_filter_within] after having had a chest x-ray study indicating any abnormality in the ${object} [time_filter_global1] ?",
+        "t_tag": [
+            "rel-year-since",
+            "",
+            "within-n_month",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [
+                "right lower lung zone"
+            ],
+            "category": [],
+            "attribute": []
+        },
+        "tag": "has_verb patient {patient_id} received a {procedure_name} procedure [time_filter_within:within-n_month] after having had a chest x-ray study indicating any abnormality in the right lower lung zone [time_filter_global1:rel-year-since] ?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [],
+        "answer":[
+            0
+        ],
+        "scope": "MULTIMODAL-SINGLE",
+        "tables": [
+            "tb_cxr",
+            "procedures_icd",
+            "d_icd_procedures",
+            "admissions"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 48,
+        "question_zh_cn":"10037020号患者是否接受过通过自然或人工开口内窥镜进行的胆总管切除术，并且自2014年8月以来胸部X光片显示右肺有任何疾病？",
+		"question": "did patient 10037020 receive the extirpation of matter from common bile duct, via natural or artificial opening endoscopic procedure and have a chest x-ray showing any diseases in the right lung since 08/2104?",
+        "template": "has patient 10037020 received a extirpation of matter from common bile duct, via natural or artificial opening endoscopic procedure since 08/2104 and also had a chest x-ray study indicating any disease in the right lung within the same period?",
+        "query": "select ( select count(*)>0 from procedures_icd where procedures_icd.icd_code = ( select d_icd_procedures.icd_code from d_icd_procedures where d_icd_procedures.long_title = 'extirpation of matter from common bile duct, via natural or artificial opening endoscopic' ) and procedures_icd.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 10037020 ) and strftime('%y-%m',procedures_icd.charttime) >= '2104-08' ) and ( select count(distinct t1.study_id) > 0 from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 10037020 and strftime('%y-%m',tb_cxr.studydatetime) >= '2104-08' ) ) as t1 where func_vqa(\"has a chest x-ray shown any diseases in the right lung?\", t1.study_id) = true )",
+        "value": {
+            "patient_id": 10037020,
+            "procedure_name": "extirpation of matter from common bile duct, via natural or artificial opening endoscopic"
+        },
+        "q_tag": "has_verb patient {patient_id} received a {procedure_name} procedure [time_filter_global1] and also had a chest x-ray study indicating any ${category} in the ${object} within the same period?",
+        "t_tag": [
+            "abs-month-since",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [
+                "right lung"
+            ],
+            "category": [
+                "disease"
+            ],
+            "attribute": []
+        },
+        "tag": "has_verb patient {patient_id} received a {procedure_name} procedure [time_filter_global1:abs-month-since] and also had a chest x-ray study indicating any disease in the right lung within the same period?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            0
+        ],
+        "answer":[
+            0
+        ],
+        "scope": "MULTIMODAL-SINGLE",
+        "tables": [
+            "procedures_icd",
+            "d_icd_procedures",
+            "admissions",
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    },
+    {
+        "db_id": "mimic_iv_cxr",
+        "split": "test",
+        "id": 50,
+        "question_zh_cn":"患者17766862是否被开具了氯化钠0.9%冲洗液的处方，并在同一时期进行了胸部X光检查，显示左肩上有任何管/线？",
+		"question": "was patient 17766862 prescribed sodium chloride 0.9%  flush and had a chest x-ray depicting any tubes/lines in the left shoulder within the same period?",
+        "template": "has patient 17766862 been prescribed with sodium chloride 0.9%  flush and also had a chest x-ray study indicating any tubesandlines in the left shoulder within the same period?",
+        "query": "select ( select count(*)>0 from prescriptions where prescriptions.hadm_id in ( select admissions.hadm_id from admissions where admissions.subject_id = 17766862 ) and prescriptions.drug = 'sodium chloride 0.9%  flush' ) and ( select count(distinct t1.study_id) > 0 from ( select tb_cxr.study_id from tb_cxr where tb_cxr.study_id in ( select distinct tb_cxr.study_id from tb_cxr where tb_cxr.subject_id = 17766862 ) ) as t1 where func_vqa(\"is any tubes/lines depicted in the left shoulder on a chest x-ray?\", t1.study_id) = true )",
+        "value": {
+            "patient_id": 17766862,
+            "drug_name": "sodium chloride 0.9%  flush"
+        },
+        "q_tag": "has_verb patient {patient_id} been prescribed with {drug_name} [time_filter_global1] and also had a chest x-ray study indicating any ${category} in the ${object} within the same period?",
+        "t_tag": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "o_tag": {},
+        "v_tag": {
+            "object": [
+                "left shoulder"
+            ],
+            "category": [
+                "tubesandlines"
+            ],
+            "attribute": []
+        },
+        "tag": "has_verb patient {patient_id} been prescribed with {drug_name} [time_filter_global1:null] and also had a chest x-ray study indicating any tubesandlines in the left shoulder within the same period?",
+        "para_type": "machine",
+        "is_impossible": false,
+        "answer_zh_cn": [
+            0
+        ],
+        "answer":[
+            0
+        ],
+        "scope": "MULTIMODAL-SINGLE",
+        "tables": [
+            "prescriptions",
+            "admissions",
+            "tb_cxr"
+        ],
+        "num_required_images": 1
+    }
+]

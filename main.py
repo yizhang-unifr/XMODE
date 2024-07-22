@@ -4,9 +4,7 @@ import os
 from langchain_openai import ChatOpenAI
 
 # Imported from the https://github.com/langchain-ai/langgraph/tree/main/examples/plan-and-execute repo
-from tools.identify_columns import get_identifier_tools
-from tools.text2SQL import get_text2SQL_tools
-from tools.image_analysis_tool import get_image_analysis_tools
+
 from langchain.sql_database import SQLDatabase
 from sqlalchemy import create_engine
 
@@ -70,8 +68,8 @@ _set_if_undefined("LANGCHAIN_API_KEY")
 def main():
     model="gpt-4o" #gpt-4-turbo-preview
     # Load data from JSON file
-    #test_file="dataset/mimic_iv_cxr/sampled_test_with_scope_preprocessed_balenced_answer.json"
-    test_file="m3lx.json"
+    test_file="dataset/mimic_iv_cxr/sampled_test_with_scope_preprocessed_balenced_answer.json"
+    # test_file="m3lx.json"
 
     db_path="/home/ubuntu/workspace/M3LX-LLMCompiler/mimic_iv_cxr.db"
     m3_lx=[]
@@ -87,27 +85,32 @@ def main():
     for data in tqdm(test_data):
         example_question = data['question']
         tables = [t.upper() for t in data['tables']]
-        if data['m3lx']==[]:
-            print(example_question, tables)
-            to_json=[]
-            try:
-                database_schema =_get_db_schema(db_path, tables)
-                chain_input = {"question": example_question, "database_schema":database_schema}
-                inputs=[HumanMessage(content=[chain_input])]
-                for executed_chain in chain.stream(inputs, stream_mode="values"):
-                    print(executed_chain)
-                for msg in executed_chain:
-                    value= msg.to_json()['kwargs']
-                    to_json.append(value)
-                prediction=[ast.literal_eval(executed_chain[-1].content)]
-            except:
-                prediction=['NA']
-            data['m3lx']=to_json
-            data['prediction']=prediction
+        # if data['m3lx']==[]:
+        print(example_question, tables)
+        to_json=[]
+        try:
+            database_schema =_get_db_schema(db_path, tables)
+            chain_input = {"question": example_question, "database_schema":database_schema}
+            inputs=[HumanMessage(content=[chain_input])]
+            for executed_chain in chain.stream(inputs, stream_mode="values"):
+                print(executed_chain)
+            for msg in executed_chain:
+                value= msg.to_json()['kwargs']
+                to_json.append(value)
+            # needs code or prompt imporvements
+            prediction=[ast.literal_eval(executed_chain[-1].content)]
+        
+        except Exception as e:
+            print(str(e)) # comes basicly from ast.literal_eval becuase the output sometimes not in JSON structure
+            prediction= executed_chain[-1].content
+            print(prediction)
+            
+        data['m3lx']=to_json
+        data['prediction']=prediction
             
         m3_lx.append(data)
 
-    with open('m3lx-ver-01.json', 'w', encoding='utf-8') as f:
+    with open('m3lx-02.json', 'w', encoding='utf-8') as f:
         json.dump(m3_lx, f, ensure_ascii=False, indent=4)
 
 if __name__ == '__main__':

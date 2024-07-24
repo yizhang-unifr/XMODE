@@ -157,7 +157,7 @@ def get_image_analysis_tools(llm: ChatOpenAI,db_path:str):
     ):
         chain_input = {"question": question}
         
-        # print("context-first:", context,type(context))
+        print("context-first:", context,type(context))
         if context :
             # if context_str.strip():
             #     context_str = _ADDITIONAL_CONTEXT_PROMPT.format(
@@ -172,19 +172,19 @@ def get_image_analysis_tools(llm: ChatOpenAI,db_path:str):
                     context=context[0]
                 # If the context contains 'data' key, use its value
             else:
-                #     print("context-2", context)
+                print("context-2", context)
                 context = ast.literal_eval(context[0])
             
-            # print("context-2", context)
+            print("context-2", context)
             
             if 'data' in context:
                 #["{'status': 'success', 'data': [{'studydatetime': '2105-09-06 18:18:18'}]}"]
                 context = context['data']
 
-            # print("context-after:", context)
+            print("context-after:", context)
             
             image_urls = [_get_image_url(ctx, db_path) for ctx in context]
-            # print("image_urls_1",image_urls)
+            print("image_urls_1",image_urls)
 
             
             if isinstance(image_urls, ValueError):

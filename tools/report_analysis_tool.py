@@ -73,7 +73,7 @@ def _get_report_url(_d, db_path, current_path ='.'):
     if 'study_id' not in _d:
             _d =_get_study_id(_d, db_path)
             if _get_study_id(_d, db_path) is None:
-                return ValueError(f"The image report analysis task requires study_id or any related in the data\nstate:\n{_d}")
+                return ValueError(f"The report analysis task requires study_id or any related in the data\nstate:\n{_d}")
     d = _d
     root_path = Path(current_path).resolve()
     files_path = root_path /'reports' 
@@ -91,7 +91,7 @@ def _load_report(report_url):
             report = report.read()
             return report
     except FileNotFoundError:
-        raise FileNotFoundError(f"Image_report_path <{report_url}> not found")
+        raise FileNotFoundError(f"report_path <{report_url}> not found")
     except Exception as e:
         raise e
   
@@ -134,7 +134,7 @@ def get_report_analysis_tools(llm: ChatOpenAI,db_path:str):
     ):
         chain_input = {"question": question}
         
-        print("context-first:", context,type(context))
+        print("context-first:", context, type(context))
         if context :
             # if context_str.strip():
             #     context_str = _ADDITIONAL_CONTEXT_PROMPT.format(
@@ -142,11 +142,17 @@ def get_report_analysis_tools(llm: ChatOpenAI,db_path:str):
             #     )
             # If context is a string, parse it as JSON
             # print("context-before:", context)
-            if isinstance(context, str):
+            if isinstance (context, List) and isinstance(context[0], int):
+                context=[str(ctx) for ctx in context]
+                
+            if isinstance (context, int):
+                context=str(context)
+                
+            if isinstance(context, str) :
                 context=correct_malformed_json(context)
                 context = [ast.literal_eval(context)]
                 if 'status' in context[0]:
-                    context=context[0]
+                    context = context[0]
                 # If the context contains 'data' key, use its value
             else:
                 #     print("context-2", context)

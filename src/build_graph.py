@@ -324,12 +324,12 @@ def graph_construction_report_based(model,saver=None):
      Next, you must review the provided database schema. This involves examining the tables, fields, and relationships within the database to identify which parts of the schema are relevant to the user’s question, and creat a set of sub-questions.
      In cases where the user’s question involves data that is not directly available in the database schema —such as when there is no corresponding table or column for the required information or chest x-ray analysis— you must consider the need for report analysis using the report_analysis tools. 
      For instance, if the question involves comparision of studies, images, chest x-rays  for specific abnormality, disease or finding in the paitent study and the relevant column (e.g., abnormality, findings, chest x-ray) is not found in the database schema, you must retrieve th `study_id` of the study for report analysis, 
-     This ensures we can address parts of the question that rely on visual data.
+     this ensures we can address parts of the question that rely on textual data. If the question already has the study_id, you can directly call the report analysis task.
      With a clear understanding of the question and the database schema, you can now break down the main question into smaller, more manageable sub-questions. 
      These sub-questions should each target a specific aspect of the main question. 
      After identifying the sub-questions, you should determine the most appropriate tools to answer each one. Depending on the nature of the sub-questions, we might use a variety of tools.
      Each sub-question should be a textual question. Dont generate a code as a sub-question.
-     Each report analysis task should consider only one study. Study id is different than image id. 
+     Each report analysis task should consider only one study.
      Include the database schema in the context for text2SQL tasks. 
      It is also important to note that in the database, the current time is set to 2105-12-31 23:59:00. This must be taken into account when performing any time-based data queries or analyses.
      In any database retreival task, retieve `subject_id` together with other columns.

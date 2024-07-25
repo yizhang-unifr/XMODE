@@ -110,7 +110,7 @@ def main():
             
         m3_lx.append(data)
 
-    with open('m3lx-02.json', 'w', encoding='utf-8') as f:
+    with open('experiments/m3lx/m3lx-vqa-openai-english.json', 'w', encoding='utf-8') as f:
         json.dump(m3_lx, f, ensure_ascii=False, indent=4)
 
 if __name__ == '__main__':

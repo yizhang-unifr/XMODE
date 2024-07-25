@@ -75,13 +75,14 @@ def _get_report_url(_d, db_path, current_path ='.'):
             if _get_study_id(_d, db_path) is None:
                 return ValueError(f"The report analysis task requires study_id or any related in the data\nstate:\n{_d}")
     d = _d
+    print("the after d: ",d )
     root_path = Path(current_path).resolve()
     files_path = root_path /'reports' 
     res=[]
 
     # find all the image files under the folder
     report_name = f"s{d['study_id']}.txt"
-    d['study_url'] = [f for f in files_path.rglob(report_name) if f.is_file()][0].as_posix()
+    d['report_url'] = [f for f in files_path.rglob(report_name) if f.is_file()][0].as_posix()
     res = [d]
     return res
 
@@ -170,11 +171,12 @@ def get_report_analysis_tools(llm: ChatOpenAI,db_path:str):
             
             if isinstance(report_urls, ValueError):
                 chain_input["context"] = [SystemMessage(content=str(report_urls))]
+                print("Error on report_urls",report_urls)
             else:
                 print("report_urls",report_urls)
                 try:    
                     reports = [_load_report(url['report_url']) for url in report_urls[0]]
-                    _humMessage=[{"type": "text", "text": report} for x in reports]
+                    _humMessage=[{"type": "text", "text": x} for x in reports]
                     print("_humMessage",_humMessage)
                     chain_input["report_info"] = [
                             HumanMessage(

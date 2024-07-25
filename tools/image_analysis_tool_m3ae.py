@@ -193,11 +193,7 @@ def get_image_analysis_tools(db_path:str):
                     images_encoded = [_load_image(url['image_url']) for url in image_urls]
                     
                 except ValueError as e:
-                     chain_input["context"] = [SystemMessage(content=str(e))]
-                    
-
-              
-                       
+                     chain_input["context"] = [SystemMessage(content=str(e))]                     
         vqa_answer= post_vqa_m3ae_with_url(chain_input["question"],images_encoded[-1])
         try:
             return vqa_answer

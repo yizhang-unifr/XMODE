@@ -44,9 +44,8 @@ import json
 import ast
 from tqdm import tqdm
 
-from src.build_graph import graph_construction
+from src.build_graph import graph_construction_m3ae
 from pathlib import Path
-
 
 def _set_if_undefined(var: str):
     if not os.environ.get(var):
@@ -63,7 +62,6 @@ _set_if_undefined("LANGCHAIN_API_KEY")
 
 # os.environ["LANGCHAIN_TRACING_V2"] = "true"
 # os.environ["LANGCHAIN_PROJECT"] = "m3lx-vqa-openai-english"
-
 
 def load_json(file_path, data):
     fp = Path(file_path)
@@ -95,20 +93,20 @@ def append_json(data, file_path):
 def main():
     model="gpt-4o" #gpt-4-turbo-preview
     # Load data from JSON file
-    
-    language='zh'
+    language='de'
     if language =='en':
         test_file="dataset/mimic_iv_cxr/sampled_test_with_scope_preprocessed_balenced_answer.json"
     elif language =='zh':
         test_file="dataset/translation/zh/sampled_test_with_scope_preprocessed_balenced_answer.json"
     elif language =='de':
         test_file="dataset/translation/de/sampled_test_with_scope_preprocessed_balenced_answer.json"
-   
 
     db_path="/home/ubuntu/workspace/M3LX-LLMCompiler/mimic_iv_cxr.db"
     m3_lx=[]
     
-    chain=graph_construction(model)
+    chain=graph_construction_m3ae(model)
+    output_file= f'experiments/m3lx/{language}/m3lx-vqa-m3ae-star-{language}.json'
+    load_json(output_file,m3_lx)
     
     with open(test_file, 'r') as f:
         test_data = json.load(f)
@@ -116,23 +114,17 @@ def main():
     #     if data['m3lx']!=[]:
     #         continue
     #     print (data['m3lx'])
-    
-    output_file=f'experiments/m3lx/{language}/m3lx-vqa-openai-{language}_.json'
-    # this function will read the json file and return a list of dict
-    load_json(output_file,m3_lx)
     for data in tqdm(test_data):
-        if data["id"]!=50:
-            continue
         if language =='en':
             example_question = data['question']
         elif language =='zh':
             example_question = data['question_zh_cn']
         elif language =='de':
              example_question = data['question_de']
-       
+             
         tables = [t.upper() for t in data['tables']]
         # if data['m3lx']==[]:
-        print(language, example_question, tables)
+        print(example_question, tables)
         to_json=[]
         try:
             database_schema =_get_db_schema(db_path, tables)
@@ -154,12 +146,11 @@ def main():
         data['m3lx']=to_json
         data['prediction']=prediction
             
+        # m3_lx.append(data)
         append_json(data,output_file)
 
-    # with open(f'experiments/m3lx/{language}/m3lx-vqa-openai-{language}.json', 'w', encoding='utf-8') as f:
+    # with open(f'experiments/m3lx/{language}/m3lx-vqa-m3ae-{language}.json', 'w', encoding='utf-8') as f:
     #     json.dump(m3_lx, f, ensure_ascii=False, indent=4)
 
 if __name__ == '__main__':
     main()
-    
-    

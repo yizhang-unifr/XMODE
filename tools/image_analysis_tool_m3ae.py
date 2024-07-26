@@ -27,7 +27,8 @@ from langchain_core.messages import (
 #'Use 2. image_analysis("are there any anatomicalfinding that are still no in the left hilar structures", context=["$1"]) instead.\n'
 _DESCRIPTION = (
     " image_analysis(question:str, context: Union[str, List[str]])-> str\n"
-    " This tools is a medical image analysis task. For given radiology images and a question, it analysis the images and provide answer to the question. \n"
+    " This tools is a medical image analysis task. For given radiology images and a question in English, it analysis the images and provide answer to the question. \n"
+    " The given question should be in English. It it is in other language you should translate it to English."
     " Comparision should be done after each analysis.\n"
     "- You cannot analyse multiple studies in one call. For instance, `image_analysis('are there any anatomical finding that are still absent in the left hilar structures?','[{{'image_id':xxx,'stuy_id':yyy}}, {{'image_id':zzz,'stuy_id':www}})` does not work. "
     "If you need to analyse multiple images, you need to call them separately like `image_analysis('are there any anatomical finding that are still absent in the left hilar structures?','{{'image_id':xxx,'stuy_id':yyy}}')` and then `image_analysis('are there any anatomical finding that are still absent in the left hilar structures?','{{'image_id':zzz,'stuy_id':wwww}}')`\n"
@@ -181,7 +182,7 @@ def get_image_analysis_tools(db_path:str):
             print("context-after:", context)
             
             image_urls = [_get_image_url(ctx, db_path) for ctx in context]
-            print("image_urls_1",image_urls)
+            print("image_urls_1", image_urls)
 
             
             if isinstance(image_urls, ValueError):
@@ -196,7 +197,7 @@ def get_image_analysis_tools(db_path:str):
                      chain_input["context"] = [SystemMessage(content=str(e))]                     
         vqa_answer= post_vqa_m3ae_with_url(chain_input["question"],images_encoded[-1])
         try:
-            return vqa_answer
+            return vqa_answer['vqa_answers']
         except Exception as e:
             return repr(e)
 

@@ -33,7 +33,7 @@ def post_vqa_m3ae_with_url(question, image_url):
         'question': question,
         'image_url': image_url
     }
-    print(data, image_url)
+    # print(data, image_url)
     response = requests.post(url, data=data, headers=headers)
     return response.json()
 

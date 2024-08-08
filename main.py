@@ -96,7 +96,7 @@ def main():
     model="gpt-4o" #gpt-4-turbo-preview
     # Load data from JSON file
     
-    language='zh'
+    language='en'
     if language =='en':
         test_file="dataset/mimic_iv_cxr/sampled_test_with_scope_preprocessed_balenced_answer.json"
     elif language =='zh':
@@ -121,8 +121,8 @@ def main():
     # this function will read the json file and return a list of dict
     load_json(output_file,m3_lx)
     for data in tqdm(test_data):
-        if data["id"]!=50:
-            continue
+        # if data["id"]!=13:
+        #     continue
         if language =='en':
             example_question = data['question']
         elif language =='zh':

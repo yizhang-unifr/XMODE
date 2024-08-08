@@ -573,8 +573,6 @@ def graph_construction_m3ae(model,saver=None):
     
     return chain
 
-
-
 def graph_construction_report(model,saver=None):
     # 
     db_path="/home/ubuntu/workspace/M3LX-LLMCompiler/mimic_iv_cxr.db"

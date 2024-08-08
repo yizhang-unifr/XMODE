@@ -96,7 +96,7 @@ def append_json(data, file_path):
 def main():
     model="gpt-4o" #gpt-4-turbo-preview
     # Load data from JSON file
-    language='zh'
+    language='en'
     if language =='en':
         test_file="dataset/mimic_iv_cxr/sampled_test_with_scope_preprocessed_balenced_answer.json"
     elif language =='zh':
@@ -116,11 +116,13 @@ def main():
     #         continue
     #     print (data['m3lx'])
     
-    output_file=f'experiments/m3lx/{language}/m3lx-qa-openai-{language}.json'
+    output_file=f'experiments/m3lx/{language}/m3lx-qa-openai-893-{language}.json'
     # this function will read the json file and return a list of dict
     load_json(output_file,m3_lx)
 
-    for data in tqdm(test_data):        
+    for data in tqdm(test_data):  
+        if data["id"]!=893:
+            continue      
         if language =='en':
             example_question = data['question']
         elif language =='zh':

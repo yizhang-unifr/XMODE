@@ -1,5 +1,5 @@
 
-from langchain.sql_database import SQLDatabase
+from .sql_database import SQLDatabase
 from sqlalchemy import create_engine
 import re
 import errno
@@ -16,7 +16,7 @@ import json
 def _get_db_schema(db_path, tables=None, sample_rows_in_table_info=5):
     # Initialize the database connection
     engine = create_engine(f'sqlite:///{db_path}')  # replace with your actual database connection string
-    database = SQLDatabase(engine, sample_rows_in_table_info=0)
+    database = SQLDatabase(engine, sample_rows_in_table_info=sample_rows_in_table_info)
 
     # List of tables you want the schema for
     if tables is None: # get all tables
@@ -24,6 +24,12 @@ def _get_db_schema(db_path, tables=None, sample_rows_in_table_info=5):
     db_schema = database.get_table_info(tables)
     return db_schema
 
+def _get_db_schema_json(db_path, tables=None):
+    engine = create_engine(f'sqlite:///{db_path}')  # replace with your actual database connection string
+    database = SQLDatabase(engine)
+    table_info_dict = database.get_table_info_dict(None, False, False)
+    table_info_dict_jsons = json.dumps(table_info_dict)
+    return table_info_dict_jsons
 
 def correct_malformed_json(malformed_json_string):
     # Step 1: Replace escaped quotes with actual quotes

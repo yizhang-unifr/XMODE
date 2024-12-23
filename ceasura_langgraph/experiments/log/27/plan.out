@@ -1,0 +1,7 @@
+1. text2SQL(problem="Retrieve the number of paintings corresponding to each century.", context="Use the 'paintings' table which contains 'painting_id', 'title', 'artist_id', 'year', and 'genre'.")
+2. text2SQL(problem="Retrieve the most recent painting year for each genre.", context="Use the 'paintings' table which contains 'painting_id', 'title', 'artist_id', 'year', and 'genre'.")
+3. data_preparation(question="Prepare data for plotting the number of paintings corresponding to each century.", context="$1")
+4. data_plotting(question="Visualize the number of paintings corresponding to each century.", context="$3")
+5. data_preparation(question="Prepare data to show the century of the most recent painting for each genre.", context="$2")
+6. join() 
+<END_OF_PLAN>

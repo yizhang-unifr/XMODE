@@ -2,6 +2,8 @@ import re
 from typing import List, Optional, Union
 import json
 import ast
+import re, sys,os
+sys.path.append(os.path.dirname(os.getcwd()) + '/src')
 
 from langchain.chains.openai_functions import create_structured_output_runnable
 from langchain_core.messages import SystemMessage

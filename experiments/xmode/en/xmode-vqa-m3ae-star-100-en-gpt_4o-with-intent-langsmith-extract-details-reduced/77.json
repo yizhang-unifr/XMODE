@@ -1,0 +1,83 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem=\"Find the date when cardiac mapping procedure was performed for patient 19287866.\", context=\"CREATE TABLE 'PROCEDURES_ICD' (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, icd_code TEXT, charttime TEXT, FOREIGN KEY(icd_code) REFERENCES 'D_ICD_PROCEDURES' (icd_code), FOREIGN KEY(subject_id) REFERENCES 'ADMISSIONS' (subject_id))\")",
+          "problem": "Find the date when cardiac mapping procedure was performed for patient 19287866.",
+          "context": "CREATE TABLE 'PROCEDURES_ICD' (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, icd_code TEXT, charttime TEXT, FOREIGN KEY(icd_code) REFERENCES 'D_ICD_PROCEDURES' (icd_code), FOREIGN KEY(subject_id) REFERENCES 'ADMISSIONS' (subject_id))\"",
+          "id": 1
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve the charttime of the cardiac mapping procedure for patient 19287866.\", context=$1)",
+          "problem": "Retrieve the charttime of the cardiac mapping procedure for patient 19287866.",
+          "context": "$1",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve the charttime of the cardiac mapping procedure for patient 19287866, we need to join the PROCEDURES_ICD table with the D_ICD_PROCEDURES table to filter out the specific procedure. We will look for the procedure with a long_title that includes 'cardiac mapping'. Then, we will filter the results for the specific patient using the subject_id and select the charttime.",
+              "SQL": "SELECT pic.charttime FROM PROCEDURES_ICD pic JOIN D_ICD_PROCEDURES dicd ON pic.icd_code = dicd.icd_code WHERE pic.subject_id = 19287866 AND dicd.long_title LIKE '%cardiac mapping%' ",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "charttime": "2103-10-10 00:00:00"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Retrieve the charttime of the cardiac mapping procedure for patient 19287866.",
+              "context": "['PROCEDURES_ICD', 'D_ICD_PROCEDURES']"
+            }
+          },
+          "id": 2
+        },
+        {
+          "function": "intent_tables(problem=\"Retrieve chest x-ray studies for patient 19287866 within the same month of the cardiac mapping procedure.\", context=\"CREATE TABLE 'TB_CXR' (row_id INTEGER, subject_id INTEGER, hadm_id REAL, study_id INTEGER, image_id TEXT, viewposition TEXT, studydatetime TEXT, FOREIGN KEY(subject_id) REFERENCES 'ADMISSIONS' (subject_id))\")",
+          "problem": "Retrieve chest x-ray studies for patient 19287866 within the same month of the cardiac mapping procedure.",
+          "context": "CREATE TABLE 'TB_CXR' (row_id INTEGER, subject_id INTEGER, hadm_id REAL, study_id INTEGER, image_id TEXT, viewposition TEXT, studydatetime TEXT, FOREIGN KEY(subject_id) REFERENCES 'ADMISSIONS' (subject_id))\"",
+          "id": 3
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve study_id and image_id of chest x-rays for patient 19287866 within the same month of the cardiac mapping procedure.\", context=$3)",
+          "problem": "Retrieve study_id and image_id of chest x-rays for patient 19287866 within the same month of the cardiac mapping procedure.",
+          "context": "$3",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve the study_id and image_id of chest x-rays for patient 19287866 within the same month of the cardiac mapping procedure, we need to first identify the month and year when the cardiac mapping procedure was performed. This can be done by querying the PROCEDURES_ICD table for the specific icd_code related to cardiac mapping. Once we have the month and year, we can then query the TB_CXR table to find all chest x-rays for the patient within that month and year.",
+              "SQL": "SELECT TB_CXR.study_id, TB_CXR.image_id \nFROM TB_CXR \nJOIN PROCEDURES_ICD ON TB_CXR.subject_id = PROCEDURES_ICD.subject_id \nWHERE TB_CXR.subject_id = 19287866 \nAND PROCEDURES_ICD.icd_code = 'cardiac_mapping_icd_code' \nAND strftime('%Y-%m', TB_CXR.studydatetime) = strftime('%Y-%m', PROCEDURES_ICD.charttime)",
+              "results": {
+                "status": "success",
+                "data": []
+              }
+            },
+            "input": {
+              "problem": "Retrieve study_id and image_id of chest x-rays for patient 19287866 within the same month of the cardiac mapping procedure.",
+              "context": "['TB_CXR', 'PROCEDURES_ICD']"
+            }
+          },
+          "id": 4
+        },
+        {
+          "function": "image_analysis(question=\"Do these chest x-rays show any tubes/lines?\", context=$4)",
+          "question": "Do these chest x-rays show any tubes/lines?",
+          "context": "$4",
+          "outputs": {
+            "error": "IndexError('list index out of range')Traceback (most recent call last):\n\n\n  File \"/home/ubuntu/.local/lib/python3.10/site-packages/langchain_core/tools.py\", line 584, in run\n    response = context.run(self._run, *tool_args, **tool_kwargs)\n\n\n  File \"/home/ubuntu/.local/lib/python3.10/site-packages/langchain_core/tools.py\", line 929, in _run\n    return self.func(*args, **kwargs)\n\n\n  File \"/home/ubuntu/workspace/XMODE-LLMCompiler/tools/image_analysis_tool_m3ae.py\", line 204, in image_analysis\n    vqa_answer= post_vqa_m3ae_with_url(chain_input[\"question\"],images_encoded[-1])\n\n\nIndexError: list index out of range",
+            "input": {
+              "question": "Do these chest x-rays show any tubes/lines?",
+              "context": "{'status': 'success', 'data': []}"
+            },
+            "output": null
+          },
+          "id": 5
+        },
+        {
+          "function": "join()",
+          "id": 6
+        }
+      ]
+    }
+  ],
+  "question": "did patient 19287866 have a chest x-ray that showed any tubes/lines within the same month after the cardiac mapping procedure was performed?"
+}

@@ -1,0 +1,29 @@
+{
+    "status": "success",
+    "data": [
+        {
+            "century": 15,
+            "total_paintings": 40
+        },
+        {
+            "century": 16,
+            "total_paintings": 20
+        },
+        {
+            "century": 17,
+            "total_paintings": 4
+        },
+        {
+            "century": 18,
+            "total_paintings": 13
+        },
+        {
+            "century": 19,
+            "total_paintings": 23
+        },
+        {
+            "century": 21,
+            "total_paintings": 1
+        }
+    ]
+}

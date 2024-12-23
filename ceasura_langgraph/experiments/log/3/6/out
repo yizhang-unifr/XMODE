@@ -1,0 +1,100 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_Ksy2CY3APj8Q125PcBMjAfDC",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"The user wants to retrieve the art movement of a painting based on its image path. The 'paintings' table contains a column 'img_path' which stores the image paths, and a column 'movement' which stores the art movement of each painting. To find the movement of the painting with the image path 'images/img_3.jpg', we need to filter the table using the 'img_path' column and select the 'movement' column.\",\"SQL\":\"SELECT movement FROM paintings WHERE img_path = 'images/img_3.jpg';\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ],
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 112,
+                "prompt_tokens": 828,
+                "total_tokens": 940,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-20e129ef-cf55-40ee-8138-65483a9bac86-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "The user wants to retrieve the art movement of a painting based on its image path. The 'paintings' table contains a column 'img_path' which stores the image paths, and a column 'movement' which stores the art movement of each painting. To find the movement of the painting with the image path 'images/img_3.jpg', we need to filter the table using the 'img_path' column and select the 'movement' column.",
+                  "SQL": "SELECT movement FROM paintings WHERE img_path = 'images/img_3.jpg';"
+                },
+                "id": "call_Ksy2CY3APj8Q125PcBMjAfDC",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 828,
+              "output_tokens": 112,
+              "total_tokens": 940
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 112,
+      "prompt_tokens": 828,
+      "total_tokens": 940,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

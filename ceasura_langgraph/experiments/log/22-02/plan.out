@@ -1,0 +1,4 @@
+1. text2SQL(problem="Retrieve the newest painting per movement and their respective centuries from the database.", context="Ensure to include the painting's creation date and movement information to determine the century.")
+2. data_preparation(question="Determine the century of each painting based on its creation date.", context="$1")
+3. join() 
+<END_OF_PLAN>

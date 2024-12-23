@@ -1,0 +1,13 @@
+1. text2SQL(problem="Retrieve the image paths and the century of paintings that depict Fruit.", context="The database contains information about paintings, including their image paths and the century they were created.")
+2. image_analysis(question="Does the image depict Fruit?", context=$1)
+3. data_preparation(question="Prepare data to count the number of paintings depicting Fruit for each century.", context=$2)
+4. join() 
+<END_OF_PLAN>
+
+Replan
+
+5. text2SQL(problem='Retrieve the image paths, painting IDs, and the century of paintings.', context='The database contains information about paintings, including their image paths, painting IDs, and the century they were created.')
+6. image_analysis(question='Does the image depict Fruit?', context='$5')
+7. data_preparation(question='Prepare data to count the number of paintings depicting Fruit for each century.', context='$6')
+8. join() 
+<END_OF_PLAN>

@@ -1,0 +1,37 @@
+{
+  "generations": [
+    {
+      "text": "4. image_analysis(question='What is specifically depicted in the painting?', context=[{'img_path': 'images/img_0.jpg'}])\n5. join()\n<END_OF_PLAN>",
+      "generation_info": {
+        "finish_reason": "stop",
+        "model_name": "gpt-4o-2024-08-06",
+        "system_fingerprint": "fp_45cf54deae"
+      },
+      "type": "ChatGenerationChunk",
+      "message": {
+        "lc": 1,
+        "type": "constructor",
+        "id": [
+          "langchain",
+          "schema",
+          "messages",
+          "AIMessageChunk"
+        ],
+        "kwargs": {
+          "content": "4. image_analysis(question='What is specifically depicted in the painting?', context=[{'img_path': 'images/img_0.jpg'}])\n5. join()\n<END_OF_PLAN>",
+          "response_metadata": {
+            "finish_reason": "stop",
+            "model_name": "gpt-4o-2024-08-06",
+            "system_fingerprint": "fp_45cf54deae"
+          },
+          "type": "AIMessageChunk",
+          "id": "run-fd496c43-17b7-406e-83f8-2579dfc93bfd",
+          "tool_calls": [],
+          "invalid_tool_calls": []
+        }
+      }
+    }
+  ],
+  "llm_output": null,
+  "run": null
+}

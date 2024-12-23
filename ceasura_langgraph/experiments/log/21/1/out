@@ -1,0 +1,100 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_HgW8CgB0ShmHClIRptu3ArOQ",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"The user wants to retrieve the image paths and genres of all paintings from the database. The relevant columns in the 'paintings' table for this query are 'img_path' and 'genre'. We will select these two columns from the table to fulfill the user's request.\",\"SQL\":\"SELECT img_path, genre FROM paintings;\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ],
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 69,
+                "prompt_tokens": 811,
+                "total_tokens": 880,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-6a342bc4-c095-45d8-9fe8-be8d7a417899-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "The user wants to retrieve the image paths and genres of all paintings from the database. The relevant columns in the 'paintings' table for this query are 'img_path' and 'genre'. We will select these two columns from the table to fulfill the user's request.",
+                  "SQL": "SELECT img_path, genre FROM paintings;"
+                },
+                "id": "call_HgW8CgB0ShmHClIRptu3ArOQ",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 811,
+              "output_tokens": 69,
+              "total_tokens": 880
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 69,
+      "prompt_tokens": 811,
+      "total_tokens": 880,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

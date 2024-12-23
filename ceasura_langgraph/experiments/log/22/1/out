@@ -1,0 +1,100 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_iiNYReZ3Lj09Z5kxcUbbv1Xi",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"To retrieve the newest painting per movement and determine the century of each painting, we need to first identify the latest painting for each movement based on the 'inception' date. The 'inception' column provides the date when the painting was created, which we can use to find the newest painting. Once we have the newest painting for each movement, we can calculate the century by extracting the year from the 'inception' date and determining the century it falls into. The SQL query will group the paintings by movement, select the maximum inception date for each group, and then calculate the century from the year of the inception date.\",\"SQL\":\"SELECT movement, title, MAX(inception) AS newest_inception, \\n       (CAST(strftime('%Y', MAX(inception)) AS INTEGER) - 1) / 100 + 1 AS century\\nFROM paintings\\nGROUP BY movement;\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ],
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 184,
+                "prompt_tokens": 838,
+                "total_tokens": 1022,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_159d8341cc",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-4eb99034-445a-403f-b3cd-ab73845bb128-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "To retrieve the newest painting per movement and determine the century of each painting, we need to first identify the latest painting for each movement based on the 'inception' date. The 'inception' column provides the date when the painting was created, which we can use to find the newest painting. Once we have the newest painting for each movement, we can calculate the century by extracting the year from the 'inception' date and determining the century it falls into. The SQL query will group the paintings by movement, select the maximum inception date for each group, and then calculate the century from the year of the inception date.",
+                  "SQL": "SELECT movement, title, MAX(inception) AS newest_inception, \n       (CAST(strftime('%Y', MAX(inception)) AS INTEGER) - 1) / 100 + 1 AS century\nFROM paintings\nGROUP BY movement;"
+                },
+                "id": "call_iiNYReZ3Lj09Z5kxcUbbv1Xi",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 838,
+              "output_tokens": 184,
+              "total_tokens": 1022
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 184,
+      "prompt_tokens": 838,
+      "total_tokens": 1022,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_159d8341cc"
+  },
+  "run": null
+}

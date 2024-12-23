@@ -35,7 +35,7 @@ def _ast_parse(arg: str) -> Any:
         return arg
 
 
-def _parse_llm_compiler_action_args(args: str, tool: Union[str, BaseTool]) -> list[Any]:
+def _parse_xmode_action_args(args: str, tool: Union[str, BaseTool]) -> list[Any]:
     """Parse arguments from a string."""
     if args == "":
         return ()
@@ -99,7 +99,7 @@ def instantiate_task(
             tool = tools[[tool.name for tool in tools].index(tool_name)]
         except ValueError as e:
             raise OutputParserException(f"Tool {tool_name} not found.") from e
-    tool_args = _parse_llm_compiler_action_args(args, tool)
+    tool_args = _parse_xmode_action_args(args, tool)
     dependencies = _get_dependencies_from_graph(idx, tool_name, tool_args)
 
     return Task(
@@ -111,7 +111,7 @@ def instantiate_task(
     )
 
 
-class LLMCompilerPlanParser(BaseTransformOutputParser[dict], extra="allow"):
+class M3LXPlanParser(BaseTransformOutputParser[dict], extra="allow"):
     """Planning output parser."""
 
     tools: List[BaseTool]
@@ -132,6 +132,7 @@ class LLMCompilerPlanParser(BaseTransformOutputParser[dict], extra="allow"):
                 yield task
 
     def parse(self, text: str) -> List[Task]:
+        
         return list(self._transform([text]))
 
     def stream(

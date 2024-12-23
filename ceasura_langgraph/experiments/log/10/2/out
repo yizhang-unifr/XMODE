@@ -1,0 +1,509 @@
+{
+  "output": [
+    {
+      "img_path": "images/img_0.jpg",
+      "year": "1438",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_1.jpg",
+      "year": "1525",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_2.jpg",
+      "year": "1528",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_3.jpg",
+      "year": "1536",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_4.jpg",
+      "year": "1536",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_5.jpg",
+      "year": "1536",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_6.jpg",
+      "year": "1536",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_7.jpg",
+      "year": "1536",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_8.jpg",
+      "year": "1536",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_9.jpg",
+      "year": "1536",
+      "Does the image depict War?": "yes"
+    },
+    {
+      "img_path": "images/img_10.jpg",
+      "year": "1500",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_11.jpg",
+      "year": "1520",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_12.jpg",
+      "year": "1530",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_13.jpg",
+      "year": "1530",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_14.jpg",
+      "year": "1565",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_15.jpg",
+      "year": "1565",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_16.jpg",
+      "year": "1470",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_17.jpg",
+      "year": "1470",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_18.jpg",
+      "year": "1475",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_19.jpg",
+      "year": "1472",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_20.jpg",
+      "year": "1480",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_21.jpg",
+      "year": "1480",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_22.jpg",
+      "year": "1477",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_23.jpg",
+      "year": "1474",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_24.jpg",
+      "year": "1477",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_25.jpg",
+      "year": "1477",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_26.jpg",
+      "year": "1477",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_27.jpg",
+      "year": "1477",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_28.jpg",
+      "year": "1476",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_29.jpg",
+      "year": "1476",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_30.jpg",
+      "year": "1479",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_31.jpg",
+      "year": "1479",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_32.jpg",
+      "year": "1479",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_33.jpg",
+      "year": "1479",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_34.jpg",
+      "year": "1479",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_35.jpg",
+      "year": "1479",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_36.jpg",
+      "year": "1479",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_37.jpg",
+      "year": "1479",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_38.jpg",
+      "year": "1479",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_39.jpg",
+      "year": "1479",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_40.jpg",
+      "year": "1479",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_41.jpg",
+      "year": "1479",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_42.jpg",
+      "year": "1477",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_43.jpg",
+      "year": "1477",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_44.jpg",
+      "year": "1477",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_45.jpg",
+      "year": "1477",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_46.jpg",
+      "year": "1477",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_47.jpg",
+      "year": "1477",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_48.jpg",
+      "year": "1477",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_49.jpg",
+      "year": "1477",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_50.jpg",
+      "year": "1483",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_51.jpg",
+      "year": "1483",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_52.jpg",
+      "year": "1483",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_53.jpg",
+      "year": "1483",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_54.jpg",
+      "year": "1585",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_55.jpg",
+      "year": "1600",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_56.jpg",
+      "year": "1583",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_57.jpg",
+      "year": "1600",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_58.jpg",
+      "year": "1500",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_59.jpg",
+      "year": "1500",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_60.jpg",
+      "year": "1480",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_61.jpg",
+      "year": "1550",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_62.jpg",
+      "year": "1600",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_63.jpg",
+      "year": "2000",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_64.jpg",
+      "year": "1600",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_65.jpg",
+      "year": "1806",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_66.jpg",
+      "year": "1784",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_67.jpg",
+      "year": "1785",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_68.jpg",
+      "year": "1788",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_69.jpg",
+      "year": "1793",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_70.jpg",
+      "year": "1793",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_71.jpg",
+      "year": "1840",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_72.jpg",
+      "year": "1824",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_73.jpg",
+      "year": "1824",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_74.jpg",
+      "year": "1771",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_75.jpg",
+      "year": "1764",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_76.jpg",
+      "year": "1811",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_77.jpg",
+      "year": "1811",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_78.jpg",
+      "year": "1770",
+      "Does the image depict War?": "yes"
+    },
+    {
+      "img_path": "images/img_79.jpg",
+      "year": "1856",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_80.jpg",
+      "year": "1856",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_81.jpg",
+      "year": "1856",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_82.jpg",
+      "year": "1856",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_83.jpg",
+      "year": "1856",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_84.jpg",
+      "year": "1856",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_85.jpg",
+      "year": "1856",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_86.jpg",
+      "year": "1856",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_87.jpg",
+      "year": "1856",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_88.jpg",
+      "year": "1806",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_89.jpg",
+      "year": "1879",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_90.jpg",
+      "year": "1879",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_91.jpg",
+      "year": "1799",
+      "Does the image depict War?": "yes"
+    },
+    {
+      "img_path": "images/img_92.jpg",
+      "year": "1787",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_93.jpg",
+      "year": "1814",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_94.jpg",
+      "year": "1862",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_95.jpg",
+      "year": "1862",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_96.jpg",
+      "year": "1827",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_97.jpg",
+      "year": "1788",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_98.jpg",
+      "year": "1789",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_99.jpg",
+      "year": "1789",
+      "Does the image depict War?": "no"
+    },
+    {
+      "img_path": "images/img_100.jpg",
+      "year": "1800",
+      "Does the image depict War?": "no"
+    }
+  ]
+}

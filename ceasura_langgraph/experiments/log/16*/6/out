@@ -1,0 +1,100 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_6v8o2jJGF4ZrLouEySZ1Es80",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"The user wants to retrieve the image paths, painting IDs, and the century of paintings. The database schema provided includes the 'img_path' column for image paths and 'inception' column for the date of creation. However, there is no explicit 'painting ID' column in the schema. We can use the rowid as a unique identifier for each painting. To determine the century, we can extract the year from the 'inception' column and calculate the century. The SQL query will select the 'img_path', 'rowid' as 'painting_id', and calculate the century from the 'inception' date.\",\"SQL\":\"SELECT img_path, rowid AS painting_id, (strftime('%Y', inception) / 100) + 1 AS century FROM paintings;\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ],
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 162,
+                "prompt_tokens": 833,
+                "total_tokens": 995,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-47b6a17f-f01f-4504-8e79-1c1f3a5bf64a-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "The user wants to retrieve the image paths, painting IDs, and the century of paintings. The database schema provided includes the 'img_path' column for image paths and 'inception' column for the date of creation. However, there is no explicit 'painting ID' column in the schema. We can use the rowid as a unique identifier for each painting. To determine the century, we can extract the year from the 'inception' column and calculate the century. The SQL query will select the 'img_path', 'rowid' as 'painting_id', and calculate the century from the 'inception' date.",
+                  "SQL": "SELECT img_path, rowid AS painting_id, (strftime('%Y', inception) / 100) + 1 AS century FROM paintings;"
+                },
+                "id": "call_6v8o2jJGF4ZrLouEySZ1Es80",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 833,
+              "output_tokens": 162,
+              "total_tokens": 995
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 162,
+      "prompt_tokens": 833,
+      "total_tokens": 995,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

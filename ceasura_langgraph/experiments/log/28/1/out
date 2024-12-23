@@ -1,0 +1,99 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_HkkCHO8AVGb1XQxIE91hSoBP",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"The database schema provided does not include a column that directly indicates whether a painting depicts war. Therefore, to identify paintings depicting war, we need to perform image analysis on the paintings. To facilitate this, we will retrieve the image paths from the 'paintings' table, which can be used for further analysis to determine if they depict war.\",\"SQL\":\"SELECT img_path FROM paintings;\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ]
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 81,
+                "prompt_tokens": 887,
+                "total_tokens": 968,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_7f6be3efb0",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-3753fa89-2475-481b-9c20-8e98a541c362-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "The database schema provided does not include a column that directly indicates whether a painting depicts war. Therefore, to identify paintings depicting war, we need to perform image analysis on the paintings. To facilitate this, we will retrieve the image paths from the 'paintings' table, which can be used for further analysis to determine if they depict war.",
+                  "SQL": "SELECT img_path FROM paintings;"
+                },
+                "id": "call_HkkCHO8AVGb1XQxIE91hSoBP",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 887,
+              "output_tokens": 81,
+              "total_tokens": 968
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 81,
+      "prompt_tokens": 887,
+      "total_tokens": 968,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_7f6be3efb0"
+  },
+  "run": null
+}

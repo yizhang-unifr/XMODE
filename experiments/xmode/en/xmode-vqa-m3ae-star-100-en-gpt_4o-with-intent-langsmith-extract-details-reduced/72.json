@@ -1,0 +1,105 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem=\"Did patient 10137553 undergo a insertion of drug-eluting coronary artery stent(s)?\", context=\"<database_schema>\")",
+          "problem": "Did patient 10137553 undergo a insertion of drug-eluting coronary artery stent(s)?",
+          "context": "<database_schema>\"",
+          "id": 1
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve subject_id and relevant details for patient 10137553 who underwent insertion of drug-eluting coronary artery stent(s).\", context=$1)",
+          "problem": "Retrieve subject_id and relevant details for patient 10137553 who underwent insertion of drug-eluting coronary artery stent(s).",
+          "context": "$1",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve the subject_id and relevant details for patient 10137553 who underwent the insertion of drug-eluting coronary artery stent(s), we need to join the PROCEDURES_ICD and D_ICD_PROCEDURES tables. We will filter the results based on the subject_id and the long_title of the procedure. The long_title should match 'insertion of drug-eluting coronary artery stent(s)'.",
+              "SQL": "SELECT p.subject_id, p.hadm_id, p.icd_code, p.charttime, d.long_title \nFROM PROCEDURES_ICD p \nJOIN D_ICD_PROCEDURES d ON p.icd_code = d.icd_code \nWHERE p.subject_id = 10137553 AND d.long_title = 'insertion of drug-eluting coronary artery stent(s)' ",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "subject_id": 10137553,
+                    "hadm_id": 22068605,
+                    "icd_code": "3607",
+                    "charttime": "2101-03-22 00:00:00",
+                    "long_title": "insertion of drug-eluting coronary artery stent(s)"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Retrieve subject_id and relevant details for patient 10137553 who underwent insertion of drug-eluting coronary artery stent(s).",
+              "context": "['PROCEDURES_ICD', 'D_ICD_PROCEDURES']"
+            }
+          },
+          "id": 2
+        },
+        {
+          "function": "intent_tables(problem=\"Did patient 10137553 have a chest x-ray indicating any technical assessments?\", context=\"<database_schema>\")",
+          "problem": "Did patient 10137553 have a chest x-ray indicating any technical assessments?",
+          "context": "<database_schema>\"",
+          "id": 3
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve subject_id and study_id for chest x-rays of patient 10137553.\", context=$3)",
+          "problem": "Retrieve subject_id and study_id for chest x-rays of patient 10137553.",
+          "context": "$3",
+          "outputs": {
+            "output": {
+              "reasoning": "The task is to retrieve the subject_id and study_id for chest x-rays of a specific patient with subject_id 10137553. The relevant table is TB_CXR, which contains both subject_id and study_id columns. We will filter the records by the given subject_id and select the required columns.",
+              "SQL": "SELECT subject_id, study_id FROM TB_CXR WHERE subject_id = 10137553;",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "subject_id": 10137553,
+                    "study_id": 54058594
+                  },
+                  {
+                    "subject_id": 10137553,
+                    "study_id": 50351797
+                  },
+                  {
+                    "subject_id": 10137553,
+                    "study_id": 59250674
+                  },
+                  {
+                    "subject_id": 10137553,
+                    "study_id": 58540899
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Retrieve subject_id and study_id for chest x-rays of patient 10137553.",
+              "context": "['TB_CXR']"
+            }
+          },
+          "id": 4
+        },
+        {
+          "function": "image_analysis(question=\"Are there any technical assessments in the chest x-ray?\", context=$4)",
+          "question": "Are there any technical assessments in the chest x-ray?",
+          "context": "$4",
+          "outputs": {
+            "output": [
+              "no"
+            ],
+            "input": {
+              "question": "Are there any technical assessments in the chest x-ray?",
+              "context": "{'status': 'success', 'data': [{'subject_id': 10137553, 'study_id': 54058594}, {'subject_id': 10137553, 'study_id': 50351797}, {'subject_id': 10137553, 'study_id': 59250674}, {'subject_id': 10137553, 'study_id': 58540899}]}"
+            }
+          },
+          "id": 5
+        },
+        {
+          "function": "join()",
+          "id": 6
+        }
+      ]
+    }
+  ],
+  "question": "did patient 10137553 undergo a insertion of drug-eluting coronary artery stent(s) and have a chest x-ray indicating any technical assessments?"
+}

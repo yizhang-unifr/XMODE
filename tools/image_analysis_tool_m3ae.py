@@ -1,4 +1,7 @@
-import re
+import re, sys,os
+sys.path.append(os.path.dirname(os.getcwd()) + '/src')
+sys.path.append(os.path.dirname(os.getcwd()) + '/tools')
+
 from typing import List, Optional, Union
 import json
 import ast
@@ -26,9 +29,9 @@ from langchain_core.messages import (
 # 'For example, 1. text2SQL("given the last study of patient 13859433 this year") and then 2. image_analysis("are there any anatomicalfinding that are still no in the left hilar structures in $1") is NEVER allowed. '
 #'Use 2. image_analysis("are there any anatomicalfinding that are still no in the left hilar structures", context=["$1"]) instead.\n'
 _DESCRIPTION = (
-    " image_analysis(question:str, context: Union[str, List[str]])-> str\n"
+    " image_analysis(question:str, context: Union[str, List[str]])-> Union[str, List[str]]\n"
     " This tools is a medical image analysis task. For given radiology images and a question in English, it analysis the images and provide answer to the question. \n"
-    " The given question should be in English. It it is in other language you should translate it to English."
+    " The given question should be in English. If it is in other language you should translate it to English."
     " Comparision should be done after each analysis.\n"
     "- You cannot analyse multiple studies in one call. For instance, `image_analysis('are there any anatomical finding that are still absent in the left hilar structures?','[{{'image_id':xxx,'stuy_id':yyy}}, {{'image_id':zzz,'stuy_id':www}})` does not work. "
     "If you need to analyse multiple images, you need to call them separately like `image_analysis('are there any anatomical finding that are still absent in the left hilar structures?','{{'image_id':xxx,'stuy_id':yyy}}')` and then `image_analysis('are there any anatomical finding that are still absent in the left hilar structures?','{{'image_id':zzz,'stuy_id':wwww}}')`\n"
@@ -86,7 +89,7 @@ def _get_image_url(_d, db_path, current_path ='.'):
     if 'image_id' in d:
         # find all the image files under the folder
         
-    #/home/ubuntu/workspace/M3LX-LLMCompiler/files/p15/p15833469/s57883509/1b0b0385-a72d064d-be1f11ed-a39331d1-dde8f464.jpg
+    #/home/ubuntu/workspace/XMODE-LLMCompiler/files/p15/p15833469/s57883509/1b0b0385-a72d064d-be1f11ed-a39331d1-dde8f464.jpg
         image_nanme = f"{d['image_id']}.jpg"
         d['image_url'] = [f for f in files_path.rglob(image_nanme)][0]
         res = [d]
@@ -135,9 +138,9 @@ def get_image_analysis_tools(db_path:str):
    
     Args:
         question (str): The question about the image.
-        context Union[str, List[str]]
+        context Union[str, List[str]]: Information about the image path
     Returns:
-        str: the answer to the question about the image.
+        Union[str, List[str]]: the answer to the question about the image.
     """
     # prompt = ChatPromptTemplate.from_messages(
     #     [
@@ -168,38 +171,49 @@ def get_image_analysis_tools(db_path:str):
                 context = [ast.literal_eval(context)]
                 if 'status' in context[0]:
                     context=context[0]
-                # If the context contains 'data' key, use its value
+               
             else:
                 print("context-2", context)
                 context = ast.literal_eval(context[0])
             
             print("context-2", context)
-            
+             # If the context contains 'data' key, use its value
             if 'data' in context:
                 #["{'status': 'success', 'data': [{'studydatetime': '2105-09-06 18:18:18'}]}"]
                 context = context['data']
 
             print("context-after:", context)
+            if not isinstance(context, list):
+                print("context-after in not list", list(context))
+                context=[context]
             
             image_urls = [_get_image_url(ctx, db_path) for ctx in context]
             print("image_urls_1", image_urls)
 
-            
             if isinstance(image_urls, ValueError):
-                chain_input["context"] = [SystemMessage(content=str(image_urls))]
+                return SystemMessage(content=str(image_urls)+ 'the output of the previous task should be in this format: ["{\'status\': \'success\', \'data\': [{\'image_id\': \'...\'}]}"]')
             else:
                 try:
+                    
                     image_urls = [item[0] for item in image_urls]
                     # print("image_urls_2",image_urls)
                     images_encoded = [_load_image(url['image_url']) for url in image_urls]
                     
+                    if len(images_encoded)>1:
+                        vqa_answers=[]
+                        for imag_encoded in images_encoded:
+                            vqa_answer=post_vqa_m3ae_with_url(chain_input["question"],imag_encoded)
+                            vqa_answers.append( vqa_answer['vqa_answers'])
+                        print("vqa_answers", vqa_answers)
+                        return vqa_answers
+                        
+                    else:
+                        vqa_answer= post_vqa_m3ae_with_url(chain_input["question"],images_encoded[-1])
+                        return vqa_answer['vqa_answers']
+
                 except ValueError as e:
-                     chain_input["context"] = [SystemMessage(content=str(e))]                     
-        vqa_answer= post_vqa_m3ae_with_url(chain_input["question"],images_encoded[-1])
-        try:
-            return vqa_answer['vqa_answers']
-        except Exception as e:
-            return repr(e)
+                     return SystemMessage(content=str(e) +'the output of the previous task should be in this format: ["{\'status\': \'success\', \'data\': [{\'image_id\': \'...\'}]}"]')               
+
 
     return StructuredTool.from_function(
         name="image_analysis",

@@ -1,0 +1,19 @@
+SystemMessage: You are Data-GPT, and you can tell users which database tables and columns are relevant for a user request. You can look at images (Datatype IMAGE) to determine which and how many objects are depicted in the image, and also determine things like the style and type of the image. You can read and process texts (Datatype TEXT) to extract information from the text. You cannot open file paths or URLs.
+The database contains the following tables:
+ - paintings_metadata = table(num_rows=101, columns=['title': 'str', 'inception': 'str', 'movement': 'str', 'genre': 'str', 'image_url': 'str', 'img_path': 'str'], primary_key='title', description='a table that contains general information about paintings', foreign_keys=[paintings_metadata.img_path -> painting_images.img_path])
+ - painting_images = table(num_rows=101, columns=['img_path': 'str', 'image': 'IMAGE'], primary_key='img_path', description='a table that contains images of paintings', foreign_keys=[])
+
+A column with the IMAGE datatype stores images. A column with the TEXT datatype stores long text.
+
+
+
+--
+HumanMessage: My request is: Plot the year of the oldest painting per genre. I consider these columns as relevant: paintings_metadata.inception (The column `inception` in the table `paintings_metadata` contains the inception dates of the paintings. The column `paintings_metadata.inception` is relevant for the query because it contains the dates needed to determine the year of the oldest painting for each genre.), paintings_metadata.genre (The column `genre` in the table `paintings_metadata` contains the genre of each painting. The column `paintings_metadata.genre` is relevant for the query because it is necessary to group the paintings by genre to determine the oldest painting in each genre.). Answer these questions:
+1. Are these columns enough to satisfy the request or are there other relevant columns I missed? If they are sufficient, you can skip the other questions.
+2. Which other columns are relevant? Please provide them in this format:
+- table_1.col_1: <What does the column contain?>
+...
+- table_n.col_n: <What does the column contain?>
+
+************************************************************************************************************************************************************************************************************************************************************************************************************
+1. The columns `paintings_metadata.inception` and `paintings_metadata.genre` are sufficient to satisfy the request. You can determine the year of the oldest painting per genre using these columns.

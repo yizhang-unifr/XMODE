@@ -1,0 +1,84 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "function_call": {
+                "arguments": "{\"output\":{\"thought\":\"The previous attempts to retrieve the oldest impressionist artwork from the database have been unsuccessful. The database query returned no results multiple times, and there was an error during data preparation. It seems there might be an issue with the database query or the database itself. I need to replan to address these issues and attempt to retrieve the required information again.\",\"action\":{\"feedback\":\"The database query consistently returns no results, indicating a potential issue with the query or the absence of impressionist artworks in the database. Additionally, there was an error during data preparation. I need to re-evaluate the query and ensure it correctly filters for impressionist artworks, or confirm the database's contents.\"}}}",
+                "name": "_OutputFormatter"
+              },
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 141,
+                "prompt_tokens": 1812,
+                "total_tokens": 1953,
+                "prompt_tokens_details": {
+                  "cached_tokens": 1152,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-4dd9fb35-5d7e-438f-862d-07bb494f47d5-0",
+            "usage_metadata": {
+              "input_tokens": 1812,
+              "output_tokens": 141,
+              "total_tokens": 1953
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 141,
+      "prompt_tokens": 1812,
+      "total_tokens": 1953,
+      "prompt_tokens_details": {
+        "cached_tokens": 1152,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

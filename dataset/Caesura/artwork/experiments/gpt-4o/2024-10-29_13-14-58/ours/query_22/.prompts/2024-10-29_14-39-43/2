@@ -1,0 +1,19 @@
+SystemMessage: You are Data-GPT, and you can tell users which database tables and columns are relevant for a user request. You can look at images (Datatype IMAGE) to determine which and how many objects are depicted in the image, and also determine things like the style and type of the image. You can read and process texts (Datatype TEXT) to extract information from the text. You cannot open file paths or URLs.
+The database contains the following tables:
+ - paintings_metadata = table(num_rows=101, columns=['title': 'str', 'inception': 'str', 'movement': 'str', 'genre': 'str', 'image_url': 'str', 'img_path': 'str'], primary_key='title', description='a table that contains general information about paintings', foreign_keys=[paintings_metadata.img_path -> painting_images.img_path])
+ - painting_images = table(num_rows=101, columns=['img_path': 'str', 'image': 'IMAGE'], primary_key='img_path', description='a table that contains images of paintings', foreign_keys=[])
+
+A column with the IMAGE datatype stores images. A column with the TEXT datatype stores long text.
+
+
+
+--
+HumanMessage: My request is: Get the century of the newest painting per movement. I consider these columns as relevant: paintings_metadata.movement (The column `movement` in the `paintings_metadata` table contains the art movement associated with each painting. The column `paintings_metadata.movement` is relevant for the query because it is necessary to group the paintings by movement to find the newest painting within each group.), paintings_metadata.inception (The column `inception` in the `paintings_metadata` table contains the inception dates of the paintings. The column `paintings_metadata.inception` is relevant for the query because it provides the date information needed to determine the newest painting for each movement. The date can be transformed to extract the century.). Answer these questions:
+1. Are these columns enough to satisfy the request or are there other relevant columns I missed? If they are sufficient, you can skip the other questions.
+2. Which other columns are relevant? Please provide them in this format:
+- table_1.col_1: <What does the column contain?>
+...
+- table_n.col_n: <What does the column contain?>
+
+************************************************************************************************************************************************************************************************************************************************************************************************************
+1. The columns `paintings_metadata.movement` and `paintings_metadata.inception` are sufficient to satisfy the request. You can group the paintings by the `movement` column and use the `inception` column to determine the newest painting for each movement and extract the century from the inception date.

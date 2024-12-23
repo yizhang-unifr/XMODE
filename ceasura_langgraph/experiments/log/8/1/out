@@ -1,0 +1,100 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_k5CQsgFukXXGsF53jT7gWNrJ",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"To find the year of the oldest painting per genre, we need to group the paintings by genre and then find the minimum inception year for each group. The 'inception' column contains the date when the artwork was created, and we can extract the year from this column. The query will select the genre and the minimum year of inception for each genre.\",\"SQL\":\"SELECT genre, MIN(STRFTIME('%Y', inception)) AS oldest_year\\nFROM paintings\\nGROUP BY genre;\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ],
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 102,
+                "prompt_tokens": 833,
+                "total_tokens": 935,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_159d8341cc",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-785763f2-e5f4-482f-bff9-98205daec464-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "To find the year of the oldest painting per genre, we need to group the paintings by genre and then find the minimum inception year for each group. The 'inception' column contains the date when the artwork was created, and we can extract the year from this column. The query will select the genre and the minimum year of inception for each genre.",
+                  "SQL": "SELECT genre, MIN(STRFTIME('%Y', inception)) AS oldest_year\nFROM paintings\nGROUP BY genre;"
+                },
+                "id": "call_k5CQsgFukXXGsF53jT7gWNrJ",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 833,
+              "output_tokens": 102,
+              "total_tokens": 935
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 102,
+      "prompt_tokens": 833,
+      "total_tokens": 935,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_159d8341cc"
+  },
+  "run": null
+}

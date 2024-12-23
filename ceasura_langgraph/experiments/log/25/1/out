@@ -1,0 +1,99 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_UQzphSGe0Mv6xzL7T4paQrhc",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"The task requires retrieving the image paths for all paintings to perform image analysis. The database schema provides the 'img_path' column in the 'paintings' table, which contains the local paths to the images. Additionally, the century of each painting can be determined from the 'inception' column by extracting the year and calculating the century. The SQL query will select the 'img_path' and calculate the century from the 'inception' date for each painting.\",\"SQL\":\"SELECT img_path, (strftime('%Y', inception) / 100) + 1 AS century FROM paintings;\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ]
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 123,
+                "prompt_tokens": 823,
+                "total_tokens": 946,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_7f6be3efb0",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-ccfb879f-f348-4f11-9b17-8f2f914bc6c7-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "The task requires retrieving the image paths for all paintings to perform image analysis. The database schema provides the 'img_path' column in the 'paintings' table, which contains the local paths to the images. Additionally, the century of each painting can be determined from the 'inception' column by extracting the year and calculating the century. The SQL query will select the 'img_path' and calculate the century from the 'inception' date for each painting.",
+                  "SQL": "SELECT img_path, (strftime('%Y', inception) / 100) + 1 AS century FROM paintings;"
+                },
+                "id": "call_UQzphSGe0Mv6xzL7T4paQrhc",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 823,
+              "output_tokens": 123,
+              "total_tokens": 946
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 123,
+      "prompt_tokens": 823,
+      "total_tokens": 946,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_7f6be3efb0"
+  },
+  "run": null
+}

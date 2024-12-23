@@ -1,0 +1,100 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_Y89lrnuoQ8lc1G0afMcjG0yd",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"To retrieve the image paths and movement names for paintings that depict animals, we need to join the 'paintings' table with the 'movements' table. The 'paintings' table contains the 'img_path' and 'movement_id', while the 'movements' table contains 'id' and 'name'. We will filter the results by the 'genre' column in the 'paintings' table to include only those paintings that depict animals. The SQL query will select the 'img_path' from the 'paintings' table and the 'name' from the 'movements' table where the 'genre' is 'animal'.\",\"SQL\":\"SELECT paintings.img_path, movements.name \\nFROM paintings \\nJOIN movements ON paintings.movement_id = movements.id \\nWHERE paintings.genre = 'animal';\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ],
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 169,
+                "prompt_tokens": 863,
+                "total_tokens": 1032,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-955e5a12-ca8b-485c-bfcd-3f1a4bd26de3-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "To retrieve the image paths and movement names for paintings that depict animals, we need to join the 'paintings' table with the 'movements' table. The 'paintings' table contains the 'img_path' and 'movement_id', while the 'movements' table contains 'id' and 'name'. We will filter the results by the 'genre' column in the 'paintings' table to include only those paintings that depict animals. The SQL query will select the 'img_path' from the 'paintings' table and the 'name' from the 'movements' table where the 'genre' is 'animal'.",
+                  "SQL": "SELECT paintings.img_path, movements.name \nFROM paintings \nJOIN movements ON paintings.movement_id = movements.id \nWHERE paintings.genre = 'animal';"
+                },
+                "id": "call_Y89lrnuoQ8lc1G0afMcjG0yd",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 863,
+              "output_tokens": 169,
+              "total_tokens": 1032
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 169,
+      "prompt_tokens": 863,
+      "total_tokens": 1032,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

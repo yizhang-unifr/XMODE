@@ -1,0 +1,3 @@
+{
+    "input": "{'question': 'What is depicted in the image?', 'context': \"{'status': 'success', 'data': [{'img_path': 'images/img_0.jpg', 'year': '1438'}]}\"}"
+  }

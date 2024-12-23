@@ -1,0 +1,22 @@
+[
+    {
+        "century": 15,
+        "number_of_paintings": 43
+    },
+    {
+        "century": 16,
+        "number_of_paintings": 21
+    },
+    {
+        "century": 18,
+        "number_of_paintings": 14
+    },
+    {
+        "century": 19,
+        "number_of_paintings": 22
+    },
+    {
+        "century": 20,
+        "number_of_paintings": 1
+    }
+]

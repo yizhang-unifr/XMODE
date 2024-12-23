@@ -1,0 +1,19 @@
+HumanMessage: calculate the century by dividing the year by 100 and taking the ceiling of the result:
+```py
+>>> print(year[:10])
+0    1536
+1    1536
+2    1536
+Name: year, dtype: int64
+```
+It is a pandas Series object. Please call the 'apply' method with a lambda expression, and make sure to always call astype() in the same line. Assign the result to a variable called 'century'. Template to use: `century = year.apply(lambda x: <code>).astype(<dtype>)`. You can use pandas, datetime, numpy, re.
+************************************************************************************************************************************************************************************************************************************************************************************************************
+To calculate the century from a given year in a pandas Series, you can use the `apply` method with a lambda function that divides the year by 100 and takes the ceiling of the result. You can use the `numpy` library to perform the ceiling operation. Here's how you can do it:
+
+```python
+import numpy as np
+
+century = year.apply(lambda x: np.ceil(x / 100)).astype(int)
+```
+
+This code will calculate the century for each year in the `year` Series and store the result in the `century` variable as an integer type.

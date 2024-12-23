@@ -1,0 +1,99 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_kwLoSpVXS3PWowpGJiJwxakn",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"The task is to retrieve the number of paintings corresponding to each century. The 'paintings' table contains an 'inception' field which is a DATETIME type, representing the date when the artwork was created. To determine the century, we need to extract the year from the 'inception' field and then calculate the century using the formula: (CAST(strftime('%Y', inception) AS INTEGER) - 1) / 100 + 1. We will group the results by century and count the number of paintings in each century.\",\"SQL\":\"SELECT ((CAST(strftime('%Y', inception) AS INTEGER) - 1) / 100 + 1) AS century, COUNT(*) AS number_of_paintings\\nFROM paintings\\nGROUP BY century\\nORDER BY century;\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ]
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 164,
+                "prompt_tokens": 886,
+                "total_tokens": 1050,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_7f6be3efb0",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-0c45edc0-cf65-4daf-9764-a8da484e27ff-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "The task is to retrieve the number of paintings corresponding to each century. The 'paintings' table contains an 'inception' field which is a DATETIME type, representing the date when the artwork was created. To determine the century, we need to extract the year from the 'inception' field and then calculate the century using the formula: (CAST(strftime('%Y', inception) AS INTEGER) - 1) / 100 + 1. We will group the results by century and count the number of paintings in each century.",
+                  "SQL": "SELECT ((CAST(strftime('%Y', inception) AS INTEGER) - 1) / 100 + 1) AS century, COUNT(*) AS number_of_paintings\nFROM paintings\nGROUP BY century\nORDER BY century;"
+                },
+                "id": "call_kwLoSpVXS3PWowpGJiJwxakn",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 886,
+              "output_tokens": 164,
+              "total_tokens": 1050
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 164,
+      "prompt_tokens": 886,
+      "total_tokens": 1050,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_7f6be3efb0"
+  },
+  "run": null
+}

@@ -1,0 +1,37 @@
+{
+  "generations": [
+    {
+      "text": "1. text2SQL(problem=\"Retrieve the newest painting per movement and determine the century of each painting.\", context=\"Consider the tables related to paintings and movements, including any relevant date or year columns that can help identify the newest painting and its century.\")\n2. data_preparation(question=\"Prepare the data to determine the century of each painting based on the year it was created.\", context=\"$1\")\n3. join() \n<END_OF_PLAN>",
+      "generation_info": {
+        "finish_reason": "stop",
+        "model_name": "gpt-4o-2024-08-06",
+        "system_fingerprint": "fp_45cf54deae"
+      },
+      "type": "ChatGenerationChunk",
+      "message": {
+        "lc": 1,
+        "type": "constructor",
+        "id": [
+          "langchain",
+          "schema",
+          "messages",
+          "AIMessageChunk"
+        ],
+        "kwargs": {
+          "content": "1. text2SQL(problem=\"Retrieve the newest painting per movement and determine the century of each painting.\", context=\"Consider the tables related to paintings and movements, including any relevant date or year columns that can help identify the newest painting and its century.\")\n2. data_preparation(question=\"Prepare the data to determine the century of each painting based on the year it was created.\", context=\"$1\")\n3. join() \n<END_OF_PLAN>",
+          "response_metadata": {
+            "finish_reason": "stop",
+            "model_name": "gpt-4o-2024-08-06",
+            "system_fingerprint": "fp_45cf54deae"
+          },
+          "type": "AIMessageChunk",
+          "id": "run-9ab776a1-c907-4e77-b258-99b2658f9230",
+          "tool_calls": [],
+          "invalid_tool_calls": []
+        }
+      }
+    }
+  ],
+  "llm_output": null,
+  "run": null
+}

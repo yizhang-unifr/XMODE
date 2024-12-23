@@ -1,0 +1,6 @@
+```python
+1. text2SQL(problem="Retrieve the genre and the creation date of the oldest painting in the database.")
+2. data_preparation(question="Identify the genre of the oldest painting based on the retrieved data.", context=$1)
+3. join()
+<END_OF_PLAN>
+```

@@ -1,0 +1,100 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_wdlsch41fjaRb4wj7gUiUk0T",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"To determine the number of paintings for each century, we need to extract the century from the 'inception' date of each painting. The 'inception' column is of DATETIME type, so we can extract the year and then calculate the century. The century can be calculated by dividing the year by 100 and adding 1 (e.g., for the year 1438, the century is 15th). We will group the results by century and count the number of paintings in each group.\",\"SQL\":\"SELECT (strftime('%Y', inception) / 100) + 1 AS century, COUNT(*) AS number_of_paintings\\nFROM paintings\\nGROUP BY century\\nORDER BY century;\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ],
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 147,
+                "prompt_tokens": 805,
+                "total_tokens": 952,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-b8da0e63-e8ab-4e5f-9854-353ed2f69aed-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "To determine the number of paintings for each century, we need to extract the century from the 'inception' date of each painting. The 'inception' column is of DATETIME type, so we can extract the year and then calculate the century. The century can be calculated by dividing the year by 100 and adding 1 (e.g., for the year 1438, the century is 15th). We will group the results by century and count the number of paintings in each group.",
+                  "SQL": "SELECT (strftime('%Y', inception) / 100) + 1 AS century, COUNT(*) AS number_of_paintings\nFROM paintings\nGROUP BY century\nORDER BY century;"
+                },
+                "id": "call_wdlsch41fjaRb4wj7gUiUk0T",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 805,
+              "output_tokens": 147,
+              "total_tokens": 952
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 147,
+      "prompt_tokens": 805,
+      "total_tokens": 952,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

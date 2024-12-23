@@ -1,0 +1,8 @@
+1. text2SQL(problem="Retrieve the image paths and any relevant information for paintings depicting war.", context="The database does not contain any information about what is depicted in a painting, so we need to retrieve image paths for analysis.")
+2. text2SQL(problem="Retrieve the image paths and any relevant information for paintings in the category of religious arts.", context="The database contains a category for religious arts, so we need to retrieve image paths for analysis.")
+3. image_analysis(question="Does the image depict war?", context=$1)
+4. image_analysis(question="Does the image depict swords?", context=$2)
+5. data_preparation(question="Prepare data for plotting the total number of paintings depicting war and the number of paintings depicting swords in religious arts.", context=[$3, $4])
+6. data_plotting(question="Plot the total number of paintings depicting war and the number of paintings depicting swords in religious arts.", context=$5)
+7. join()
+<END_OF_PLAN>

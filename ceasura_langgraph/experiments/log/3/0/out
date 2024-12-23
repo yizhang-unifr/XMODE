@@ -1,0 +1,37 @@
+{
+    "generations": [
+      {
+        "text": "1. text2SQL(problem=\"Retrieve the image paths and painting IDs for all paintings.\", context=\"The database contains information about paintings, including their image paths and IDs.\")\n2. image_analysis(question=\"How many babies are depicted in the image?\", context=$1)\n3. text2SQL(problem=\"Find the movement of the painting with the highest number of babies depicted.\", context=\"The database contains information about paintings, including their movements and IDs.\")\n4. join() \n<END_OF_PLAN>",
+        "generation_info": {
+          "finish_reason": "stop",
+          "model_name": "gpt-4o-2024-08-06",
+          "system_fingerprint": "fp_45cf54deae"
+        },
+        "type": "ChatGenerationChunk",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessageChunk"
+          ],
+          "kwargs": {
+            "content": "1. text2SQL(problem=\"Retrieve the image paths and painting IDs for all paintings.\", context=\"The database contains information about paintings, including their image paths and IDs.\")\n2. image_analysis(question=\"How many babies are depicted in the image?\", context=$1)\n3. text2SQL(problem=\"Find the movement of the painting with the highest number of babies depicted.\", context=\"The database contains information about paintings, including their movements and IDs.\")\n4. join() \n<END_OF_PLAN>",
+            "response_metadata": {
+              "finish_reason": "stop",
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae"
+            },
+            "type": "AIMessageChunk",
+            "id": "run-05ea8779-adab-4959-80f2-4350c84b1c98",
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ],
+    "llm_output": null,
+    "run": null
+  }

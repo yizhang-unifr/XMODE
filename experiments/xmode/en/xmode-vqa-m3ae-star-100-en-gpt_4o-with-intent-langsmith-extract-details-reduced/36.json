@@ -1,0 +1,84 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem=\"Find the last study and previous study of patient 11323860 in 2105.\", context=\"\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\")",
+          "problem": "Find the last study and previous study of patient 11323860 in 2105.",
+          "context": "\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\"",
+          "id": 1
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve the study_id, image_id, and studydatetime for the last and previous study of patient 11323860 in 2105.\", context=$1)",
+          "problem": "Retrieve the study_id, image_id, and studydatetime for the last and previous study of patient 11323860 in 2105.",
+          "context": "$1",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve the last and previous study for patient 11323860 in the year 2105, we need to filter the records in the TB_CXR table by subject_id and the year of the studydatetime. We will order the results by studydatetime in descending order to get the most recent studies first. We will then select the top two records to get the last and previous studies. The required columns are study_id, image_id, and studydatetime.",
+              "SQL": "SELECT study_id, image_id, studydatetime FROM TB_CXR WHERE subject_id = 11323860 AND strftime('%Y', studydatetime) = '2105' ORDER BY studydatetime DESC LIMIT 2",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "study_id": 56423647,
+                    "image_id": "0403ad5f-c5eecef6-f43bd985-81acc510-12d917a7",
+                    "studydatetime": "2105-11-18 17:12:38"
+                  },
+                  {
+                    "study_id": 55251896,
+                    "image_id": "4de7c549-86736930-87b965e9-3be9fbee-da148093",
+                    "studydatetime": "2105-01-14 21:43:39"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Retrieve the study_id, image_id, and studydatetime for the last and previous study of patient 11323860 in 2105.",
+              "context": "['TB_CXR']"
+            }
+          },
+          "id": 2
+        },
+        {
+          "function": "image_analysis(question=\"What are the anatomical locations related to tortuous aorta still present in the last study?\", context=$2)",
+          "question": "What are the anatomical locations related to tortuous aorta still present in the last study?",
+          "context": "$2",
+          "outputs": {
+            "output": [
+              "aortic arch",
+              "mediastinum",
+              "upper mediastinum"
+            ],
+            "input": {
+              "question": "What are the anatomical locations related to tortuous aorta still present in the last study?",
+              "context": "{'status': 'success', 'data': [{'study_id': 56423647, 'image_id': '0403ad5f-c5eecef6-f43bd985-81acc510-12d917a7', 'studydatetime': '2105-11-18 17:12:38'}, {'study_id': 55251896, 'image_id': '4de7c549-86736930-87b965e9-3be9fbee-da148093', 'studydatetime': '2105-01-14 21:43:39'}]}"
+            }
+          },
+          "id": 3
+        },
+        {
+          "function": "image_analysis(question=\"What are the anatomical locations related to tortuous aorta still present in the previous study?\", context=$2)",
+          "question": "What are the anatomical locations related to tortuous aorta still present in the previous study?",
+          "context": "$2",
+          "outputs": {
+            "output": [
+              "aortic arch",
+              "mediastinum",
+              "upper mediastinum"
+            ],
+            "input": {
+              "question": "What are the anatomical locations related to tortuous aorta still present in the previous study?",
+              "context": "{'status': 'success', 'data': [{'study_id': 56423647, 'image_id': '0403ad5f-c5eecef6-f43bd985-81acc510-12d917a7', 'studydatetime': '2105-11-18 17:12:38'}, {'study_id': 55251896, 'image_id': '4de7c549-86736930-87b965e9-3be9fbee-da148093', 'studydatetime': '2105-01-14 21:43:39'}]}"
+            }
+          },
+          "id": 4
+        },
+        {
+          "function": "join()",
+          "id": 5
+        }
+      ]
+    }
+  ],
+  "question": "please enumerate all the anatomical locations related to tortuous aorta still present during the last study of patient 11323860 in 2105 compared to the previous study."
+}

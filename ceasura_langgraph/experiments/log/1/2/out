@@ -1,0 +1,84 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "function_call": {
+                "arguments": "{\"output\":{\"thought\":\"The data retrieved from the database indicates that the newest painting is titled 'Q113636993', created on January 1, 2000. However, there is no information about the artist, which might be relevant to the user's query. Since the user asked for the newest painting, and the data only contains one painting, it seems this is the newest one available in the database.\",\"action\":{\"response\":\"{'Summary': 'The newest painting in the database is titled Q113636993, created on January 1, 2000.', 'details': 'The painting belongs to the Renaissance movement and is categorized as religious art. An image of the painting can be found at the provided URL.', 'source': 'Database query result', 'inference': 'Q113636993', 'extra explanation': 'The database only contains this painting, so it is considered the newest by default.'}\"}}}",
+                "name": "_OutputFormatter"
+              },
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 186,
+                "prompt_tokens": 900,
+                "total_tokens": 1086,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-e58d3eae-3dfd-41cc-ba20-a515bbbdca83-0",
+            "usage_metadata": {
+              "input_tokens": 900,
+              "output_tokens": 186,
+              "total_tokens": 1086
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 186,
+      "prompt_tokens": 900,
+      "total_tokens": 1086,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

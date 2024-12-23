@@ -1,0 +1,84 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "function_call": {
+                "arguments": "{\"output\":{\"thought\":\"The previous actions have successfully identified the painting with the highest number of swords and determined its movement as 'Renaissance'.\",\"action\":{\"response\":\"{'Summary': 'The painting with the highest number of swords belongs to the Renaissance movement.', 'details': 'The painting identified with the highest number of swords, totaling 6, is associated with the Renaissance art movement.', 'source': 'The information was obtained through data processing and retrieval from a database containing details about paintings.', 'inference': 'Renaissance', 'extra explanation': 'The painting with the highest number of swords was found to have 6 swords depicted in it.'}\"}}}",
+                "name": "_OutputFormatter"
+              },
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 133,
+                "prompt_tokens": 6205,
+                "total_tokens": 6338,
+                "prompt_tokens_details": {
+                  "cached_tokens": 5504,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-70cc1695-94c1-431b-80d6-178e8b0f15c9-0",
+            "usage_metadata": {
+              "input_tokens": 6205,
+              "output_tokens": 133,
+              "total_tokens": 6338
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 133,
+      "prompt_tokens": 6205,
+      "total_tokens": 6338,
+      "prompt_tokens_details": {
+        "cached_tokens": 5504,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

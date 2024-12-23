@@ -1,0 +1,100 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_VwAn74NHCYZIAxqgR7U4rPaM",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"To retrieve the image paths and determine the century of paintings, we need to extract the 'img_path' and calculate the century from the 'inception' date. The century can be calculated by dividing the year by 100 and adding 1. This will allow us to categorize the paintings by century for further analysis, such as determining if they depict war.\",\"SQL\":\"SELECT img_path, (strftime('%Y', inception) / 100) + 1 AS century FROM paintings;\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ],
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 102,
+                "prompt_tokens": 828,
+                "total_tokens": 930,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-5dd86b44-e94c-4253-9df3-23a53c367a84-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "To retrieve the image paths and determine the century of paintings, we need to extract the 'img_path' and calculate the century from the 'inception' date. The century can be calculated by dividing the year by 100 and adding 1. This will allow us to categorize the paintings by century for further analysis, such as determining if they depict war.",
+                  "SQL": "SELECT img_path, (strftime('%Y', inception) / 100) + 1 AS century FROM paintings;"
+                },
+                "id": "call_VwAn74NHCYZIAxqgR7U4rPaM",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 828,
+              "output_tokens": 102,
+              "total_tokens": 930
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 102,
+      "prompt_tokens": 828,
+      "total_tokens": 930,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

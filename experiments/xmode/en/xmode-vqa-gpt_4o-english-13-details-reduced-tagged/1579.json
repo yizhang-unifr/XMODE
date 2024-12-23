@@ -1,0 +1,40 @@
+{
+  "Plans (updated with SQL)": [
+    {
+      "plan": [
+        {
+          "function": "image_analysis(question='What abnormalities can be listed from the image?', context=\"{'study_id': 51949631}\")",
+          "question": "What abnormalities can be listed from the image?",
+          "context": "{'study_id': 51949631}\"",
+          "outputs": {
+            "output": [
+              "lung opacity"
+            ],
+            "input": {
+              "question": "What abnormalities can be listed from the image?",
+              "context": "{'study_id': 51949631}"
+            }
+          },
+          "id": 1
+        },
+        {
+          "function": "join()",
+          "id": 2
+        }
+      ],
+      "missing_text2SQL": true
+    }
+  ],
+  "prediction": [
+    [
+      {
+        "content": "Thought: The image analysis for study 51949631 indicates the presence of 'lung opacity'. This is the only abnormality listed from the image analysis."
+      },
+      {
+        "content": "{'Summary': 'The image analysis for study 51949631 indicates the presence of lung opacity.', 'details': 'The image analysis conducted for the study with ID 51949631 identified lung opacity as an abnormality.', 'source': 'Image analysis function for study 51949631', 'inference':'lung opacity', 'extra explanation':'Lung opacity is the only abnormality identified from the image analysis of study 51949631.'}"
+      }
+    ]
+  ],
+  "question": "given the study 51949631, what abnormalities can be listed from the image?",
+  "id": 1579
+}

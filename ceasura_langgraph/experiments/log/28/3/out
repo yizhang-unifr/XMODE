@@ -1,0 +1,408 @@
+{
+  "output": [
+    {
+      "img_path": "images/img_0.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_1.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_2.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_3.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_4.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_5.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_6.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_7.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_8.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_9.jpg",
+      "Does the image depict war?": "yes"
+    },
+    {
+      "img_path": "images/img_10.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_11.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_12.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_13.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_14.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_15.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_16.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_17.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_18.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_19.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_20.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_21.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_22.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_23.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_24.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_25.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_26.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_27.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_28.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_29.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_30.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_31.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_32.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_33.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_34.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_35.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_36.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_37.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_38.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_39.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_40.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_41.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_42.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_43.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_44.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_45.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_46.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_47.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_48.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_49.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_50.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_51.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_52.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_53.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_54.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_55.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_56.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_57.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_58.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_59.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_60.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_61.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_62.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_63.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_64.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_65.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_66.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_67.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_68.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_69.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_70.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_71.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_72.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_73.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_74.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_75.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_76.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_77.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_78.jpg",
+      "Does the image depict war?": "yes"
+    },
+    {
+      "img_path": "images/img_79.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_80.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_81.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_82.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_83.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_84.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_85.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_86.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_87.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_88.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_89.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_90.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_91.jpg",
+      "Does the image depict war?": "yes"
+    },
+    {
+      "img_path": "images/img_92.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_93.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_94.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_95.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_96.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_97.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_98.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_99.jpg",
+      "Does the image depict war?": "no"
+    },
+    {
+      "img_path": "images/img_100.jpg",
+      "Does the image depict war?": "no"
+    }
+  ]
+}

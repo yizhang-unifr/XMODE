@@ -1,0 +1,100 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem=\"Did patient 10037020 receive the extirpation of matter from common bile duct, via natural or artificial opening endoscopic procedure since 08/2104?\", context=\"CREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"D_ICD_PROCEDURES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\")",
+          "problem": "Did patient 10037020 receive the extirpation of matter from common bile duct, via natural or artificial opening endoscopic procedure since 08/2104?",
+          "context": "CREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"D_ICD_PROCEDURES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\"",
+          "id": 0
+        },
+        {
+          "function": "text2SQL(problem=\"Did patient 10037020 receive the extirpation of matter from common bile duct, via natural or artificial opening endoscopic procedure since 08/2104?\", context=$0)",
+          "problem": "Did patient 10037020 receive the extirpation of matter from common bile duct, via natural or artificial opening endoscopic procedure since 08/2104?",
+          "context": "$0",
+          "outputs": {
+            "output": {
+              "reasoning": "To determine if patient 10037020 received the specific procedure since August 2104, we need to join the `PROCEDURES_ICD` table with the `D_ICD_PROCEDURES` table to match the `icd_code` with its `long_title`. We will filter the results by `subject_id` and the `charttime` to be after 2104-08-01. The `long_title` should match the procedure description 'extirpation of matter from common bile duct, via natural or artificial opening endoscopic'.",
+              "SQL": "SELECT p.subject_id, p.icd_code, d.long_title, p.charttime \nFROM PROCEDURES_ICD p \nJOIN D_ICD_PROCEDURES d ON p.icd_code = d.icd_code \nWHERE p.subject_id = 10037020 \nAND d.long_title = 'extirpation of matter from common bile duct, via natural or artificial opening endoscopic' \nAND p.charttime >= '2104-08-01';",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "subject_id": 10037020,
+                    "icd_code": "0fc98zz",
+                    "long_title": "extirpation of matter from common bile duct, via natural or artificial opening endoscopic",
+                    "charttime": "2104-08-21 16:55:00"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Did patient 10037020 receive the extirpation of matter from common bile duct, via natural or artificial opening endoscopic procedure since 08/2104?",
+              "context": "['PROCEDURES_ICD', 'D_ICD_PROCEDURES']"
+            }
+          },
+          "id": 1
+        },
+        {
+          "function": "intent_tables(problem=\"Does patient 10037020 have a chest x-ray showing any diseases in the right lung since 08/2104?\", context=\"CREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"D_ICD_PROCEDURES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\")",
+          "problem": "Does patient 10037020 have a chest x-ray showing any diseases in the right lung since 08/2104?",
+          "context": "CREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"D_ICD_PROCEDURES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\"",
+          "id": 2
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve chest x-ray image_id and study_id for patient 10037020 since 08/2104.\", context=$2)",
+          "problem": "Retrieve chest x-ray image_id and study_id for patient 10037020 since 08/2104.",
+          "context": "$2",
+          "outputs": {
+            "output": {
+              "reasoning": "The task is to retrieve the image_id and study_id for a specific patient (subject_id = 10037020) from the TB_CXR table, where the study date is after August 2104. The studydatetime column is used to filter the records based on the date condition. The query will select the image_id and study_id columns for the specified patient and date range.",
+              "SQL": "SELECT image_id, study_id FROM TB_CXR WHERE subject_id = 10037020 AND studydatetime >= '2104-08-01' ",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "image_id": "6c9574ee-734cce93-bf4bc501-05bd3733-6894b7e6",
+                    "study_id": 56501836
+                  },
+                  {
+                    "image_id": "76289ac1-3ef7c087-3e77810d-63462e2c-20c0364c",
+                    "study_id": 58400371
+                  },
+                  {
+                    "image_id": "9e66ccc9-98952e0b-ee215d63-7b8090e9-c941aae1",
+                    "study_id": 50400085
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Retrieve chest x-ray image_id and study_id for patient 10037020 since 08/2104.",
+              "context": "['TB_CXR']"
+            }
+          },
+          "id": 3
+        },
+        {
+          "function": "image_analysis(question=\"Does the chest x-ray show any diseases in the right lung?\", context=$3)",
+          "question": "Does the chest x-ray show any diseases in the right lung?",
+          "context": "$3",
+          "outputs": {
+            "output": [
+              "yes"
+            ],
+            "input": {
+              "question": "Does the chest x-ray show any diseases in the right lung?",
+              "context": "{'status': 'success', 'data': [{'image_id': '6c9574ee-734cce93-bf4bc501-05bd3733-6894b7e6', 'study_id': 56501836}, {'image_id': '76289ac1-3ef7c087-3e77810d-63462e2c-20c0364c', 'study_id': 58400371}, {'image_id': '9e66ccc9-98952e0b-ee215d63-7b8090e9-c941aae1', 'study_id': 50400085}]}"
+            }
+          },
+          "id": 4
+        },
+        {
+          "function": "join()",
+          "id": 5
+        }
+      ]
+    }
+  ],
+  "question": "did patient 10037020 receive the extirpation of matter from common bile duct, via natural or artificial opening endoscopic procedure and have a chest x-ray showing any diseases in the right lung since 08/2104?"
+}

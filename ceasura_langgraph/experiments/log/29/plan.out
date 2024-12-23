@@ -1,0 +1,7 @@
+1. text2SQL(problem="Retrieve the number of paintings for each year.", context="The database contains a 'paintings' table with columns 'painting_id', 'year', and 'genre'.")
+2. text2SQL(problem="Retrieve the total number of paintings for each genre.", context="The database contains a 'paintings' table with columns 'painting_id', 'year', and 'genre'.")
+3. data_preparation(question="Prepare data for plotting the number of paintings for each year.", context=$1)
+4. data_plotting(question="Create a plot to display the number of paintings for each year.", context=$3)
+5. data_preparation(question="Prepare data for displaying the total number of paintings for each genre.", context=$2)
+6. join()
+<END_OF_PLAN>

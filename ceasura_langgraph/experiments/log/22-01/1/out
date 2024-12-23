@@ -1,0 +1,100 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_wdlsch41fjaRb4wj7gUiUk0T",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"To find the newest painting for each movement, we need to join the `paintings` table with the `movements` table on the `movement` column. We will use a subquery to find the maximum inception date for each movement and then join this result with the `paintings` table to get the details of the newest painting for each movement. The query will select the title, inception year, movement, and movement details.\",\"SQL\":\"SELECT p.title, p.inception, p.movement, m.details\\nFROM paintings p\\nJOIN movements m ON p.movement = m.name\\nWHERE p.inception = (\\n    SELECT MAX(inception)\\n    FROM paintings p2\\n    WHERE p2.movement = p.movement\\n)\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ],
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 157,
+                "prompt_tokens": 839,
+                "total_tokens": 996,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-ca666491-60f3-40e2-9ba9-46bf0619e971-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "To find the newest painting for each movement, we need to join the `paintings` table with the `movements` table on the `movement` column. We will use a subquery to find the maximum inception date for each movement and then join this result with the `paintings` table to get the details of the newest painting for each movement. The query will select the title, inception year, movement, and movement details.",
+                  "SQL": "SELECT p.title, p.inception, p.movement, m.details\nFROM paintings p\nJOIN movements m ON p.movement = m.name\nWHERE p.inception = (\n    SELECT MAX(inception)\n    FROM paintings p2\n    WHERE p2.movement = p.movement\n)"
+                },
+                "id": "call_wdlsch41fjaRb4wj7gUiUk0T",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 839,
+              "output_tokens": 157,
+              "total_tokens": 996
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 157,
+      "prompt_tokens": 839,
+      "total_tokens": 996,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

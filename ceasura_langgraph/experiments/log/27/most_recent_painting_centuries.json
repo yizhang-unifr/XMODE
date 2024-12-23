@@ -1,0 +1,42 @@
+[
+    {
+        "genre": "Hodegetria",
+        "century": 15
+    },
+    {
+        "genre": "allegory",
+        "century": 19
+    },
+    {
+        "genre": "figure painting",
+        "century": 19
+    },
+    {
+        "genre": "genre art",
+        "century": 19
+    },
+    {
+        "genre": "history painting",
+        "century": 19
+    },
+    {
+        "genre": "interior view",
+        "century": 18
+    },
+    {
+        "genre": "mythological painting",
+        "century": 19
+    },
+    {
+        "genre": "nude",
+        "century": 19
+    },
+    {
+        "genre": "portrait",
+        "century": 19
+    },
+    {
+        "genre": "religious art",
+        "century": 20
+    }
+]

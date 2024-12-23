@@ -1,0 +1,100 @@
+{
+    "generations": [
+      [
+        {
+          "text": "",
+          "generation_info": {
+            "finish_reason": "stop",
+            "logprobs": null
+          },
+          "type": "ChatGeneration",
+          "message": {
+            "lc": 1,
+            "type": "constructor",
+            "id": [
+              "langchain",
+              "schema",
+              "messages",
+              "AIMessage"
+            ],
+            "kwargs": {
+              "content": "",
+              "additional_kwargs": {
+                "tool_calls": [
+                  {
+                    "id": "call_wBPkp9v1qrZaoaFagJayxL7i",
+                    "function": {
+                      "arguments": "{\"reasoning\":\"To find the image path and the year of the oldest Renaissance painting, we need to filter the paintings by the 'Renaissance' movement and then order them by the 'inception' date in ascending order. The first record in this ordered list will be the oldest painting. We will select the 'img_path' and the year from the 'inception' date for this record.\",\"SQL\":\"SELECT img_path, strftime('%Y', inception) AS year \\nFROM paintings \\nWHERE movement = 'Renaissance' \\nORDER BY inception ASC \\nLIMIT 1;\"}",
+                      "name": "ExecuteCode"
+                    },
+                    "type": "function"
+                  }
+                ],
+                "refusal": null
+              },
+              "response_metadata": {
+                "token_usage": {
+                  "completion_tokens": 122,
+                  "prompt_tokens": 827,
+                  "total_tokens": 949,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0,
+                    "audio_tokens": 0
+                  },
+                  "completion_tokens_details": {
+                    "reasoning_tokens": 0,
+                    "audio_tokens": 0,
+                    "accepted_prediction_tokens": 0,
+                    "rejected_prediction_tokens": 0
+                  }
+                },
+                "model_name": "gpt-4o-2024-08-06",
+                "system_fingerprint": "fp_45cf54deae",
+                "finish_reason": "stop",
+                "logprobs": null
+              },
+              "type": "ai",
+              "id": "run-7c950724-53e1-4755-96c3-0e329a23efeb-0",
+              "tool_calls": [
+                {
+                  "name": "ExecuteCode",
+                  "args": {
+                    "reasoning": "To find the image path and the year of the oldest Renaissance painting, we need to filter the paintings by the 'Renaissance' movement and then order them by the 'inception' date in ascending order. The first record in this ordered list will be the oldest painting. We will select the 'img_path' and the year from the 'inception' date for this record.",
+                    "SQL": "SELECT img_path, strftime('%Y', inception) AS year \nFROM paintings \nWHERE movement = 'Renaissance' \nORDER BY inception ASC \nLIMIT 1;"
+                  },
+                  "id": "call_wBPkp9v1qrZaoaFagJayxL7i",
+                  "type": "tool_call"
+                }
+              ],
+              "usage_metadata": {
+                "input_tokens": 827,
+                "output_tokens": 122,
+                "total_tokens": 949
+              },
+              "invalid_tool_calls": []
+            }
+          }
+        }
+      ]
+    ],
+    "llm_output": {
+      "token_usage": {
+        "completion_tokens": 122,
+        "prompt_tokens": 827,
+        "total_tokens": 949,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-2024-08-06",
+      "system_fingerprint": "fp_45cf54deae"
+    },
+    "run": null
+  }

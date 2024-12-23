@@ -1,0 +1,103 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_n1Aex5wkSMFLZtvqFS7YcctA",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"The user wants to find the movement of the painting that contains the highest number of swords. Based on the provided information, the painting with the highest number of swords is identified by its image path 'images/img_0.jpg'. We need to query the database to find the movement of this painting using the 'img_path' column to filter the correct record.\",\"SQL\":\"SELECT movement FROM paintings WHERE img_path = 'images/img_0.jpg';\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ],
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 93,
+                "prompt_tokens": 833,
+                "total_tokens": 926,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-f14784fe-9d3e-4a38-8b26-3e3fd21bc95a-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "The user wants to find the movement of the painting that contains the highest number of swords. Based on the provided information, the painting with the highest number of swords is identified by its image path 'images/img_0.jpg'. We need to query the database to find the movement of this painting using the 'img_path' column to filter the correct record.",
+                  "SQL": "SELECT movement FROM paintings WHERE img_path = 'images/img_0.jpg';"
+                },
+                "id": "call_n1Aex5wkSMFLZtvqFS7YcctA",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 833,
+              "output_tokens": 93,
+              "total_tokens": 926
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 93,
+      "prompt_tokens": 833,
+      "total_tokens": 926,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}
+
+"{'status': 'success', 'data': [{'movement': 'Renaissance'}]}"
+

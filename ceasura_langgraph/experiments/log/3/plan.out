@@ -1,0 +1,13 @@
+1. text2SQL(problem="Retrieve the image paths and painting IDs for all paintings.", context="The database contains information about paintings, including their image paths and IDs.")
+2. image_analysis(question="How many babies are depicted in the image?", context=$1)
+3. text2SQL(problem="Find the movement of the painting with the highest number of babies depicted.", context="The database contains information about paintings, including their movements and IDs.")
+4. join() 
+<END_OF_PLAN>
+
+
+Replan
+
+
+5. text2SQL(problem="Retrieve the movement of the painting with the image path 'images/img_3.jpg'.", context="The database contains information about paintings, including their movements and image paths.")
+6. join() 
+<END_OF_PLAN>

@@ -1,0 +1,84 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "function_call": {
+                "arguments": "{\"output\":{\"thought\":\"The oldest religious artwork in the database is a painting, created on January 1, 1438. The image path is 'images/img_0.jpg'. This information is sufficient to answer the user's question about what is depicted in the artwork.\",\"action\":{\"response\":\"{'Summary': 'The oldest religious artwork in the database is a painting.', 'details': 'The artwork is a painting created on January 1, 1438. The image path is \\\\'images/img_0.jpg\\\\'.', 'source': 'Database query and image analysis results.', 'inference': 'painting', 'extra explanation': 'The painting is the oldest religious artwork based on the inception date provided.'}\"}}}",
+                "name": "_OutputFormatter"
+              },
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 146,
+                "prompt_tokens": 895,
+                "total_tokens": 1041,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-64dc224e-5cad-46b2-87cf-f94e42fb95b0-0",
+            "usage_metadata": {
+              "input_tokens": 895,
+              "output_tokens": 146,
+              "total_tokens": 1041
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 146,
+      "prompt_tokens": 895,
+      "total_tokens": 1041,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

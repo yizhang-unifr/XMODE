@@ -63,7 +63,7 @@ _set_if_undefined("LANGCHAIN_API_KEY")
 
 ##### 
 # os.environ["LANGCHAIN_TRACING_V2"] = "true"
-# os.environ["LANGCHAIN_PROJECT"] = "m3lx-vqa-openai-english"
+# os.environ["LANGCHAIN_PROJECT"] = "xmode-vqa-openai-english"
 
 def load_json(file_path, data):
     fp = Path(file_path)
@@ -104,7 +104,7 @@ def main():
     elif language =='de':
         test_file="dataset/translation/de/sampled_test_with_scope_preprocessed_balenced_answer.json"
 
-    db_path="/home/ubuntu/workspace/M3LX-LLMCompiler/mimic_iv_cxr.db"
+    db_path="/home/ubuntu/workspace/XMODE-LLMCompiler/mimic_iv_cxr.db"
     m3_lx=[]
     
     chain=graph_construction_report(model)
@@ -112,11 +112,11 @@ def main():
     with open(test_file, 'r') as f:
         test_data = json.load(f)
     # for data in tqdm(test_data):
-    #     if data['m3lx']!=[]:
+    #     if data['xmode']!=[]:
     #         continue
-    #     print (data['m3lx'])
+    #     print (data['xmode'])
     
-    output_file=f'experiments/m3lx/{language}/m3lx-qa-openai-893-{language}.json'
+    output_file=f'experiments/xmode/{language}/xmode-qa-openai-893-{language}.json'
     # this function will read the json file and return a list of dict
     load_json(output_file,m3_lx)
 
@@ -131,7 +131,7 @@ def main():
              example_question = data['question_de']
              
         tables = [t.upper() for t in data['tables']]
-        # if data['m3lx']==[]:
+        # if data['xmode']==[]:
         print(example_question, tables)
         to_json=[]
         try:
@@ -151,12 +151,12 @@ def main():
             prediction= executed_chain[-1].content
             print(prediction)
             
-        data['m3lx']=to_json
+        data['xmode']=to_json
         data['prediction']=prediction
             
         append_json(data,output_file)
 
-    # with open(f'experiments/m3lx/{language}/m3lx-qa-openai-{language}.json', 'w', encoding='utf-8') as f:
+    # with open(f'experiments/xmode/{language}/xmode-qa-openai-{language}.json', 'w', encoding='utf-8') as f:
     #     json.dump(m3_lx, f, ensure_ascii=False, indent=4)
 
 if __name__ == '__main__':

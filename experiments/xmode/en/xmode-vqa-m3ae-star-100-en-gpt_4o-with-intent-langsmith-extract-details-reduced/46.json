@@ -1,0 +1,99 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "text2SQL(problem=\"Find the study_id and image_id for the second to last study of patient 10156395 in the year 2105.\", context=\"\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\")",
+          "problem": "Find the study_id and image_id for the second to last study of patient 10156395 in the year 2105.",
+          "context": "\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\"",
+          "outputs": {
+            "output": {
+              "reasoning": "To find the second to last study of patient 10156395 in the year 2105, we need to query the TB_CXR table. We will filter the records by subject_id = 10156395 and the year of studydatetime being 2105. We will order the results by studydatetime in descending order to get the most recent studies first. Then, we will use a subquery with ROW_NUMBER() to assign a rank to each study based on the order, and select the study with rank 2, which corresponds to the second to last study.",
+              "SQL": "SELECT study_id, image_id FROM ( SELECT study_id, image_id, ROW_NUMBER() OVER (ORDER BY studydatetime DESC) AS rk FROM TB_CXR WHERE subject_id = 10156395 AND strftime('%Y', studydatetime) = '2105' ) WHERE rk = 2",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "study_id": 51310486,
+                    "image_id": "baf5c5c3-55ec7143-7601db81-06b1db6b-6a2c0351"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Find the study_id and image_id for the second to last study of patient 10156395 in the year 2105.",
+              "context": "\nCREATE TABLE \"TB_CXR\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id REAL, \n\tstudy_id INTEGER, \n\timage_id TEXT, \n\tviewposition TEXT, \n\tstudydatetime TEXT, \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)\n"
+            }
+          },
+          "id": 1
+        },
+        {
+          "function": "text2SQL(problem=\"Find the study_id and image_id for the first study of patient 10156395 in the year 2105.\", context=\"\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\")",
+          "problem": "Find the study_id and image_id for the first study of patient 10156395 in the year 2105.",
+          "context": "\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\"",
+          "outputs": {
+            "output": {
+              "reasoning": "To find the first study of patient 10156395 in the year 2105, we need to query the TB_CXR table, which contains information about the studies. We will filter the records by subject_id = 10156395 and the year of the studydatetime column being 2105. We will then order the results by studydatetime in ascending order to get the earliest study and limit the result to the first record. The columns of interest are study_id and image_id.",
+              "SQL": "SELECT study_id, image_id FROM TB_CXR WHERE subject_id = 10156395 AND strftime('%Y', studydatetime) = '2105' ORDER BY studydatetime ASC LIMIT 1;",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "study_id": 51310486,
+                    "image_id": "baf5c5c3-55ec7143-7601db81-06b1db6b-6a2c0351"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Find the study_id and image_id for the first study of patient 10156395 in the year 2105.",
+              "context": "\nCREATE TABLE \"TB_CXR\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id REAL, \n\tstudy_id INTEGER, \n\timage_id TEXT, \n\tviewposition TEXT, \n\tstudydatetime TEXT, \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)\n"
+            }
+          },
+          "id": 2
+        },
+        {
+          "function": "image_analysis(question=\"What are the anatomical locations related to any tubes/lines present?\", context=$1)",
+          "question": "What are the anatomical locations related to any tubes/lines present?",
+          "context": "$1",
+          "outputs": {
+            "output": [
+              "abdomen",
+              "mediastinum",
+              "neck",
+              "trachea"
+            ],
+            "input": {
+              "question": "What are the anatomical locations related to any tubes/lines present?",
+              "context": "{'status': 'success', 'data': [{'study_id': 51310486, 'image_id': 'baf5c5c3-55ec7143-7601db81-06b1db6b-6a2c0351'}]}"
+            }
+          },
+          "id": 3
+        },
+        {
+          "function": "image_analysis(question=\"What are the anatomical locations related to any tubes/lines present?\", context=$2)",
+          "question": "What are the anatomical locations related to any tubes/lines present?",
+          "context": "$2",
+          "outputs": {
+            "output": [
+              "abdomen",
+              "mediastinum",
+              "neck",
+              "trachea"
+            ],
+            "input": {
+              "question": "What are the anatomical locations related to any tubes/lines present?",
+              "context": "{'status': 'success', 'data': [{'study_id': 51310486, 'image_id': 'baf5c5c3-55ec7143-7601db81-06b1db6b-6a2c0351'}]}"
+            }
+          },
+          "id": 4
+        },
+        {
+          "function": "join()",
+          "id": 5
+        }
+      ]
+    }
+  ],
+  "question": "in the second to last study of patient 10156395 this year, could you name all the anatomical locations related to any tubes/lines still present compared to the first study this year?"
+}

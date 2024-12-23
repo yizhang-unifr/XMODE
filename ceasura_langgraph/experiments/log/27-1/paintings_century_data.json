@@ -1,0 +1,52 @@
+[
+    {
+        "genre": "Hodegetria",
+        "most_recent_year": "1500-01-01 00:00:00",
+        "century": 15
+    },
+    {
+        "genre": "allegory",
+        "most_recent_year": "1856-01-01 00:00:00",
+        "century": 19
+    },
+    {
+        "genre": "figure painting",
+        "most_recent_year": "1856-01-01 00:00:00",
+        "century": 19
+    },
+    {
+        "genre": "genre art",
+        "most_recent_year": "1862-01-01 00:00:00",
+        "century": 19
+    },
+    {
+        "genre": "history painting",
+        "most_recent_year": "1840-01-01 00:00:00",
+        "century": 19
+    },
+    {
+        "genre": "interior view",
+        "most_recent_year": "1789-01-01 00:00:00",
+        "century": 18
+    },
+    {
+        "genre": "mythological painting",
+        "most_recent_year": "1879-01-01 00:00:00",
+        "century": 19
+    },
+    {
+        "genre": "nude",
+        "most_recent_year": "1879-01-01 00:00:00",
+        "century": 19
+    },
+    {
+        "genre": "portrait",
+        "most_recent_year": "1827-01-01 00:00:00",
+        "century": 19
+    },
+    {
+        "genre": "religious art",
+        "most_recent_year": "2000-01-01 00:00:00",
+        "century": 20
+    }
+]

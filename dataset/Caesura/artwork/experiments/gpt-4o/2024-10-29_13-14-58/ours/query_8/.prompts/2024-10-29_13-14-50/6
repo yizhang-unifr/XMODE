@@ -1,0 +1,24 @@
+HumanMessage: extract the year from the dates in the 'inception' column.:
+```py
+>>> print(inception[:10])
+0    1438-01-01T00:00:00Z
+1    1525-01-01T00:00:00Z
+2    1528-01-01T00:00:00Z
+3    1536-01-01T00:00:00Z
+4    1536-01-01T00:00:00Z
+5    1536-01-01T00:00:00Z
+6    1536-01-01T00:00:00Z
+7    1536-01-01T00:00:00Z
+8    1536-01-01T00:00:00Z
+9    1536-01-01T00:00:00Z
+Name: inception, dtype: object
+```
+It is a pandas Series object. Please call the 'apply' method with a lambda expression, and make sure to always call astype() in the same line. Assign the result to a variable called 'year'. Template to use: `year = inception.apply(lambda x: <code>).astype(<dtype>)`. You can use pandas, datetime, numpy, re.
+************************************************************************************************************************************************************************************************************************************************************************************************************
+To extract the year from the dates in the 'inception' column, you can use the `apply` method with a lambda function that slices the year from the string, and then convert it to an integer using `astype(int)`. Here's how you can do it:
+
+```python
+year = inception.apply(lambda x: x[:4]).astype(int)
+```
+
+This code will extract the first four characters from each date string, which represent the year, and then convert the result to an integer.

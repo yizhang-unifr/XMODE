@@ -1,0 +1,37 @@
+{
+  "generations": [
+    {
+      "text": "```python\n1. text2SQL(problem=\"Retrieve the newest painting per genre along with its year of creation from the database.\")\n2. data_preparation(question=\"Determine the century of each painting based on its year of creation.\", context=$1)\n3. join()\n<END_OF_PLAN>\n```",
+      "generation_info": {
+        "finish_reason": "stop",
+        "model_name": "gpt-4o-2024-08-06",
+        "system_fingerprint": "fp_45cf54deae"
+      },
+      "type": "ChatGenerationChunk",
+      "message": {
+        "lc": 1,
+        "type": "constructor",
+        "id": [
+          "langchain",
+          "schema",
+          "messages",
+          "AIMessageChunk"
+        ],
+        "kwargs": {
+          "content": "```python\n1. text2SQL(problem=\"Retrieve the newest painting per genre along with its year of creation from the database.\")\n2. data_preparation(question=\"Determine the century of each painting based on its year of creation.\", context=$1)\n3. join()\n<END_OF_PLAN>\n```",
+          "response_metadata": {
+            "finish_reason": "stop",
+            "model_name": "gpt-4o-2024-08-06",
+            "system_fingerprint": "fp_45cf54deae"
+          },
+          "type": "AIMessageChunk",
+          "id": "run-96f7ab32-83a6-4ff2-afba-d6555eb47817",
+          "tool_calls": [],
+          "invalid_tool_calls": []
+        }
+      }
+    }
+  ],
+  "llm_output": null,
+  "run": null
+}

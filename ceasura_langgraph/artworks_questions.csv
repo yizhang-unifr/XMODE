@@ -1,0 +1,24 @@
+What is the oldest impressionist artwork in the database?
+What is the newest painting in the database?
+What is the movement of the painting that depicts the highest number of swords?
+What is the movement of the painting that depicts the highest number of babies?
+What is the genre of the oldest painting in the database?
+What is the genre of the newest painting in the database?
+What is depicted on the oldest Renaissance painting in the database?
+What is depicted on the oldest religious artwork in the database?
+Plot the year of the oldest painting per movement
+Plot the year of the oldest painting per genre
+Plot the number of paintings that depict War for each year
+Plot the number of paintings that depict War for each century
+Plot the number of paintings for each year
+Plot the number of paintings for each century
+Plot the lowest number of swords depicted in each year
+Plot the lowest number of swords depicted in each genre
+Get the number of paintings that depict Fruit for each century
+Get the number of paintings that depict Animals for each movement
+Get the number of paintings for each year
+Get the number of paintings for each century
+Get the highest number of swords depicted in paintings of each movement
+Get the highest number of swords depicted in paintings of each genre
+Get the century of the newest painting per movement
+Get the century of the newest painting per genre

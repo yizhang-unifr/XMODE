@@ -1,0 +1,87 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem=\"Did patient 11461300 have a confirmed diagnosis of cirrhosis of liver without mention of alcohol until 2104?\", context=\"CREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"DIAGNOSES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_DIAGNOSES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"D_ICD_DIAGNOSES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\")",
+          "problem": "Did patient 11461300 have a confirmed diagnosis of cirrhosis of liver without mention of alcohol until 2104?",
+          "context": "CREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"DIAGNOSES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_DIAGNOSES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"D_ICD_DIAGNOSES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\"",
+          "id": 1
+        },
+        {
+          "function": "intent_tables(problem=\"Did a chest x-ray demonstrate any abnormalities for patient 11461300 until 2104?\", context=\"CREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\")",
+          "problem": "Did a chest x-ray demonstrate any abnormalities for patient 11461300 until 2104?",
+          "context": "CREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\"",
+          "id": 2
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve all diagnoses for patient 11461300 with ICD codes related to cirrhosis of liver without mention of alcohol until 2104.\", context=$1)",
+          "problem": "Retrieve all diagnoses for patient 11461300 with ICD codes related to cirrhosis of liver without mention of alcohol until 2104.",
+          "context": "$1",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve all diagnoses for patient 11461300 with ICD codes related to cirrhosis of liver without mention of alcohol until 2104, we need to join the `DIAGNOSES_ICD` table with the `D_ICD_DIAGNOSES` table to get the long title of the ICD codes. We will filter the results by `subject_id` and by the `icd_code` that matches the description of cirrhosis of liver without mention of alcohol. Additionally, we will ensure that the `charttime` is before the year 2105. The ICD codes for cirrhosis of liver without mention of alcohol are typically in the range of 571.5, but we will need to confirm the exact codes from the `D_ICD_DIAGNOSES` table.",
+              "SQL": "SELECT d.subject_id, d.hadm_id, d.icd_code, dicd.long_title, d.charttime \nFROM DIAGNOSES_ICD d\nJOIN D_ICD_DIAGNOSES dicd ON d.icd_code = dicd.icd_code\nWHERE d.subject_id = 11461300 \nAND dicd.long_title LIKE '%cirrhosis of liver without mention of alcohol%'\nAND strftime('%Y', d.charttime) < '2105'",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "subject_id": 11461300,
+                    "hadm_id": 20586531,
+                    "icd_code": "5715",
+                    "long_title": "cirrhosis of liver without mention of alcohol",
+                    "charttime": "2104-07-02 22:59:00"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Retrieve all diagnoses for patient 11461300 with ICD codes related to cirrhosis of liver without mention of alcohol until 2104.",
+              "context": "['DIAGNOSES_ICD', 'D_ICD_DIAGNOSES']"
+            }
+          },
+          "id": 3
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve chest x-ray images for patient 11461300 taken until 2104.\", context=$2)",
+          "problem": "Retrieve chest x-ray images for patient 11461300 taken until 2104.",
+          "context": "$2",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve chest x-ray images for patient 11461300 taken until the year 2104, we need to filter the records in the TB_CXR table by the subject_id and ensure the studydatetime is before the year 2105. We will select the image_path column to get the paths of the images.",
+              "SQL": "SELECT image_path FROM TB_CXR WHERE subject_id = 11461300 AND strftime('%Y', studydatetime) <= '2104'",
+              "results": {
+                "status": "error",
+                "message": "no such column: image_path"
+              }
+            },
+            "input": {
+              "problem": "Retrieve chest x-ray images for patient 11461300 taken until 2104.",
+              "context": "['TB_CXR']"
+            }
+          },
+          "id": 4
+        },
+        {
+          "function": "image_analysis(question=\"Do the chest x-ray images demonstrate any abnormalities?\", context=$4)",
+          "question": "Do the chest x-ray images demonstrate any abnormalities?",
+          "context": "$4",
+          "outputs": {
+            "error": "TypeError(\"'ValueError' object is not subscriptable\")Traceback (most recent call last):\n\n\n  File \"/home/ubuntu/.local/lib/python3.10/site-packages/langchain_core/tools.py\", line 584, in run\n    response = context.run(self._run, *tool_args, **tool_kwargs)\n\n\n  File \"/home/ubuntu/.local/lib/python3.10/site-packages/langchain_core/tools.py\", line 929, in _run\n    return self.func(*args, **kwargs)\n\n\n  File \"/home/ubuntu/workspace/XMODE-LLMCompiler/tools/image_analysis_tool_m3ae.py\", line 198, in image_analysis\n    image_urls = [item[0] for item in image_urls]\n\n\n  File \"/home/ubuntu/workspace/XMODE-LLMCompiler/tools/image_analysis_tool_m3ae.py\", line 198, in <listcomp>\n    image_urls = [item[0] for item in image_urls]\n\n\nTypeError: 'ValueError' object is not subscriptable",
+            "input": {
+              "question": "Do the chest x-ray images demonstrate any abnormalities?",
+              "context": "{'status': 'error', 'message': 'no such column: image_path'}"
+            },
+            "output": null
+          },
+          "id": 5
+        },
+        {
+          "function": "join()",
+          "id": 6
+        }
+      ]
+    }
+  ],
+  "question": "until 2104, did patient 11461300 have a confirmed diagnosis of cirrhosis of liver without mention of alcohol, and did a chest x-ray demonstrate any abnormalities?"
+}

@@ -1,0 +1,37 @@
+{
+  "generations": [
+    {
+      "text": "```python\n1. text2SQL(problem=\"Retrieve the year and count of paintings for each year from the database.\")\n2. data_preparation(question=\"Prepare the data to plot the number of paintings for each year.\", context=$1)\n3. data_plotting(question=\"Plot the number of paintings for each year using the prepared data.\", context=$2)\n4. join()\n<END_OF_PLAN>\n```",
+      "generation_info": {
+        "finish_reason": "stop",
+        "model_name": "gpt-4o-2024-08-06",
+        "system_fingerprint": "fp_159d8341cc"
+      },
+      "type": "ChatGenerationChunk",
+      "message": {
+        "lc": 1,
+        "type": "constructor",
+        "id": [
+          "langchain",
+          "schema",
+          "messages",
+          "AIMessageChunk"
+        ],
+        "kwargs": {
+          "content": "```python\n1. text2SQL(problem=\"Retrieve the year and count of paintings for each year from the database.\")\n2. data_preparation(question=\"Prepare the data to plot the number of paintings for each year.\", context=$1)\n3. data_plotting(question=\"Plot the number of paintings for each year using the prepared data.\", context=$2)\n4. join()\n<END_OF_PLAN>\n```",
+          "response_metadata": {
+            "finish_reason": "stop",
+            "model_name": "gpt-4o-2024-08-06",
+            "system_fingerprint": "fp_159d8341cc"
+          },
+          "type": "AIMessageChunk",
+          "id": "run-bb73bb39-2e2d-45a3-a97a-b15fe2dc2f9e",
+          "tool_calls": [],
+          "invalid_tool_calls": []
+        }
+      }
+    }
+  ],
+  "llm_output": null,
+  "run": null
+}

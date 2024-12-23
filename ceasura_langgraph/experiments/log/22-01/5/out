@@ -1,0 +1,100 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_TXPEqqePzzbZfZMDpvuhbhN2",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"To find the newest painting, we need to identify the painting with the most recent 'inception' date. The 'inception' column is of DATETIME type, which allows us to sort the paintings by date. We will order the paintings by 'inception' in descending order and select the top result to get the newest painting. Additionally, we will extract the year from the 'inception' date using the strftime function to get the creation year.\",\"SQL\":\"SELECT title, strftime('%Y', inception) AS creation_year FROM paintings ORDER BY inception DESC LIMIT 1;\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ],
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 123,
+                "prompt_tokens": 830,
+                "total_tokens": 953,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-5a8edf81-ae21-4ae7-838c-d548e94d5c44-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "To find the newest painting, we need to identify the painting with the most recent 'inception' date. The 'inception' column is of DATETIME type, which allows us to sort the paintings by date. We will order the paintings by 'inception' in descending order and select the top result to get the newest painting. Additionally, we will extract the year from the 'inception' date using the strftime function to get the creation year.",
+                  "SQL": "SELECT title, strftime('%Y', inception) AS creation_year FROM paintings ORDER BY inception DESC LIMIT 1;"
+                },
+                "id": "call_TXPEqqePzzbZfZMDpvuhbhN2",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 830,
+              "output_tokens": 123,
+              "total_tokens": 953
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 123,
+      "prompt_tokens": 830,
+      "total_tokens": 953,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

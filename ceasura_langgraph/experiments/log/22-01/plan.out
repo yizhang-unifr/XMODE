@@ -1,0 +1,18 @@
+1. text2SQL(problem="Retrieve the newest painting per movement along with its creation year and movement details.", context="Use the paintings and movements tables to find the newest painting for each movement. Ensure to retrieve the painting's creation year and movement details.")
+2. data_preparation(question="Determine the century of each painting based on its creation year.", context="$1")
+3. join() 
+<END_OF_PLAN>
+
+Replan
+
+4. text2SQL(problem="Retrieve the newest painting along with its creation year from the paintings table.", context="Use the paintings table to find the newest painting. Ensure to retrieve the painting's creation year.")
+5. data_preparation(question="Determine the century of the painting based on its creation year.", context="$4")
+6. join()
+<END_OF_PLAN>
+
+Replan
+
+7. text2SQL(problem="Retrieve the newest painting along with its creation year and movement details from the paintings table.", context="Use the paintings table to find the newest painting. Ensure to retrieve the painting's creation year and movement details.")
+8. data_preparation(question="Determine the century of the painting based on its creation year.", context="$7")
+9. join() 
+<END_OF_PLAN>

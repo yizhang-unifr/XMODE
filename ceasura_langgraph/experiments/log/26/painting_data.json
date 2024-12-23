@@ -1,0 +1,62 @@
+[
+    {
+        "genre": "Hodegetria",
+        "movement": "Renaissance",
+        "painting_count": 1
+    },
+    {
+        "genre": "allegory",
+        "movement": "neoclassicism",
+        "painting_count": 3
+    },
+    {
+        "genre": "figure painting",
+        "movement": "neoclassicism",
+        "painting_count": 3
+    },
+    {
+        "genre": "genre art",
+        "movement": "neoclassicism",
+        "painting_count": 1
+    },
+    {
+        "genre": "history painting",
+        "movement": "Renaissance",
+        "painting_count": 1
+    },
+    {
+        "genre": "history painting",
+        "movement": "neoclassicism",
+        "painting_count": 9
+    },
+    {
+        "genre": "interior view",
+        "movement": "neoclassicism",
+        "painting_count": 1
+    },
+    {
+        "genre": "mythological painting",
+        "movement": "neoclassicism",
+        "painting_count": 4
+    },
+    {
+        "genre": "nude",
+        "movement": "neoclassicism",
+        "painting_count": 8
+    },
+    {
+        "genre": "portrait",
+        "movement": "Renaissance",
+        "painting_count": 9
+    },
+    {
+        "genre": "portrait",
+        "movement": "neoclassicism",
+        "painting_count": 7
+    },
+    {
+        "genre": "religious art",
+        "movement": "Renaissance",
+        "painting_count": 54
+    }
+]

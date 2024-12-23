@@ -1,0 +1,107 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem=\"Did patient 18164517 have the fluoroscopy of multiple coronary arteries using other contrast procedure since 1 year ago?\", context=\"\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"D_ICD_PROCEDURES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\")",
+          "problem": "Did patient 18164517 have the fluoroscopy of multiple coronary arteries using other contrast procedure since 1 year ago?",
+          "context": "\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"D_ICD_PROCEDURES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\"",
+          "id": 1
+        },
+        {
+          "function": "intent_tables(problem=\"Did the chest x-ray of patient 18164517 reveal cyst/bullae?\", context=\"\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"D_ICD_PROCEDURES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\")",
+          "problem": "Did the chest x-ray of patient 18164517 reveal cyst/bullae?",
+          "context": "\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"D_ICD_PROCEDURES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\"",
+          "id": 2
+        },
+        {
+          "function": "text2SQL(problem=\"Find the procedures involving fluoroscopy of multiple coronary arteries using other contrast for patient 18164517 since 1 year ago\", context=\"\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"D_ICD_PROCEDURES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\")",
+          "problem": "Find the procedures involving fluoroscopy of multiple coronary arteries using other contrast for patient 18164517 since 1 year ago",
+          "context": "\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"D_ICD_PROCEDURES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\"",
+          "outputs": {
+            "output": {
+              "reasoning": "To find the procedures involving fluoroscopy of multiple coronary arteries using other contrast for patient 18164517 since 1 year ago, we need to query the PROCEDURES_ICD table for the relevant procedures. We will join this table with D_ICD_PROCEDURES to get the long title of the procedures. The current time is set to 2105-12-31 23:59:59, so one year ago would be 2104-12-31 23:59:59. We will filter the procedures based on the subject_id, the time frame, and the description of the procedure.",
+              "SQL": "SELECT p.subject_id, p.hadm_id, p.icd_code, d.long_title, p.charttime \nFROM PROCEDURES_ICD p\nJOIN D_ICD_PROCEDURES d ON p.icd_code = d.icd_code\nWHERE p.subject_id = 18164517 \nAND p.charttime >= strftime('%Y-%m-%d %H:%M:%S', '2104-12-31 23:59:59')\nAND d.long_title LIKE '%fluoroscopy of multiple coronary arteries using other contrast%'",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "subject_id": 18164517,
+                    "hadm_id": 20552919,
+                    "icd_code": "b211yzz",
+                    "long_title": "fluoroscopy of multiple coronary arteries using other contrast",
+                    "charttime": "2105-06-08 00:00:00"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Find the procedures involving fluoroscopy of multiple coronary arteries using other contrast for patient 18164517 since 1 year ago",
+              "context": "\nCREATE TABLE \"ADMISSIONS\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id INTEGER, \n\tadmittime TEXT, \n\tdischtime TEXT, \n\tadmission_type TEXT, \n\tadmission_location TEXT, \n\tdischarge_location TEXT, \n\tinsurance TEXT, \n\tlanguage TEXT, \n\tmarital_status TEXT, \n\tage INTEGER\n)\n\nCREATE TABLE \"D_ICD_PROCEDURES\" (\n\trow_id INTEGER, \n\ticd_code TEXT, \n\tlong_title TEXT\n)\n\nCREATE TABLE \"PROCEDURES_ICD\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id INTEGER, \n\ticd_code TEXT, \n\tcharttime TEXT, \n\tFOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)\n\nCREATE TABLE \"TB_CXR\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id REAL, \n\tstudy_id INTEGER, \n\timage_id TEXT, \n\tviewposition TEXT, \n\tstudydatetime TEXT, \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)\n"
+            }
+          },
+          "id": 3
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve all chest x-ray studies for patient 18164517\", context=\"\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"D_ICD_PROCEDURES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\")",
+          "problem": "Retrieve all chest x-ray studies for patient 18164517",
+          "context": "\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"D_ICD_PROCEDURES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\"",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve all chest x-ray studies for a specific patient, we need to query the `TB_CXR` table, which contains information about chest x-ray studies. We will filter the results by the `subject_id` to match the given patient ID, which is 18164517. This will return all records related to this patient from the `TB_CXR` table.",
+              "SQL": "SELECT * FROM TB_CXR WHERE subject_id = 18164517",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "row_id": 1321,
+                    "subject_id": 18164517,
+                    "hadm_id": 27499497.0,
+                    "study_id": 53771979,
+                    "image_id": "91b008b5-e7dfc91a-53c01f73-9187141e-37e90107",
+                    "viewposition": "pa",
+                    "studydatetime": "2105-08-15 13:10:15"
+                  },
+                  {
+                    "row_id": 1322,
+                    "subject_id": 18164517,
+                    "hadm_id": 27687020.0,
+                    "study_id": 53870386,
+                    "image_id": "2cbf3571-7b48c6a3-5be1fcea-8ac7fb1b-73a145df",
+                    "viewposition": "pa",
+                    "studydatetime": "2105-12-09 16:23:52"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Retrieve all chest x-ray studies for patient 18164517",
+              "context": "\nCREATE TABLE \"ADMISSIONS\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id INTEGER, \n\tadmittime TEXT, \n\tdischtime TEXT, \n\tadmission_type TEXT, \n\tadmission_location TEXT, \n\tdischarge_location TEXT, \n\tinsurance TEXT, \n\tlanguage TEXT, \n\tmarital_status TEXT, \n\tage INTEGER\n)\n\nCREATE TABLE \"D_ICD_PROCEDURES\" (\n\trow_id INTEGER, \n\ticd_code TEXT, \n\tlong_title TEXT\n)\n\nCREATE TABLE \"PROCEDURES_ICD\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id INTEGER, \n\ticd_code TEXT, \n\tcharttime TEXT, \n\tFOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)\n\nCREATE TABLE \"TB_CXR\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id REAL, \n\tstudy_id INTEGER, \n\timage_id TEXT, \n\tviewposition TEXT, \n\tstudydatetime TEXT, \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)\n"
+            }
+          },
+          "id": 4
+        },
+        {
+          "function": "image_analysis(question=\"Did the chest x-ray reveal cyst/bullae?\", context=$4)",
+          "question": "Did the chest x-ray reveal cyst/bullae?",
+          "context": "$4",
+          "outputs": {
+            "output": [
+              "yes"
+            ],
+            "input": {
+              "question": "Did the chest x-ray reveal cyst/bullae?",
+              "context": "{'status': 'success', 'data': [{'row_id': 1321, 'subject_id': 18164517, 'hadm_id': 27499497.0, 'study_id': 53771979, 'image_id': '91b008b5-e7dfc91a-53c01f73-9187141e-37e90107', 'viewposition': 'pa', 'studydatetime': '2105-08-15 13:10:15'}, {'row_id': 1322, 'subject_id': 18164517, 'hadm_id': 27687020.0, 'study_id': 53870386, 'image_id': '2cbf3571-7b48c6a3-5be1fcea-8ac7fb1b-73a145df', 'viewposition': 'pa', 'studydatetime': '2105-12-09 16:23:52'}]}"
+            }
+          },
+          "id": 5
+        },
+        {
+          "function": "join()",
+          "id": 6
+        }
+      ]
+    }
+  ],
+  "question": "since 1 year ago, did patient 18164517 have the fluoroscopy of multiple coronary arteries using other contrast procedure and did the chest x-ray reveal cyst/bullae?"
+}

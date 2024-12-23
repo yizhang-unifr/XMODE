@@ -1,0 +1,84 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "function_call": {
+                "arguments": "{\"output\":{\"thought\":\"The data for the number of paintings for each year has been successfully retrieved and is available. There is no need to replan as the information is complete and ready to be presented to the user.\",\"action\":{\"response\":\"{'Summary': 'Number of paintings for each year retrieved successfully.', 'details': [{'year': '1438', 'number_of_paintings': 1}, {'year': '1470', 'number_of_paintings': 2}, {'year': '1472', 'number_of_paintings': 1}, {'year': '1474', 'number_of_paintings': 1}, {'year': '1475', 'number_of_paintings': 1}, {'year': '1476', 'number_of_paintings': 2}, {'year': '1477', 'number_of_paintings': 13}, {'year': '1479', 'number_of_paintings': 12}, {'year': '1480', 'number_of_paintings': 3}, {'year': '1483', 'number_of_paintings': 4}, {'year': '1500', 'number_of_paintings': 3}, {'year': '1520', 'number_of_paintings': 1}, {'year': '1525', 'number_of_paintings': 1}, {'year': '1528', 'number_of_paintings': 1}, {'year': '1530', 'number_of_paintings': 2}, {'year': '1536', 'number_of_paintings': 7}, {'year': '1550', 'number_of_paintings': 1}, {'year': '1565', 'number_of_paintings': 2}, {'year': '1583', 'number_of_paintings': 1}, {'year': '1585', 'number_of_paintings': 1}, {'year': '1600', 'number_of_paintings': 4}, {'year': '1764', 'number_of_paintings': 1}, {'year': '1770', 'number_of_paintings': 1}, {'year': '1771', 'number_of_paintings': 1}, {'year': '1784', 'number_of_paintings': 1}, {'year': '1785', 'number_of_paintings': 1}, {'year': '1787', 'number_of_paintings': 1}, {'year': '1788', 'number_of_paintings': 2}, {'year': '1789', 'number_of_paintings': 2}, {'year': '1793', 'number_of_paintings': 2}, {'year': '1799', 'number_of_paintings': 1}, {'year': '1800', 'number_of_paintings': 1}, {'year': '1806', 'number_of_paintings': 2}, {'year': '1811', 'number_of_paintings': 2}, {'year': '1814', 'number_of_paintings': 1}, {'year': '1824', 'number_of_paintings': 2}, {'year': '1827', 'number_of_paintings': 1}, {'year': '1840', 'number_of_paintings': 1}, {'year': '1856', 'number_of_paintings': 9}, {'year': '1862', 'number_of_paintings': 2}, {'year': '1879', 'number_of_paintings': 2}, {'year': '2000', 'number_of_paintings': 1}], 'source': 'Database query results', 'inference': [{'year': '1438', 'number_of_paintings': 1}, {'year': '1470', 'number_of_paintings': 2}, {'year': '1472', 'number_of_paintings': 1}, {'year': '1474', 'number_of_paintings': 1}, {'year': '1475', 'number_of_paintings': 1}, {'year': '1476', 'number_of_paintings': 2}, {'year': '1477', 'number_of_paintings': 13}, {'year': '1479', 'number_of_paintings': 12}, {'year': '1480', 'number_of_paintings': 3}, {'year': '1483', 'number_of_paintings': 4}, {'year': '1500', 'number_of_paintings': 3}, {'year': '1520', 'number_of_paintings': 1}, {'year': '1525', 'number_of_paintings': 1}, {'year': '1528', 'number_of_paintings': 1}, {'year': '1530', 'number_of_paintings': 2}, {'year': '1536', 'number_of_paintings': 7}, {'year': '1550', 'number_of_paintings': 1}, {'year': '1565', 'number_of_paintings': 2}, {'year': '1583', 'number_of_paintings': 1}, {'year': '1585', 'number_of_paintings': 1}, {'year': '1600', 'number_of_paintings': 4}, {'year': '1764', 'number_of_paintings': 1}, {'year': '1770', 'number_of_paintings': 1}, {'year': '1771', 'number_of_paintings': 1}, {'year': '1784', 'number_of_paintings': 1}, {'year': '1785', 'number_of_paintings': 1}, {'year': '1787', 'number_of_paintings': 1}, {'year': '1788', 'number_of_paintings': 2}, {'year': '1789', 'number_of_paintings': 2}, {'year': '1793', 'number_of_paintings': 2}, {'year': '1799', 'number_of_paintings': 1}, {'year': '1800', 'number_of_paintings': 1}, {'year': '1806', 'number_of_paintings': 2}, {'year': '1811', 'number_of_paintings': 2}, {'year': '1814', 'number_of_paintings': 1}, {'year': '1824', 'number_of_paintings': 2}, {'year': '1827', 'number_of_paintings': 1}, {'year': '1840', 'number_of_paintings': 1}, {'year': '1856', 'number_of_paintings': 9}, {'year': '1862', 'number_of_paintings': 2}, {'year': '1879', 'number_of_paintings': 2}, {'year': '2000', 'number_of_paintings': 1}], 'extra explanation': 'The data was retrieved from a database query and includes the number of paintings for each year from 1438 to 2000.'}\"}}}",
+                "name": "_OutputFormatter"
+              },
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 1538,
+                "prompt_tokens": 1552,
+                "total_tokens": 3090,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-fe66cbdc-f7f2-4052-adb8-8f18eef167e0-0",
+            "usage_metadata": {
+              "input_tokens": 1552,
+              "output_tokens": 1538,
+              "total_tokens": 3090
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 1538,
+      "prompt_tokens": 1552,
+      "total_tokens": 3090,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

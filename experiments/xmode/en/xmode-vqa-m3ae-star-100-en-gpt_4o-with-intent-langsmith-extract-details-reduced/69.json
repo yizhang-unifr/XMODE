@@ -1,0 +1,105 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem=\"Identify if patient 17766862 was prescribed sodium chloride 0.9% flush.\", context=\"\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"PRESCRIPTIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tstarttime TEXT, \\n\\tstoptime TEXT, \\n\\tdrug TEXT, \\n\\tdose_val_rx REAL, \\n\\tdose_unit_rx TEXT, \\n\\troute TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\")",
+          "problem": "Identify if patient 17766862 was prescribed sodium chloride 0.9% flush.",
+          "context": "\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"PRESCRIPTIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tstarttime TEXT, \\n\\tstoptime TEXT, \\n\\tdrug TEXT, \\n\\tdose_val_rx REAL, \\n\\tdose_unit_rx TEXT, \\n\\troute TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\"",
+          "id": 0
+        },
+        {
+          "function": "intent_tables(problem=\"Retrieve the chest x-ray studies for patient 17766862.\", context=\"\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"PRESCRIPTIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tstarttime TEXT, \\n\\tstoptime TEXT, \\n\\tdrug TEXT, \\n\\tdose_val_rx REAL, \\n\\tdose_unit_rx TEXT, \\n\\troute TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\")",
+          "problem": "Retrieve the chest x-ray studies for patient 17766862.",
+          "context": "\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"PRESCRIPTIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tstarttime TEXT, \\n\\tstoptime TEXT, \\n\\tdrug TEXT, \\n\\tdose_val_rx REAL, \\n\\tdose_unit_rx TEXT, \\n\\troute TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\"",
+          "id": 1
+        },
+        {
+          "function": "text2SQL(problem=\"Find the periods when patient 17766862 was prescribed sodium chloride 0.9% flush.\", context=$0)",
+          "problem": "Find the periods when patient 17766862 was prescribed sodium chloride 0.9% flush.",
+          "context": "$0",
+          "outputs": {
+            "output": {
+              "reasoning": "To find the periods when patient 17766862 was prescribed sodium chloride 0.9% flush, we need to query the 'PRESCRIPTIONS' table. We will filter the records where 'subject_id' is 17766862 and 'drug' is 'sodium chloride 0.9% flush'. The relevant columns to retrieve are 'starttime' and 'stoptime', which indicate the period of the prescription.",
+              "SQL": "SELECT starttime, stoptime FROM PRESCRIPTIONS WHERE subject_id = 17766862 AND drug = 'sodium chloride 0.9% flush'",
+              "results": {
+                "status": "success",
+                "data": []
+              }
+            },
+            "input": {
+              "problem": "Find the periods when patient 17766862 was prescribed sodium chloride 0.9% flush.",
+              "context": "['PRESCRIPTIONS']"
+            }
+          },
+          "id": 2
+        },
+        {
+          "function": "text2SQL(problem=\"Get the chest x-ray studies (study_id, image_id) for patient 17766862.\", context=$1)",
+          "problem": "Get the chest x-ray studies (study_id, image_id) for patient 17766862.",
+          "context": "$1",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve the chest x-ray studies for patient 17766862, we need to query the TB_CXR table for records where the subject_id matches 17766862. We are interested in the study_id and image_id columns for these records.",
+              "SQL": "SELECT study_id, image_id FROM TB_CXR WHERE subject_id = 17766862;",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "study_id": 50855338,
+                    "image_id": "089cc60e-9bae1714-73936936-85227443-ed543894"
+                  },
+                  {
+                    "study_id": 54137770,
+                    "image_id": "69cdf30e-651d85df-5843410f-a4ebfd3d-51b2637f"
+                  },
+                  {
+                    "study_id": 53496754,
+                    "image_id": "c46389a7-ad977072-df27319e-fb1d057d-e686ffe6"
+                  },
+                  {
+                    "study_id": 52933773,
+                    "image_id": "0c917cd1-7ba1efe9-8804977a-e8c451b0-c930c8fa"
+                  },
+                  {
+                    "study_id": 56230698,
+                    "image_id": "a02286b1-a9c74c3e-f65e09cb-656e09c8-c152041a"
+                  },
+                  {
+                    "study_id": 56028963,
+                    "image_id": "b27c6f0a-9eacfe60-02ef3c7f-16e63706-06f5b724"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Get the chest x-ray studies (study_id, image_id) for patient 17766862.",
+              "context": "['TB_CXR']"
+            }
+          },
+          "id": 3
+        },
+        {
+          "function": "image_analysis(question=\"Do any chest x-ray images from patient 17766862's studies show tubes/lines in the left shoulder?\", context=$3)",
+          "question": "Do any chest x-ray images from patient 17766862's studies show tubes/lines in the left shoulder?",
+          "context": "$3",
+          "outputs": {
+            "output": [
+              "yes"
+            ],
+            "input": {
+              "question": "Do any chest x-ray images from patient 17766862's studies show tubes/lines in the left shoulder?",
+              "context": "{'status': 'success', 'data': [{'study_id': 50855338, 'image_id': '089cc60e-9bae1714-73936936-85227443-ed543894'}, {'study_id': 54137770, 'image_id': '69cdf30e-651d85df-5843410f-a4ebfd3d-51b2637f'}, {'study_id': 53496754, 'image_id': 'c46389a7-ad977072-df27319e-fb1d057d-e686ffe6'}, {'study_id': 52933773, 'image_id': '0c917cd1-7ba1efe9-8804977a-e8c451b0-c930c8fa'}, {'study_id': 56230698, 'image_id': 'a02286b1-a9c74c3e-f65e09cb-656e09c8-c152041a'}, {'study_id': 56028963, 'image_id': 'b27c6f0a-9eacfe60-02ef3c7f-16e63706-06f5b724'}]}"
+            }
+          },
+          "id": 4
+        },
+        {
+          "function": "join()",
+          "id": 5
+        }
+      ]
+    }
+  ],
+  "question": "was patient 17766862 prescribed sodium chloride 0.9%  flush and had a chest x-ray depicting any tubes/lines in the left shoulder within the same period?"
+}

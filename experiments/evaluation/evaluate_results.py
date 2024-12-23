@@ -14,7 +14,7 @@ root_path = Path(__file__).resolve().parents[2]
 
 def load_args():                 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data_path", type=str, required=False, default=f"{root_path}/experiments/m3lx/")
+    parser.add_argument("--data_path", type=str, required=False, default=f"{root_path}/experiments/xmode/")
     
     return parser.parse_args()
 

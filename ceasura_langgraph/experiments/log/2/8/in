@@ -1,0 +1,33 @@
+{
+    "output": {
+      "messages": [
+        {
+          "content": "  \nYou are a database expert. Generate a SQL query given the following user question, database information and other context that you receive.\nYou should analyse the question, context and the database schema and come with the executabel sqlite3 query. \nProvide all the required information in the SQL code to answer the original user question that may required in other tasks utilizing the relevant database schema.\nEnsure you include all necessary information, including columns used for filtering, especially when the task involves plotting or data exploration.\nThis must be taken into account when performing any time-based data queries or analyses.\nif the question asks for information that is not found in the database schema, you must retrieve the `ima_path` for image analysis task.\nTranslate a text question into a SQL query that can be executed on the SQLite database.\n",
+          "additional_kwargs": {},
+          "response_metadata": {},
+          "type": "system"
+        },
+        {
+          "content": "Retrieve the movement of the painting with the highest number of swords.",
+          "additional_kwargs": {},
+          "response_metadata": {},
+          "type": "human",
+          "example": false
+        },
+        {
+          "content": "\nCREATE TABLE paintings (\n\ttitle TEXT, \n\tinception DATETIME, \n\tmovement TEXT, \n\tgenre TEXT, \n\timage_url TEXT, \n\timg_path TEXT\n)\n\n/*\n5 rows from paintings table:\ntitle\tinception\tmovement\tgenre\timage_url\timg_path\nPredella of the Barbadori altarpiece\t1438-01-01 00:00:00\tRenaissance\treligious art\thttp://commons.wikimedia.org/wiki/Special:FilePath/Predella%20Pala%20Barbadori-%20Uffizi.JPG\timages/img_0.jpg\nJudith\t1525-01-01 00:00:00\tRenaissance\treligious art\thttp://commons.wikimedia.org/wiki/Special:FilePath/Palma%20il%20Vecchio%20-%20Judith%20-%20WGA16936.\timages/img_1.jpg\nJudith\t1528-01-01 00:00:00\tRenaissance\treligious art\thttp://commons.wikimedia.org/wiki/Special:FilePath/Palma%20il%20Vecchio%20-%20Judith%20-%20WGA16936.\timages/img_2.jpg\nDie durch Engel bekrönte Muttergottes mit Kind im Kreise der 14 Schutzheiligen des Hauses Zimmern\t1536-01-01 00:00:00\tRenaissance\treligious art\thttp://commons.wikimedia.org/wiki/Special:FilePath/Meister%20von%20Me%C3%9Fkirch-Wildensteiner%20Alt\timages/img_3.jpg\nDer kniende Stifter Graf Gottfried Werner von Zimmern – Christus am Ölberg\t1536-01-01 00:00:00\tRenaissance\tportrait\thttp://commons.wikimedia.org/wiki/Special:FilePath/Meister%20von%20Me%C3%9Fkirch-Wildensteiner%20Alt\timages/img_4.jpg\n*//n\nThe column 'title' in the table contains the title of the artwork. Type: TEXT.\nThe column 'inception' in the table contains the date when the artwork was created. Type: DATETIME.\nThe column 'movement' in the table contains the art movement that the artwork belongs to. Type: TEXT.\nThe column 'genre' in the table contains the genre of the artwork. Type: TEXT.\nThe column 'image_url' in the table contains the URL of the image of the artwork. Type: TEXT.\nThe column 'img_path' in the table contains the path to the image of the artwork in the local system. Type: TEXT.\n",
+          "additional_kwargs": {},
+          "response_metadata": {},
+          "type": "human",
+          "example": false
+        },
+        {
+          "content": "{'image_with_max_swords': 'images/img_0.jpg', 'max_swords_count': 6}\n",
+          "additional_kwargs": {},
+          "response_metadata": {},
+          "type": "human",
+          "example": false
+        }
+      ]
+    }
+  }

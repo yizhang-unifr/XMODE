@@ -1,0 +1,100 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_TZ6a9y6qpHi8Cjdqcibhpqxm",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"The task is to retrieve the year and count of paintings for each year from the database. The 'inception' column in the 'paintings' table contains the date when the artwork was created, which includes the year. To extract the year from the 'inception' column, we can use the SQLite function 'strftime' with the format '%Y'. We then group the results by year and count the number of paintings for each year using the 'COUNT' function. The query will select the year and the count of paintings, grouped by year.\",\"SQL\":\"SELECT strftime('%Y', inception) AS year, COUNT(*) AS painting_count FROM paintings GROUP BY year;\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ],
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 140,
+                "prompt_tokens": 807,
+                "total_tokens": 947,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_159d8341cc",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-b5de2039-ebb4-46be-a595-fa048f93f3f6-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "The task is to retrieve the year and count of paintings for each year from the database. The 'inception' column in the 'paintings' table contains the date when the artwork was created, which includes the year. To extract the year from the 'inception' column, we can use the SQLite function 'strftime' with the format '%Y'. We then group the results by year and count the number of paintings for each year using the 'COUNT' function. The query will select the year and the count of paintings, grouped by year.",
+                  "SQL": "SELECT strftime('%Y', inception) AS year, COUNT(*) AS painting_count FROM paintings GROUP BY year;"
+                },
+                "id": "call_TZ6a9y6qpHi8Cjdqcibhpqxm",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 807,
+              "output_tokens": 140,
+              "total_tokens": 947
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 140,
+      "prompt_tokens": 807,
+      "total_tokens": 947,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_159d8341cc"
+  },
+  "run": null
+}

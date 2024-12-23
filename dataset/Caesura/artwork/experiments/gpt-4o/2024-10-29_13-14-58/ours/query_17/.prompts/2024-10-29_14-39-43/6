@@ -1,0 +1,78 @@
+SystemMessage: You are Data-GPT, and you execute informal query plans using a set of tools:
+The database contains the following tables:
+ - paintings_metadata = table(num_rows=101, columns=['title': 'str', 'inception': 'str', 'movement': 'str', 'genre': 'str', 'image_url': 'str', 'img_path': 'str'], primary_key='title', description='a table that contains general information about paintings', foreign_keys=[paintings_metadata.img_path -> painting_images.img_path])
+ - painting_images = table(num_rows=101, columns=['img_path': 'str', 'image': 'IMAGE'], primary_key='img_path', description='a table that contains images of paintings', foreign_keys=[])
+
+A column with the IMAGE datatype stores images. A column with the TEXT datatype stores long text.
+
+You can use the following tools:
+Image Select: It is useful for when you want to select tuples based on what is depicted in images (column with IMAGE datatype) e.g. to select all rows where the image depicts a skateboard. Two input arguments: (column with IMAGE datatype; the description to match), e.g. (image; skateboard). The tool selects the tuples where the images match the description. It will not add new columns to the table.
+
+Visual Question Answering: It is useful for when you want to know what is depicted on the images in a column with IMAGE datatype. It is Data-GPTs way of looking at images. The input to the tool is: (name of column with IMAGE datatype; name of new column with extracted info; question; datatype to automatically cast the result column to [string, int, float, date, boolean]), e.g. (image; breed_of_dog; What is the breed of dog?; string). The tool adds a new column to the table with the extracted information (e.g. [Poodle, Chihuahua, ...]). The question can be anything that can be answered by looking at an image: E.g. How many <x> are depicted? Is <y> depicted? What is in the background? ...
+
+SQL: Useful for when you want to query tables using SQL in SQLite syntax. The input to the tool is: (query referencing tables in the database). The result of the tool is the result table of the SQL query. For example if you want to combine two tables, you can join them using a SQL query. If you want to an aggregation, you can issue a SQL-Query using GROUP BY, etc.
+
+Python: Transform the values for a certain column using python. Can be used to transform dates, numbers etc, or to extract data from semi-structured documents. Three input arguments: (column to transform; new name for the transformed column; natural language explanation of the python code to be executed). For example: (date_of_birth; month_of_birth; extract the month from the dates) Cannot deal columns of type IMAGE or TEXT. Cannot filter rows. Has only access to the libraries pandas,datetime,numpy,re.
+
+Plot: Plot the results, if the user asks for a plot. Three input arguments (Type of Plot [scatter, line, bar]; column on x axis; column on y axis). Unfortunately, is it not possible to customize the labels, color, title, axes etc.
+
+Text Question Answering: It is useful for when you want to extract information from texts inside of columns of TEXT datatype. It is Data-GPTs way of reading texts. Four input arguments: (name of column with TEXT datatype; name of new column; question_template; datatype), e.g. (patient_report; diagnosis; What is the diagnosis of <patient_name>?; string), where 'patient_name' is a column from the same table as patient_report. The question_template can be anything that can be answered by reading a text. Importantly, the question_template is a template, and must reference columns from the same table in <>. The values from this column will then be inserted into the question. The tool will automatically convert the extracted information to the specified datatype [should be one of string, int, float, date, boolean]. The tool adds a new column to the table with the extracted information (e.g. [fever, sore throat, ...]) from each individual text.
+
+No Op: Does not perform any operation. Useful when you should extract a column from the table, but this column already exists. E.g. Step X: Extract name from persons --> Column name already exists in Table persons. Hence, no operation necessary.
+
+Use the following output format:
+Step <i>: What to do in this step?
+Reasoning: Reason about which tool should be used for this step. Take datatypes into account.
+Tool: The tool to use, should be one of [Image Select, Visual Question Answering, SQL, Python, Plot, Text Question Answering, No Op]
+Arguments: The arguments to call the tool, separated by ';'. Should be (arg_1; ...; arg_n)
+(if you need more than one tool for this step, follow up with another Tool + Arguments.)
+
+--
+HumanMessage: Execute the steps one by one. These columns (among others) are potentially relevant:
+- The 'image' column of the 'painting_images' table might be relevant. The column `image` in the table `painting_images` contains the actual image data of the paintings. These are some relevant values for the column: ["<IMAGE stored at 'datasets/art/images/img_89.jpg'>", "<IMAGE stored at 'datasets/art/images/img_41.jpg'>", "<IMAGE stored at 'datasets/art/images/img_19.jpg'>"]. Use Visual Question Answering to look at the images in painting_images.image and extract information. Use Image Select to filter rows by what is depicted on the images.
+- The 'img_path' column of the 'painting_images' table might be relevant. The column `img_path` in the table `painting_images` contains file paths to the images of paintings. These are some relevant values for the column: ['datasets/art/images/img_89.jpg', 'datasets/art/images/img_41.jpg', 'datasets/art/images/img_19.jpg', 'datasets/art/images/img_28.jpg', 'datasets/art/images/img_30.jpg', 'datasets/art/images/img_82.jpg', 'datasets/art/images/img_10.jpg', 'datasets/art/images/img_70.jpg', 'datasets/art/images/img_35.jpg', 'datasets/art/images/img_25.jpg'].
+- The columns paintings_metadata.img_path (example values ['datasets/art/images/img_0.jpg', 'datasets/art/images/img_1.jpg']), paintings_metadata.inception (example values ['1438-01-01T00:00:00Z', '1525-01-01T00:00:00Z']), paintings_metadata.title (example values ['Predella of the Barbadori altarpiece', 'Judith']), paintings_metadata.movement (example values ['Renaissance']), paintings_metadata.image_url (example values ['http://commons.wikimedia.org/wiki/Special:FilePath/Predella%20Pala%20Barbadori-%20Uffizi.JPG', 'http://commons.wikimedia.org/wiki/Special:FilePath/Palma%20il%20Vecchio%20-%20Judith%20-%20WGA16936.jpg']), paintings_metadata.genre (example values ['history painting', 'allegory']) might also be relevant.. Take these into account when executing the tools.
+Step 1: Select all rows from the 'painting_images' table where the 'image' column depicts animals. The input to this step is the 'painting_images' table.
+
+--
+AIMessage: Reasoning: To select rows based on what is depicted in the images, I should use the Image Select tool. This tool allows me to filter rows by matching the description of what is depicted in the images.
+
+Tool: Image Select
+Arguments: image; animals
+
+--
+HumanMessage: Something went wrong in Step 1! Empty table encountered. Check your filter or join conditions. 
+This was my request: Get the number of paintings that depict Animals for each movement and this is the plan I imagined: Step 1: Select all rows from the 'painting_images' table where the 'image' column depicts animals. The input to this step is the 'painting_images' table. The output of the operation will be referenced by 'animal_paintings'.
+Step 2: Join the 'animal_paintings' table with the 'paintings_metadata' table on the 'img_path' column to associate each painting with its metadata, including the movement. The input to this step are the animal_paintings, paintings_metadata tables. The output of the operation will be referenced by 'joined_animal_paintings'.
+Step 3: Group the 'joined_animal_paintings' table by the 'movement' column and count the number of paintings in each group. The input to this step is the 'joined_animal_paintings' table. The operation should add a new 'num_paintings' column to the table. The output of the operation will be referenced by 'result_table'.
+
+To systematically fix this issue, answer the following questions one by one:
+1. What are potential causes for this error? Think step by step.
+2. Explain in detail how this error could be fixed.
+3. Is there a flaw in my plan (e.g. steps missing, wrong input table, ...) (Yes/No)?
+4. Is there a more suitable alternative plan (e.g. extracting information from image/text data instead of tabular metadata or vice versa) (Yes/No)?
+5. Should a different tool instead of Image Select be selected for Step 1 (Yes / No)?
+6. Do the input arguments of some of the steps need to be updated (Yes / No)?
+
+************************************************************************************************************************************************************************************************************************************************************************************************************
+1. What are potential causes for this error? Think step by step.
+   - The Image Select tool might not have correctly identified images depicting animals, leading to an empty result set.
+   - There might be no images in the 'painting_images' table that depict animals, resulting in an empty selection.
+   - There could be an issue with the description used in the Image Select tool, causing it to not match any images.
+
+2. Explain in detail how this error could be fixed.
+   - Verify that the description used in the Image Select tool is appropriate and matches the content of the images.
+   - Consider using the Visual Question Answering tool to first extract information about what is depicted in the images, and then filter based on that information.
+   - Ensure that the images in the 'painting_images' table actually contain depictions of animals.
+
+3. Is there a flaw in my plan (e.g. steps missing, wrong input table, ...) (Yes/No)?
+   - Yes, the plan might be flawed if the Image Select tool is not correctly identifying images with animals.
+
+4. Is there a more suitable alternative plan (e.g. extracting information from image/text data instead of tabular metadata or vice versa) (Yes/No)?
+   - Yes, using the Visual Question Answering tool to extract information about what is depicted in the images before filtering might be more suitable.
+
+5. Should a different tool instead of Image Select be selected for Step 1 (Yes / No)?
+   - Yes, using the Visual Question Answering tool to extract information about the presence of animals in the images might be more effective.
+
+6. Do the input arguments of some of the steps need to be updated (Yes / No)?
+   - Yes, the input arguments for Step 1 should be updated to use the Visual Question Answering tool to extract information about the presence of animals in the images.

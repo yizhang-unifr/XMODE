@@ -1,0 +1,23 @@
+SystemMessage: Extract potentially relevant keywords from queries given some column names.
+
+--
+HumanMessage: Query: Get the place of birth of every US president.
+Columns: politician.name, politician.country, politician.rank, politician.place_of_birth
+
+--
+AIMessage: politician.country: US, USA, United States of America
+politician.rank: president
+
+--
+HumanMessage: Query: Plot the doses of acetylsalicylic acid for all drugs against fever for each producer.
+Columns: drugs.name, drugs.disease, drugs.active_ingredient, drugs.dose
+
+--
+AIMessage: drug.disease: fever
+drugs.active_ingredient: acetylsalicylic acid, ASA
+
+--
+HumanMessage: Query: Get the number of paintings for each year
+columns: paintings_metadata.movement, paintings_metadata.genre
+************************************************************************************************************************************************************************************************************************************************************************************************************
+paintings_metadata.year

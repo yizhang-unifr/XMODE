@@ -1,0 +1,100 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_HyiGmPF0QQJ8U1HTTQWGOYwh",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"To retrieve the image paths and the century of paintings that depict 'Fruit', we need to filter the paintings by the 'genre' column where the genre is 'Fruit'. Additionally, we need to extract the century from the 'inception' date. The century can be calculated by dividing the year by 100 and adding 1. The SQL query will select the 'img_path' and calculate the century from the 'inception' date for paintings with the genre 'Fruit'.\",\"SQL\":\"SELECT img_path, (strftime('%Y', inception) / 100) + 1 AS century \\nFROM paintings \\nWHERE genre = 'Fruit';\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ],
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 136,
+                "prompt_tokens": 828,
+                "total_tokens": 964,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-eea5d240-8218-476a-8985-c944a45022e2-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "To retrieve the image paths and the century of paintings that depict 'Fruit', we need to filter the paintings by the 'genre' column where the genre is 'Fruit'. Additionally, we need to extract the century from the 'inception' date. The century can be calculated by dividing the year by 100 and adding 1. The SQL query will select the 'img_path' and calculate the century from the 'inception' date for paintings with the genre 'Fruit'.",
+                  "SQL": "SELECT img_path, (strftime('%Y', inception) / 100) + 1 AS century \nFROM paintings \nWHERE genre = 'Fruit';"
+                },
+                "id": "call_HyiGmPF0QQJ8U1HTTQWGOYwh",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 828,
+              "output_tokens": 136,
+              "total_tokens": 964
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 136,
+      "prompt_tokens": 828,
+      "total_tokens": 964,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

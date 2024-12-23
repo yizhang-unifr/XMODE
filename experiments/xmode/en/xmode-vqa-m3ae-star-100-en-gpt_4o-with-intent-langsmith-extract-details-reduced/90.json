@@ -1,0 +1,93 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem=\"was patient 10527186 diagnosed with antineoplastic and immunosuppressive drugs causing adverse effects in therapeutic use?\", context=\"\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\n\\nCREATE TABLE \\\"DIAGNOSES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_DIAGNOSES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\n\\nCREATE TABLE \\\"D_ICD_DIAGNOSES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\")",
+          "problem": "was patient 10527186 diagnosed with antineoplastic and immunosuppressive drugs causing adverse effects in therapeutic use?",
+          "context": "\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\n\\nCREATE TABLE \\\"DIAGNOSES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_DIAGNOSES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\n\\nCREATE TABLE \\\"D_ICD_DIAGNOSES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\"",
+          "id": 0
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve diagnosis for patient 10527186 for adverse effects of antineoplastic and immunosuppressive drugs\", context=$0)",
+          "problem": "Retrieve diagnosis for patient 10527186 for adverse effects of antineoplastic and immunosuppressive drugs",
+          "context": "$0",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve the diagnosis for patient 10527186 related to adverse effects of antineoplastic and immunosuppressive drugs, we need to join the \"DIAGNOSES_ICD\" table with the \"D_ICD_DIAGNOSES\" table. The join will be on the \"icd_code\" column, which is common to both tables. We will filter the results by the \"subject_id\" to match the patient ID 10527186 and the \"long_title\" to include the phrase 'adverse effects of antineoplastic and immunosuppressive drugs'.",
+              "SQL": "SELECT d_icd.icd_code, d_icd.long_title, di.charttime \nFROM DIAGNOSES_ICD di \nJOIN D_ICD_DIAGNOSES d_icd ON di.icd_code = d_icd.icd_code \nWHERE di.subject_id = 10527186 \nAND d_icd.long_title LIKE '%adverse effects of antineoplastic and immunosuppressive drugs%' ",
+              "results": {
+                "status": "success",
+                "data": []
+              }
+            },
+            "input": {
+              "problem": "Retrieve diagnosis for patient 10527186 for adverse effects of antineoplastic and immunosuppressive drugs",
+              "context": "['DIAGNOSES_ICD', 'D_ICD_DIAGNOSES']"
+            }
+          },
+          "id": 1
+        },
+        {
+          "function": "intent_tables(problem=\"did a chest x-ray display multiple masses/nodules in the left lung for patient 10527186?\", context=\"\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\")",
+          "problem": "did a chest x-ray display multiple masses/nodules in the left lung for patient 10527186?",
+          "context": "\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\"",
+          "id": 2
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve study_id and image_id for patient 10527186\", context=$2)",
+          "problem": "Retrieve study_id and image_id for patient 10527186",
+          "context": "$2",
+          "outputs": {
+            "output": {
+              "reasoning": "The user wants to retrieve the study_id and image_id for a specific patient with subject_id 10527186. The relevant table is TB_CXR, which contains both the study_id and image_id columns. The query will filter the records by subject_id to get the desired information.",
+              "SQL": "SELECT study_id, image_id FROM TB_CXR WHERE subject_id = 10527186;",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "study_id": 56006034,
+                    "image_id": "8d9c891b-66a8d766-54249bd3-a457ba79-7bf317b2"
+                  },
+                  {
+                    "study_id": 52248666,
+                    "image_id": "0171bd40-96d78e1a-cf987a4f-36784e08-52170a07"
+                  },
+                  {
+                    "study_id": 56742472,
+                    "image_id": "6059a150-569a11dc-e2d87af4-c0ea70c2-a8ee1920"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Retrieve study_id and image_id for patient 10527186",
+              "context": "['TB_CXR']"
+            }
+          },
+          "id": 3
+        },
+        {
+          "function": "image_analysis(question=\"Does the chest x-ray display multiple masses/nodules in the left lung?\", context=$3)",
+          "question": "Does the chest x-ray display multiple masses/nodules in the left lung?",
+          "context": "$3",
+          "outputs": {
+            "output": [
+              "yes"
+            ],
+            "input": {
+              "question": "Does the chest x-ray display multiple masses/nodules in the left lung?",
+              "context": "{'status': 'success', 'data': [{'study_id': 56006034, 'image_id': '8d9c891b-66a8d766-54249bd3-a457ba79-7bf317b2'}, {'study_id': 52248666, 'image_id': '0171bd40-96d78e1a-cf987a4f-36784e08-52170a07'}, {'study_id': 56742472, 'image_id': '6059a150-569a11dc-e2d87af4-c0ea70c2-a8ee1920'}]}"
+            }
+          },
+          "id": 4
+        },
+        {
+          "function": "join()",
+          "id": 5
+        }
+      ]
+    }
+  ],
+  "question": "was patient 10527186 diagnosed with antineoplastic and immunosuppressive drugs causing adverse effects in therapeutic use, and did a chest x-ray display multiple masses/nodules in the left lung?"
+}

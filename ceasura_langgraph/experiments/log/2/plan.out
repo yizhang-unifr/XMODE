@@ -1,0 +1,17 @@
+1. text2SQL(problem="Retrieve the image paths and the number of swords depicted in each painting.", context="The database contains information about paintings, including their image paths and the objects depicted in them.")
+2. image_analysis(question="How many swords are depicted in the image?", context=$1)
+3. data_preparation(question="Identify the painting with the highest number of swords and retrieve its image path.", context=$2)
+4. text2SQL(problem="Retrieve the movement of the painting with the highest number of swords.", context=$3)
+5. join() 
+<END_OF_PLAN>
+
+
+Replan
+
+```python
+6. data_preparation(question="Convert the number of swords from text to numerical values and identify the painting with the highest number of swords.", context="$2")
+7. text2SQL(problem="Retrieve the movement of the painting with the highest number of swords.", context="$6")
+8. join()
+<END_OF_PLAN>
+```
+

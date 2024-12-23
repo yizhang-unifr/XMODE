@@ -1,0 +1,28 @@
+{
+  "output": {
+    "messages": [
+      {
+        "content": "Solve a question answering task. Here are some guidelines:\n    - In the Assistant Scratchpad, you will be given results of a plan you have executed to answer the user's question.\n    - Thought needs to reason about the question based on the Observations in 1-2 sentences.\n    - Ignore irrelevant action results.\n    - If the required information is present, give a concise but complete and helpful answer to the user's question.\n    - If you are unable to give a satisfactory finishing answer, replan to get the required information. Respond in the following format:\n    Thought: <reason about the task results and whether you have sufficient information to answer the question>\n    Action: <action to take>\n    - If an error occurs during previous actions, replan and take corrective measures to obtain the required information.\n    - Ensure that you consider errors in all the previous steps, and tries to replan accordingly.\n    - Ensure the final answer is provided in a structured format as JSON as follows:\n        {'Summary': <concise summary of the answer>,\n         'details': <detailed explanation and supporting information>,\n         'source': <source of the information or how it was obtained>,\n         'inference':<your final inference as YES, No, or list of requested information without any extra information which you can take from the `labels` as given below>,\n         'extra explanation':<put here the extra information that you dont provide in inference >,\n         }\n         In the `inferencer` do not provide additinal explanation or description. Put them in `extra explanation`.\n\n       \n    Available actions:\n    (1) Finish(the final answer to return to the user): returns the answer and finishes the task.\n    (2) Replan(the reasoning and other information that will help you plan again. Can be a line of any length): instructs why we must replan\n    ",
+        "additional_kwargs": {},
+        "response_metadata": {},
+        "type": "system"
+      },
+      {
+        "content": "[HumanMessage(content='What is the genre of the newest painting in the database?', id='99cc62c8-3d81-425e-a330-5bf52f9e025c'), FunctionMessage(content=\"{'status': 'success', 'data': [{'genre': 'religious art', 'inception': '2000-01-01 00:00:00'}]}\", additional_kwargs={'idx': 1, 'args': {'problem': 'Retrieve the genre and the creation date of the newest painting in the database.', 'context': 'Ensure to order the paintings by creation date in descending order and limit the result to the first entry to get the newest painting.'}}, name='text2SQL', id='f1289924-3fc5-44f8-87b4-36795e760a23'), FunctionMessage(content=\"{'newest_painting_genre': 'religious art', 'inception_date': '2000-01-01 00:00:00'}\\n\", additional_kwargs={'idx': 2, 'args': {'question': 'Extract the genre of the newest painting from the retrieved data.', 'context': '$1'}}, name='data_preparation', id='f4011478-bb8f-485a-a444-8214caabfb2b'), FunctionMessage(content='join', additional_kwargs={'idx': 3, 'args': ()}, name='join', id='620885b4-6ce0-40e6-94fc-28d94de231e9')]",
+        "additional_kwargs": {},
+        "response_metadata": {},
+        "type": "human",
+        "example": false
+      },
+      {
+        "content": "\n        Using the above previous actions, decide whether to replan or finish. \n        If all the required information is present, you may finish. \n        If you have made many attempts to find the information without success, admit so and respond with whatever information you have gathered so the user can work well with you. \n        ",
+        "additional_kwargs": {},
+        "response_metadata": {},
+        "type": "ai",
+        "example": false,
+        "tool_calls": [],
+        "invalid_tool_calls": []
+      }
+    ]
+  }
+}

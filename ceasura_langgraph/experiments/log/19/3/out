@@ -1,0 +1,84 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "function_call": {
+                "arguments": "{\"output\":{\"thought\":\"The data for the number of paintings for each century has been successfully retrieved. The information is complete and ready to be presented to the user.\",\"action\":{\"response\":\"{'Summary': 'Number of paintings for each century retrieved successfully.', 'details': [{'century': 15, 'number_of_paintings': 40}, {'century': 16, 'number_of_paintings': 20}, {'century': 17, 'number_of_paintings': 4}, {'century': 18, 'number_of_paintings': 13}, {'century': 19, 'number_of_paintings': 23}, {'century': 21, 'number_of_paintings': 1}], 'source': 'Retrieved from the database using text2SQL function.', 'inference': [{'century': 15, 'number_of_paintings': 40}, {'century': 16, 'number_of_paintings': 20}, {'century': 17, 'number_of_paintings': 4}, {'century': 18, 'number_of_paintings': 13}, {'century': 19, 'number_of_paintings': 23}, {'century': 21, 'number_of_paintings': 1}], 'extra explanation': 'The data shows the distribution of paintings across different centuries, highlighting the 15th century as having the most paintings.'}\"}}}",
+                "name": "_OutputFormatter"
+              },
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 306,
+                "prompt_tokens": 934,
+                "total_tokens": 1240,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-4d962bc4-3c3c-41b7-82a9-03879415ac86-0",
+            "usage_metadata": {
+              "input_tokens": 934,
+              "output_tokens": 306,
+              "total_tokens": 1240
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 306,
+      "prompt_tokens": 934,
+      "total_tokens": 1240,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

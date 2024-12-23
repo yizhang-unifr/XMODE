@@ -1,0 +1,31 @@
+id	questions	Output_Type	Modality	Parallel/Sequential	caesura_Total_Tokens	caesura_Latency	caesura_Cost	ours_Total_Tokens	ours_Latency	ours_Cost	ours_Steps	ours_Accuracy	caesura_Accuracy	caesura_Steps
+1	What is the oldest impressionist artwork in the database?	Single Value	Single	Sequential	45055	228.4660001	0.274485	23738	48.69	0.07	16	1	0	24
+2	What is the newest painting in the database?	Single Value	Single	Sequential	9257	35.39300013	0.057665	3871	5.90	0.01	3	1	1	7
+3	What is the movement of the painting that depicts the highest number of swords?	Single Value	Multiple	Sequential	14406	290.316	0.08876	42517	300.83	0.19	10	0	0	9
+4	What is the movement of the painting that depicts the highest number of babies?	Single Value	Multiple	Sequential	13647	245.359	0.085055	23781	103.52	0.0652125	8	0	0	9
+5	What is the genre of the oldest painting in the database?	Single Value	Single	Sequential	10890	105.665	0.06571	4419	10.15	0.02	4	1	1	9
+6	What is the genre of the newest painting in the database?	Single Value	Single	Sequential	11088	41.05200005	0.06832	4436	8.66	0.01	4	1	1	9
+7	What is depicted on the oldest Renaissance painting in the database?	Single Value	Multiple	Sequential	16205	55.15200019	0.095595	7497	11.24	0.02	7	0	0	11
+8	What is depicted on the oldest religious artwork in the database?	Single Value	Multiple	Sequential	14529	45.83500004	0.086155	3833	5.79	0.01	4	0	0	10
+9	Plot the year of the oldest painting per movement	Plot	Single	Sequential	11294	39.55900002	0.07085	6305	20.69	0.02	5	1	1	9
+10	Plot the year of the oldest painting per genre	Plot	Single	Sequential	11170	38.23699999	0.06971	6305	20.69	0.02	5	1	1	9
+11	Plot the number of paintings that depict War for each year	Plot	Multiple	Sequential	16273	644.197	0.098335	16252	161.00	0.07	6	1	0	11
+12	Plot the number of paintings that depict War for each century	Plot	Multiple	Sequential	19356	508.6099999	0.11581	18022	175.72	0.08	6	1	0	13
+13	Plot the number of paintings for each year	Plot	Single	Sequential	10687	42.21299982	0.067035	9815	41.62	0.04	5	0	0	8
+14	Plot the number of paintings for each century	Plot	Single	Sequential	13370	51.27999997	0.08368	5775	23.55	0.02	9	1	0	10
+15	Plot the lowest number of swords depicted in each year	Plot	Multiple	Sequential	16394	287.1389999	0.10076	38225	188.62	0.15	10	0	0	10
+16	Plot the lowest number of swords depicted in each genre	Plot	Multiple	Sequential	14188	245.428	0.08591	17732	167.08	0.08	6	0	0	9
+17	Get the number of paintings that depict Fruit for each century	Data Structure	Multiple	Sequential	45082	917.9889998	0.26703	23548	158.17	0.10	10	0	0	21
+18	Get the number of paintings that depict Animals for each movement	Data Structure	Multiple	Sequential	33037	859.845	0.207605	20939	144.89	0.08	10	0	0	16
+19	Get the number of paintings for each year	Data Structure	Single	Sequential	9545	48.87599993	0.064625	7959	35.35	0.04	4	0	0	8
+20	Get the number of paintings for each century	Data Structure	Single	Sequential	11080	42.94899988	0.07038	4762	11.73	0.02	4	0	0	9
+21	Get the highest number of swords depicted in paintings of each movement	Data Structure	Multiple	Sequential	12053	240.24	0.075965	16725	147.42	0.07	5	1	1	8
+22	Get the highest number of swords depicted in paintings of each genre	Data Structure	Multiple	Sequential	12130	205.8610001	0.07684	24345	191.29	0.12	5	0	0	8
+23	Get the century of the newest painting per movement	Data Structure	Single	Sequential	14069	55.3900001	0.088535	15828	29.51	0.05	4	1	1	12
+24	Get the century of the newest painting per genre	Data Structure	Single	Sequential	14240	55.07600021	0.08922	34654	119.00	0.14	13	1	1	12
+25	Find the total number of paintings depicting war and the number of paintings depicting swords in the Renaissance. 	Data Structure	Multiple	Parallel	17525	134.653	0.103195	47425	158.68	0.15	6	0.5	0	11
+26	Retrieve the average number of paintings depicting the wars and the total number of artworks depicting swords for each century.	Data Structure	Multiple	Parallel	14693	122.155	0.101575	27343	334.36	0.12	6	0	0	11
+27	Plot number of paitings in each genre and also plot number of paintings in easch movements.	Plot|Plot	Single	Parallel	12108	63.702	0.07566	9375	42.50	0.04	6	1	0	9
+28	Show the century of the most recent painting for each genre and create a plot to visualize the number of paintings corresponding to each century. --->Visualize the number of paintings corresponding to each century and Show the century of the most recent painting for each genre.	Plot|Data Structure	Single	Parallel	16479	54.989	0.100175	9067	47.45	0.04	7	1	0	7
+29	Plot the total number of paintings depicting war and the number of paintings depicting swords in religious arts.	Plot|Plot	Multiple	Parallel	9400	45.172	0.06014	40733	266.42	0.18	8	1	0	7
+30	Create a plot to display the number of paintings for each year and get the total number of paintings for each genre.	Plot|Data Structure	Single	Parallel	13682	70.434	0.08499	12903	59.60	0.06	7	1	0	10

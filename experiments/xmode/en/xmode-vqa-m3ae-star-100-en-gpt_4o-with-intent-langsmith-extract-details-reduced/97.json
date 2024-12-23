@@ -1,0 +1,475 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem=\"Was any procedure performed on patient 13833101 since 09/2104?\", context=\"\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\")",
+          "problem": "Was any procedure performed on patient 13833101 since 09/2104?",
+          "context": "\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\"",
+          "id": 1
+        },
+        {
+          "function": "text2SQL(problem=\"Was any procedure performed on patient 13833101 since 09/2104?\", context=\"\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\")",
+          "problem": "Was any procedure performed on patient 13833101 since 09/2104?",
+          "context": "\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\"",
+          "outputs": {
+            "output": {
+              "reasoning": "To determine if any procedure was performed on patient 13833101 since September 2104, we need to query the PROCEDURES_ICD table. This table contains information about procedures performed on patients, including the subject_id, hadm_id, icd_code, and charttime. We will filter the records for the specified patient (subject_id = 13833101) and ensure the charttime is after September 1, 2104. The query will return any matching records, indicating procedures performed on the patient since the specified date.",
+              "SQL": "SELECT * FROM PROCEDURES_ICD WHERE subject_id = 13833101 AND charttime >= '2104-09-01' ",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "row_id": 883,
+                    "subject_id": 13833101,
+                    "hadm_id": 21665911,
+                    "icd_code": "02hv33z",
+                    "charttime": "2104-09-25 00:00:00"
+                  },
+                  {
+                    "row_id": 884,
+                    "subject_id": 13833101,
+                    "hadm_id": 21970617,
+                    "icd_code": "5a1d60z",
+                    "charttime": "2105-12-06 13:14:00"
+                  },
+                  {
+                    "row_id": 885,
+                    "subject_id": 13833101,
+                    "hadm_id": 21970617,
+                    "icd_code": "0fd98zx",
+                    "charttime": "2105-12-06 13:14:00"
+                  },
+                  {
+                    "row_id": 886,
+                    "subject_id": 13833101,
+                    "hadm_id": 21970617,
+                    "icd_code": "0045",
+                    "charttime": "2105-12-06 13:14:00"
+                  },
+                  {
+                    "row_id": 888,
+                    "subject_id": 13833101,
+                    "hadm_id": 25341406,
+                    "icd_code": "8872",
+                    "charttime": "2105-12-24 00:00:00"
+                  },
+                  {
+                    "row_id": 889,
+                    "subject_id": 13833101,
+                    "hadm_id": 25341406,
+                    "icd_code": "4513",
+                    "charttime": "2105-12-20 00:00:00"
+                  },
+                  {
+                    "row_id": 890,
+                    "subject_id": 13833101,
+                    "hadm_id": 26296066,
+                    "icd_code": "8801",
+                    "charttime": "2104-12-24 00:00:00"
+                  },
+                  {
+                    "row_id": 891,
+                    "subject_id": 13833101,
+                    "hadm_id": 26296066,
+                    "icd_code": "02100z9",
+                    "charttime": "2104-12-26 00:00:00"
+                  },
+                  {
+                    "row_id": 892,
+                    "subject_id": 13833101,
+                    "hadm_id": 27341504,
+                    "icd_code": "3899",
+                    "charttime": "2105-11-15 16:03:00"
+                  },
+                  {
+                    "row_id": 893,
+                    "subject_id": 13833101,
+                    "hadm_id": 27341504,
+                    "icd_code": "8879",
+                    "charttime": "2105-11-03 00:00:00"
+                  },
+                  {
+                    "row_id": 894,
+                    "subject_id": 13833101,
+                    "hadm_id": 27341504,
+                    "icd_code": "3897",
+                    "charttime": "2105-11-15 16:03:00"
+                  },
+                  {
+                    "row_id": 895,
+                    "subject_id": 13833101,
+                    "hadm_id": 27341504,
+                    "icd_code": "5a1945z",
+                    "charttime": "2105-11-15 16:03:00"
+                  },
+                  {
+                    "row_id": 896,
+                    "subject_id": 13833101,
+                    "hadm_id": 27341504,
+                    "icd_code": "8604",
+                    "charttime": "2105-11-15 16:03:00"
+                  },
+                  {
+                    "row_id": 897,
+                    "subject_id": 13833101,
+                    "hadm_id": 27341504,
+                    "icd_code": "8938",
+                    "charttime": "2105-11-01 00:00:00"
+                  },
+                  {
+                    "row_id": 898,
+                    "subject_id": 13833101,
+                    "hadm_id": 27341504,
+                    "icd_code": "4523",
+                    "charttime": "2105-11-03 00:00:00"
+                  },
+                  {
+                    "row_id": 899,
+                    "subject_id": 13833101,
+                    "hadm_id": 27341504,
+                    "icd_code": "07dr3zx",
+                    "charttime": "2105-11-15 16:03:00"
+                  },
+                  {
+                    "row_id": 900,
+                    "subject_id": 13833101,
+                    "hadm_id": 27341504,
+                    "icd_code": "4514",
+                    "charttime": "2105-11-06 00:00:00"
+                  },
+                  {
+                    "row_id": 901,
+                    "subject_id": 13833101,
+                    "hadm_id": 28085193,
+                    "icd_code": "0dp6xuz",
+                    "charttime": "2104-09-08 00:00:00"
+                  },
+                  {
+                    "row_id": 902,
+                    "subject_id": 13833101,
+                    "hadm_id": 28085193,
+                    "icd_code": "7935",
+                    "charttime": "2104-09-09 00:00:00"
+                  },
+                  {
+                    "row_id": 903,
+                    "subject_id": 13833101,
+                    "hadm_id": 28085193,
+                    "icd_code": "3606",
+                    "charttime": "2104-09-08 00:00:00"
+                  },
+                  {
+                    "row_id": 904,
+                    "subject_id": 13833101,
+                    "hadm_id": 28085193,
+                    "icd_code": "3e0g76z",
+                    "charttime": "2104-09-09 00:00:00"
+                  },
+                  {
+                    "row_id": 905,
+                    "subject_id": 13833101,
+                    "hadm_id": 28085193,
+                    "icd_code": "0qpb04z",
+                    "charttime": "2104-09-08 00:00:00"
+                  },
+                  {
+                    "row_id": 906,
+                    "subject_id": 13833101,
+                    "hadm_id": 28085193,
+                    "icd_code": "0dtp4zz",
+                    "charttime": "2104-09-08 00:00:00"
+                  },
+                  {
+                    "row_id": 907,
+                    "subject_id": 13833101,
+                    "hadm_id": 28085193,
+                    "icd_code": "7962",
+                    "charttime": "2104-09-08 00:00:00"
+                  },
+                  {
+                    "row_id": 908,
+                    "subject_id": 13833101,
+                    "hadm_id": 28085193,
+                    "icd_code": "5a1d70z",
+                    "charttime": "2104-09-08 00:00:00"
+                  },
+                  {
+                    "row_id": 909,
+                    "subject_id": 13833101,
+                    "hadm_id": 28085193,
+                    "icd_code": "9671",
+                    "charttime": "2104-09-08 00:00:00"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Was any procedure performed on patient 13833101 since 09/2104?",
+              "context": "\nCREATE TABLE \"PROCEDURES_ICD\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id INTEGER, \n\ticd_code TEXT, \n\tcharttime TEXT, \n\tFOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)"
+            }
+          },
+          "id": 2
+        },
+        {
+          "function": "intent_tables(problem=\"Did a chest x-ray reveal pneumonia in the right mid lung zone for patient 13833101 since 09/2104?\", context=\"\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\")",
+          "problem": "Did a chest x-ray reveal pneumonia in the right mid lung zone for patient 13833101 since 09/2104?",
+          "context": "\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\"",
+          "id": 3
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve image_id and study_id for chest x-rays performed on patient 13833101 since 09/2104\", context=\"\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\")",
+          "problem": "Retrieve image_id and study_id for chest x-rays performed on patient 13833101 since 09/2104",
+          "context": "\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\"",
+          "outputs": {
+            "output": {
+              "reasoning": "The question asks for the image_id and study_id of chest x-rays performed on a specific patient (subject_id = 13833101) since September 2104. The relevant table for this information is TB_CXR, which contains columns for subject_id, study_id, image_id, and studydatetime. We need to filter the records for the given subject_id and ensure the studydatetime is after 2104-09-01. The query will select the image_id and study_id for these filtered records.",
+              "SQL": "SELECT image_id, study_id FROM TB_CXR WHERE subject_id = 13833101 AND studydatetime >= '2104-09-01' ORDER BY studydatetime ASC;",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "image_id": "2e6034b8-eaf232a7-d136bb2f-e252bb31-d06393b1",
+                    "study_id": 51898305
+                  },
+                  {
+                    "image_id": "be9dfcb8-11440c82-3d7e4717-82ddccbe-6e493621",
+                    "study_id": 54719086
+                  },
+                  {
+                    "image_id": "1251d649-e11db417-3419cd4f-89cf383c-72bd3081",
+                    "study_id": 57878681
+                  },
+                  {
+                    "image_id": "1c690fbc-fb50102b-5e09445d-1beee55c-3b8224c5",
+                    "study_id": 56089857
+                  },
+                  {
+                    "image_id": "7b3fb507-0f382f76-77a4d6e7-ccc78c5e-c8fe6be1",
+                    "study_id": 52824297
+                  },
+                  {
+                    "image_id": "eb357616-bb45696f-e221c239-fdef88ce-9326af31",
+                    "study_id": 51892967
+                  },
+                  {
+                    "image_id": "189de44a-e6354685-ec236049-ae2b6c06-91ab40bd",
+                    "study_id": 59658712
+                  },
+                  {
+                    "image_id": "57144287-0587bb63-fd29c7fb-6f46ce33-b73f4939",
+                    "study_id": 57482930
+                  },
+                  {
+                    "image_id": "6ac57203-f57de13d-bae33f2c-5e08ca2f-3a0be091",
+                    "study_id": 59810560
+                  },
+                  {
+                    "image_id": "4f3cd07e-487f7c5e-733aa08a-8dd64db1-6e04d3e9",
+                    "study_id": 50941142
+                  },
+                  {
+                    "image_id": "2221f14b-de08d132-16c82498-885ed24d-dd964846",
+                    "study_id": 50778852
+                  },
+                  {
+                    "image_id": "d64c935c-7462aaee-0b829347-cabe845a-4f92d679",
+                    "study_id": 59353298
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Retrieve image_id and study_id for chest x-rays performed on patient 13833101 since 09/2104",
+              "context": "\nCREATE TABLE \"TB_CXR\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id REAL, \n\tstudy_id INTEGER, \n\timage_id TEXT, \n\tviewposition TEXT, \n\tstudydatetime TEXT, \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)"
+            }
+          },
+          "id": 4
+        },
+        {
+          "function": "image_analysis(question=\"Did this chest x-ray reveal pneumonia in the right mid lung zone?\", context=$4)",
+          "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+          "context": "$4",
+          "outputs": {
+            "output": [],
+            "input": {
+              "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+              "context": "{'status': 'success', 'data': [{'image_id': '2e6034b8-eaf232a7-d136bb2f-e252bb31-d06393b1', 'study_id': 51898305}, {'image_id': 'be9dfcb8-11440c82-3d7e4717-82ddccbe-6e493621', 'study_id': 54719086}, {'image_id': '1251d649-e11db417-3419cd4f-89cf383c-72bd3081', 'study_id': 57878681}, {'image_id': '1c690fbc-fb50102b-5e09445d-1beee55c-3b8224c5', 'study_id': 56089857}, {'image_id': '7b3fb507-0f382f76-77a4d6e7-ccc78c5e-c8fe6be1', 'study_id': 52824297}, {'image_id': 'eb357616-bb45696f-e221c239-fdef88ce-9326af31', 'study_id': 51892967}, {'image_id': '189de44a-e6354685-ec236049-ae2b6c06-91ab40bd', 'study_id': 59658712}, {'image_id': '57144287-0587bb63-fd29c7fb-6f46ce33-b73f4939', 'study_id': 57482930}, {'image_id': '6ac57203-f57de13d-bae33f2c-5e08ca2f-3a0be091', 'study_id': 59810560}, {'image_id': '4f3cd07e-487f7c5e-733aa08a-8dd64db1-6e04d3e9', 'study_id': 50941142}, {'image_id': '2221f14b-de08d132-16c82498-885ed24d-dd964846', 'study_id': 50778852}, {'image_id': 'd64c935c-7462aaee-0b829347-cabe845a-4f92d679', 'study_id': 59353298}]}"
+            }
+          },
+          "id": 5
+        },
+        {
+          "function": "join()",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "plan": [
+        {
+          "function": "image_analysis(question='Did this chest x-ray reveal pneumonia in the right mid lung zone?', context={'image_id': '2e6034b8-eaf232a7-d136bb2f-e252bb31-d06393b1', 'study_id': 51898305})",
+          "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+          "context": "{'image_id': '2e6034b8-eaf232a7-d136bb2f-e252bb31-d06393b1', 'study_id': 51898305}",
+          "outputs": {
+            "output": [],
+            "input": {
+              "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+              "context": "{'image_id': 'd64c935c-7462aaee-0b829347-cabe845a-4f92d679', 'study_id': 59353298}"
+            }
+          },
+          "id": 7
+        },
+        {
+          "function": "image_analysis(question='Did this chest x-ray reveal pneumonia in the right mid lung zone?', context={'image_id': 'be9dfcb8-11440c82-3d7e4717-82ddccbe-6e493621', 'study_id': 54719086})",
+          "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+          "context": "{'image_id': 'be9dfcb8-11440c82-3d7e4717-82ddccbe-6e493621', 'study_id': 54719086}",
+          "outputs": {
+            "output": [],
+            "input": {
+              "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+              "context": "{'image_id': 'd64c935c-7462aaee-0b829347-cabe845a-4f92d679', 'study_id': 59353298}"
+            }
+          },
+          "id": 8
+        },
+        {
+          "function": "image_analysis(question='Did this chest x-ray reveal pneumonia in the right mid lung zone?', context={'image_id': '1251d649-e11db417-3419cd4f-89cf383c-72bd3081', 'study_id': 57878681})",
+          "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+          "context": "{'image_id': '1251d649-e11db417-3419cd4f-89cf383c-72bd3081', 'study_id': 57878681}",
+          "outputs": {
+            "output": [],
+            "input": {
+              "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+              "context": "{'image_id': 'd64c935c-7462aaee-0b829347-cabe845a-4f92d679', 'study_id': 59353298}"
+            }
+          },
+          "id": 9
+        },
+        {
+          "function": "image_analysis(question='Did this chest x-ray reveal pneumonia in the right mid lung zone?', context={'image_id': '1c690fbc-fb50102b-5e09445d-1beee55c-3b8224c5', 'study_id': 56089857})",
+          "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+          "context": "{'image_id': '1c690fbc-fb50102b-5e09445d-1beee55c-3b8224c5', 'study_id': 56089857}",
+          "outputs": {
+            "output": [],
+            "input": {
+              "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+              "context": "{'image_id': 'd64c935c-7462aaee-0b829347-cabe845a-4f92d679', 'study_id': 59353298}"
+            }
+          },
+          "id": 10
+        },
+        {
+          "function": "image_analysis(question='Did this chest x-ray reveal pneumonia in the right mid lung zone?', context={'image_id': '7b3fb507-0f382f76-77a4d6e7-ccc78c5e-c8fe6be1', 'study_id': 52824297})",
+          "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+          "context": "{'image_id': '7b3fb507-0f382f76-77a4d6e7-ccc78c5e-c8fe6be1', 'study_id': 52824297}",
+          "outputs": {
+            "output": [],
+            "input": {
+              "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+              "context": "{'image_id': 'd64c935c-7462aaee-0b829347-cabe845a-4f92d679', 'study_id': 59353298}"
+            }
+          },
+          "id": 11
+        },
+        {
+          "function": "image_analysis(question='Did this chest x-ray reveal pneumonia in the right mid lung zone?', context={'image_id': 'eb357616-bb45696f-e221c239-fdef88ce-9326af31', 'study_id': 51892967})",
+          "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+          "context": "{'image_id': 'eb357616-bb45696f-e221c239-fdef88ce-9326af31', 'study_id': 51892967}",
+          "outputs": {
+            "output": [],
+            "input": {
+              "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+              "context": "{'image_id': 'd64c935c-7462aaee-0b829347-cabe845a-4f92d679', 'study_id': 59353298}"
+            }
+          },
+          "id": 12
+        },
+        {
+          "function": "image_analysis(question='Did this chest x-ray reveal pneumonia in the right mid lung zone?', context={'image_id': '189de44a-e6354685-ec236049-ae2b6c06-91ab40bd', 'study_id': 59658712})",
+          "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+          "context": "{'image_id': '189de44a-e6354685-ec236049-ae2b6c06-91ab40bd', 'study_id': 59658712}",
+          "outputs": {
+            "output": [],
+            "input": {
+              "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+              "context": "{'image_id': 'd64c935c-7462aaee-0b829347-cabe845a-4f92d679', 'study_id': 59353298}"
+            }
+          },
+          "id": 13
+        },
+        {
+          "function": "image_analysis(question='Did this chest x-ray reveal pneumonia in the right mid lung zone?', context={'image_id': '57144287-0587bb63-fd29c7fb-6f46ce33-b73f4939', 'study_id': 57482930})",
+          "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+          "context": "{'image_id': '57144287-0587bb63-fd29c7fb-6f46ce33-b73f4939', 'study_id': 57482930}",
+          "outputs": {
+            "output": [],
+            "input": {
+              "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+              "context": "{'image_id': 'd64c935c-7462aaee-0b829347-cabe845a-4f92d679', 'study_id': 59353298}"
+            }
+          },
+          "id": 14
+        },
+        {
+          "function": "image_analysis(question='Did this chest x-ray reveal pneumonia in the right mid lung zone?', context={'image_id': '6ac57203-f57de13d-bae33f2c-5e08ca2f-3a0be091', 'study_id': 59810560})",
+          "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+          "context": "{'image_id': '6ac57203-f57de13d-bae33f2c-5e08ca2f-3a0be091', 'study_id': 59810560}",
+          "outputs": {
+            "output": [],
+            "input": {
+              "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+              "context": "{'image_id': 'd64c935c-7462aaee-0b829347-cabe845a-4f92d679', 'study_id': 59353298}"
+            }
+          },
+          "id": 15
+        },
+        {
+          "function": "image_analysis(question='Did this chest x-ray reveal pneumonia in the right mid lung zone?', context={'image_id': '4f3cd07e-487f7c5e-733aa08a-8dd64db1-6e04d3e9', 'study_id': 50941142})",
+          "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+          "context": "{'image_id': '4f3cd07e-487f7c5e-733aa08a-8dd64db1-6e04d3e9', 'study_id': 50941142}",
+          "outputs": {
+            "output": [],
+            "input": {
+              "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+              "context": "{'image_id': 'd64c935c-7462aaee-0b829347-cabe845a-4f92d679', 'study_id': 59353298}"
+            }
+          },
+          "id": 16
+        },
+        {
+          "function": "image_analysis(question='Did this chest x-ray reveal pneumonia in the right mid lung zone?', context={'image_id': '2221f14b-de08d132-16c82498-885ed24d-dd964846', 'study_id': 50778852})",
+          "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+          "context": "{'image_id': '2221f14b-de08d132-16c82498-885ed24d-dd964846', 'study_id': 50778852}",
+          "outputs": {
+            "output": [],
+            "input": {
+              "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+              "context": "{'image_id': 'd64c935c-7462aaee-0b829347-cabe845a-4f92d679', 'study_id': 59353298}"
+            }
+          },
+          "id": 17
+        },
+        {
+          "function": "image_analysis(question='Did this chest x-ray reveal pneumonia in the right mid lung zone?', context={'image_id': 'd64c935c-7462aaee-0b829347-cabe845a-4f92d679', 'study_id': 59353298})",
+          "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+          "context": "{'image_id': 'd64c935c-7462aaee-0b829347-cabe845a-4f92d679', 'study_id': 59353298}",
+          "outputs": {
+            "output": [],
+            "input": {
+              "question": "Did this chest x-ray reveal pneumonia in the right mid lung zone?",
+              "context": "{'image_id': 'd64c935c-7462aaee-0b829347-cabe845a-4f92d679', 'study_id': 59353298}"
+            }
+          },
+          "id": 18
+        },
+        {
+          "function": "join()",
+          "id": 19
+        }
+      ],
+      "missing_text2SQL": true
+    }
+  ],
+  "question": "was any procedure performed on patient 13833101 since 09/2104, and did a chest x-ray reveal pneumonia in the right mid lung zone within the same period?"
+}

@@ -1,0 +1,4 @@
+1. text2SQL(problem="Retrieve the image path and creation date of the oldest religious artwork in the database.")
+2. image_analysis(question="What is depicted in the image?", context=$1)
+3. join() 
+<END_OF_PLAN>

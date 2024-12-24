@@ -51,10 +51,6 @@ def _set_if_undefined(var: str):
     if not os.environ.get(var):
         os.environ[var] = getpass.getpass(f"Please provide your {var}")
 
-#OPENAI_API_KEY: sk-statbot-demo-GW8XbAyWKdjCapASEcuYT3BlbkFJcsmRiIGe4LeMsmcBkN4N
-#LANGCHAIN_API_KEY: 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
-#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
-#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
 _set_if_undefined("OPENAI_API_KEY")
 _set_if_undefined("LANGCHAIN_API_KEY")
 # _set_if_undefined("TAVILY_API_KEY")

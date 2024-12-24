@@ -1,0 +1,98 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem=\"Identify the last study for patient 17281190 this year and its associated image_id\", context=\"CREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\")",
+          "problem": "Identify the last study for patient 17281190 this year and its associated image_id",
+          "context": "CREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\"",
+          "id": 1
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve the study_id and image_id for the most recent study this year for patient 17281190\", context=$1)",
+          "problem": "Retrieve the study_id and image_id for the most recent study this year for patient 17281190",
+          "context": "$1",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve the most recent study for patient 17281190 this year, we need to filter the records in the TB_CXR table by the subject_id and the year of the studydatetime. We then order the results by studydatetime in descending order to get the most recent study and limit the result to one record. The columns of interest are study_id and image_id.",
+              "SQL": "SELECT study_id, image_id FROM TB_CXR WHERE subject_id = 17281190 AND strftime('%Y', studydatetime) = '2105' ORDER BY studydatetime DESC LIMIT 1",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "study_id": 53018222,
+                    "image_id": "50b5b883-a6ec20d7-bb20d997-7fb2c3ea-cce4242f"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Retrieve the study_id and image_id for the most recent study this year for patient 17281190",
+              "context": "['TB_CXR']"
+            }
+          },
+          "id": 2
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve the study_id and image_id for the previous study to the most recent one this year for patient 17281190\", context=$1)",
+          "problem": "Retrieve the study_id and image_id for the previous study to the most recent one this year for patient 17281190",
+          "context": "$1",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve the study_id and image_id for the study before the most recent one this year for patient 17281190, we need to first filter the records for the given patient_id and the current year (2105). We then order the results by the studydatetime in descending order to get the most recent studies first. By using a subquery with ROW_NUMBER(), we can assign a rank to each study based on the order of their studydatetime. We then select the study with rank 2, which corresponds to the study before the most recent one.",
+              "SQL": "SELECT study_id, image_id FROM ( SELECT study_id, image_id, ROW_NUMBER() OVER (ORDER BY studydatetime DESC) AS rk FROM TB_CXR WHERE subject_id = 17281190 AND strftime('%Y', studydatetime) = '2105' ) WHERE rk = 2",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "study_id": 56217792,
+                    "image_id": "c51d45d3-c38b2080-476893fc-d3a88e3d-bc68d21f"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Retrieve the study_id and image_id for the previous study to the most recent one this year for patient 17281190",
+              "context": "['TB_CXR']"
+            }
+          },
+          "id": 3
+        },
+        {
+          "function": "image_analysis(question=\"Does the last study reveal any abnormalities in the left mid lung zone?\", context=$2)",
+          "question": "Does the last study reveal any abnormalities in the left mid lung zone?",
+          "context": "$2",
+          "outputs": {
+            "output": [],
+            "input": {
+              "question": "Does the last study reveal any abnormalities in the left mid lung zone?",
+              "context": "{'status': 'success', 'data': [{'study_id': 53018222, 'image_id': '50b5b883-a6ec20d7-bb20d997-7fb2c3ea-cce4242f'}]}"
+            }
+          },
+          "id": 4
+        },
+        {
+          "function": "image_analysis(question=\"Does the previous study reveal any abnormalities in the left mid lung zone?\", context=$3)",
+          "question": "Does the previous study reveal any abnormalities in the left mid lung zone?",
+          "context": "$3",
+          "outputs": {
+            "output": [
+              "yes"
+            ],
+            "input": {
+              "question": "Does the previous study reveal any abnormalities in the left mid lung zone?",
+              "context": "{'status': 'success', 'data': [{'study_id': 56217792, 'image_id': 'c51d45d3-c38b2080-476893fc-d3a88e3d-bc68d21f'}]}"
+            }
+          },
+          "id": 5
+        },
+        {
+          "function": "join()",
+          "id": 6
+        }
+      ]
+    }
+  ],
+  "question": "compared to the previous study, does the last study for patient 17281190 this year reveal any abnormalities in the left mid lung zone still absent?",
+  "id": 76
+}

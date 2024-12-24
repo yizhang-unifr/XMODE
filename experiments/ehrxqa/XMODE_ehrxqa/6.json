@@ -1,0 +1,215 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem=\"When was patient 10762986 diagnosed with a personal history of malignant neoplasm of rectum, rectosigmoid junction, and anus?\", context=\"CREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"DIAGNOSES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_DIAGNOSES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"D_ICD_DIAGNOSES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\")",
+          "problem": "When was patient 10762986 diagnosed with a personal history of malignant neoplasm of rectum, rectosigmoid junction, and anus?",
+          "context": "CREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"DIAGNOSES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_DIAGNOSES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"D_ICD_DIAGNOSES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\"",
+          "id": 1
+        },
+        {
+          "function": "text2SQL(problem=\"Find the diagnosis date for patient 10762986 with personal history of malignant neoplasm of rectum, rectosigmoid junction, and anus.\", context=$1)",
+          "problem": "Find the diagnosis date for patient 10762986 with personal history of malignant neoplasm of rectum, rectosigmoid junction, and anus.",
+          "context": "$1",
+          "outputs": {
+            "output": {
+              "reasoning": "To find the diagnosis date for patient 10762986 with a personal history of malignant neoplasm of the rectum, rectosigmoid junction, and anus, we need to join the DIAGNOSES_ICD and D_ICD_DIAGNOSES tables. We will filter the records where the subject_id is 10762986 and the long_title contains the relevant diagnosis description. The charttime column in the DIAGNOSES_ICD table will provide the diagnosis date.",
+              "SQL": "SELECT d.charttime \nFROM DIAGNOSES_ICD d\nJOIN D_ICD_DIAGNOSES dd ON d.icd_code = dd.icd_code\nWHERE d.subject_id = 10762986 \nAND dd.long_title LIKE '%personal history of malignant neoplasm of rectum, rectosigmoid junction, and anus%'",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "charttime": "2103-04-09 21:26:00"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Find the diagnosis date for patient 10762986 with personal history of malignant neoplasm of rectum, rectosigmoid junction, and anus.",
+              "context": "['DIAGNOSES_ICD', 'D_ICD_DIAGNOSES']"
+            }
+          },
+          "id": 2
+        },
+        {
+          "function": "text2SQL(problem=\"Find chest x-ray study IDs for patient 10762986 within the same month after diagnosis.\", context=\"CREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\")",
+          "problem": "Find chest x-ray study IDs for patient 10762986 within the same month after diagnosis.",
+          "context": "CREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\"",
+          "outputs": {
+            "output": {
+              "reasoning": "To find the chest x-ray study IDs for patient 10762986 within the same month after diagnosis, we need to first identify the diagnosis date from the DIAGNOSES_ICD table. Then, we will look for chest x-ray studies in the TB_CXR table that occurred within the same month as the diagnosis date. We will use the strftime function to extract the year and month from the diagnosis date and compare it with the study date.",
+              "SQL": "SELECT TB_CXR.study_id \nFROM TB_CXR \nJOIN DIAGNOSES_ICD ON TB_CXR.subject_id = DIAGNOSES_ICD.subject_id \nWHERE TB_CXR.subject_id = 10762986 \nAND strftime('%Y-%m', TB_CXR.studydatetime) = strftime('%Y-%m', DIAGNOSES_ICD.charttime)",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "study_id": 55546501
+                  },
+                  {
+                    "study_id": 55546501
+                  },
+                  {
+                    "study_id": 55546501
+                  },
+                  {
+                    "study_id": 55546501
+                  },
+                  {
+                    "study_id": 55546501
+                  },
+                  {
+                    "study_id": 55546501
+                  },
+                  {
+                    "study_id": 55546501
+                  },
+                  {
+                    "study_id": 55546501
+                  },
+                  {
+                    "study_id": 55546501
+                  },
+                  {
+                    "study_id": 55546501
+                  },
+                  {
+                    "study_id": 55546501
+                  },
+                  {
+                    "study_id": 55546501
+                  },
+                  {
+                    "study_id": 55546501
+                  },
+                  {
+                    "study_id": 55546501
+                  },
+                  {
+                    "study_id": 55546501
+                  },
+                  {
+                    "study_id": 55557490
+                  },
+                  {
+                    "study_id": 55557490
+                  },
+                  {
+                    "study_id": 55557490
+                  },
+                  {
+                    "study_id": 55557490
+                  },
+                  {
+                    "study_id": 55557490
+                  },
+                  {
+                    "study_id": 55557490
+                  },
+                  {
+                    "study_id": 55557490
+                  },
+                  {
+                    "study_id": 55557490
+                  },
+                  {
+                    "study_id": 55557490
+                  },
+                  {
+                    "study_id": 55557490
+                  },
+                  {
+                    "study_id": 55557490
+                  },
+                  {
+                    "study_id": 55557490
+                  },
+                  {
+                    "study_id": 55557490
+                  },
+                  {
+                    "study_id": 55557490
+                  },
+                  {
+                    "study_id": 55557490
+                  },
+                  {
+                    "study_id": 56803082
+                  },
+                  {
+                    "study_id": 56803082
+                  },
+                  {
+                    "study_id": 56803082
+                  },
+                  {
+                    "study_id": 56803082
+                  },
+                  {
+                    "study_id": 56803082
+                  },
+                  {
+                    "study_id": 56803082
+                  },
+                  {
+                    "study_id": 56803082
+                  },
+                  {
+                    "study_id": 56803082
+                  },
+                  {
+                    "study_id": 56803082
+                  },
+                  {
+                    "study_id": 56803082
+                  },
+                  {
+                    "study_id": 56803082
+                  },
+                  {
+                    "study_id": 56803082
+                  },
+                  {
+                    "study_id": 56803082
+                  },
+                  {
+                    "study_id": 56803082
+                  },
+                  {
+                    "study_id": 56803082
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Find chest x-ray study IDs for patient 10762986 within the same month after diagnosis.",
+              "context": "CREATE TABLE \"TB_CXR\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id REAL, \n\tstudy_id INTEGER, \n\timage_id TEXT, \n\tviewposition TEXT, \n\tstudydatetime TEXT, \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)"
+            }
+          },
+          "id": 3
+        },
+        {
+          "function": "image_analysis(question=\"Do the chest x-rays show abnormalities in the left costophrenic angle?\", context=$3)",
+          "question": "Do the chest x-rays show abnormalities in the left costophrenic angle?",
+          "context": "$3",
+          "outputs": {
+            "output": [
+              "yes"
+            ],
+            "input": {
+              "question": "Do the chest x-rays show abnormalities in the left costophrenic angle?",
+              "context": "{'status': 'success', 'data': [{'study_id': 55546501}, {'study_id': 55546501}, {'study_id': 55546501}, {'study_id': 55546501}, {'study_id': 55546501}, {'study_id': 55546501}, {'study_id': 55546501}, {'study_id': 55546501}, {'study_id': 55546501}, {'study_id': 55546501}, {'study_id': 55546501}, {'study_id': 55546501}, {'study_id': 55546501}, {'study_id': 55546501}, {'study_id': 55546501}, {'study_id': 55557490}, {'study_id': 55557490}, {'study_id': 55557490}, {'study_id': 55557490}, {'study_id': 55557490}, {'study_id': 55557490}, {'study_id': 55557490}, {'study_id': 55557490}, {'study_id': 55557490}, {'study_id': 55557490}, {'study_id': 55557490}, {'study_id': 55557490}, {'study_id': 55557490}, {'study_id': 55557490}, {'study_id': 55557490}, {'study_id': 56803082}, {'study_id': 56803082}, {'study_id': 56803082}, {'study_id': 56803082}, {'study_id': 56803082}, {'study_id': 56803082}, {'study_id': 56803082}, {'study_id': 56803082}, {'study_id': 56803082}, {'study_id': 56803082}, {'study_id': 56803082}, {'study_id': 56803082}, {'study_id': 56803082}, {'study_id': 56803082}, {'study_id': 56803082}]}"
+            }
+          },
+          "id": 4
+        },
+        {
+          "function": "join()",
+          "id": 5
+        }
+      ]
+    }
+  ],
+  "question": "did patient 10762986 have a chest x-ray showing any abnormalities in the left costophrenic angle within the same month after being diagnosed with personal history of malignant neoplasm of rectum, rectosigmoid junction, and anus since 2103?",
+  "id": 6
+}

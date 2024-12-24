@@ -1,0 +1,100 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem=\"Did patient 15179275 undergo the initial insertion of dual-chamber devices procedure until 11/2105?\", context=\"CREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"D_ICD_PROCEDURES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\")",
+          "problem": "Did patient 15179275 undergo the initial insertion of dual-chamber devices procedure until 11/2105?",
+          "context": "CREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"D_ICD_PROCEDURES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\"",
+          "id": 1
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve subject_id and other information related to the initial insertion of dual-chamber devices procedure for patient 15179275 until 11/2105.\", context=\"CREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"D_ICD_PROCEDURES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\")",
+          "problem": "Retrieve subject_id and other information related to the initial insertion of dual-chamber devices procedure for patient 15179275 until 11/2105.",
+          "context": "CREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"D_ICD_PROCEDURES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\"",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve information related to the initial insertion of dual-chamber devices procedure for patient 15179275 until November 2105, we need to identify the relevant ICD code for this procedure. We will join the PROCEDURES_ICD table with the D_ICD_PROCEDURES table to find the procedure's long title that matches 'dual-chamber devices'. Then, we will filter the results for the specified patient and time frame.",
+              "SQL": "SELECT p.subject_id, p.hadm_id, p.icd_code, d.long_title, p.charttime \nFROM PROCEDURES_ICD p\nJOIN D_ICD_PROCEDURES d ON p.icd_code = d.icd_code\nWHERE p.subject_id = 15179275 \nAND d.long_title LIKE '%dual-chamber devices%'\nAND p.charttime < '2105-12-01' \nORDER BY p.charttime ASC LIMIT 1;",
+              "results": {
+                "status": "success",
+                "data": []
+              }
+            },
+            "input": {
+              "problem": "Retrieve subject_id and other information related to the initial insertion of dual-chamber devices procedure for patient 15179275 until 11/2105.",
+              "context": "CREATE TABLE \"ADMISSIONS\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id INTEGER, \n\tadmittime TEXT, \n\tdischtime TEXT, \n\tdischarge_location TEXT, \n\tinsurance TEXT, \n\tlanguage TEXT, \n\tmarital_status TEXT, \n\tage INTEGER\n)\n\nCREATE TABLE \"D_ICD_PROCEDURES\" (\n\trow_id INTEGER, \n\ticd_code TEXT, \n\tlong_title TEXT\n)\n\nCREATE TABLE \"PROCEDURES_ICD\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id INTEGER, \n\ticd_code TEXT, \n\tcharttime TEXT, \n\tFOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)\n\nCREATE TABLE \"TB_CXR\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id REAL, \n\tstudy_id INTEGER, \n\timage_id TEXT, \n\tviewposition TEXT, \n\tstudydatetime TEXT, \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)"
+            }
+          },
+          "id": 2
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve subject_id and study_id for chest x-rays of patient 15179275 until 11/2105.\", context=\"CREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"D_ICD_PROCEDURES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\")",
+          "problem": "Retrieve subject_id and study_id for chest x-rays of patient 15179275 until 11/2105.",
+          "context": "CREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"D_ICD_PROCEDURES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"PROCEDURES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_PROCEDURES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\"",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve the subject_id and study_id for chest x-rays of patient 15179275 until November 2105, we need to query the TB_CXR table. We will filter the records by subject_id and ensure the studydatetime is before December 1, 2105. This can be done by checking if the year is 2105 and the month is less than or equal to 11. The query will select the subject_id and study_id columns.",
+              "SQL": "SELECT subject_id, study_id FROM TB_CXR WHERE subject_id = 15179275 AND strftime('%Y-%m', studydatetime) <= '2105-11'",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "subject_id": 15179275,
+                    "study_id": 58430729
+                  },
+                  {
+                    "subject_id": 15179275,
+                    "study_id": 53961145
+                  },
+                  {
+                    "subject_id": 15179275,
+                    "study_id": 56002483
+                  },
+                  {
+                    "subject_id": 15179275,
+                    "study_id": 54625721
+                  },
+                  {
+                    "subject_id": 15179275,
+                    "study_id": 59868627
+                  },
+                  {
+                    "subject_id": 15179275,
+                    "study_id": 56832594
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Retrieve subject_id and study_id for chest x-rays of patient 15179275 until 11/2105.",
+              "context": "CREATE TABLE \"ADMISSIONS\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id INTEGER, \n\tadmittime TEXT, \n\tdischtime TEXT, \n\tadmission_type TEXT, \n\tadmission_location TEXT, \n\tdischarge_location TEXT, \n\tinsurance TEXT, \n\tlanguage TEXT, \n\tmarital_status TEXT, \n\tage INTEGER\n)\n\nCREATE TABLE \"D_ICD_PROCEDURES\" (\n\trow_id INTEGER, \n\ticd_code TEXT, \n\tlong_title TEXT\n)\n\nCREATE TABLE \"PROCEDURES_ICD\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id INTEGER, \n\ticd_code TEXT, \n\tcharttime TEXT, \n\tFOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)\n\nCREATE TABLE \"TB_CXR\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id REAL, \n\tstudy_id INTEGER, \n\timage_id TEXT, \n\tviewposition TEXT, \n\tstudydatetime TEXT, \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)"
+            }
+          },
+          "id": 3
+        },
+        {
+          "function": "image_analysis(question=\"Does the chest x-ray indicate pleural effusion in the left lower lung zone?\", context=$3)",
+          "question": "Does the chest x-ray indicate pleural effusion in the left lower lung zone?",
+          "context": "$3",
+          "outputs": {
+            "output": [
+              "yes"
+            ],
+            "input": {
+              "question": "Does the chest x-ray indicate pleural effusion in the left lower lung zone?",
+              "context": "{'status': 'success', 'data': [{'subject_id': 15179275, 'study_id': 58430729}, {'subject_id': 15179275, 'study_id': 53961145}, {'subject_id': 15179275, 'study_id': 56002483}, {'subject_id': 15179275, 'study_id': 54625721}, {'subject_id': 15179275, 'study_id': 59868627}, {'subject_id': 15179275, 'study_id': 56832594}]}"
+            }
+          },
+          "id": 4
+        },
+        {
+          "function": "join()",
+          "id": 5
+        }
+      ]
+    }
+  ],
+  "question": "until 11/2105, did patient 15179275 undergo the initial insertion of dual-chamber devices procedure and have a chest x-ray indicating pleural effusion in the left lower lung zone?",
+  "id": 97
+}

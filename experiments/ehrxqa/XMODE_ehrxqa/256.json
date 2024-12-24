@@ -1,0 +1,147 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem='Find the study IDs for the first and last studies of patient 16476036 from their last hospital visit.', context='\\nCREATE TABLE \"ADMISSIONS\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \"TB_CXR\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\\n)')",
+          "problem": "Find the study IDs for the first and last studies of patient 16476036 from their last hospital visit.",
+          "context": "\\nCREATE TABLE \"ADMISSIONS\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \"TB_CXR\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\\n)'",
+          "id": 1
+        },
+        {
+          "function": "text2SQL(problem='Retrieve the last hospital visit for patient 16476036 and find the study IDs for their first and last studies during this visit.', context='\\nCREATE TABLE \"ADMISSIONS\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \"TB_CXR\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\\n)')",
+          "problem": "Retrieve the last hospital visit for patient 16476036 and find the study IDs for their first and last studies during this visit.",
+          "context": "\\nCREATE TABLE \"ADMISSIONS\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \"TB_CXR\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\\n)'",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve the last hospital visit for patient 16476036, we need to find the latest admission record in the ADMISSIONS table. Once we have the hadm_id for the last visit, we can use it to find the first and last study IDs from the TB_CXR table for that specific hospital admission. We will order the studies by their study date and time to determine the first and last ones.",
+              "SQL": "WITH LastAdmission AS (\n    SELECT hadm_id\n    FROM ADMISSIONS\n    WHERE subject_id = 16476036\n    ORDER BY admittime DESC\n    LIMIT 1\n),\nStudyTimes AS (\n    SELECT study_id, studydatetime,\n           ROW_NUMBER() OVER (ORDER BY studydatetime ASC) AS rn_asc,\n           ROW_NUMBER() OVER (ORDER BY studydatetime DESC) AS rn_desc\n    FROM TB_CXR\n    WHERE hadm_id = (SELECT hadm_id FROM LastAdmission)\n)\nSELECT \n    (SELECT study_id FROM StudyTimes WHERE rn_asc = 1) AS first_study_id,\n    (SELECT study_id FROM StudyTimes WHERE rn_desc = 1) AS last_study_id;",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "first_study_id": 59376802,
+                    "last_study_id": 54146884
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Retrieve the last hospital visit for patient 16476036 and find the study IDs for their first and last studies during this visit.",
+              "context": "\nCREATE TABLE \"ADMISSIONS\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id INTEGER, \n\tadmittime TEXT, \n\tdischtime TEXT, \n\tadmission_type TEXT, \n\tadmission_location TEXT, \n\tdischarge_location TEXT, \n\tinsurance TEXT, \n\tlanguage TEXT, \n\tmarital_status TEXT, \n\tage INTEGER\n)\n\nCREATE TABLE \"TB_CXR\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id REAL, \n\tstudy_id INTEGER, \n\timage_id TEXT, \n\tviewposition TEXT, \n\tstudydatetime TEXT, \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)"
+            }
+          },
+          "id": 2
+        },
+        {
+          "function": "image_analysis(question='Enumerate all anatomical locations related to any technical assessments that are still present in the first study compared to the previous study.', context=$2)",
+          "question": "Enumerate all anatomical locations related to any technical assessments that are still present in the first study compared to the previous study.",
+          "context": "$2",
+          "outputs": {
+            "error": "TypeError(\"'ValueError' object is not subscriptable\")Traceback (most recent call last):\n\n\n  File \"/home/ubuntu/.local/lib/python3.10/site-packages/langchain_core/tools.py\", line 584, in run\n    response = context.run(self._run, *tool_args, **tool_kwargs)\n\n\n  File \"/home/ubuntu/.local/lib/python3.10/site-packages/langchain_core/tools.py\", line 929, in _run\n    return self.func(*args, **kwargs)\n\n\n  File \"/home/ubuntu/workspace/XMODE-LLMCompiler/tools/image_analysis_tool_m3ae.py\", line 198, in image_analysis\n    image_urls = [item[0] for item in image_urls]\n\n\n  File \"/home/ubuntu/workspace/XMODE-LLMCompiler/tools/image_analysis_tool_m3ae.py\", line 198, in <listcomp>\n    image_urls = [item[0] for item in image_urls]\n\n\nTypeError: 'ValueError' object is not subscriptable",
+            "input": {
+              "question": "Enumerate all anatomical locations related to any technical assessments that are still present in the first study compared to the previous study.",
+              "context": "{'status': 'success', 'data': [{'first_study_id': 59376802, 'last_study_id': 54146884}]}"
+            },
+            "output": null
+          },
+          "id": 3
+        },
+        {
+          "function": "join()",
+          "id": 4
+        }
+      ]
+    },
+    {
+      "plan": [
+        {
+          "function": "text2SQL(problem='Retrieve the first study image_id for patient 16476036 from their last hospital visit.', context='\\nCREATE TABLE \"ADMISSIONS\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \"TB_CXR\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\\n)')",
+          "problem": "Retrieve the first study image_id for patient 16476036 from their last hospital visit.",
+          "context": "\\nCREATE TABLE \"ADMISSIONS\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \"TB_CXR\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\\n)'",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve the first study image_id for patient 16476036 from their last hospital visit, we need to first identify the last hospital visit. This can be determined by finding the maximum discharge time from the ADMISSIONS table for the given patient. Once we have the hadm_id of the last visit, we can then query the TB_CXR table to find the first study image_id associated with that hadm_id, ordered by the study date and time. The SQL query will first find the last hospital visit and then retrieve the first study image_id for that visit.",
+              "SQL": "SELECT image_id FROM TB_CXR WHERE hadm_id = (SELECT hadm_id FROM ADMISSIONS WHERE subject_id = 16476036 ORDER BY dischtime DESC LIMIT 1) ORDER BY studydatetime ASC LIMIT 1;",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "image_id": "6f192b53-252d9028-0776965a-d71fc7b5-dae7a2af"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Retrieve the first study image_id for patient 16476036 from their last hospital visit.",
+              "context": "\nCREATE TABLE \"ADMISSIONS\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id INTEGER, \n\tadmittime TEXT, \n\tdischtime TEXT, \n\tadmission_type TEXT, \n\tadmission_location TEXT, \n\tdischarge_location TEXT, \n\tinsurance TEXT, \n\tlanguage TEXT, \n\tmarital_status TEXT, \n\tage INTEGER\n)\n\nCREATE TABLE \"TB_CXR\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id REAL, \n\tstudy_id INTEGER, \n\timage_id TEXT, \n\tviewposition TEXT, \n\tstudydatetime TEXT, \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)"
+            }
+          },
+          "id": 5
+        },
+        {
+          "function": "text2SQL(problem='Retrieve the previous study image_id for patient 16476036 before the last hospital visit.', context='\\nCREATE TABLE \"ADMISSIONS\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \"TB_CXR\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\\n)')",
+          "problem": "Retrieve the previous study image_id for patient 16476036 before the last hospital visit.",
+          "context": "\\nCREATE TABLE \"ADMISSIONS\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \"TB_CXR\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\\n)'",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve the previous study image_id for patient 16476036 before the last hospital visit, we need to first identify the last hospital visit for the patient. This can be done by finding the maximum discharge time from the ADMISSIONS table for the given patient. Once we have the last hospital visit, we can then find the study that occurred just before this visit by looking at the TB_CXR table and selecting the study with the maximum study date that is less than the last discharge time. The query will involve joining the ADMISSIONS and TB_CXR tables based on the subject_id and filtering the results accordingly.",
+              "SQL": "SELECT image_id FROM TB_CXR WHERE subject_id = 16476036 AND studydatetime < (SELECT MAX(dischtime) FROM ADMISSIONS WHERE subject_id = 16476036) ORDER BY studydatetime DESC LIMIT 1;",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "image_id": "0ed28ff5-85b6d29c-5f52cf31-82bacd21-bbc3ae28"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Retrieve the previous study image_id for patient 16476036 before the last hospital visit.",
+              "context": "\nCREATE TABLE \"ADMISSIONS\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id INTEGER, \n\tadmittime TEXT, \n\tdischtime TEXT, \n\tadmission_type TEXT, \n\tadmission_location TEXT, \n\tdischarge_location TEXT, \n\tinsurance TEXT, \n\tlanguage TEXT, \n\tmarital_status TEXT, \n\tage INTEGER\n)\n\nCREATE TABLE \"TB_CXR\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id REAL, \n\tstudy_id INTEGER, \n\timage_id TEXT, \n\tviewposition TEXT, \n\tstudydatetime TEXT, \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)"
+            }
+          },
+          "id": 6
+        },
+        {
+          "function": "image_analysis(question='Enumerate all anatomical locations related to any technical assessments that are still present in this study.', context='$5')",
+          "question": "Enumerate all anatomical locations related to any technical assessments that are still present in this study.",
+          "context": "$5'",
+          "outputs": {
+            "output": [
+              "left lung",
+              "right lung"
+            ],
+            "input": {
+              "question": "Enumerate all anatomical locations related to any technical assessments that are still present in this study.",
+              "context": "{'status': 'success', 'data': [{'image_id': '0ed28ff5-85b6d29c-5f52cf31-82bacd21-bbc3ae28'}]}"
+            }
+          },
+          "id": 7
+        },
+        {
+          "function": "image_analysis(question='Enumerate all anatomical locations related to any technical assessments that are still present in this study.', context='$6')",
+          "question": "Enumerate all anatomical locations related to any technical assessments that are still present in this study.",
+          "context": "$6'",
+          "outputs": {
+            "output": [
+              "left lung",
+              "right lung"
+            ],
+            "input": {
+              "question": "Enumerate all anatomical locations related to any technical assessments that are still present in this study.",
+              "context": "{'status': 'success', 'data': [{'image_id': '0ed28ff5-85b6d29c-5f52cf31-82bacd21-bbc3ae28'}]}"
+            }
+          },
+          "id": 8
+        },
+        {
+          "function": "join()",
+          "id": 9
+        }
+      ]
+    }
+  ],
+  "question": "enumerate all anatomical locations related to any technical assessments that are still present based on the first study of patient 16476036 on the last hospital visit compared to the previous study.",
+  "id": 256
+}

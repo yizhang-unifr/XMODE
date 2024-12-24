@@ -1,0 +1,97 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem='Identify any chest x-ray studies for patient 15212228 that revealed abnormalities in the right lower lung zone since 2 years ago.', context='CREATE TABLE \"TB_CXR\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\\n)')",
+          "problem": "Identify any chest x-ray studies for patient 15212228 that revealed abnormalities in the right lower lung zone since 2 years ago.",
+          "context": "CREATE TABLE \"TB_CXR\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\\n)'",
+          "id": 1
+        },
+        {
+          "function": "text2SQL(problem='Find the chest x-ray studies for patient 15212228 since 2 years ago.', context='CREATE TABLE \"TB_CXR\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\\n)')",
+          "problem": "Find the chest x-ray studies for patient 15212228 since 2 years ago.",
+          "context": "CREATE TABLE \"TB_CXR\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\\n)'",
+          "outputs": {
+            "output": {
+              "reasoning": "To find the chest x-ray studies for patient 15212228 since 2 years ago, we need to query the TB_CXR table. The current time is set to 2105-12-31 23:59:00, so 2 years ago would be 2103-12-31 23:59:00. We will filter the records where the subject_id is 15212228 and the studydatetime is greater than or equal to 2103-12-31 23:59:00.",
+              "SQL": "SELECT * FROM TB_CXR WHERE subject_id = 15212228 AND studydatetime >= '2103-12-31 23:59:00'",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "row_id": 810,
+                    "subject_id": 15212228,
+                    "hadm_id": 25713350.0,
+                    "study_id": 54438088,
+                    "image_id": "4726c9f1-e3710eb3-2c1ebe41-c18e13d0-b74739a2",
+                    "viewposition": "pa",
+                    "studydatetime": "2104-02-25 08:25:24"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Find the chest x-ray studies for patient 15212228 since 2 years ago.",
+              "context": "CREATE TABLE \"TB_CXR\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id REAL, \n\tstudy_id INTEGER, \n\timage_id TEXT, \n\tviewposition TEXT, \n\tstudydatetime TEXT, \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)"
+            }
+          },
+          "id": 2
+        },
+        {
+          "function": "image_analysis(question='Do these chest x-rays reveal any abnormalities in the right lower lung zone?', context=$2)",
+          "question": "Do these chest x-rays reveal any abnormalities in the right lower lung zone?",
+          "context": "$2",
+          "outputs": {
+            "output": [
+              "no"
+            ],
+            "input": {
+              "question": "Do these chest x-rays reveal any abnormalities in the right lower lung zone?",
+              "context": "{'status': 'success', 'data': [{'row_id': 810, 'subject_id': 15212228, 'hadm_id': 25713350.0, 'study_id': 54438088, 'image_id': '4726c9f1-e3710eb3-2c1ebe41-c18e13d0-b74739a2', 'viewposition': 'pa', 'studydatetime': '2104-02-25 08:25:24'}]}"
+            }
+          },
+          "id": 3
+        },
+        {
+          "function": "intent_tables(problem='Determine if patient 15212228 underwent cervical fusion of the anterior column, anterior technique procedure.', context='CREATE TABLE \"PROCEDURES_ICD\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\\n)')",
+          "problem": "Determine if patient 15212228 underwent cervical fusion of the anterior column, anterior technique procedure.",
+          "context": "CREATE TABLE \"PROCEDURES_ICD\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\\n)'",
+          "id": 4
+        },
+        {
+          "function": "text2SQL(problem='Find if patient 15212228 underwent cervical fusion of the anterior column, anterior technique procedure within 2 months after the abnormal chest x-ray.', context='CREATE TABLE \"PROCEDURES_ICD\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\\n)')",
+          "problem": "Find if patient 15212228 underwent cervical fusion of the anterior column, anterior technique procedure within 2 months after the abnormal chest x-ray.",
+          "context": "CREATE TABLE \"PROCEDURES_ICD\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\\n)'",
+          "outputs": {
+            "output": {
+              "reasoning": "To determine if patient 15212228 underwent a cervical fusion of the anterior column, anterior technique procedure within 2 months after an abnormal chest x-ray, we need to follow these steps:\n\n1. Identify the latest abnormal chest x-ray for the patient. Since the database schema does not have a specific column for abnormalities, we will retrieve the latest chest x-ray study date.\n2. Calculate the date range for 2 months after this x-ray.\n3. Check if there is a procedure with the description 'cervical fusion of the anterior column, anterior technique' within this date range.\n\nThe SQL query will first find the latest chest x-ray study date for the patient, then check for the specified procedure within 2 months after this date.",
+              "SQL": "WITH LatestCXR AS (\n    SELECT MAX(studydatetime) AS last_cxr_date\n    FROM TB_CXR\n    WHERE subject_id = 15212228\n),\nProcedureCheck AS (\n    SELECT p.subject_id, p.icd_code, p.charttime\n    FROM PROCEDURES_ICD p\n    JOIN D_ICD_PROCEDURES d ON p.icd_code = d.icd_code\n    WHERE p.subject_id = 15212228\n    AND d.long_title LIKE '%cervical fusion of the anterior column, anterior technique%'\n)\nSELECT pc.subject_id, pc.icd_code, pc.charttime\nFROM ProcedureCheck pc\nJOIN LatestCXR lc ON pc.charttime BETWEEN lc.last_cxr_date AND DATETIME(lc.last_cxr_date, '+2 months')",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "subject_id": 15212228,
+                    "icd_code": "8102",
+                    "charttime": "2104-02-27 15:05:00"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Find if patient 15212228 underwent cervical fusion of the anterior column, anterior technique procedure within 2 months after the abnormal chest x-ray.",
+              "context": "CREATE TABLE \"PROCEDURES_ICD\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id INTEGER, \n\ticd_code TEXT, \n\tcharttime TEXT, \n\tFOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)"
+            }
+          },
+          "id": 5
+        },
+        {
+          "function": "join()",
+          "id": 6
+        }
+      ]
+    }
+  ],
+  "question": "did patient 15212228 undergo the other cervical fusion of the anterior column, anterior technique procedure within 2 month after a chest x-ray study revealed any abnormalities in the right lower lung zone since 2 year ago?",
+  "id": 47
+}

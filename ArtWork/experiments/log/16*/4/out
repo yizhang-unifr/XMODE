@@ -1,0 +1,84 @@
+{
+    "generations": [
+      [
+        {
+          "text": "",
+          "generation_info": {
+            "finish_reason": "stop",
+            "logprobs": null
+          },
+          "type": "ChatGeneration",
+          "message": {
+            "lc": 1,
+            "type": "constructor",
+            "id": [
+              "langchain",
+              "schema",
+              "messages",
+              "AIMessage"
+            ],
+            "kwargs": {
+              "content": "",
+              "additional_kwargs": {
+                "function_call": {
+                  "arguments": "{\"output\":{\"thought\":\"The previous actions did not yield any data about paintings depicting fruit for each century. The database query returned an empty result, and subsequent steps did not provide any additional information. Therefore, I need to replan to obtain the required data.\",\"action\":{\"feedback\":\"The database query returned no data, and subsequent steps did not provide any additional information. I need to replan to obtain the required data about paintings depicting fruit for each century.\"}}}",
+                  "name": "_OutputFormatter"
+                },
+                "refusal": null
+              },
+              "response_metadata": {
+                "token_usage": {
+                  "completion_tokens": 93,
+                  "prompt_tokens": 928,
+                  "total_tokens": 1021,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0,
+                    "audio_tokens": 0
+                  },
+                  "completion_tokens_details": {
+                    "reasoning_tokens": 0,
+                    "audio_tokens": 0,
+                    "accepted_prediction_tokens": 0,
+                    "rejected_prediction_tokens": 0
+                  }
+                },
+                "model_name": "gpt-4o-2024-08-06",
+                "system_fingerprint": "fp_45cf54deae",
+                "finish_reason": "stop",
+                "logprobs": null
+              },
+              "type": "ai",
+              "id": "run-73106b19-2c9e-4c0f-ac14-c29d6c2d64bb-0",
+              "usage_metadata": {
+                "input_tokens": 928,
+                "output_tokens": 93,
+                "total_tokens": 1021
+              },
+              "tool_calls": [],
+              "invalid_tool_calls": []
+            }
+          }
+        }
+      ]
+    ],
+    "llm_output": {
+      "token_usage": {
+        "completion_tokens": 93,
+        "prompt_tokens": 928,
+        "total_tokens": 1021,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-2024-08-06",
+      "system_fingerprint": "fp_45cf54deae"
+    },
+    "run": null
+  }

@@ -1,0 +1,100 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_W7A7tPUzquMVJ3n4JLXJdwSA",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"The user wants to retrieve the year of creation for each painting. The 'inception' column in the 'paintings' table contains the date when the artwork was created, stored in DATETIME format. To extract the year from this column, we can use the SQLite function 'strftime' to format the date and extract the year. The query will select the 'title' and the year extracted from 'inception' for each painting.\",\"SQL\":\"SELECT title, strftime('%Y', inception) AS year_of_creation FROM paintings;\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ],
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 112,
+                "prompt_tokens": 810,
+                "total_tokens": 922,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_159d8341cc",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-ba6e8ff6-4bc6-487a-b82c-380ecbe3f86a-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "The user wants to retrieve the year of creation for each painting. The 'inception' column in the 'paintings' table contains the date when the artwork was created, stored in DATETIME format. To extract the year from this column, we can use the SQLite function 'strftime' to format the date and extract the year. The query will select the 'title' and the year extracted from 'inception' for each painting.",
+                  "SQL": "SELECT title, strftime('%Y', inception) AS year_of_creation FROM paintings;"
+                },
+                "id": "call_W7A7tPUzquMVJ3n4JLXJdwSA",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 810,
+              "output_tokens": 112,
+              "total_tokens": 922
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 112,
+      "prompt_tokens": 810,
+      "total_tokens": 922,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_159d8341cc"
+  },
+  "run": null
+}

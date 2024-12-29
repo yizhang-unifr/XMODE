@@ -1,0 +1,14 @@
+1. text2SQL(problem="Retrieve the image paths and movement names for paintings that depict animals.", context="You need to join the 'paintings' table with the 'movements' table to get the movement names. The 'paintings' table contains 'image_path' and 'movement_id'. The 'movements' table contains 'id' and 'name'.")
+2. image_analysis(question="Does this painting depict animals?", context=$1)
+3. data_preparation(question="Count the number of paintings that depict animals for each movement.", context=$2)
+4. join() 
+<END_OF_PLAN>
+
+
+Replan
+
+5. text2SQL(problem="Retrieve the image paths and movement names for paintings.", context="You need to join the 'paintings' table with the 'movements' table to get the movement names. The 'paintings' table contains 'image_path' and 'movement_id'. The 'movements' table contains 'id' and 'name'.")
+6. image_analysis(question="Does this painting depict animals?", context="$5")
+7. data_preparation(question="Count the number of paintings that depict animals for each movement.", context="$6")
+8. join() 
+<END_OF_PLAN>

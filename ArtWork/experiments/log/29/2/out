@@ -1,0 +1,99 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_IgIueK6KZ0vjXEabNmRPcbLa",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"The user wants to retrieve the total number of paintings for each genre. The 'paintings' table contains a 'genre' column, which can be used to group the paintings by genre. We can use the COUNT() function to count the number of paintings in each genre. The SQL query will group the results by the 'genre' column and count the number of entries in each group.\",\"SQL\":\"SELECT genre, COUNT(*) AS total_paintings FROM paintings GROUP BY genre;\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ]
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 101,
+                "prompt_tokens": 881,
+                "total_tokens": 982,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_7f6be3efb0",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-2dbfc7a8-8612-407b-8cfb-ba32f817d227-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "The user wants to retrieve the total number of paintings for each genre. The 'paintings' table contains a 'genre' column, which can be used to group the paintings by genre. We can use the COUNT() function to count the number of paintings in each genre. The SQL query will group the results by the 'genre' column and count the number of entries in each group.",
+                  "SQL": "SELECT genre, COUNT(*) AS total_paintings FROM paintings GROUP BY genre;"
+                },
+                "id": "call_IgIueK6KZ0vjXEabNmRPcbLa",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 881,
+              "output_tokens": 101,
+              "total_tokens": 982
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 101,
+      "prompt_tokens": 881,
+      "total_tokens": 982,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_7f6be3efb0"
+  },
+  "run": null
+}

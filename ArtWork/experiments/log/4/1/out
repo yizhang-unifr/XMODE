@@ -1,0 +1,100 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_qNmGH8IRXrJ3linYvS9jxIfr",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"To find the genre and creation date of the oldest painting, we need to sort the paintings by the 'inception' date in ascending order and select the first record. The 'inception' column is of type DATETIME, which allows us to easily find the oldest date. We will select the 'genre' and 'inception' columns from this record.\",\"SQL\":\"SELECT genre, inception FROM paintings ORDER BY inception ASC LIMIT 1;\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ],
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 94,
+                "prompt_tokens": 808,
+                "total_tokens": 902,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-9d134e36-b0ee-40e9-a33b-f27859936f5c-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "To find the genre and creation date of the oldest painting, we need to sort the paintings by the 'inception' date in ascending order and select the first record. The 'inception' column is of type DATETIME, which allows us to easily find the oldest date. We will select the 'genre' and 'inception' columns from this record.",
+                  "SQL": "SELECT genre, inception FROM paintings ORDER BY inception ASC LIMIT 1;"
+                },
+                "id": "call_qNmGH8IRXrJ3linYvS9jxIfr",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 808,
+              "output_tokens": 94,
+              "total_tokens": 902
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 94,
+      "prompt_tokens": 808,
+      "total_tokens": 902,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

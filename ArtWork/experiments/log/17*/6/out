@@ -1,0 +1,100 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_v9TtZ2CaiftxXCnpkpUG8Lbs",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"The user wants to retrieve image paths and movement names for paintings. The 'paintings' table contains 'img_path' and 'movement', which is the name of the movement. However, the user mentioned joining with a 'movements' table, which is not present in the provided schema. Therefore, I will assume the 'movement' column in the 'paintings' table already contains the movement names. Thus, I will select 'img_path' and 'movement' from the 'paintings' table directly.\",\"SQL\":\"SELECT img_path, movement FROM paintings;\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ],
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 119,
+                "prompt_tokens": 860,
+                "total_tokens": 979,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-63af4404-7332-4b2d-bccf-ba02f759b525-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "The user wants to retrieve image paths and movement names for paintings. The 'paintings' table contains 'img_path' and 'movement', which is the name of the movement. However, the user mentioned joining with a 'movements' table, which is not present in the provided schema. Therefore, I will assume the 'movement' column in the 'paintings' table already contains the movement names. Thus, I will select 'img_path' and 'movement' from the 'paintings' table directly.",
+                  "SQL": "SELECT img_path, movement FROM paintings;"
+                },
+                "id": "call_v9TtZ2CaiftxXCnpkpUG8Lbs",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 860,
+              "output_tokens": 119,
+              "total_tokens": 979
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 119,
+      "prompt_tokens": 860,
+      "total_tokens": 979,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

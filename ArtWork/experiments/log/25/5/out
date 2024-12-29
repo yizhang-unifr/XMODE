@@ -1,0 +1,83 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "function_call": {
+                "arguments": "{\"output\":{\"thought\":\"I have successfully retrieved the average number of paintings depicting a person and the total number of artworks depicting swords for each century. The data is complete and ready to be presented to the user.\",\"action\":{\"response\":\"{'Summary': 'Average number of paintings depicting a person and total number of artworks depicting swords for each century have been calculated.', 'details': {'15th Century': {'average_person_depictions': 0.67, 'total_sword_depictions': 33}, '16th Century': {'average_person_depictions': 0.88, 'total_sword_depictions': 8}, '17th Century': {'average_person_depictions': 0.75, 'total_sword_depictions': 0}, '18th Century': {'average_person_depictions': 0.8, 'total_sword_depictions': 5}, '19th Century': {'average_person_depictions': 0.4, 'total_sword_depictions': 8}, '21st Century': {'average_person_depictions': 1.0, 'total_sword_depictions': 0}}, 'source': 'Data was obtained through image analysis and data preparation functions.', 'inference': ['15th Century', '16th Century', '17th Century', '18th Century', '19th Century', '21st Century'], 'extra explanation': 'The average number of paintings depicting a person is calculated as a ratio of paintings depicting a person to the total number of paintings for each century.'}\"}}}",
+                "name": "_OutputFormatter"
+              }
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 315,
+                "prompt_tokens": 9111,
+                "total_tokens": 9426,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_7f6be3efb0",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-6780a7a8-e05c-4a11-acb8-b12acdd5623f-0",
+            "usage_metadata": {
+              "input_tokens": 9111,
+              "output_tokens": 315,
+              "total_tokens": 9426
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 315,
+      "prompt_tokens": 9111,
+      "total_tokens": 9426,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_7f6be3efb0"
+  },
+  "run": null
+}

@@ -1,0 +1,226 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem='Determine if patient 12724975 underwent a cancer chemotherapeutic substance procedure within the last 4 months.', context='CREATE TABLE \"ADMISSIONS\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, admittime TEXT, dischtime TEXT, admission_type TEXT, admission_location TEXT, discharge_location TEXT, insurance TEXT, language TEXT, marital_status TEXT, age INTEGER) CREATE TABLE \"D_ICD_PROCEDURES\" (row_id INTEGER, icd_code TEXT, long_title TEXT) CREATE TABLE \"PROCEDURES_ICD\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, icd_code TEXT, charttime TEXT, FOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)) CREATE TABLE \"TB_CXR\" (row_id INTEGER, subject_id INTEGER, hadm_id REAL, study_id INTEGER, image_id TEXT, viewposition TEXT, studydatetime TEXT, FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id))')",
+          "problem": "Determine if patient 12724975 underwent a cancer chemotherapeutic substance procedure within the last 4 months.",
+          "context": "CREATE TABLE \"ADMISSIONS\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, admittime TEXT, dischtime TEXT, admission_type TEXT, admission_location TEXT, discharge_location TEXT, insurance TEXT, language TEXT, marital_status TEXT, age INTEGER) CREATE TABLE \"D_ICD_PROCEDURES\" (row_id INTEGER, icd_code TEXT, long_title TEXT) CREATE TABLE \"PROCEDURES_ICD\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, icd_code TEXT, charttime TEXT, FOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)) CREATE TABLE \"TB_CXR\" (row_id INTEGER, subject_id INTEGER, hadm_id REAL, study_id INTEGER, image_id TEXT, viewposition TEXT, studydatetime TEXT, FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id))'",
+          "id": 1
+        },
+        {
+          "function": "text2SQL(problem='Find procedures involving cancer chemotherapeutic substances for patient 12724975 within the last 4 months.', context='CREATE TABLE \"ADMISSIONS\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, admittime TEXT, dischtime TEXT, admission_type TEXT, admission_location TEXT, discharge_location TEXT, insurance TEXT, language TEXT, marital_status TEXT, age INTEGER) CREATE TABLE \"D_ICD_PROCEDURES\" (row_id INTEGER, icd_code TEXT, long_title TEXT) CREATE TABLE \"PROCEDURES_ICD\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, icd_code TEXT, charttime TEXT, FOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)) CREATE TABLE \"TB_CXR\" (row_id INTEGER, subject_id INTEGER, hadm_id REAL, study_id INTEGER, image_id TEXT, viewposition TEXT, studydatetime TEXT, FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id))')",
+          "problem": "Find procedures involving cancer chemotherapeutic substances for patient 12724975 within the last 4 months.",
+          "context": "CREATE TABLE \"ADMISSIONS\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, admittime TEXT, dischtime TEXT, admission_type TEXT, admission_location TEXT, discharge_location TEXT, insurance TEXT, language TEXT, marital_status TEXT, age INTEGER) CREATE TABLE \"D_ICD_PROCEDURES\" (row_id INTEGER, icd_code TEXT, long_title TEXT) CREATE TABLE \"PROCEDURES_ICD\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, icd_code TEXT, charttime TEXT, FOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)) CREATE TABLE \"TB_CXR\" (row_id INTEGER, subject_id INTEGER, hadm_id REAL, study_id INTEGER, image_id TEXT, viewposition TEXT, studydatetime TEXT, FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id))'",
+          "outputs": {
+            "output": {
+              "reasoning": "To find procedures involving cancer chemotherapeutic substances for patient 12724975 within the last 4 months, we need to look into the `PROCEDURES_ICD` table for procedures and join it with the `D_ICD_PROCEDURES` table to get the description of the procedures. We will filter the procedures based on the `charttime` to ensure they fall within the last 4 months from the current time, which is set to '2105-12-31 23:59:59'. We will also filter the procedures to include only those related to cancer chemotherapeutic substances by checking if the `long_title` contains keywords like 'cancer', 'chemotherapy', or 'chemotherapeutic'.",
+              "SQL": "SELECT p.subject_id, p.hadm_id, p.icd_code, d.long_title, p.charttime \nFROM PROCEDURES_ICD p\nJOIN D_ICD_PROCEDURES d ON p.icd_code = d.icd_code\nWHERE p.subject_id = 12724975 \nAND p.charttime >= strftime('%Y-%m-%d %H:%M:%S', '2105-12-31 23:59:59', '-4 months')\nAND (d.long_title LIKE '%cancer%' OR d.long_title LIKE '%chemotherapy%' OR d.long_title LIKE '%chemotherapeutic%')",
+              "results": {
+                "status": "success",
+                "data": []
+              }
+            },
+            "input": {
+              "problem": "Find procedures involving cancer chemotherapeutic substances for patient 12724975 within the last 4 months.",
+              "context": "CREATE TABLE \"ADMISSIONS\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, admittime TEXT, dischtime TEXT, admission_type TEXT, admission_location TEXT, discharge_location TEXT, insurance TEXT, language TEXT, marital_status TEXT, age INTEGER) CREATE TABLE \"D_ICD_PROCEDURES\" (row_id INTEGER, icd_code TEXT, long_title TEXT) CREATE TABLE \"PROCEDURES_ICD\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, icd_code TEXT, charttime TEXT, FOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)) CREATE TABLE \"TB_CXR\" (row_id INTEGER, subject_id INTEGER, hadm_id REAL, study_id INTEGER, image_id TEXT, viewposition TEXT, studydatetime TEXT, FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id))"
+            }
+          },
+          "id": 2
+        },
+        {
+          "function": "intent_tables(problem='Retrieve chest x-rays for patient 12724975 conducted within 2 days after a procedure.', context='CREATE TABLE \"ADMISSIONS\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, admittime TEXT, dischtime TEXT, admission_type TEXT, admission_location TEXT, discharge_location TEXT, insurance TEXT, language TEXT, marital_status TEXT, age INTEGER) CREATE TABLE \"D_ICD_PROCEDURES\" (row_id INTEGER, icd_code TEXT, long_title TEXT) CREATE TABLE \"PROCEDURES_ICD\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, icd_code TEXT, charttime TEXT, FOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)) CREATE TABLE \"TB_CXR\" (row_id INTEGER, subject_id INTEGER, hadm_id REAL, study_id INTEGER, image_id TEXT, viewposition TEXT, studydatetime TEXT, FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id))')",
+          "problem": "Retrieve chest x-rays for patient 12724975 conducted within 2 days after a procedure.",
+          "context": "CREATE TABLE \"ADMISSIONS\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, admittime TEXT, dischtime TEXT, admission_type TEXT, admission_location TEXT, discharge_location TEXT, insurance TEXT, language TEXT, marital_status TEXT, age INTEGER) CREATE TABLE \"D_ICD_PROCEDURES\" (row_id INTEGER, icd_code TEXT, long_title TEXT) CREATE TABLE \"PROCEDURES_ICD\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, icd_code TEXT, charttime TEXT, FOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)) CREATE TABLE \"TB_CXR\" (row_id INTEGER, subject_id INTEGER, hadm_id REAL, study_id INTEGER, image_id TEXT, viewposition TEXT, studydatetime TEXT, FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id))'",
+          "id": 3
+        },
+        {
+          "function": "text2SQL(problem='Get chest x-rays for patient 12724975 conducted within 2 days after a procedure.', context='CREATE TABLE \"ADMISSIONS\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, admittime TEXT, dischtime TEXT, admission_type TEXT, admission_location TEXT, discharge_location TEXT, insurance TEXT, language TEXT, marital_status TEXT, age INTEGER) CREATE TABLE \"D_ICD_PROCEDURES\" (row_id INTEGER, icd_code TEXT, long_title TEXT) CREATE TABLE \"PROCEDURES_ICD\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, icd_code TEXT, charttime TEXT, FOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)) CREATE TABLE \"TB_CXR\" (row_id INTEGER, subject_id INTEGER, hadm_id REAL, study_id INTEGER, image_id TEXT, viewposition TEXT, studydatetime TEXT, FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id))')",
+          "problem": "Get chest x-rays for patient 12724975 conducted within 2 days after a procedure.",
+          "context": "CREATE TABLE \"ADMISSIONS\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, admittime TEXT, dischtime TEXT, admission_type TEXT, admission_location TEXT, discharge_location TEXT, insurance TEXT, language TEXT, marital_status TEXT, age INTEGER) CREATE TABLE \"D_ICD_PROCEDURES\" (row_id INTEGER, icd_code TEXT, long_title TEXT) CREATE TABLE \"PROCEDURES_ICD\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, icd_code TEXT, charttime TEXT, FOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)) CREATE TABLE \"TB_CXR\" (row_id INTEGER, subject_id INTEGER, hadm_id REAL, study_id INTEGER, image_id TEXT, viewposition TEXT, studydatetime TEXT, FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id))'",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve chest x-rays for patient 12724975 conducted within 2 days after a procedure, we need to join the TB_CXR and PROCEDURES_ICD tables. We will filter the records where the subject_id is 12724975 and the studydatetime of the x-ray is within 2 days after the charttime of the procedure. This involves calculating the difference in days between the procedure time and the x-ray study time and ensuring it is less than or equal to 2 days.",
+              "SQL": "SELECT TB_CXR.* FROM TB_CXR \nJOIN PROCEDURES_ICD ON TB_CXR.subject_id = PROCEDURES_ICD.subject_id \nWHERE TB_CXR.subject_id = 12724975 \nAND julianday(TB_CXR.studydatetime) - julianday(PROCEDURES_ICD.charttime) <= 2 \nAND julianday(TB_CXR.studydatetime) - julianday(PROCEDURES_ICD.charttime) > 0",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "row_id": 443,
+                    "subject_id": 12724975,
+                    "hadm_id": 25873435.0,
+                    "study_id": 56827357,
+                    "image_id": "41143630-340c77d0-1a129f54-1a2ef4f7-cf9ee2bf",
+                    "viewposition": "ap",
+                    "studydatetime": "2103-12-28 05:26:09"
+                  },
+                  {
+                    "row_id": 443,
+                    "subject_id": 12724975,
+                    "hadm_id": 25873435.0,
+                    "study_id": 56827357,
+                    "image_id": "41143630-340c77d0-1a129f54-1a2ef4f7-cf9ee2bf",
+                    "viewposition": "ap",
+                    "studydatetime": "2103-12-28 05:26:09"
+                  },
+                  {
+                    "row_id": 444,
+                    "subject_id": 12724975,
+                    "hadm_id": 25873435.0,
+                    "study_id": 55238794,
+                    "image_id": "61bffa3a-c54029e0-55dcec83-01968720-be22cdb8",
+                    "viewposition": "ap",
+                    "studydatetime": "2103-12-29 05:31:35"
+                  },
+                  {
+                    "row_id": 444,
+                    "subject_id": 12724975,
+                    "hadm_id": 25873435.0,
+                    "study_id": 55238794,
+                    "image_id": "61bffa3a-c54029e0-55dcec83-01968720-be22cdb8",
+                    "viewposition": "ap",
+                    "studydatetime": "2103-12-29 05:31:35"
+                  },
+                  {
+                    "row_id": 445,
+                    "subject_id": 12724975,
+                    "hadm_id": 25873435.0,
+                    "study_id": 53590668,
+                    "image_id": "60fd4b0e-120f3393-3b309315-e490c8c7-e812d6de",
+                    "viewposition": "ap",
+                    "studydatetime": "2103-12-29 16:11:26"
+                  },
+                  {
+                    "row_id": 445,
+                    "subject_id": 12724975,
+                    "hadm_id": 25873435.0,
+                    "study_id": 53590668,
+                    "image_id": "60fd4b0e-120f3393-3b309315-e490c8c7-e812d6de",
+                    "viewposition": "ap",
+                    "studydatetime": "2103-12-29 16:11:26"
+                  },
+                  {
+                    "row_id": 446,
+                    "subject_id": 12724975,
+                    "hadm_id": 25873435.0,
+                    "study_id": 55050597,
+                    "image_id": "d2a0aa6d-d8de7523-b7548111-7dc7f2ca-ba8be989",
+                    "viewposition": "ap",
+                    "studydatetime": "2103-12-30 05:36:55"
+                  },
+                  {
+                    "row_id": 446,
+                    "subject_id": 12724975,
+                    "hadm_id": 25873435.0,
+                    "study_id": 55050597,
+                    "image_id": "d2a0aa6d-d8de7523-b7548111-7dc7f2ca-ba8be989",
+                    "viewposition": "ap",
+                    "studydatetime": "2103-12-30 05:36:55"
+                  },
+                  {
+                    "row_id": 446,
+                    "subject_id": 12724975,
+                    "hadm_id": 25873435.0,
+                    "study_id": 55050597,
+                    "image_id": "d2a0aa6d-d8de7523-b7548111-7dc7f2ca-ba8be989",
+                    "viewposition": "ap",
+                    "studydatetime": "2103-12-30 05:36:55"
+                  },
+                  {
+                    "row_id": 446,
+                    "subject_id": 12724975,
+                    "hadm_id": 25873435.0,
+                    "study_id": 55050597,
+                    "image_id": "d2a0aa6d-d8de7523-b7548111-7dc7f2ca-ba8be989",
+                    "viewposition": "ap",
+                    "studydatetime": "2103-12-30 05:36:55"
+                  },
+                  {
+                    "row_id": 447,
+                    "subject_id": 12724975,
+                    "hadm_id": 25873435.0,
+                    "study_id": 55038010,
+                    "image_id": "591842bd-de52c7f1-202a63b4-d9a49b6a-c3add06f",
+                    "viewposition": "ap",
+                    "studydatetime": "2103-12-31 05:26:13"
+                  },
+                  {
+                    "row_id": 447,
+                    "subject_id": 12724975,
+                    "hadm_id": 25873435.0,
+                    "study_id": 55038010,
+                    "image_id": "591842bd-de52c7f1-202a63b4-d9a49b6a-c3add06f",
+                    "viewposition": "ap",
+                    "studydatetime": "2103-12-31 05:26:13"
+                  },
+                  {
+                    "row_id": 447,
+                    "subject_id": 12724975,
+                    "hadm_id": 25873435.0,
+                    "study_id": 55038010,
+                    "image_id": "591842bd-de52c7f1-202a63b4-d9a49b6a-c3add06f",
+                    "viewposition": "ap",
+                    "studydatetime": "2103-12-31 05:26:13"
+                  },
+                  {
+                    "row_id": 447,
+                    "subject_id": 12724975,
+                    "hadm_id": 25873435.0,
+                    "study_id": 55038010,
+                    "image_id": "591842bd-de52c7f1-202a63b4-d9a49b6a-c3add06f",
+                    "viewposition": "ap",
+                    "studydatetime": "2103-12-31 05:26:13"
+                  },
+                  {
+                    "row_id": 447,
+                    "subject_id": 12724975,
+                    "hadm_id": 25873435.0,
+                    "study_id": 55038010,
+                    "image_id": "591842bd-de52c7f1-202a63b4-d9a49b6a-c3add06f",
+                    "viewposition": "ap",
+                    "studydatetime": "2103-12-31 05:26:13"
+                  },
+                  {
+                    "row_id": 448,
+                    "subject_id": 12724975,
+                    "hadm_id": 25873435.0,
+                    "study_id": 54421092,
+                    "image_id": "87e03993-754e5c4c-ac60cbb7-040bfd0a-7611f159",
+                    "viewposition": "ap",
+                    "studydatetime": "2104-01-01 06:06:53"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Get chest x-rays for patient 12724975 conducted within 2 days after a procedure.",
+              "context": "CREATE TABLE \"ADMISSIONS\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, admittime TEXT, dischtime TEXT, admission_type TEXT, admission_location TEXT, discharge_location TEXT, insurance TEXT, language TEXT, marital_status TEXT, age INTEGER) CREATE TABLE \"D_ICD_PROCEDURES\" (row_id INTEGER, icd_code TEXT, long_title TEXT) CREATE TABLE \"PROCEDURES_ICD\" (row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, icd_code TEXT, charttime TEXT, FOREIGN KEY(icd_code) REFERENCES \"D_ICD_PROCEDURES\" (icd_code), FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)) CREATE TABLE \"TB_CXR\" (row_id INTEGER, subject_id INTEGER, hadm_id REAL, study_id INTEGER, image_id TEXT, viewposition TEXT, studydatetime TEXT, FOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id))"
+            }
+          },
+          "id": 4
+        },
+        {
+          "function": "image_analysis(question='Does the chest x-ray reveal interstitial lung diseases?', context='$4')",
+          "question": "Does the chest x-ray reveal interstitial lung diseases?",
+          "context": "$4'",
+          "outputs": {
+            "output": [
+              "no"
+            ],
+            "input": {
+              "question": "Does the chest x-ray reveal interstitial lung diseases?",
+              "context": "{'status': 'success', 'data': [{'row_id': 443, 'subject_id': 12724975, 'hadm_id': 25873435.0, 'study_id': 56827357, 'image_id': '41143630-340c77d0-1a129f54-1a2ef4f7-cf9ee2bf', 'viewposition': 'ap', 'studydatetime': '2103-12-28 05:26:09'}, {'row_id': 443, 'subject_id': 12724975, 'hadm_id': 25873435.0, 'study_id': 56827357, 'image_id': '41143630-340c77d0-1a129f54-1a2ef4f7-cf9ee2bf', 'viewposition': 'ap', 'studydatetime': '2103-12-28 05:26:09'}, {'row_id': 444, 'subject_id': 12724975, 'hadm_id': 25873435.0, 'study_id': 55238794, 'image_id': '61bffa3a-c54029e0-55dcec83-01968720-be22cdb8', 'viewposition': 'ap', 'studydatetime': '2103-12-29 05:31:35'}, {'row_id': 444, 'subject_id': 12724975, 'hadm_id': 25873435.0, 'study_id': 55238794, 'image_id': '61bffa3a-c54029e0-55dcec83-01968720-be22cdb8', 'viewposition': 'ap', 'studydatetime': '2103-12-29 05:31:35'}, {'row_id': 445, 'subject_id': 12724975, 'hadm_id': 25873435.0, 'study_id': 53590668, 'image_id': '60fd4b0e-120f3393-3b309315-e490c8c7-e812d6de', 'viewposition': 'ap', 'studydatetime': '2103-12-29 16:11:26'}, {'row_id': 445, 'subject_id': 12724975, 'hadm_id': 25873435.0, 'study_id': 53590668, 'image_id': '60fd4b0e-120f3393-3b309315-e490c8c7-e812d6de', 'viewposition': 'ap', 'studydatetime': '2103-12-29 16:11:26'}, {'row_id': 446, 'subject_id': 12724975, 'hadm_id': 25873435.0, 'study_id': 55050597, 'image_id': 'd2a0aa6d-d8de7523-b7548111-7dc7f2ca-ba8be989', 'viewposition': 'ap', 'studydatetime': '2103-12-30 05:36:55'}, {'row_id': 446, 'subject_id': 12724975, 'hadm_id': 25873435.0, 'study_id': 55050597, 'image_id': 'd2a0aa6d-d8de7523-b7548111-7dc7f2ca-ba8be989', 'viewposition': 'ap', 'studydatetime': '2103-12-30 05:36:55'}, {'row_id': 446, 'subject_id': 12724975, 'hadm_id': 25873435.0, 'study_id': 55050597, 'image_id': 'd2a0aa6d-d8de7523-b7548111-7dc7f2ca-ba8be989', 'viewposition': 'ap', 'studydatetime': '2103-12-30 05:36:55'}, {'row_id': 446, 'subject_id': 12724975, 'hadm_id': 25873435.0, 'study_id': 55050597, 'image_id': 'd2a0aa6d-d8de7523-b7548111-7dc7f2ca-ba8be989', 'viewposition': 'ap', 'studydatetime': '2103-12-30 05:36:55'}, {'row_id': 447, 'subject_id': 12724975, 'hadm_id': 25873435.0, 'study_id': 55038010, 'image_id': '591842bd-de52c7f1-202a63b4-d9a49b6a-c3add06f', 'viewposition': 'ap', 'studydatetime': '2103-12-31 05:26:13'}, {'row_id': 447, 'subject_id': 12724975, 'hadm_id': 25873435.0, 'study_id': 55038010, 'image_id': '591842bd-de52c7f1-202a63b4-d9a49b6a-c3add06f', 'viewposition': 'ap', 'studydatetime': '2103-12-31 05:26:13'}, {'row_id': 447, 'subject_id': 12724975, 'hadm_id': 25873435.0, 'study_id': 55038010, 'image_id': '591842bd-de52c7f1-202a63b4-d9a49b6a-c3add06f', 'viewposition': 'ap', 'studydatetime': '2103-12-31 05:26:13'}, {'row_id': 447, 'subject_id': 12724975, 'hadm_id': 25873435.0, 'study_id': 55038010, 'image_id': '591842bd-de52c7f1-202a63b4-d9a49b6a-c3add06f', 'viewposition': 'ap', 'studydatetime': '2103-12-31 05:26:13'}, {'row_id': 447, 'subject_id': 12724975, 'hadm_id': 25873435.0, 'study_id': 55038010, 'image_id': '591842bd-de52c7f1-202a63b4-d9a49b6a-c3add06f', 'viewposition': 'ap', 'studydatetime': '2103-12-31 05:26:13'}, {'row_id': 448, 'subject_id': 12724975, 'hadm_id': 25873435.0, 'study_id': 54421092, 'image_id': '87e03993-754e5c4c-ac60cbb7-040bfd0a-7611f159', 'viewposition': 'ap', 'studydatetime': '2104-01-01 06:06:53'}]}"
+            }
+          },
+          "id": 5
+        },
+        {
+          "function": "join()",
+          "id": 6
+        }
+      ]
+    }
+  ],
+  "question": "did patient 12724975 undergo a chest x-ray that revealed interstitial lung diseases within 2 day after the injection or infusion of cancer chemotherapeutic substance procedure until 4 month ago?",
+  "id": 157
+}

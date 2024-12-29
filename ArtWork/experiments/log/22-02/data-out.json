@@ -1,0 +1,23 @@
+{
+    "status": "success",
+    "data": [
+        {
+            "title": "Q113636993",
+            "inception": "2000-01-01 00:00:00",
+            "movement": "Renaissance",
+            "century": 21
+        },
+        {
+            "title": "The Birth of Venus",
+            "inception": "1879-01-01 00:00:00",
+            "movement": "neoclassicism",
+            "century": 19
+        },
+        {
+            "title": "The Birth of Venus",
+            "inception": "1879-01-01 00:00:00",
+            "movement": "neoclassicism",
+            "century": 19
+        }
+    ]
+}

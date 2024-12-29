@@ -1,0 +1,84 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "function_call": {
+                "arguments": "{\"output\":{\"thought\":\"The oldest Renaissance painting in the database is from the year 1438, and the image analysis indicates that it is a painting. However, the specific depiction or subject of the painting is not provided. Therefore, I need to replan to obtain more detailed information about what is depicted in the painting.\",\"action\":{\"feedback\":\"The specific depiction or subject of the painting is not provided. Therefore, I need to replan to obtain more detailed information about what is depicted in the painting.\"}}}",
+                "name": "_OutputFormatter"
+              },
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 103,
+                "prompt_tokens": 893,
+                "total_tokens": 996,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-b09f0634-3a73-4aa8-9a1e-f82204ef6c9f-0",
+            "usage_metadata": {
+              "input_tokens": 893,
+              "output_tokens": 103,
+              "total_tokens": 996
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 103,
+      "prompt_tokens": 893,
+      "total_tokens": 996,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

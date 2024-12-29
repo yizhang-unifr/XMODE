@@ -1,8 +1,6 @@
-import math
 import re
-from typing import List, Optional
-
-import numexpr
+from typing import List, Optional, Union
+import json
 from langchain.chains.openai_functions import create_structured_output_runnable
 from langchain_core.messages import SystemMessage
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
@@ -10,133 +8,138 @@ from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain_core.runnables import RunnableConfig
 from langchain_core.tools import StructuredTool
 from langchain_openai import ChatOpenAI
+from PIL import Image
+import base64
+from pathlib import Path
 
-_MATH_DESCRIPTION = (
-    "math(problem: str, context: Optional[list[str]]) -> float:\n"
-    " - Solves the provided math problem.\n"
-    ' - `problem` can be either a simple math problem (e.g. "1 + 3") or a word problem (e.g. "how many apples are there if there are 3 apples and 2 apples").\n'
-    " - You cannot calculate multiple expressions in one call. For instance, `math('1 + 3, 2 + 4')` does not work. "
-    "If you need to calculate multiple expressions, you need to call them separately like `math('1 + 3')` and then `math('2 + 4')`\n"
-    " - Minimize the number of `math` actions as much as possible. For instance, instead of calling "
-    '2. math("what is the 10% of $1") and then call 3. math("$1 + $2"), '
-    'you MUST call 2. math("what is the 110% of $1") instead, which will reduce the number of math actions.\n'
-    # Context specific rules below
-    " - You can optionally provide a list of strings as `context` to help the agent solve the problem. "
-    "If there are multiple contexts you need to answer the question, you can provide them as a list of strings.\n"
-    " - `math` action will not see the output of the previous actions unless you provide it as `context`. "
-    "You MUST provide the output of the previous actions as `context` if you need to do math on it.\n"
-    " - You MUST NEVER provide `search` type action's outputs as a variable in the `problem` argument. "
-    "This is because `search` returns a text blob that contains the information about the entity, not a number or value. "
-    "Therefore, when you need to provide an output of `search` action, you MUST provide it as a `context` argument to `math` action. "
-    'For example, 1. search("Barack Obama") and then 2. math("age of $1") is NEVER allowed. '
-    'Use 2. math("age of Barack Obama", context=["$1"]) instead.\n'
-    " - When you ask a question about `context`, specify the units. "
-    'For instance, "what is xx in height?" or "what is xx in millions?" instead of "what is xx?"\n'
+from langchain_core.messages import (
+    BaseMessage,
+    FunctionMessage,
+    HumanMessage,
+    SystemMessage,
+)
+from langchain_experimental.tools import PythonAstREPLTool
+
+
+_DESCRIPTION = (
+    " data_plotting (question:str, context: Union[str, List[str],dict])-> str\n"
+    " This tools is a data plotting task. For given data and a question, it analysis the data and plot a proper chart to answer a user query. \n"
+    " - Minimize the number of `data_plotting` actions as much as possible."
+    " if you want this tools does its job properly, you should include all required information for the user query in previous tasks "
+    
+    # Context specific rules below"
 )
 
-
-_SYSTEM_PROMPT = """Translate a math problem into a expression that can be executed using Python's numexpr library. Use the output of running this code to answer the question.
-
-Question: ${{Question with math problem.}}
-```text
-${{single line mathematical expression that solves the problem}}
-```
-...numexpr.evaluate(text)...
-```output
-${{Output of running the code}}
-```
-Answer: ${{Answer}}
-
-Begin.
-
-Question: What is 37593 * 67?
-ExecuteCode({{code: "37593 * 67"}})
-...numexpr.evaluate("37593 * 67")...
-```output
-2518731
-```
-Answer: 2518731
-
-Question: 37593^(1/5)
-ExecuteCode({{code: "37593**(1/5)"}})
-...numexpr.evaluate("37593**(1/5)")...
-```output
-8.222831614237718
-```
-Answer: 8.222831614237718
+# " Plotting or any other visualization request should be done after each analysis.\n"
+_SYSTEM_PROMPT = """You are a data plotting assistant. plot the the provided data from the previous steps to answer the question.
+- If the required information has not found in the provided data, ask for replaning and ask from previous tools to include the missing information.
+- Dont create any sample data in order to answer to the user question.
 """
 
 _ADDITIONAL_CONTEXT_PROMPT = """The following additional context is provided from other functions.\
     Use it to substitute into any ${{#}} variables or other words in the problem.\
     \n\n${context}\n\nNote that context variables are not defined in code yet.\
-You must extract the relevant numbers and directly put them in code."""
+You must extract the relevant data and directly put them in code.
+"""
 
-
+  
 class ExecuteCode(BaseModel):
-    """The input to the numexpr.evaluate() function."""
 
     reasoning: str = Field(
         ...,
-        description="The reasoning behind the code expression, including how context is included, if applicable.",
+        description="The reasoning behind the answer, including how context is included, if applicable.",
     )
 
     code: str = Field(
         ...,
-        description="The simple code expression to execute by numexpr.evaluate().",
+        description="The simple code expression to execute by python_executor.",
     )
 
+def extract_code_from_block(response):
+    if '```' not in response:
+        return response
+    if '```python' in response:
+        code_regex = r'```python(.+?)```'
+    else:
+        code_regex = r'```(.+?)```'
+    code_matches = re.findall(code_regex, response, re.DOTALL)
+    code_matches = [item for item in code_matches]
+    return  "\n".join(code_matches)
 
-def _evaluate_expression(expression: str) -> str:
-    try:
-        local_dict = {"pi": math.pi, "e": math.e}
-        output = str(
-            numexpr.evaluate(
-                expression.strip(),
-                global_dict={},  # restrict access to globals
-                local_dict=local_dict,  # add common mathematical functions
-            )
-        )
-    except Exception as e:
-        raise ValueError(
-            f'Failed to evaluate "{expression}". Raised error: {repr(e)}.'
-            " Please try again with a valid numerical expression"
-        )
+class PythonREPL:
+    def __init__(self):
+        self.local_vars = {}
+        self.python_tool = PythonAstREPLTool()
+    def run(self, code: str) -> str:
+        code = extract_code_from_block(code) 
+        print(code)
+        # output = str(self.python_tool.run(code))
+        
+        # if output == "":
+        #     return "Your code is executed successfully"
+        # else:
+        #     return output
+        try:
+            result = self.python_tool.run(code)
+        except BaseException as e:
+            return f"Failed to execute. Error: {repr(e)}"
+        return f"Successfully executed:\n```python\n{code}\n```\nStdout: {result}"
+        
+python_repl = PythonREPL() 
+      
 
-    # Remove any leading and trailing brackets from the output
-    return re.sub(r"^\[|\]$", "", output)
-
-
-def get_math_tool(llm: ChatOpenAI):
+def get_plotting_tools(llm: ChatOpenAI):
+    """
+   
+    Args:
+        question (str): The question.
+        context list(str)
+    Returns:
+        dataframe: the dataframe that is needed in the chart genration task.
+    """
     prompt = ChatPromptTemplate.from_messages(
         [
             ("system", _SYSTEM_PROMPT),
-            ("user", "{problem}"),
-            MessagesPlaceholder(variable_name="context", optional=True),
+            ("user", "{question}"),
+            ("user", "{context}"),
         ]
     )
+    
     extractor = create_structured_output_runnable(ExecuteCode, llm, prompt)
 
-    def calculate_expression(
-        problem: str,
-        context: Optional[List[str]] = None,
+
+    def data_plotting(
+        question: str,
+        context: Union[str, List[str],dict] = None,
         config: Optional[RunnableConfig] = None,
     ):
-        chain_input = {"problem": problem}
-        if context:
-            context_str = "\n".join(context)
-            if context_str.strip():
-                context_str = _ADDITIONAL_CONTEXT_PROMPT.format(
-                    context=context_str.strip()
-                )
-                chain_input["context"] = [SystemMessage(content=context_str)]
+       
+        #test
+        
+        #context="[{'study_id': 56222792, 'image_id': '3c7d71b0-383da7fc-80f78f8c-6be2da46-3614e059'}]"
+       # data= [{'week': '48', 'male_patient_count': 6}, {'week': '49', 'male_patient_count': 2}, {'week': '50', 'male_patient_count': 2}, {'week': '51', 'male_patient_count': 1}, {'week': '52', 'male_patient_count': 7}]
+       
+        print("context-first:", context,type(context))
+        context_str=str(context).strip()
+        # context_str = _ADDITIONAL_CONTEXT_PROMPT.format(
+        #     context= context_str.strip()
+        # )
+        # if 'data' in context:
+        #     context=context['data']
+        chain_input = {"question": question,"context":context_str}
+        # chain_input["context"] = [SystemMessage(content=context)]
+                       
         code_model = extractor.invoke(chain_input, config)
         try:
-            return _evaluate_expression(code_model.code)
+            if code_model.code=='':
+                return code_model.reasoning 
+            return python_repl.run(code_model.code)
         except Exception as e:
             return repr(e)
 
     return StructuredTool.from_function(
-        name="math",
-        func=calculate_expression,
-        description=_MATH_DESCRIPTION,
+        name = "data_plotting",
+        func = data_plotting,
+        description=_DESCRIPTION,
     )
+

@@ -1,0 +1,228 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem=\"Find chest x-ray studies for patient 14112540 within the last year that indicated any abnormalities in the neck.\", context=\"CREATE TABLE \\\"TB_CXR\\\" (...);\")",
+          "problem": "Find chest x-ray studies for patient 14112540 within the last year that indicated any abnormalities in the neck.",
+          "context": "CREATE TABLE \\\"TB_CXR\\\" (...);\"",
+          "id": 1
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve study_id and image_id for patient 14112540 from the last year.\", context=\"CREATE TABLE \\\"TB_CXR\\\" (...);\"), context=$1)",
+          "problem": "Retrieve study_id and image_id for patient 14112540 from the last year.",
+          "context": "CREATE TABLE \\\"TB_CXR\\\" (...);\"), context=$1",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve the study_id and image_id for patient 14112540 from the last year, we need to query the TB_CXR table. The current year is 2105, so the last year is 2104. We will filter the records for subject_id 14112540 and where the year of studydatetime is 2104. We will select the study_id and image_id columns from the filtered results.",
+              "SQL": "SELECT study_id, image_id FROM TB_CXR WHERE subject_id = 14112540 AND strftime('%Y', studydatetime) = '2104'",
+              "results": {
+                "status": "success",
+                "data": []
+              }
+            },
+            "input": {
+              "problem": "Retrieve study_id and image_id for patient 14112540 from the last year.",
+              "context": "\"CREATE TABLE \\\"TB_CXR\\\" (...);\"), context=['TB_CXR']"
+            }
+          },
+          "id": 2
+        },
+        {
+          "function": "image_analysis(question=\"Does the chest x-ray study indicate any abnormalities in the neck?\", context=$2)",
+          "question": "Does the chest x-ray study indicate any abnormalities in the neck?",
+          "context": "$2",
+          "outputs": {
+            "error": "IndexError('list index out of range')Traceback (most recent call last):\n\n\n  File \"/home/ubuntu/.local/lib/python3.10/site-packages/langchain_core/tools.py\", line 584, in run\n    response = context.run(self._run, *tool_args, **tool_kwargs)\n\n\n  File \"/home/ubuntu/.local/lib/python3.10/site-packages/langchain_core/tools.py\", line 929, in _run\n    return self.func(*args, **kwargs)\n\n\n  File \"/home/ubuntu/workspace/XMODE-LLMCompiler/tools/image_analysis_tool_m3ae.py\", line 204, in image_analysis\n    vqa_answer= post_vqa_m3ae_with_url(chain_input[\"question\"],images_encoded[-1])\n\n\nIndexError: list index out of range",
+            "input": {
+              "question": "Does the chest x-ray study indicate any abnormalities in the neck?",
+              "context": "{'status': 'success', 'data': []}"
+            },
+            "output": null
+          },
+          "id": 3
+        },
+        {
+          "function": "text2SQL(problem=\"Did patient 14112540 receive a prescription for isosorbide mononitrate (extended release) in the same month after the abnormality was found?\", context=\"CREATE TABLE \\\"PRESCRIPTIONS\\\" (...);\"), context=$3)",
+          "problem": "Did patient 14112540 receive a prescription for isosorbide mononitrate (extended release) in the same month after the abnormality was found?",
+          "context": "CREATE TABLE \\\"PRESCRIPTIONS\\\" (...);\"), context=$3",
+          "outputs": {
+            "output": {
+              "reasoning": "To determine if patient 14112540 received a prescription for isosorbide mononitrate (extended release) in the same month after an abnormality was found, we need to first identify the date of the abnormality from the TB_CXR table. Then, we will check the PRESCRIPTIONS table for any prescriptions of isosorbide mononitrate (extended release) within the same month and year as the abnormality date. \n\n1. Retrieve the date of the last abnormality found for patient 14112540 from the TB_CXR table.\n2. Check the PRESCRIPTIONS table for any prescriptions of isosorbide mononitrate (extended release) for the same patient in the same month and year as the abnormality date.\n\nThe SQL query will first find the latest study date for the patient and then check for the prescription in the same month and year.",
+              "SQL": "WITH LastAbnormality AS (\n    SELECT strftime('%Y-%m', studydatetime) AS abnormality_month\n    FROM TB_CXR\n    WHERE subject_id = 14112540\n    ORDER BY studydatetime DESC\n    LIMIT 1\n)\nSELECT p.*\nFROM PRESCRIPTIONS p\nJOIN LastAbnormality la ON strftime('%Y-%m', p.starttime) = la.abnormality_month\nWHERE p.subject_id = 14112540 AND p.drug LIKE '%isosorbide mononitrate (extended release)%'",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "row_id": 22208,
+                    "subject_id": 14112540,
+                    "hadm_id": 26538897,
+                    "starttime": "2105-10-19 18:12:00",
+                    "stoptime": "2105-10-22 18:12:00",
+                    "drug": "isosorbide mononitrate (extended release)",
+                    "dose_val_rx": 30.0,
+                    "dose_unit_rx": "mg",
+                    "route": "po"
+                  },
+                  {
+                    "row_id": 22334,
+                    "subject_id": 14112540,
+                    "hadm_id": 26538897,
+                    "starttime": "2105-10-28 05:12:00",
+                    "stoptime": "2105-10-28 04:12:00",
+                    "drug": "isosorbide mononitrate (extended release)",
+                    "dose_val_rx": 60.0,
+                    "dose_unit_rx": "mg",
+                    "route": "po"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Did patient 14112540 receive a prescription for isosorbide mononitrate (extended release) in the same month after the abnormality was found?",
+              "context": "\"CREATE TABLE \\\"PRESCRIPTIONS\\\" (...);\"), context=ERROR(Failed to call image_analysis with args {'question': 'Does the chest x-ray study indicate any abnormalities in the neck?', 'context': '$2'}. Args resolved to {'question': 'Does the chest x-ray study indicate any abnormalities in the neck?', 'context': \"{'status': 'success', 'data': []}\"}. Error: IndexError('list index out of range'))"
+            }
+          },
+          "id": 4
+        },
+        {
+          "function": "join()",
+          "id": 5
+        }
+      ]
+    },
+    {
+      "plan": [
+        {
+          "function": "text2SQL(problem='Find chest x-ray studies for patient 14112540 within the last year.', context='CREATE TABLE \"TB_CXR\" (...);')",
+          "problem": "Find chest x-ray studies for patient 14112540 within the last year.",
+          "context": "CREATE TABLE \"TB_CXR\" (...);'",
+          "outputs": {
+            "output": {
+              "reasoning": "To find chest x-ray studies for patient 14112540 within the last year, we need to query the TB_CXR table, which contains information about chest x-ray studies. We will filter the records by the subject_id to match the patient ID 14112540. Additionally, we need to ensure that the study date is within the last year from the current time, which is set to 2105-12-31 23:59:59. Therefore, we will filter the studydatetime to be greater than or equal to 2105-01-01 00:00:00.",
+              "SQL": "SELECT * FROM TB_CXR WHERE subject_id = 14112540 AND studydatetime >= '2105-01-01 00:00:00'",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "row_id": 688,
+                    "subject_id": 14112540,
+                    "hadm_id": 26538897.0,
+                    "study_id": 58305279,
+                    "image_id": "9c181a18-3d135f58-234ece3f-ff8582d8-5b50a5b9",
+                    "viewposition": "ap",
+                    "studydatetime": "2105-10-17 18:31:10"
+                  },
+                  {
+                    "row_id": 689,
+                    "subject_id": 14112540,
+                    "hadm_id": 26538897.0,
+                    "study_id": 53911099,
+                    "image_id": "3678bd41-a5bd83d1-45426fb7-4ac6794f-0d6b0c0c",
+                    "viewposition": "ap",
+                    "studydatetime": "2105-10-18 00:23:17"
+                  },
+                  {
+                    "row_id": 690,
+                    "subject_id": 14112540,
+                    "hadm_id": 26538897.0,
+                    "study_id": 50649804,
+                    "image_id": "04bafc2c-46b38988-fb64faeb-6d6bd126-510c0047",
+                    "viewposition": "ap",
+                    "studydatetime": "2105-10-18 04:23:29"
+                  },
+                  {
+                    "row_id": 691,
+                    "subject_id": 14112540,
+                    "hadm_id": 26538897.0,
+                    "study_id": 51795421,
+                    "image_id": "c53ae59b-86b0eff9-e59f3d4e-5692bc0b-3d2a83c3",
+                    "viewposition": "ap",
+                    "studydatetime": "2105-10-19 02:00:35"
+                  },
+                  {
+                    "row_id": 692,
+                    "subject_id": 14112540,
+                    "hadm_id": 26538897.0,
+                    "study_id": 52450944,
+                    "image_id": "9c1b7493-c28f7e88-9b7820c1-87abf75b-32f53f75",
+                    "viewposition": "ap",
+                    "studydatetime": "2105-10-20 00:54:18"
+                  },
+                  {
+                    "row_id": 693,
+                    "subject_id": 14112540,
+                    "hadm_id": 26538897.0,
+                    "study_id": 53028206,
+                    "image_id": "b7be4562-d1e62aba-017ab242-816f1d5d-693a6d95",
+                    "viewposition": "ap",
+                    "studydatetime": "2105-10-21 05:51:20"
+                  },
+                  {
+                    "row_id": 694,
+                    "subject_id": 14112540,
+                    "hadm_id": 26538897.0,
+                    "study_id": 59985027,
+                    "image_id": "832a1424-eec8897e-62eeadf0-1f0a147a-8edf146c",
+                    "viewposition": "ap",
+                    "studydatetime": "2105-10-24 12:56:02"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Find chest x-ray studies for patient 14112540 within the last year.",
+              "context": "CREATE TABLE \"TB_CXR\" (...);"
+            }
+          },
+          "id": 6
+        },
+        {
+          "function": "image_analysis(question='Does the chest x-ray study indicate any abnormalities in the neck?', context=$6)",
+          "question": "Does the chest x-ray study indicate any abnormalities in the neck?",
+          "context": "$6",
+          "outputs": {
+            "output": [
+              "yes"
+            ],
+            "input": {
+              "question": "Does the chest x-ray study indicate any abnormalities in the neck?",
+              "context": "{'status': 'success', 'data': [{'row_id': 688, 'subject_id': 14112540, 'hadm_id': 26538897.0, 'study_id': 58305279, 'image_id': '9c181a18-3d135f58-234ece3f-ff8582d8-5b50a5b9', 'viewposition': 'ap', 'studydatetime': '2105-10-17 18:31:10'}, {'row_id': 689, 'subject_id': 14112540, 'hadm_id': 26538897.0, 'study_id': 53911099, 'image_id': '3678bd41-a5bd83d1-45426fb7-4ac6794f-0d6b0c0c', 'viewposition': 'ap', 'studydatetime': '2105-10-18 00:23:17'}, {'row_id': 690, 'subject_id': 14112540, 'hadm_id': 26538897.0, 'study_id': 50649804, 'image_id': '04bafc2c-46b38988-fb64faeb-6d6bd126-510c0047', 'viewposition': 'ap', 'studydatetime': '2105-10-18 04:23:29'}, {'row_id': 691, 'subject_id': 14112540, 'hadm_id': 26538897.0, 'study_id': 51795421, 'image_id': 'c53ae59b-86b0eff9-e59f3d4e-5692bc0b-3d2a83c3', 'viewposition': 'ap', 'studydatetime': '2105-10-19 02:00:35'}, {'row_id': 692, 'subject_id': 14112540, 'hadm_id': 26538897.0, 'study_id': 52450944, 'image_id': '9c1b7493-c28f7e88-9b7820c1-87abf75b-32f53f75', 'viewposition': 'ap', 'studydatetime': '2105-10-20 00:54:18'}, {'row_id': 693, 'subject_id': 14112540, 'hadm_id': 26538897.0, 'study_id': 53028206, 'image_id': 'b7be4562-d1e62aba-017ab242-816f1d5d-693a6d95', 'viewposition': 'ap', 'studydatetime': '2105-10-21 05:51:20'}, {'row_id': 694, 'subject_id': 14112540, 'hadm_id': 26538897.0, 'study_id': 59985027, 'image_id': '832a1424-eec8897e-62eeadf0-1f0a147a-8edf146c', 'viewposition': 'ap', 'studydatetime': '2105-10-24 12:56:02'}]}"
+            }
+          },
+          "id": 7
+        },
+        {
+          "function": "text2SQL(problem='Did patient 14112540 receive a prescription for isosorbide mononitrate (extended release) within the same month after the abnormality was found?', context='CREATE TABLE \"PRESCRIPTIONS\" (...);')",
+          "problem": "Did patient 14112540 receive a prescription for isosorbide mononitrate (extended release) within the same month after the abnormality was found?",
+          "context": "CREATE TABLE \"PRESCRIPTIONS\" (...);'",
+          "outputs": {
+            "output": {
+              "reasoning": "To determine if patient 14112540 received a prescription for isosorbide mononitrate (extended release) within the same month after an abnormality was found, we need to first identify the date of the abnormality. Since the database schema does not have a direct column for abnormalities, we will assume that the abnormality is related to a study in the TB_CXR table. We will retrieve the latest study date for this patient and then check if there is a prescription for isosorbide mononitrate (extended release) within the same month.\n\n1. Retrieve the latest study date for patient 14112540 from the TB_CXR table.\n2. Check the PRESCRIPTIONS table for any prescriptions of isosorbide mononitrate (extended release) within the same month as the latest study date.\n\nThe SQL query will first find the latest study date and then check for the prescription within the same month.",
+              "SQL": "WITH LatestStudy AS (\n    SELECT MAX(studydatetime) AS latest_study_date\n    FROM TB_CXR\n    WHERE subject_id = 14112540\n),\nPrescriptionCheck AS (\n    SELECT *\n    FROM PRESCRIPTIONS\n    WHERE subject_id = 14112540\n    AND drug LIKE '%isosorbide mononitrate (extended release)%'\n    AND strftime('%Y-%m', starttime) = (SELECT strftime('%Y-%m', latest_study_date) FROM LatestStudy)\n)\nSELECT COUNT(*) AS prescription_count FROM PrescriptionCheck;",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "prescription_count": 2
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Did patient 14112540 receive a prescription for isosorbide mononitrate (extended release) within the same month after the abnormality was found?",
+              "context": "CREATE TABLE \"PRESCRIPTIONS\" (...);"
+            }
+          },
+          "id": 8
+        },
+        {
+          "function": "join()",
+          "id": 9
+        }
+      ]
+    }
+  ],
+  "question": "did patient 14112540 receive a prescription for isosorbide mononitrate (extended release) within the same month after a chest x-ray study indicated any abnormalities in the neck since 1 year ago?",
+  "id": 155
+}

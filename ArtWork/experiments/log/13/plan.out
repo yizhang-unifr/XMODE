@@ -1,0 +1,15 @@
+1. text2SQL(problem="Retrieve the year of creation for each painting from the database.", context=None)
+2. data_preparation(question="Prepare the data to determine the century for each painting based on the year of creation.", context=$1)
+3. data_plotting(question="Plot the number of paintings for each century.", context=$2)
+4. join() 
+<END_OF_PLAN>
+
+
+Replan
+5. data_preparation(question="Count the number of paintings for each century from the prepared data.", context="$2")
+6. data_plotting(question="Plot the number of paintings for each century using the corrected data.", context="$5")
+7. join()
+<END_OF_PLAN>
+
+
+

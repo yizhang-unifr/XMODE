@@ -1,0 +1,84 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "function_call": {
+                "arguments": "{\"output\":{\"thought\":\"The data preparation step failed due to a NameError, which indicates that the century calculation was not completed. I need to replan to correctly determine the century of each painting based on its year of creation.\",\"action\":{\"feedback\":\"The previous attempt to determine the century of each painting failed due to a NameError. I need to correct this error and calculate the century for each painting's inception year.\"}}}",
+                "name": "_OutputFormatter"
+              },
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 86,
+                "prompt_tokens": 1334,
+                "total_tokens": 1420,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-6a234e2b-8224-4369-8e5a-d85e6668d456-0",
+            "usage_metadata": {
+              "input_tokens": 1334,
+              "output_tokens": 86,
+              "total_tokens": 1420
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 86,
+      "prompt_tokens": 1334,
+      "total_tokens": 1420,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

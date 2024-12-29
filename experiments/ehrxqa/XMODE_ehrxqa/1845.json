@@ -1,0 +1,61 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem=\"Find the last study of patient 15655083 conducted in December of the current year.\", context=\"CREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\")",
+          "problem": "Find the last study of patient 15655083 conducted in December of the current year.",
+          "context": "CREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\"",
+          "id": 1
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve study_id and image_id for the last study of patient 15655083 conducted in December of the current year.\", context=$1)",
+          "problem": "Retrieve study_id and image_id for the last study of patient 15655083 conducted in December of the current year.",
+          "context": "$1",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve the last study conducted in December of the current year for patient 15655083, we need to filter the records by subject_id, the month of December, and the year 2105 (as the current year is set to 2105 in the database). We then order the results by studydatetime in descending order to get the most recent study and limit the results to 1 to get only the last study. The required columns are study_id and image_id.",
+              "SQL": "SELECT study_id, image_id FROM TB_CXR WHERE subject_id = 15655083 AND strftime('%Y', studydatetime) = '2105' AND strftime('%m', studydatetime) = '12' ORDER BY studydatetime DESC LIMIT 1;",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "study_id": 59443706,
+                    "image_id": "8384b7b2-3d508895-e46f209d-3479d8cd-4d0bff58"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Retrieve study_id and image_id for the last study of patient 15655083 conducted in December of the current year.",
+              "context": "['TB_CXR']"
+            }
+          },
+          "id": 2
+        },
+        {
+          "function": "image_analysis(question=\"Enumerate all present tubes/lines in the image.\", context=$2)",
+          "question": "Enumerate all present tubes/lines in the image.",
+          "context": "$2",
+          "outputs": {
+            "output": [
+              "endotracheal tube",
+              "enteric tube"
+            ],
+            "input": {
+              "question": "Enumerate all present tubes/lines in the image.",
+              "context": "{'status': 'success', 'data': [{'study_id': 59443706, 'image_id': '8384b7b2-3d508895-e46f209d-3479d8cd-4d0bff58'}]}"
+            }
+          },
+          "id": 3
+        },
+        {
+          "function": "join()",
+          "id": 4
+        }
+      ]
+    }
+  ],
+  "question": "enumerate all present tubes/lines, given the last study of patient 15655083 on 12/this year.",
+  "id": 1845
+}

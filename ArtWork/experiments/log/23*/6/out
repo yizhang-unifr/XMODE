@@ -1,0 +1,84 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "function_call": {
+                "arguments": "{\"output\":{\"thought\":\"The previous attempts to calculate the century for each painting's inception year failed due to a NameError. This error needs to be corrected to proceed with the task. I need to replan to correctly determine the century of each painting based on its year of creation.\",\"action\":{\"feedback\":\"The NameError indicates that the calculation for determining the century was not executed properly. I need to ensure that the correct method or library is used to calculate the century from the year of inception for each painting.\"}}}",
+                "name": "_OutputFormatter"
+              },
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 104,
+                "prompt_tokens": 1611,
+                "total_tokens": 1715,
+                "prompt_tokens_details": {
+                  "cached_tokens": 1024,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-71290ba2-e64d-4eda-a941-b499ccb15fdd-0",
+            "usage_metadata": {
+              "input_tokens": 1611,
+              "output_tokens": 104,
+              "total_tokens": 1715
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 104,
+      "prompt_tokens": 1611,
+      "total_tokens": 1715,
+      "prompt_tokens_details": {
+        "cached_tokens": 1024,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

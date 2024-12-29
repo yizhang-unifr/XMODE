@@ -1,0 +1,100 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_A6JiBdoB7WEFmhzVhdxtrIdb",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"To find the newest painting in the database, we need to sort the paintings by their 'inception' date in descending order and select the top record. This will give us the most recently created painting. We will retrieve all relevant details such as title, inception date, movement, genre, image URL, and image path for comprehensive information.\",\"SQL\":\"SELECT title, inception, movement, genre, image_url, img_path FROM paintings ORDER BY inception DESC LIMIT 1;\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ],
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 99,
+                "prompt_tokens": 816,
+                "total_tokens": 915,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-46fe5ac7-781c-4599-a2ec-a6c2da6f363c-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "To find the newest painting in the database, we need to sort the paintings by their 'inception' date in descending order and select the top record. This will give us the most recently created painting. We will retrieve all relevant details such as title, inception date, movement, genre, image URL, and image path for comprehensive information.",
+                  "SQL": "SELECT title, inception, movement, genre, image_url, img_path FROM paintings ORDER BY inception DESC LIMIT 1;"
+                },
+                "id": "call_A6JiBdoB7WEFmhzVhdxtrIdb",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 816,
+              "output_tokens": 99,
+              "total_tokens": 915
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 99,
+      "prompt_tokens": 816,
+      "total_tokens": 915,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

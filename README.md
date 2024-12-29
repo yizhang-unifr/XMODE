@@ -13,6 +13,10 @@ In this paper, we propose XMODE - a system that enables explainable, multi-modal
 
 ## Repository Structure
 
+XMODE is a framework designed to enhance the explainability of data extraction models. It provides tools and methodologies to interpret and visualize the decision-making process of machine learning models used in data extraction tasks.
+
+## Repository Structure
+
 - `ArtWork/`: Contains artwork-related files and experiments.
 - `dataset/`: Includes EHRXQA datasets used for evaluation.
 - `experiments/`: Contains experimental scripts and results.

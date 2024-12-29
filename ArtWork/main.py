@@ -115,21 +115,21 @@ def main():
     os.environ["LANGCHAIN_PROJECT"] = "XMODE-ArtWork"
     
     model="gpt-4o" #gpt-4-turbo-preview
-    db_path="/home/ubuntu/workspace/XMODE-LLMCompiler/ceasura_langgraph/art.db"
+    db_path="/home/ubuntu/workspace/XMODE/ArtWork/art.db"
     temperature=0
     language='en'
     
     ceasura_artWork=[]
-    output_path = f'/home/ubuntu/workspace/XMODE-LLMCompiler/ceasura_langgraph/experiments/{language}'
+    output_path = f'/home/ubuntu/workspace/XMODE/ArtWork/experiments/{language}'
     pathlib.Path(output_path).mkdir(parents=True, exist_ok=True) 
-    output_file= f'{output_path}/ceasura_artWork-{language}.json'
+    output_file= f'{output_path}/ceasura_artWork-{language}-test.json'
    
     load_json(output_file,ceasura_artWork)
     
     results=[]
     
     
-    LOG_PATH="/home/ubuntu/workspace/XMODE-LLMCompiler/ceasura_langgraph/experiments/log"
+    LOG_PATH="/home/ubuntu/workspace/XMODE/ArtWork/experiments/log"
     
     ArtWork_Questions=[
         "What is the oldest impressionist artwork in the database?",
@@ -165,8 +165,6 @@ def main():
         "Create a plot to display the number of paintings for each year and get the total number of paintings for each genre."
     ]
     for id, question in enumerate(ArtWork_Questions): 
-        if id not in [29]:
-            continue
         iddx = 1
         result={}
         result_str=''
@@ -219,7 +217,7 @@ def main():
         
         
         results.append(result)
-        file_result_path = Path(use_case_log_path) / "ml3x.json"
+        file_result_path = Path(use_case_log_path) / "xmode.json"
         with open(file_result_path, 'w') as f:
             json.dump([result], f, ensure_ascii=False, indent=4)
        

@@ -22,7 +22,7 @@ from src.utils import correct_malformed_json
 
 
 
-IMAGE_PATH='/home/ubuntu/workspace/caesura/datasets/art'
+IMAGE_PATH='/home/ubuntu/workspace/XMODE/ArtWork/data'
 # 'For example, 1. text2SQL("given the last study of patient 13859433 this year") and then 2. image_analysis("are there any anatomicalfinding that are still no in the left hilar structures in $1") is NEVER allowed. '
 #'Use 2. image_analysis("are there any anatomicalfinding that are still no in the left hilar structures", context=["$1"]) instead.\n'
 _DESCRIPTION = (

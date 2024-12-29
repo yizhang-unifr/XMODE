@@ -1,6 +1,6 @@
 import getpass
 import os
-
+import time
 from langchain_openai import ChatOpenAI
 
 # Imported from the https://github.com/langchain-ai/langgraph/tree/main/examples/plan-and-execute repo
@@ -27,9 +27,10 @@ from langchain_core.messages import (
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnableBranch
 from langchain_core.tools import BaseTool
+from langsmith.utils import LangSmithNotFoundError
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import JsonOutputParser
-from langsmith.utils import LangSmithNotFoundError
+
 import itertools
 from src.planner import *
 from src.task_fetching_unit import *
@@ -44,7 +45,7 @@ import json
 import ast
 from tqdm import tqdm
 
-from src.build_graph import graph_construction_m3ae_few_shot
+from src.build_graph import graph_construction_m3ae
 from pathlib import Path
 
 def _set_if_undefined(var: str):
@@ -53,17 +54,14 @@ def _set_if_undefined(var: str):
 
 _set_if_undefined("OPENAI_API_KEY")
 _set_if_undefined("LANGCHAIN_API_KEY")
-_set_if_undefined("LANGCHAIN_API_YI_KEY")
+# _set_if_undefined("LANGCHAIN_API_YI_KEY")
 os.environ["LANGCHAIN_API_KEY"] = os.environ["LANGCHAIN_API_YI_KEY"]
 # _set_if_undefined("TAVILY_API_KEY")
 # Optional, add tracing in LangSmith
 
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_PROJECT"]="xmode-vqa-100-GPT-3-no-intent-few-shot-updated"
-# os.environ["LANGCHAIN_PROJECT"]="xmode-vqa-100-GPT-4o-no-intent-few-shot"
-# os.environ["LANGCHAIN_PROJECT"]="xmode-vqa-70-GPT-4o-no-intent"
-"""for deleteing the trace
-
+os.environ["LANGCHAIN_PROJECT"] = "xmode-vqa-gpt_4o-english"
+"""
 from langsmith import Client
 
 client = Client()
@@ -101,11 +99,10 @@ def append_json(data, file_path):
         f.seek(0)
         json.dump(_data, f, ensure_ascii=False, indent=4)
     return _data
-
+        
 def main():
-    # model="gpt-4o" #gpt-4-turbo-preview
-    model = "gpt-3.5-turbo"
-    #Load data from JSON file
+    model="gpt-4o" #gpt-4-turbo-preview
+    # Load data from JSON file
     """ 
     # ingore the language for now
     language='de'
@@ -117,14 +114,12 @@ def main():
         test_file="dataset/translation/de/sampled_test_with_scope_preprocessed_balenced_answer.json"    
     """
     language='en'
-    # test_file="dataset/mimic_iv_cxr/sampled_test_with_scope_preprocessed_balenced_answer_100.json"
-    # test_file="dataset/mimic_iv_cxr/few_shot_sampled.json"
-    test_file="dataset/mimic_iv_cxr/sampled_test_with_scope_preprocessed_balenced_answer_70.json"
-    db_path="/home/ubuntu/workspace/XMODE-LLMCompiler/mimic_iv_cxr.db"
-    fixed_few_shot_file = "experiments/xmode/en/sampled_plans_30_en.json"
+    test_file="dataset/mimic_iv_cxr/sampled_test_with_scope_preprocessed_balenced_answer_100.json"
+   # db_path="/home/ubuntu/workspace/XMODE-LLMCompiler/mimic_iv_cxr.db"
     m3_lx=[]
-    # output_file= f'experiments/xmode/{language}/few_shot_sampled.json'
-    output_file= f'experiments/xmode/{language}/xmode-vqa-m3ae-star-70-no-intent-{language}.json'
+    
+   
+    output_file= f'experiments/ehrxqa/xmode/{language}/xmode-vqa-m3ae-star-52-{language}-gpt_4o-with-intent-TEST.json'
     load_json(output_file,m3_lx)
     
     with open(test_file, 'r') as f:
@@ -132,30 +127,27 @@ def main():
     # for data in tqdm(test_data):
     #     if data['xmode']!=[]:
     #         continue
-    #     print(data['xmode'])
-    with open(fixed_few_shot_file, 'r') as f:
-        few_shots_list = [row['plan'] for row in json.load(f)]
-        
-    for data in tqdm(test_data[:1]):
-        
-        chain = graph_construction_m3ae_few_shot(model, few_shots_list)
-        if language =='en':
-            example_question = data['question']
-        elif language =='zh':
-            example_question = data['question_zh_cn']
-        elif language =='de':
-             example_question = data['question_de']
-             
-        tables = [t.upper() for t in data['tables']]
+    #     print (data['xmode'])
+    config = {"configurable": {"thread_id": "4"}}
+    for data in tqdm(test_data[:1]):  # need to only consider fialed  use cases
+        # if data['id'] not in [5, 71, 111, 163, 439, 518, 602, 632, 780, 912, 956, 982, 1123, 1215, 1378, 1579, 1674, 1766, 1771, 2142, 2152, 39, 92, 106, 176, 363, 368, 370, 392, 578, 579, 670, 671, 723, 893, 1338, 2496, 2685, 3100, 4138, 12, 48, 50, 55, 60, 72, 80, 86, 104, 129, 160, 179]: #[66, 460, 1258, 1878, 112, 268, 1, 16, 53, 68, 95, 122, 141]
+        #     continue
+        chain = graph_construction_m3ae(model)
+        # if language =='en':
+        #     example_question = data['question']
+        # elif language =='zh':
+        #     example_question = data['question_zh_cn']
+        # elif language =='de':
+        #      example_question = data['question_de']
+        example_question = data['question']  
+        # tables = [t.upper() for t in data['tables']]
         # if data['xmode']==[]:
-        print(example_question, tables)
+        # print(example_question, tables)
         to_json=[]
         try:
-            
-            database_schema =_get_db_schema(db_path, tables, sample_rows_in_table_info=0)
-            chain_input = {"question": example_question, "database_schema":database_schema}
+            chain_input = {"question": example_question}
             inputs=[HumanMessage(content=[chain_input])]
-            for executed_chain in chain.stream(inputs, stream_mode="values"):
+            for executed_chain in chain.stream(inputs,config, stream_mode="values"):
                 print(executed_chain)
             for msg in executed_chain:
                 value= msg.to_json()['kwargs']
@@ -173,8 +165,13 @@ def main():
             
         # m3_lx.append(data)
         append_json(data,output_file)
+        # pause the loop for 1 second
+        time.sleep(3)
     # with open(f'experiments/xmode/{language}/xmode-vqa-m3ae-{language}.json', 'w', encoding='utf-8') as f:
     #     json.dump(m3_lx, f, ensure_ascii=False, indent=4)
 
 if __name__ == '__main__':
     main()
+    
+    
+    

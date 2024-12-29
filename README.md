@@ -4,10 +4,19 @@ This repository contains the code and resources for the paper [XMODE: Explainabl
 
 ## Overview
 
+XMODE is a framework designed to enhance the explainability of data extraction models. It provides tools and methodologies to interpret and visualize the decision-making process of machine learning models used in data extraction tasks. 
+
+### Abstract
+
+_International enterprises, organizations, or hospitals collect large amounts of multi-modal data stored in databases, text documents, images, and videos. While there has been recent progress in the separate fields of multi-modal data exploration as well as in database systems that automatically translate natural language questions to database query languages, the research challenge of querying database systems combined with other unstructured modalities such as images in natural language is widely unexplored.
+In this paper, we propose XMODE - a system that enables explainable, multi-modal data exploration in natural language. Our approach is based on the following research contributions: (1) Our system is inspired by a real-world use case that enables users to explore multi-modal information systems. (2) XMODE leverages a LLM-based agentic AI framework to decompose a natural language question into subtasks such as text-to-SQL generation and image analysis. (3) Experimental results on multi-modal datasets over relational data and images demonstrate that our system outperforms state-of-the-art multi-modal exploration systems, excelling not only in accuracy but also in various performance metrics such as query latency, API costs, planning efficiency, and explanation quality, thanks to the more effective utilization of the reasoning capabilities of LLMs._
+
+## Repository Structure
+
 XMODE is a framework designed to enhance the explainability of data extraction models. It provides tools and methodologies to interpret and visualize the decision-making process of machine learning models used in data extraction tasks.
 
 ## Repository Structure
-> TODO Update the structure if needed
+
 - `ArtWork/`: Contains artwork-related files and experiments.
 - `dataset/`: Includes EHRXQA datasets used for evaluation.
 - `experiments/`: Contains experimental scripts and results.
@@ -77,9 +86,6 @@ python main_m3ae_EHRXQA.py
 ### Contributing
 
 We welcome contributions to improve XMODE. Please fork the repository and submit pull requests.
-
-### License
-> TODO Add the license
 
 ### Citation
 

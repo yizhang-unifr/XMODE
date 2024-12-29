@@ -1,0 +1,161 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem=\"Did patient 10304606 have a confirmed diagnosis of other chronic postoperative pain in 2103?\", context=\"\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"DIAGNOSES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_DIAGNOSES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"D_ICD_DIAGNOSES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\")",
+          "problem": "Did patient 10304606 have a confirmed diagnosis of other chronic postoperative pain in 2103?",
+          "context": "\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"DIAGNOSES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_DIAGNOSES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"D_ICD_DIAGNOSES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\"",
+          "id": 1
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve the subject_id and hadm_id of patient 10304606 with a confirmed diagnosis of other chronic postoperative pain in 2103.\", context=\"\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"DIAGNOSES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_DIAGNOSES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"D_ICD_DIAGNOSES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\")",
+          "problem": "Retrieve the subject_id and hadm_id of patient 10304606 with a confirmed diagnosis of other chronic postoperative pain in 2103.",
+          "context": "\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"DIAGNOSES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_DIAGNOSES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"D_ICD_DIAGNOSES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\"",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve the subject_id and hadm_id of patient 10304606 with a confirmed diagnosis of 'other chronic postoperative pain' in 2103, we need to join the DIAGNOSES_ICD and D_ICD_DIAGNOSES tables. The DIAGNOSES_ICD table contains the subject_id, hadm_id, and icd_code, while the D_ICD_DIAGNOSES table contains the icd_code and its corresponding long_title. We will filter the results by the specific diagnosis and the year 2103. The admittime column in the ADMISSIONS table will be used to filter the year.",
+              "SQL": "SELECT DISTINCT d.subject_id, d.hadm_id \nFROM DIAGNOSES_ICD d\nJOIN D_ICD_DIAGNOSES dicd ON d.icd_code = dicd.icd_code\nJOIN ADMISSIONS a ON d.subject_id = a.subject_id AND d.hadm_id = a.hadm_id\nWHERE dicd.long_title = 'other chronic postoperative pain'\nAND strftime('%Y', a.admittime) = '2103'\nAND d.subject_id = 10304606;",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "subject_id": 10304606,
+                    "hadm_id": 21607028
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Retrieve the subject_id and hadm_id of patient 10304606 with a confirmed diagnosis of other chronic postoperative pain in 2103.",
+              "context": "\nCREATE TABLE \"ADMISSIONS\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id INTEGER, \n\tadmittime TEXT, \n\tdischtime TEXT, \n\tadmission_type TEXT, \n\tadmission_location TEXT, \n\tdischarge_location TEXT, \n\tinsurance TEXT, \n\tlanguage TEXT, \n\tmarital_status TEXT, \n\tage INTEGER\n)\n\nCREATE TABLE \"DIAGNOSES_ICD\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id INTEGER, \n\ticd_code TEXT, \n\tcharttime TEXT, \n\tFOREIGN KEY(icd_code) REFERENCES \"D_ICD_DIAGNOSES\" (icd_code), \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)\n\nCREATE TABLE \"D_ICD_DIAGNOSES\" (\n\trow_id INTEGER, \n\ticd_code TEXT, \n\tlong_title TEXT\n)\n\nCREATE TABLE \"TB_CXR\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id REAL, \n\tstudy_id INTEGER, \n\timage_id TEXT, \n\tviewposition TEXT, \n\tstudydatetime TEXT, \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)\n"
+            }
+          },
+          "id": 2
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve the study_id and image_id of chest x-ray studies for patient 10304606 in 2103.\", context=\"\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"DIAGNOSES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_DIAGNOSES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"D_ICD_DIAGNOSES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\")",
+          "problem": "Retrieve the study_id and image_id of chest x-ray studies for patient 10304606 in 2103.",
+          "context": "\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"DIAGNOSES_ICD\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\ticd_code TEXT, \\n\\tcharttime TEXT, \\n\\tFOREIGN KEY(icd_code) REFERENCES \\\"D_ICD_DIAGNOSES\\\" (icd_code), \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"D_ICD_DIAGNOSES\\\" (\\n\\trow_id INTEGER, \\n\\ticd_code TEXT, \\n\\tlong_title TEXT\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\"",
+          "outputs": {
+            "output": {
+              "reasoning": "The question asks for the study_id and image_id of chest x-ray studies for a specific patient (subject_id = 10304606) in the year 2103. The relevant table for this information is TB_CXR, which contains columns for subject_id, study_id, image_id, and studydatetime. We need to filter the records by subject_id and the year extracted from studydatetime. The SQL query will select the study_id and image_id where the subject_id is 10304606 and the year of studydatetime is 2103.",
+              "SQL": "SELECT study_id, image_id FROM TB_CXR WHERE subject_id = 10304606 AND strftime('%Y', studydatetime) = '2103'",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "study_id": 59656867,
+                    "image_id": "47784bc7-c309cdf1-5d3a2cdd-f7fb2535-9866f1c7"
+                  },
+                  {
+                    "study_id": 53394314,
+                    "image_id": "05d0f081-6420d57b-f5a039b0-423e9c36-40ac36d5"
+                  },
+                  {
+                    "study_id": 56996892,
+                    "image_id": "0e75244d-bd2cc3d2-e4a1e33e-c509f8fd-472cdb9b"
+                  },
+                  {
+                    "study_id": 50393821,
+                    "image_id": "d2c55d79-4bf084e1-db56c341-415b19c0-947465d0"
+                  },
+                  {
+                    "study_id": 57949611,
+                    "image_id": "0690d61a-3758b94f-1d1995cf-e29ee51f-8be65aff"
+                  },
+                  {
+                    "study_id": 58232655,
+                    "image_id": "4d5767b2-34cc267a-d5a11ebe-ca59ed6c-31eea49f"
+                  },
+                  {
+                    "study_id": 54676500,
+                    "image_id": "4e82a354-b894c06c-b10e06bb-1e5572ad-bb72213f"
+                  },
+                  {
+                    "study_id": 57922371,
+                    "image_id": "6a2e40af-7b63b339-dedaaf6b-0570767f-7cc4775d"
+                  },
+                  {
+                    "study_id": 50644185,
+                    "image_id": "5be53ee5-1405dc49-ca09989d-46197997-a15ae8d7"
+                  },
+                  {
+                    "study_id": 50777247,
+                    "image_id": "d7eb6a23-8d72f7ca-065e0694-c3f19274-d65c1f5d"
+                  },
+                  {
+                    "study_id": 50987598,
+                    "image_id": "7ff8a7bd-11dc6e13-b435a456-19345d39-4569f6ec"
+                  },
+                  {
+                    "study_id": 58277096,
+                    "image_id": "b2cc318a-d10c37fd-ec44c24f-bbc806e3-6ce2eb8e"
+                  },
+                  {
+                    "study_id": 54409712,
+                    "image_id": "8049a7f8-fc171b43-71357457-bcea1355-469437d7"
+                  },
+                  {
+                    "study_id": 55470773,
+                    "image_id": "7c141c40-3d5cc287-df2bbffc-b8cfbea2-040ed2a2"
+                  },
+                  {
+                    "study_id": 53560067,
+                    "image_id": "d6fad296-80bf9931-6977d305-d963094b-1fdfb6d7"
+                  },
+                  {
+                    "study_id": 58605219,
+                    "image_id": "2615636a-e80d9c28-ad77a1a9-634a29e8-50e5fa5e"
+                  },
+                  {
+                    "study_id": 59817909,
+                    "image_id": "342a8458-caff740d-d2488a9e-0b1d0277-9e6d5da1"
+                  },
+                  {
+                    "study_id": 57672081,
+                    "image_id": "49d8e9e9-6b0825a4-99cd2aa0-e49b0ba2-7562fd9f"
+                  },
+                  {
+                    "study_id": 55472114,
+                    "image_id": "affdddd0-5398c649-e7a14dd2-9f14fc76-6110ab20"
+                  },
+                  {
+                    "study_id": 50809241,
+                    "image_id": "eb181016-a527f508-17ff2726-ca434473-f3bdb22c"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Retrieve the study_id and image_id of chest x-ray studies for patient 10304606 in 2103.",
+              "context": "\nCREATE TABLE \"ADMISSIONS\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id INTEGER, \n\tadmittime TEXT, \n\tdischtime TEXT, \n\tadmission_type TEXT, \n\tadmission_location TEXT, \n\tdischarge_location TEXT, \n\tinsurance TEXT, \n\tlanguage TEXT, \n\tmarital_status TEXT, \n\tage INTEGER\n)\n\nCREATE TABLE \"DIAGNOSES_ICD\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id INTEGER, \n\ticd_code TEXT, \n\tcharttime TEXT, \n\tFOREIGN KEY(icd_code) REFERENCES \"D_ICD_DIAGNOSES\" (icd_code), \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)\n\nCREATE TABLE \"D_ICD_DIAGNOSES\" (\n\trow_id INTEGER, \n\ticd_code TEXT, \n\tlong_title TEXT\n)\n\nCREATE TABLE \"TB_CXR\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id REAL, \n\tstudy_id INTEGER, \n\timage_id TEXT, \n\tviewposition TEXT, \n\tstudydatetime TEXT, \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)\n"
+            }
+          },
+          "id": 3
+        },
+        {
+          "function": "image_analysis(question=\"Did the chest x-ray demonstrate any abnormalities in the upper mediastinum?\", context=$3)",
+          "question": "Did the chest x-ray demonstrate any abnormalities in the upper mediastinum?",
+          "context": "$3",
+          "outputs": {
+            "output": [
+              "yes"
+            ],
+            "input": {
+              "question": "Did the chest x-ray demonstrate any abnormalities in the upper mediastinum?",
+              "context": "{'status': 'success', 'data': [{'study_id': 59656867, 'image_id': '47784bc7-c309cdf1-5d3a2cdd-f7fb2535-9866f1c7'}, {'study_id': 53394314, 'image_id': '05d0f081-6420d57b-f5a039b0-423e9c36-40ac36d5'}, {'study_id': 56996892, 'image_id': '0e75244d-bd2cc3d2-e4a1e33e-c509f8fd-472cdb9b'}, {'study_id': 50393821, 'image_id': 'd2c55d79-4bf084e1-db56c341-415b19c0-947465d0'}, {'study_id': 57949611, 'image_id': '0690d61a-3758b94f-1d1995cf-e29ee51f-8be65aff'}, {'study_id': 58232655, 'image_id': '4d5767b2-34cc267a-d5a11ebe-ca59ed6c-31eea49f'}, {'study_id': 54676500, 'image_id': '4e82a354-b894c06c-b10e06bb-1e5572ad-bb72213f'}, {'study_id': 57922371, 'image_id': '6a2e40af-7b63b339-dedaaf6b-0570767f-7cc4775d'}, {'study_id': 50644185, 'image_id': '5be53ee5-1405dc49-ca09989d-46197997-a15ae8d7'}, {'study_id': 50777247, 'image_id': 'd7eb6a23-8d72f7ca-065e0694-c3f19274-d65c1f5d'}, {'study_id': 50987598, 'image_id': '7ff8a7bd-11dc6e13-b435a456-19345d39-4569f6ec'}, {'study_id': 58277096, 'image_id': 'b2cc318a-d10c37fd-ec44c24f-bbc806e3-6ce2eb8e'}, {'study_id': 54409712, 'image_id': '8049a7f8-fc171b43-71357457-bcea1355-469437d7'}, {'study_id': 55470773, 'image_id': '7c141c40-3d5cc287-df2bbffc-b8cfbea2-040ed2a2'}, {'study_id': 53560067, 'image_id': 'd6fad296-80bf9931-6977d305-d963094b-1fdfb6d7'}, {'study_id': 58605219, 'image_id': '2615636a-e80d9c28-ad77a1a9-634a29e8-50e5fa5e'}, {'study_id': 59817909, 'image_id': '342a8458-caff740d-d2488a9e-0b1d0277-9e6d5da1'}, {'study_id': 57672081, 'image_id': '49d8e9e9-6b0825a4-99cd2aa0-e49b0ba2-7562fd9f'}, {'study_id': 55472114, 'image_id': 'affdddd0-5398c649-e7a14dd2-9f14fc76-6110ab20'}, {'study_id': 50809241, 'image_id': 'eb181016-a527f508-17ff2726-ca434473-f3bdb22c'}]}"
+            }
+          },
+          "id": 4
+        },
+        {
+          "function": "join()",
+          "id": 5
+        }
+      ]
+    }
+  ],
+  "question": "in 2103, did patient 10304606 have a confirmed diagnosis of other chronic postoperative pain, and did a chest x-ray demonstrate any abnormalities in the upper mediastinum?",
+  "id": 61
+}

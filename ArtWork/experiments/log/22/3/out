@@ -1,0 +1,84 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "function_call": {
+                "arguments": "{\"output\":{\"thought\":\"The data provided includes the newest painting per movement and their respective centuries. The movements and their newest paintings are: Renaissance with a painting titled 'Q113636993' from the 20th century, and Neoclassicism with 'The Birth of Venus' from the 19th century. This information is sufficient to answer the user's question.\",\"action\":{\"response\":\"{'Summary': 'The newest paintings per movement and their centuries are identified.', 'details': 'For the Renaissance movement, the newest painting is titled \\\"Q113636993\\\" and belongs to the 20th century. For the Neoclassicism movement, the newest painting is \\\"The Birth of Venus\\\" and belongs to the 19th century.', 'source': 'Data retrieved from the executed plan.', 'inference': [{'movement': 'Renaissance', 'century': 20}, {'movement': 'neoclassicism', 'century': 19}], 'extra explanation': 'The data was prepared and retrieved successfully, showing the newest paintings and their respective centuries for each art movement.'}\"}}}",
+                "name": "_OutputFormatter"
+              },
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 223,
+                "prompt_tokens": 1104,
+                "total_tokens": 1327,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_831e067d82",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-5a282b58-ba07-4263-922e-78fb10989189-0",
+            "usage_metadata": {
+              "input_tokens": 1104,
+              "output_tokens": 223,
+              "total_tokens": 1327
+            },
+            "tool_calls": [],
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 223,
+      "prompt_tokens": 1104,
+      "total_tokens": 1327,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_831e067d82"
+  },
+  "run": null
+}

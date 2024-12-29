@@ -1,0 +1,37 @@
+{
+  "generations": [
+    {
+      "text": "6. data_preparation(question='Prepare the data for plotting the lowest number of swords depicted in each year.', context='$3')\n7. data_plotting(question='Plot the lowest number of swords depicted in each year.', context='$6')\n8. join()\n<END_OF_PLAN>",
+      "generation_info": {
+        "finish_reason": "stop",
+        "model_name": "gpt-4o-2024-08-06",
+        "system_fingerprint": "fp_45cf54deae"
+      },
+      "type": "ChatGenerationChunk",
+      "message": {
+        "lc": 1,
+        "type": "constructor",
+        "id": [
+          "langchain",
+          "schema",
+          "messages",
+          "AIMessageChunk"
+        ],
+        "kwargs": {
+          "content": "6. data_preparation(question='Prepare the data for plotting the lowest number of swords depicted in each year.', context='$3')\n7. data_plotting(question='Plot the lowest number of swords depicted in each year.', context='$6')\n8. join()\n<END_OF_PLAN>",
+          "response_metadata": {
+            "finish_reason": "stop",
+            "model_name": "gpt-4o-2024-08-06",
+            "system_fingerprint": "fp_45cf54deae"
+          },
+          "type": "AIMessageChunk",
+          "id": "run-e87be196-2351-4f52-a498-1b2503d7b6c9",
+          "tool_calls": [],
+          "invalid_tool_calls": []
+        }
+      }
+    }
+  ],
+  "llm_output": null,
+  "run": null
+}

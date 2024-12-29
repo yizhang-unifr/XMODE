@@ -1,0 +1,408 @@
+{
+  "output": [
+    {
+      "img_path": "images/img_0.jpg",
+      "How many swords are depicted in the image?": "6"
+    },
+    {
+      "img_path": "images/img_1.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_2.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_3.jpg",
+      "How many swords are depicted in the image?": "one"
+    },
+    {
+      "img_path": "images/img_4.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_5.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_6.jpg",
+      "How many swords are depicted in the image?": "one"
+    },
+    {
+      "img_path": "images/img_7.jpg",
+      "How many swords are depicted in the image?": "one"
+    },
+    {
+      "img_path": "images/img_8.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_9.jpg",
+      "How many swords are depicted in the image?": "6"
+    },
+    {
+      "img_path": "images/img_10.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_11.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_12.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_13.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_14.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_15.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_16.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_17.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_18.jpg",
+      "How many swords are depicted in the image?": "one"
+    },
+    {
+      "img_path": "images/img_19.jpg",
+      "How many swords are depicted in the image?": "one"
+    },
+    {
+      "img_path": "images/img_20.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_21.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_22.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_23.jpg",
+      "How many swords are depicted in the image?": "one"
+    },
+    {
+      "img_path": "images/img_24.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_25.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_26.jpg",
+      "How many swords are depicted in the image?": "2"
+    },
+    {
+      "img_path": "images/img_27.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_28.jpg",
+      "How many swords are depicted in the image?": "2"
+    },
+    {
+      "img_path": "images/img_29.jpg",
+      "How many swords are depicted in the image?": "2"
+    },
+    {
+      "img_path": "images/img_30.jpg",
+      "How many swords are depicted in the image?": "one"
+    },
+    {
+      "img_path": "images/img_31.jpg",
+      "How many swords are depicted in the image?": "one"
+    },
+    {
+      "img_path": "images/img_32.jpg",
+      "How many swords are depicted in the image?": "2"
+    },
+    {
+      "img_path": "images/img_33.jpg",
+      "How many swords are depicted in the image?": "2"
+    },
+    {
+      "img_path": "images/img_34.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_35.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_36.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_37.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_38.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_39.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_40.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_41.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_42.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_43.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_44.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_45.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_46.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_47.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_48.jpg",
+      "How many swords are depicted in the image?": "one"
+    },
+    {
+      "img_path": "images/img_49.jpg",
+      "How many swords are depicted in the image?": "one"
+    },
+    {
+      "img_path": "images/img_50.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_51.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_52.jpg",
+      "How many swords are depicted in the image?": "2"
+    },
+    {
+      "img_path": "images/img_53.jpg",
+      "How many swords are depicted in the image?": "2"
+    },
+    {
+      "img_path": "images/img_54.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_55.jpg",
+      "How many swords are depicted in the image?": "6"
+    },
+    {
+      "img_path": "images/img_56.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_57.jpg",
+      "How many swords are depicted in the image?": "one"
+    },
+    {
+      "img_path": "images/img_58.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_59.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_60.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_61.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_62.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_63.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_64.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_65.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_66.jpg",
+      "How many swords are depicted in the image?": "2"
+    },
+    {
+      "img_path": "images/img_67.jpg",
+      "How many swords are depicted in the image?": "2"
+    },
+    {
+      "img_path": "images/img_68.jpg",
+      "How many swords are depicted in the image?": "one"
+    },
+    {
+      "img_path": "images/img_69.jpg",
+      "How many swords are depicted in the image?": "one"
+    },
+    {
+      "img_path": "images/img_70.jpg",
+      "How many swords are depicted in the image?": "one"
+    },
+    {
+      "img_path": "images/img_71.jpg",
+      "How many swords are depicted in the image?": "2"
+    },
+    {
+      "img_path": "images/img_72.jpg",
+      "How many swords are depicted in the image?": "one"
+    },
+    {
+      "img_path": "images/img_73.jpg",
+      "How many swords are depicted in the image?": "one"
+    },
+    {
+      "img_path": "images/img_74.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_75.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_76.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_77.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_78.jpg",
+      "How many swords are depicted in the image?": "two"
+    },
+    {
+      "img_path": "images/img_79.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_80.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_81.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_82.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_83.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_84.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_85.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_86.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_87.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_88.jpg",
+      "How many swords are depicted in the image?": "one"
+    },
+    {
+      "img_path": "images/img_89.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_90.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_91.jpg",
+      "How many swords are depicted in the image?": "two"
+    },
+    {
+      "img_path": "images/img_92.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_93.jpg",
+      "How many swords are depicted in the image?": "2"
+    },
+    {
+      "img_path": "images/img_94.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_95.jpg",
+      "How many swords are depicted in the image?": "1"
+    },
+    {
+      "img_path": "images/img_96.jpg",
+      "How many swords are depicted in the image?": "0"
+    },
+    {
+      "img_path": "images/img_97.jpg",
+      "How many swords are depicted in the image?": "2"
+    },
+    {
+      "img_path": "images/img_98.jpg",
+      "How many swords are depicted in the image?": "one"
+    },
+    {
+      "img_path": "images/img_99.jpg",
+      "How many swords are depicted in the image?": "one"
+    },
+    {
+      "img_path": "images/img_100.jpg",
+      "How many swords are depicted in the image?": "1"
+    }
+  ]
+}

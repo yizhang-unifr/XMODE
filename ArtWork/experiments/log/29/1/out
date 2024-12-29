@@ -1,0 +1,99 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_xwLc0U6GxM5eO1JT0K1yX7gZ",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"The task is to retrieve the number of paintings for each year from the 'paintings' table. The 'inception' column contains the date when the artwork was created, and we need to extract the year from this column. We will use the strftime function to extract the year from the 'inception' column and then count the number of paintings for each year using the COUNT function. The query will group the results by the extracted year.\",\"SQL\":\"SELECT strftime('%Y', inception) AS year, COUNT(*) AS number_of_paintings\\nFROM paintings\\nGROUP BY year;\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ]
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 124,
+                "prompt_tokens": 880,
+                "total_tokens": 1004,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_7f6be3efb0",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-3371e711-9fdd-4568-b834-8fd4126a3df5-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "The task is to retrieve the number of paintings for each year from the 'paintings' table. The 'inception' column contains the date when the artwork was created, and we need to extract the year from this column. We will use the strftime function to extract the year from the 'inception' column and then count the number of paintings for each year using the COUNT function. The query will group the results by the extracted year.",
+                  "SQL": "SELECT strftime('%Y', inception) AS year, COUNT(*) AS number_of_paintings\nFROM paintings\nGROUP BY year;"
+                },
+                "id": "call_xwLc0U6GxM5eO1JT0K1yX7gZ",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 880,
+              "output_tokens": 124,
+              "total_tokens": 1004
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 124,
+      "prompt_tokens": 880,
+      "total_tokens": 1004,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_7f6be3efb0"
+  },
+  "run": null
+}

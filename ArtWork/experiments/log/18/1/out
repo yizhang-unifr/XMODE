@@ -1,0 +1,100 @@
+{
+  "generations": [
+    [
+      {
+        "text": "",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "",
+            "additional_kwargs": {
+              "tool_calls": [
+                {
+                  "id": "call_grZNbM2hUPXQqI9HER6Y5rwr",
+                  "function": {
+                    "arguments": "{\"reasoning\":\"To retrieve the number of paintings for each year, we need to extract the year from the 'inception' column, which is of DATETIME type. We can use the SQLite function strftime to extract the year from the 'inception' date. Then, we group the results by this year and count the number of paintings for each year. This will give us the desired count of paintings per year.\",\"SQL\":\"SELECT strftime('%Y', inception) AS year, COUNT(*) AS number_of_paintings\\nFROM paintings\\nGROUP BY year;\"}",
+                    "name": "ExecuteCode"
+                  },
+                  "type": "function"
+                }
+              ],
+              "refusal": null
+            },
+            "response_metadata": {
+              "token_usage": {
+                "completion_tokens": 116,
+                "prompt_tokens": 823,
+                "total_tokens": 939,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "audio_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0,
+                  "audio_tokens": 0,
+                  "accepted_prediction_tokens": 0,
+                  "rejected_prediction_tokens": 0
+                }
+              },
+              "model_name": "gpt-4o-2024-08-06",
+              "system_fingerprint": "fp_45cf54deae",
+              "finish_reason": "stop",
+              "logprobs": null
+            },
+            "type": "ai",
+            "id": "run-f23e45a8-a254-4255-9a15-db7dbc71adc0-0",
+            "tool_calls": [
+              {
+                "name": "ExecuteCode",
+                "args": {
+                  "reasoning": "To retrieve the number of paintings for each year, we need to extract the year from the 'inception' column, which is of DATETIME type. We can use the SQLite function strftime to extract the year from the 'inception' date. Then, we group the results by this year and count the number of paintings for each year. This will give us the desired count of paintings per year.",
+                  "SQL": "SELECT strftime('%Y', inception) AS year, COUNT(*) AS number_of_paintings\nFROM paintings\nGROUP BY year;"
+                },
+                "id": "call_grZNbM2hUPXQqI9HER6Y5rwr",
+                "type": "tool_call"
+              }
+            ],
+            "usage_metadata": {
+              "input_tokens": 823,
+              "output_tokens": 116,
+              "total_tokens": 939
+            },
+            "invalid_tool_calls": []
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 116,
+      "prompt_tokens": 823,
+      "total_tokens": 939,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "model_name": "gpt-4o-2024-08-06",
+    "system_fingerprint": "fp_45cf54deae"
+  },
+  "run": null
+}

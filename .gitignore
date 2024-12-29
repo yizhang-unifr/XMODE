@@ -206,3 +206,6 @@ Temporary Items
 mimic_iv_cxr.db
 /files/*
 /reports/*
+*.db
+/experiments/xmode/en/xmode-vqa-m3ae-star-100-en-gpt_4o-with-intent-langsmith-extract-details.json
+ArtWork/data/*

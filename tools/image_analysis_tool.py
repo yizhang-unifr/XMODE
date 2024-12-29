@@ -1,8 +1,9 @@
-import re
+import re, sys,os
+sys.path.append(os.path.dirname(os.getcwd()) + '/src')
+
 from typing import List, Optional, Union
 import json
 import ast
-
 from langchain.chains.openai_functions import create_structured_output_runnable
 from langchain_core.messages import SystemMessage
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder

@@ -1,0 +1,109 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem=\"Identify the tables related to chest x-ray studies on 12/this year for patient 16905933.\", context=\"CREATE TABLE TB_CXR ( row_id INTEGER, subject_id INTEGER, hadm_id REAL, study_id INTEGER, image_id TEXT, viewposition TEXT, studydatetime TEXT, FOREIGN KEY(subject_id) REFERENCES ADMISSIONS (subject_id))\")",
+          "problem": "Identify the tables related to chest x-ray studies on 12/this year for patient 16905933.",
+          "context": "CREATE TABLE TB_CXR ( row_id INTEGER, subject_id INTEGER, hadm_id REAL, study_id INTEGER, image_id TEXT, viewposition TEXT, studydatetime TEXT, FOREIGN KEY(subject_id) REFERENCES ADMISSIONS (subject_id))\"",
+          "id": 1
+        },
+        {
+          "function": "text2SQL(problem=\"Find the study_id and image_id for chest x-ray studies of patient 16905933 that occurred on 12/this year.\", context=\"CREATE TABLE TB_CXR ( row_id INTEGER, subject_id INTEGER, hadm_id REAL, study_id INTEGER, image_id TEXT, viewposition TEXT, studydatetime TEXT, FOREIGN KEY(subject_id) REFERENCES ADMISSIONS (subject_id))\")",
+          "problem": "Find the study_id and image_id for chest x-ray studies of patient 16905933 that occurred on 12/this year.",
+          "context": "CREATE TABLE TB_CXR ( row_id INTEGER, subject_id INTEGER, hadm_id REAL, study_id INTEGER, image_id TEXT, viewposition TEXT, studydatetime TEXT, FOREIGN KEY(subject_id) REFERENCES ADMISSIONS (subject_id))\"",
+          "outputs": {
+            "output": {
+              "reasoning": "To find the study_id and image_id for chest x-ray studies of patient 16905933 that occurred in December of the current year (2105), we need to query the TB_CXR table. We will filter the records by subject_id and ensure the study date is in December 2105. The strftime function will be used to extract the month and year from the studydatetime column.",
+              "SQL": "SELECT study_id, image_id FROM TB_CXR WHERE subject_id = 16905933 AND strftime('%Y', studydatetime) = '2105' AND strftime('%m', studydatetime) = '12' ",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "study_id": 50271633,
+                    "image_id": "79d054e6-2c13022c-6e82bdfa-a24015ca-045ae289"
+                  },
+                  {
+                    "study_id": 53951212,
+                    "image_id": "65a2f615-3d2088b8-e1297f47-cab1c5b7-c7482bde"
+                  },
+                  {
+                    "study_id": 57571812,
+                    "image_id": "997a7b0a-a1c6567a-2a411fd4-268667f7-a4a6f8cd"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Find the study_id and image_id for chest x-ray studies of patient 16905933 that occurred on 12/this year.",
+              "context": "CREATE TABLE TB_CXR ( row_id INTEGER, subject_id INTEGER, hadm_id REAL, study_id INTEGER, image_id TEXT, viewposition TEXT, studydatetime TEXT, FOREIGN KEY(subject_id) REFERENCES ADMISSIONS (subject_id))"
+            }
+          },
+          "id": 2
+        },
+        {
+          "function": "image_analysis(question=\"Check if there are any tubes/lines in the right chest wall.\", context=\"$2\")",
+          "question": "Check if there are any tubes/lines in the right chest wall.",
+          "context": "$2\"",
+          "outputs": {
+            "output": [],
+            "input": {
+              "question": "Check if there are any tubes/lines in the right chest wall.",
+              "context": "{'status': 'success', 'data': [{'study_id': 50271633, 'image_id': '79d054e6-2c13022c-6e82bdfa-a24015ca-045ae289'}, {'study_id': 53951212, 'image_id': '65a2f615-3d2088b8-e1297f47-cab1c5b7-c7482bde'}, {'study_id': 57571812, 'image_id': '997a7b0a-a1c6567a-2a411fd4-268667f7-a4a6f8cd'}]}"
+            }
+          },
+          "id": 3
+        },
+        {
+          "function": "text2SQL(problem=\"Did patient 16905933 receive a prescription for prochlorperazine within two days after the chest x-ray study date?\", context=\"CREATE TABLE PRESCRIPTIONS ( row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, starttime TEXT, stoptime TEXT, drug TEXT, dose_val_rx REAL, dose_unit_rx TEXT, route TEXT, FOREIGN KEY(subject_id) REFERENCES ADMISSIONS (subject_id))\")",
+          "problem": "Did patient 16905933 receive a prescription for prochlorperazine within two days after the chest x-ray study date?",
+          "context": "CREATE TABLE PRESCRIPTIONS ( row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, starttime TEXT, stoptime TEXT, drug TEXT, dose_val_rx REAL, dose_unit_rx TEXT, route TEXT, FOREIGN KEY(subject_id) REFERENCES ADMISSIONS (subject_id))\"",
+          "outputs": {
+            "output": {
+              "reasoning": "To determine if patient 16905933 received a prescription for prochlorperazine within two days after a chest x-ray study, we need to first find the date of the chest x-ray study for this patient. Then, we will check the PRESCRIPTIONS table to see if there is a prescription for prochlorperazine that starts within two days after the study date. The SQL query will join the TB_CXR and PRESCRIPTIONS tables on subject_id and filter the results based on the drug name and the time condition.",
+              "SQL": "SELECT p.* FROM TB_CXR c JOIN PRESCRIPTIONS p ON c.subject_id = p.subject_id WHERE c.subject_id = 16905933 AND p.drug = 'prochlorperazine' AND datetime(p.starttime) BETWEEN datetime(c.studydatetime) AND datetime(c.studydatetime, '+2 days')",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "row_id": 34211,
+                    "subject_id": 16905933,
+                    "hadm_id": 28848581,
+                    "starttime": "2105-12-15 06:41:00",
+                    "stoptime": "2105-12-15 16:41:00",
+                    "drug": "prochlorperazine",
+                    "dose_val_rx": 10.0,
+                    "dose_unit_rx": "mg",
+                    "route": "iv"
+                  },
+                  {
+                    "row_id": 34211,
+                    "subject_id": 16905933,
+                    "hadm_id": 28848581,
+                    "starttime": "2105-12-15 06:41:00",
+                    "stoptime": "2105-12-15 16:41:00",
+                    "drug": "prochlorperazine",
+                    "dose_val_rx": 10.0,
+                    "dose_unit_rx": "mg",
+                    "route": "iv"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Did patient 16905933 receive a prescription for prochlorperazine within two days after the chest x-ray study date?",
+              "context": "CREATE TABLE PRESCRIPTIONS ( row_id INTEGER, subject_id INTEGER, hadm_id INTEGER, starttime TEXT, stoptime TEXT, drug TEXT, dose_val_rx REAL, dose_unit_rx TEXT, route TEXT, FOREIGN KEY(subject_id) REFERENCES ADMISSIONS (subject_id))"
+            }
+          },
+          "id": 4
+        },
+        {
+          "function": "join()",
+          "id": 5
+        }
+      ]
+    }
+  ],
+  "question": "did patient 16905933 receive a prescription for prochlorperazine within 2 day after a chest x-ray study indicated any tubes/lines in the right chest wall on 12/this year?",
+  "id": 56
+}

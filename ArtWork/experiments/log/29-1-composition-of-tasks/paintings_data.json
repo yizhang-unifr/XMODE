@@ -1,0 +1,24 @@
+{
+    "paintings_per_year": {
+        "1503": 1,
+        "1889": 1,
+        "1893": 1,
+        "1937": 1,
+        "1931": 1,
+        "1665": 1,
+        "1642": 1,
+        "1486": 1,
+        "1930": 1,
+        "1498": 1
+    },
+    "paintings_per_genre": {
+        "Portrait": 2,
+        "Post-Impressionism": 1,
+        "Expressionism": 1,
+        "Cubism": 1,
+        "Surrealism": 1,
+        "Baroque": 1,
+        "Renaissance": 2,
+        "Regionalism": 1
+    }
+}

@@ -1,0 +1,96 @@
+{
+  "plans": [
+    {
+      "plan": [
+        {
+          "function": "intent_tables(problem=\"Find the relevant tables to identify when patient 10993512 had a chest x-ray study with any anatomical findings.\", context=\"\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"PRESCRIPTIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tstarttime TEXT, \\n\\tstoptime TEXT, \\n\\tdrug TEXT, \\n\\tdose_val_rx REAL, \\n\\tdose_unit_rx TEXT, \\n\\troute TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\")",
+          "problem": "Find the relevant tables to identify when patient 10993512 had a chest x-ray study with any anatomical findings.",
+          "context": "\\nCREATE TABLE \\\"ADMISSIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tadmittime TEXT, \\n\\tdischtime TEXT, \\n\\tadmission_type TEXT, \\n\\tadmission_location TEXT, \\n\\tdischarge_location TEXT, \\n\\tinsurance TEXT, \\n\\tlanguage TEXT, \\n\\tmarital_status TEXT, \\n\\tage INTEGER\\n)\\n\\nCREATE TABLE \\\"PRESCRIPTIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tstarttime TEXT, \\n\\tstoptime TEXT, \\n\\tdrug TEXT, \\n\\tdose_val_rx REAL, \\n\\tdose_unit_rx TEXT, \\n\\troute TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\"",
+          "id": 1
+        },
+        {
+          "function": "text2SQL(problem=\"Retrieve the study_id and image_id for chest x-ray studies of patient 10993512.\", context=\"\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\")",
+          "problem": "Retrieve the study_id and image_id for chest x-ray studies of patient 10993512.",
+          "context": "\\nCREATE TABLE \\\"TB_CXR\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id REAL, \\n\\tstudy_id INTEGER, \\n\\timage_id TEXT, \\n\\tviewposition TEXT, \\n\\tstudydatetime TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\"",
+          "outputs": {
+            "output": {
+              "reasoning": "To retrieve the study_id and image_id for chest x-ray studies of a specific patient, we need to query the TB_CXR table, which contains information about chest x-ray studies. The relevant columns in this table are subject_id, study_id, and image_id. We will filter the records by the given subject_id, which is 10993512, to get the desired information.",
+              "SQL": "SELECT study_id, image_id FROM TB_CXR WHERE subject_id = 10993512;",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "study_id": 52568164,
+                    "image_id": "c14cc423-b40e568f-a798de98-95764e93-dc88a722"
+                  },
+                  {
+                    "study_id": 51229858,
+                    "image_id": "21966143-cec1d4ce-50ae890a-c759fdbe-304953b1"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Retrieve the study_id and image_id for chest x-ray studies of patient 10993512.",
+              "context": "\nCREATE TABLE \"TB_CXR\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id REAL, \n\tstudy_id INTEGER, \n\timage_id TEXT, \n\tviewposition TEXT, \n\tstudydatetime TEXT, \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)\n"
+            }
+          },
+          "id": 2
+        },
+        {
+          "function": "image_analysis(question=\"Were there any anatomical findings in the chest x-ray of patient 10993512?\", context=\"$2\")",
+          "question": "Were there any anatomical findings in the chest x-ray of patient 10993512?",
+          "context": "$2\"",
+          "outputs": {
+            "output": [
+              "yes"
+            ],
+            "input": {
+              "question": "Were there any anatomical findings in the chest x-ray of patient 10993512?",
+              "context": "{'status': 'success', 'data': [{'study_id': 52568164, 'image_id': 'c14cc423-b40e568f-a798de98-95764e93-dc88a722'}, {'study_id': 51229858, 'image_id': '21966143-cec1d4ce-50ae890a-c759fdbe-304953b1'}]}"
+            }
+          },
+          "id": 3
+        },
+        {
+          "function": "text2SQL(problem=\"Check if patient 10993512 was prescribed magnesium sulfate within the same month after a chest x-ray study showed any anatomical findings.\", context=\"\\nCREATE TABLE \\\"PRESCRIPTIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tstarttime TEXT, \\n\\tstoptime TEXT, \\n\\tdrug TEXT, \\n\\tdose_val_rx REAL, \\n\\tdose_unit_rx TEXT, \\n\\troute TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\")",
+          "problem": "Check if patient 10993512 was prescribed magnesium sulfate within the same month after a chest x-ray study showed any anatomical findings.",
+          "context": "\\nCREATE TABLE \\\"PRESCRIPTIONS\\\" (\\n\\trow_id INTEGER, \\n\\tsubject_id INTEGER, \\n\\thadm_id INTEGER, \\n\\tstarttime TEXT, \\n\\tstoptime TEXT, \\n\\tdrug TEXT, \\n\\tdose_val_rx REAL, \\n\\tdose_unit_rx TEXT, \\n\\troute TEXT, \\n\\tFOREIGN KEY(subject_id) REFERENCES \\\"ADMISSIONS\\\" (subject_id)\\n)\\n\"",
+          "outputs": {
+            "output": {
+              "reasoning": "To determine if patient 10993512 was prescribed magnesium sulfate within the same month after a chest x-ray study showed any anatomical findings, we need to:\n1. Identify the latest chest x-ray study for the patient from the TB_CXR table.\n2. Check if there are any anatomical findings related to this study. Since the schema does not have a direct column for findings, we will assume any study is relevant.\n3. Retrieve the prescription records from the PRESCRIPTIONS table for magnesium sulfate that were prescribed within the same month as the x-ray study.\n\nThe SQL query will:\n- Select the latest study date for the patient from the TB_CXR table.\n- Use this date to filter prescriptions of magnesium sulfate from the PRESCRIPTIONS table within the same month and year.",
+              "SQL": "WITH LatestStudy AS (\n    SELECT MAX(studydatetime) AS last_study_date\n    FROM TB_CXR\n    WHERE subject_id = 10993512\n),\nMagnesiumPrescriptions AS (\n    SELECT *\n    FROM PRESCRIPTIONS\n    WHERE subject_id = 10993512 AND drug LIKE '%magnesium sulfate%'\n)\nSELECT mp.*\nFROM MagnesiumPrescriptions mp\nJOIN LatestStudy ls ON strftime('%Y-%m', mp.starttime) = strftime('%Y-%m', ls.last_study_date)",
+              "results": {
+                "status": "success",
+                "data": [
+                  {
+                    "row_id": 5374,
+                    "subject_id": 10993512,
+                    "hadm_id": 21711022,
+                    "starttime": "2104-04-01 20:00:00",
+                    "stoptime": "2104-04-06 21:00:00",
+                    "drug": "magnesium sulfate",
+                    "dose_val_rx": 2.0,
+                    "dose_unit_rx": "gm",
+                    "route": "iv"
+                  }
+                ]
+              }
+            },
+            "input": {
+              "problem": "Check if patient 10993512 was prescribed magnesium sulfate within the same month after a chest x-ray study showed any anatomical findings.",
+              "context": "\nCREATE TABLE \"PRESCRIPTIONS\" (\n\trow_id INTEGER, \n\tsubject_id INTEGER, \n\thadm_id INTEGER, \n\tstarttime TEXT, \n\tstoptime TEXT, \n\tdrug TEXT, \n\tdose_val_rx REAL, \n\tdose_unit_rx TEXT, \n\troute TEXT, \n\tFOREIGN KEY(subject_id) REFERENCES \"ADMISSIONS\" (subject_id)\n)\n"
+            }
+          },
+          "id": 4
+        },
+        {
+          "function": "join()",
+          "id": 5
+        }
+      ]
+    }
+  ],
+  "question": "was patient 10993512 prescribed magnesium sulfate within the same month after a chest x-ray study showed any anatomical findings?",
+  "id": 154
+}

@@ -1,0 +1,45 @@
+{
+    "status": "success",
+    "data": [
+        {
+            "genre": "Hodegetria",
+            "oldest_year": "1500"
+        },
+        {
+            "genre": "allegory",
+            "oldest_year": "1856"
+        },
+        {
+            "genre": "figure painting",
+            "oldest_year": "1856"
+        },
+        {
+            "genre": "genre art",
+            "oldest_year": "1862"
+        },
+        {
+            "genre": "history painting",
+            "oldest_year": "1530"
+        },
+        {
+            "genre": "interior view",
+            "oldest_year": "1789"
+        },
+        {
+            "genre": "mythological painting",
+            "oldest_year": "1788"
+        },
+        {
+            "genre": "nude",
+            "oldest_year": "1811"
+        },
+        {
+            "genre": "portrait",
+            "oldest_year": "1530"
+        },
+        {
+            "genre": "religious art",
+            "oldest_year": "1438"
+        }
+    ]
+}

@@ -1,0 +1,173 @@
+{
+    "status": "success",
+    "data": [
+        {
+            "year": "1438",
+            "painting_count": 1
+        },
+        {
+            "year": "1470",
+            "painting_count": 2
+        },
+        {
+            "year": "1472",
+            "painting_count": 1
+        },
+        {
+            "year": "1474",
+            "painting_count": 1
+        },
+        {
+            "year": "1475",
+            "painting_count": 1
+        },
+        {
+            "year": "1476",
+            "painting_count": 2
+        },
+        {
+            "year": "1477",
+            "painting_count": 13
+        },
+        {
+            "year": "1479",
+            "painting_count": 12
+        },
+        {
+            "year": "1480",
+            "painting_count": 3
+        },
+        {
+            "year": "1483",
+            "painting_count": 4
+        },
+        {
+            "year": "1500",
+            "painting_count": 3
+        },
+        {
+            "year": "1520",
+            "painting_count": 1
+        },
+        {
+            "year": "1525",
+            "painting_count": 1
+        },
+        {
+            "year": "1528",
+            "painting_count": 1
+        },
+        {
+            "year": "1530",
+            "painting_count": 2
+        },
+        {
+            "year": "1536",
+            "painting_count": 7
+        },
+        {
+            "year": "1550",
+            "painting_count": 1
+        },
+        {
+            "year": "1565",
+            "painting_count": 2
+        },
+        {
+            "year": "1583",
+            "painting_count": 1
+        },
+        {
+            "year": "1585",
+            "painting_count": 1
+        },
+        {
+            "year": "1600",
+            "painting_count": 4
+        },
+        {
+            "year": "1764",
+            "painting_count": 1
+        },
+        {
+            "year": "1770",
+            "painting_count": 1
+        },
+        {
+            "year": "1771",
+            "painting_count": 1
+        },
+        {
+            "year": "1784",
+            "painting_count": 1
+        },
+        {
+            "year": "1785",
+            "painting_count": 1
+        },
+        {
+            "year": "1787",
+            "painting_count": 1
+        },
+        {
+            "year": "1788",
+            "painting_count": 2
+        },
+        {
+            "year": "1789",
+            "painting_count": 2
+        },
+        {
+            "year": "1793",
+            "painting_count": 2
+        },
+        {
+            "year": "1799",
+            "painting_count": 1
+        },
+        {
+            "year": "1800",
+            "painting_count": 1
+        },
+        {
+            "year": "1806",
+            "painting_count": 2
+        },
+        {
+            "year": "1811",
+            "painting_count": 2
+        },
+        {
+            "year": "1814",
+            "painting_count": 1
+        },
+        {
+            "year": "1824",
+            "painting_count": 2
+        },
+        {
+            "year": "1827",
+            "painting_count": 1
+        },
+        {
+            "year": "1840",
+            "painting_count": 1
+        },
+        {
+            "year": "1856",
+            "painting_count": 9
+        },
+        {
+            "year": "1862",
+            "painting_count": 2
+        },
+        {
+            "year": "1879",
+            "painting_count": 2
+        },
+        {
+            "year": "2000",
+            "painting_count": 1
+        }
+    ]
+}
